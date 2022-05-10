@@ -79,6 +79,7 @@
 |---|---|
 |EventID|事件ID，若不上传（放到网上）的话则为主键；若上传则与`USERID`共同作为主键，且用户处也要建表，自增一|
 |EventInfo|事件描述|
+|Location|事件地点|
 |StartYear|开始年
 |StartMonth|开始月
 |StartDay|开始日
@@ -93,10 +94,10 @@
 |UserID|用户的ID
 
 #### 2.3.2 例子
-|EventID|EventInfo|StartYear|StartMonth|StartDay|StartHour|StartMin|EndYear|EndMonth|EndDay|EndHour|EndMin|IsRepeat|UserID
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|1|荒野乱斗|2022|5|8|16|00|2022|5|8|17|00|1|0|
-|2|荒野乱斗|2022|5|11|16|00|2022|5|11|17|00|0|0|
+|EventID|EventInfo|Location|StartYear|StartMonth|StartDay|StartHour|StartMin|EndYear|EndMonth|EndDay|EndHour|EndMin|IsRepeat|UserID
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|1|荒野乱斗||2022|5|8|16|00|2022|5|8|17|00|1|0|
+|2|荒野乱斗||2022|5|11|16|00|2022|5|11|17|00|0|0|
 
 ## 3. 实现
 ### 3.1 数据的存储
