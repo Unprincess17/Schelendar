@@ -71,6 +71,7 @@ namespace Schelendar
             this.uiNavMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiNavMenu.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
             this.uiNavMenu.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.uiNavMenu.ForeColor = System.Drawing.Color.FromArgb(((int) (((byte) (240)))), ((int) (((byte) (240)))), ((int) (((byte) (240)))));
             this.uiNavMenu.FullRowSelect = true;
             this.uiNavMenu.ItemHeight = 50;
             this.uiNavMenu.Location = new System.Drawing.Point(0, 0);
@@ -88,11 +89,15 @@ namespace Schelendar
             treeNode6.Name = "menu_setting";
             treeNode6.Text = "设置";
             this.uiNavMenu.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {treeNode3, treeNode4, treeNode5, treeNode6});
+            this.uiNavMenu.ScrollBarColor = System.Drawing.Color.FromArgb(((int) (((byte) (240)))), ((int) (((byte) (240)))), ((int) (((byte) (240)))));
+            this.uiNavMenu.ScrollBarHoverColor = System.Drawing.Color.FromArgb(((int) (((byte) (240)))), ((int) (((byte) (240)))), ((int) (((byte) (240)))));
+            this.uiNavMenu.ScrollBarPressColor = System.Drawing.Color.FromArgb(((int) (((byte) (240)))), ((int) (((byte) (240)))), ((int) (((byte) (240)))));
             this.uiNavMenu.ShowLines = false;
             this.uiNavMenu.Size = new System.Drawing.Size(178, 564);
             this.uiNavMenu.TabIndex = 0;
             this.uiNavMenu.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.uiNavMenu.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.uiNavMenu.MenuItemClick += new Sunny.UI.UINavMenu.OnMenuItemClick(this.uiNavMenu_MenuItemClick);
             // 
             // uiPanel
             // 
