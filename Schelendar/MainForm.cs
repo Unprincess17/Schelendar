@@ -16,6 +16,58 @@ namespace Schelendar
         public MainForm()
         {
             InitializeComponent();
+            // 每次进入最先显示当前课表
+            initPanel();
+        }
+
+        
+        // 导航栏的选择事件
+        private void uiNavMenu_MenuItemClick(TreeNode node, NavMenuItem item, int pageIndex)
+        {
+            uiPanel.Controls.Clear();
+            switch (node.Name)
+            {
+                case "menu_class":
+                case "menu_class_cur":
+                    ClassTableForm classTableFormCur = new ClassTableForm();
+                    InitForm(classTableFormCur);
+                    break;
+                case "menu_class_last":
+                    ClassTableForm classTableFormLast = new ClassTableForm();
+                    InitForm(classTableFormLast);
+                    break;
+                case "menu_calendar":
+                    CalendarForm calendarForm = new CalendarForm();
+                    InitForm(calendarForm);
+                    break;
+                case "menu_deadline":
+                    DeadlineForm deadlineForm = new DeadlineForm();
+                    InitForm(deadlineForm);
+                    break;
+                case "menu_setting":
+                    SettingForm settingForm = new SettingForm();
+                    InitForm(settingForm);
+                    break;
+            }
+        }
+        
+        
+        
+        // 各个界面嵌入panel
+        private void InitForm(UIForm uiForm)
+        {
+            uiForm.FormBorderStyle = FormBorderStyle.None;  // 取消边框
+            uiForm.TopLevel = false;    // 取消最顶层
+            uiPanel.Controls.Add(uiForm);   // 添加
+            uiForm.Show();
+        }
+        
+        
+        // 初始化时显示界面为当前课表
+        private void initPanel()
+        {
+            ClassTableForm classTableFormCur = new ClassTableForm();
+            InitForm(classTableFormCur);
         }
     }
 }
