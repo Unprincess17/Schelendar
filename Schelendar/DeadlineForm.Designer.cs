@@ -31,13 +31,29 @@ namespace Schelendar
         /// </summary>
         private void InitializeComponent()
         {
+            this.uiMainPanel = new Sunny.UI.UIPanel();
             this.SuspendLayout();
+            // 
+            // uiMainPanel
+            // 
+            this.uiMainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiMainPanel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.uiMainPanel.Location = new System.Drawing.Point(0, 0);
+            this.uiMainPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiMainPanel.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiMainPanel.Name = "uiMainPanel";
+            this.uiMainPanel.Size = new System.Drawing.Size(800, 450);
+            this.uiMainPanel.TabIndex = 0;
+            this.uiMainPanel.Text = "倒计时界面";
+            this.uiMainPanel.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiMainPanel.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // DeadlineForm
             // 
             this.AllowShowTitle = false;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.uiMainPanel);
             this.Name = "DeadlineForm";
             this.Padding = new System.Windows.Forms.Padding(0);
             this.ShowTitle = false;
@@ -45,6 +61,8 @@ namespace Schelendar
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
             this.ResumeLayout(false);
         }
+
+        private Sunny.UI.UIPanel uiMainPanel;
 
         #endregion
     }
