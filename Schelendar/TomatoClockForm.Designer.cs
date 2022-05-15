@@ -137,6 +137,7 @@
             this.iudRestTime.TabIndex = 18;
             this.iudRestTime.Text = "uiIntegerUpDown2";
             this.iudRestTime.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.iudRestTime.Value = 5;
             this.iudRestTime.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // iudWorkTime
@@ -151,6 +152,7 @@
             this.iudWorkTime.TabIndex = 17;
             this.iudWorkTime.Text = "uiIntegerUpDown1";
             this.iudWorkTime.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.iudWorkTime.Value = 25;
             this.iudWorkTime.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiLabel6
@@ -263,6 +265,7 @@
             // 
             this.pcbWorkTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.pcbWorkTime.Location = new System.Drawing.Point(290, 99);
+            this.pcbWorkTime.Maximum = 25;
             this.pcbWorkTime.MinimumSize = new System.Drawing.Size(70, 3);
             this.pcbWorkTime.Name = "pcbWorkTime";
             this.pcbWorkTime.Size = new System.Drawing.Size(300, 31);
