@@ -37,7 +37,7 @@ namespace Schelendar
             // uiMainPanel
             // 
             this.uiMainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiMainPanel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.uiMainPanel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiMainPanel.Location = new System.Drawing.Point(0, 0);
             this.uiMainPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiMainPanel.MinimumSize = new System.Drawing.Size(1, 1);
@@ -60,6 +60,7 @@ namespace Schelendar
             this.Text = "DeadlineForm";
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
             this.ResumeLayout(false);
+
         }
 
         private Sunny.UI.UIPanel uiMainPanel;

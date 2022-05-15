@@ -45,6 +45,10 @@ namespace Schelendar
                         DeadlineForm deadlineForm = new DeadlineForm();
                         InitForm(deadlineForm);
                         break;
+                    case "menu_tomatoclock":
+                        TomatoClockForm tomatoClockForm = new TomatoClockForm();
+                        InitForm(tomatoClockForm);
+                        break;
                     case "menu_setting":
                         SettingForm settingForm = new SettingForm();
                         InitForm(settingForm);
