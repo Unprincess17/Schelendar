@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.Concurrent;
 using System.Xml.Serialization;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Schelendar.Models
 {
@@ -49,7 +50,10 @@ namespace Schelendar.Models
             {
                 return false;
             }
-
+            if (!Regex.IsMatch(newUser.UserName, @"^[\u4E00-\u9FA5A-Za-z\s]+(·[\u4E00-\u9FA5A-Za-z]+)*$"))
+            {
+                throw new ArgumentException("更改的用户名格式不正确，用户名只能包括汉字和英文。请重新输入");
+            }
             try
             {
                 SchUser u = SchUsers.FirstOrDefault(o => o.UserName.Equals(oldUserName));

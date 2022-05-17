@@ -28,6 +28,7 @@ namespace Schelendar.Models
         /// 事件地点
         /// </summary>
         public string SchEventLocation { get; set; }
+
         /// <summary>
         /// 事件起始时间
         /// </summary>

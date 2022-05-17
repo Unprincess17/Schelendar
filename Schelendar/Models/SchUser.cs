@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.IO;
+using System.Text.RegularExpressions;
+
 
 namespace Schelendar.Models
 {
@@ -58,6 +60,11 @@ namespace Schelendar.Models
         {
             try
             {
+                ///TODO:用户名检测， 正则表达式为^[\u4E00-\u9FA5A-Za-z\s]+(·[\u4E00-\u9FA5A-Za-z]+)*$, 支持的为中文、英文、·连接符，不支持数字
+                if (!Regex.IsMatch(userName, @"^[\u4E00-\u9FA5A-Za-z\s]+(·[\u4E00-\u9FA5A-Za-z]+)*$"))
+                {
+                    throw new ArgumentException("用户名格式不正确，请重新输入");
+                }
                 this.SchUserID = schUserID;
                 this.UserName = userName;
                 this.UserExperience = 0;

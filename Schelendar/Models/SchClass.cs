@@ -45,7 +45,37 @@ namespace Schelendar.Models
 		/// </summary>
 		int DayofWeek { set; get; }
 
-		public SchClass(int schClassID, string schClassName, string district, string building, string classroom, string teacherName, int startWeek, int endWeek, int dayofWeek, DateTime startDate, DateTime endDate):base(schClassID, schClassName, district+building+classroom, startDate, endDate, 1, 0)
+		/// <summary>
+		/// 上该课程的学期
+		/// </summary>
+		int Semaster { set; get; }
+
+		/// <summary>
+		/// 上课时间
+		/// </summary>
+		public ClassTime StartTime { get; set; }
+
+		/// <summary>
+		/// 下课时间
+		/// </summary>
+		public ClassTime EndTime { get; set; }
+
+		/// <summary>
+		/// Class的构造函数
+		/// </summary>
+		/// <param name="schClassID"></param>
+		/// <param name="schClassName"></param>
+		/// <param name="district">校区</param>
+		/// <param name="building"></param>
+		/// <param name="classroom"></param>
+		/// <param name="teacherName"></param>
+		/// <param name="startWeek"></param>
+		/// <param name="endWeek"></param>
+		/// <param name="dayofWeek"></param>
+		/// <param name="semaster"></param>
+		/// <param name="startTime">上课时间，格式为"HH:MM"</param>
+		/// <param name="endTime">下课时间，格式为"HH:MM"</param>
+		public SchClass(int schClassID, string schClassName, string district, string building, string classroom, string teacherName, int startWeek, int endWeek, int dayofWeek, int semaster, string startTime, string endTime):base(schClassID, schClassName, district+building+classroom, DateTime.Now, DateTime.Now, 1, 0)
         {
             SchClassID = schClassID;
             SchClassName = schClassName;
@@ -54,6 +84,9 @@ namespace Schelendar.Models
             StartWeek = startWeek;
             EndWeek = endWeek;
             DayofWeek = dayofWeek;
+			Semaster = semaster;
+			StartTime = startTime;
+			EndTime = endTime;
         }
 		public SchClass() 
         {
@@ -110,4 +143,49 @@ namespace Schelendar.Models
 			Classroom = classroom;
         }
 	}
+
+	/// <summary>
+	/// HH SS
+	/// </summary>
+	public struct ClassTime
+    {
+        public int Hour { get; set; }
+		public int Minute { get; set; }
+
+        public ClassTime(int hour, int minute)
+        {
+            Hour = hour;
+            Minute = minute;
+        }
+
+		public ClassTime(DateTime d)
+        {
+			Hour = d.Hour;
+			Minute = d.Minute;
+        }
+
+		public ClassTime(string time)
+        {
+			DateTime d = DateTime.Parse(time);
+			Hour = d.Hour;
+			Minute= d.Minute;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is ClassTime time &&
+                   Hour == time.Hour &&
+                   Minute == time.Minute;
+        }
+
+        public override string ToString()
+        {
+            return Hour.ToString() + ":" + Minute.ToString();
+        }
+
+        public static implicit operator ClassTime(string time)
+        {
+			return new ClassTime(time);
+		}
+    }
 }
