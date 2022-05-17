@@ -22,12 +22,21 @@ namespace Schelendar.Models
             SchUsers = new ConcurrentBag<SchUser>();
         }
 
-        ///TODO:AddUser
+        /// <summary>
+        /// 添加不重复的用户
+        /// </summary>
+        /// <param name="user"></param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentException"></exception>
         public void AddUser(SchUser user)
         {
             if(user == null)
             {
                 throw new ArgumentNullException("user");
+            }
+            if (SchUsers.Any(u => u.Equals(user)))
+            {
+                throw new ArgumentException($"已添加用户{user}");
             }
             SchUsers.Add(user);
         }
