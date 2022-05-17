@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Schelendar.Models
 {
+	[Serializable]
 	/// <summary>
 	/// classes, derived from events
 	/// </summary>
@@ -53,14 +55,8 @@ namespace Schelendar.Models
             EndWeek = endWeek;
             DayofWeek = dayofWeek;
         }
-		public SchClass() : base(-1, "", "", DateTime.Now, DateTime.Now, 0, 1) 
+		public SchClass() 
         {
-			SchClassID = -1;
-			SchClassName = "";
-			TeacherName = "";
-			StartWeek = 0;
-			EndWeek = 0;
-			DayofWeek = 0;
 		}
 
 		

@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 
 namespace Schelendar.Models
 {
     /// <summary>
     /// events, basic item
     /// </summary>
-    public class SchEvent : IEquatable<SchEvent>
+    [Serializable]
+    public class SchEvent : IEquatable<SchEvent>/*, IXmlSerializable*/
     {
         /// <summary>
         /// 事件ID
         /// </summary>
+        [XmlElementAttribute("EventID")]
         public int SchEventID { get; set; }
         /// <summary>
         /// 事件描述信息
@@ -57,13 +62,6 @@ namespace Schelendar.Models
         }
         public SchEvent()
         {
-            SchEventID = -1;
-            SchEventInfo = "";
-            SchEventLocation = "";
-            StartDate = DateTime.Now;
-            EndDate = DateTime.Now;
-            this.isRepeat = 0;
-            this.isDone = 1;
         }
 
         public override bool Equals(object obj)
@@ -85,6 +83,21 @@ namespace Schelendar.Models
             hashCode = hashCode * -1521134295 + UserID.GetHashCode();
             return hashCode;
         }
+
+        //public XmlSchema GetSchema()
+        //{
+        //    return(null);
+        //}
+
+        //public void ReadXml(XmlReader reader)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public void WriteXml(XmlWriter writer)
+        //{
+        //    writer.WriteElementStringAsync("EventID", "SchEventID", "Schelendar.Models", SchEventID.ToString());
+        //}
 
         public static bool operator ==(SchEvent left, SchEvent right)
         {
