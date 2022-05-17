@@ -108,6 +108,7 @@ namespace Schelendar
             this.btnNext.Text = "下一周";
             this.btnNext.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.btnNext.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnPre
             // 
@@ -122,11 +123,13 @@ namespace Schelendar
             this.btnPre.Text = "前一周";
             this.btnPre.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.btnPre.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
             // 
             // classTableView
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (243)))), ((int) (((byte) (249)))), ((int) (((byte) (255)))));
             this.classTableView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.classTableView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.classTableView.BackgroundColor = System.Drawing.Color.FromArgb(((int) (((byte) (243)))), ((int) (((byte) (249)))), ((int) (((byte) (255)))));
             this.classTableView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
