@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Windows.Forms;
 using Sunny.UI;
+
 
 namespace Schelendar
 {
@@ -93,6 +93,10 @@ namespace Schelendar
             if (!IsFirstOrLastWeek())
             {
                 displayedWeekNumber++;
+            }
+            else
+            {
+                classTableView.ClearRows();
             }
         }
     }
