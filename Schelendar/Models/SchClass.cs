@@ -16,39 +16,39 @@ namespace Schelendar.Models
 		/// <summary>
 		/// 课程ID
 		/// </summary>
-		int SchClassID { get; set; }
+		public int SchClassID { get; set; }
 
 		/// <summary>
 		/// 课程名
 		/// </summary>
-		string SchClassName { get; set; }
+		public string SchClassName { get; set; }
 
 		/// <summary>
 		/// 上课教室的信息
 		/// </summary>
-		ClassLocation SchClassLocation { get; set; }
+		public ClassLocation SchClassLocation { get; set; }
 		
 		/// <summary>
 		/// 教师信息
 		/// </summary>
-		String TeacherName { get; set; }
+		public String TeacherName { get; set; }
 		/// <summary>
 		/// 课程开始的周
 		/// </summary>
-		int StartWeek { set; get; }
+		public int StartWeek { set; get; }
 		/// <summary>
 		/// 课程结束的周
 		/// </summary>
-		int EndWeek { set; get; }
+		public int EndWeek { set; get; }
 		/// <summary>
 		/// 周几上课
 		/// </summary>
-		int DayofWeek { set; get; }
+		public int DayofWeek { set; get; }
 
 		/// <summary>
 		/// 上该课程的学期
 		/// </summary>
-		int Semaster { set; get; }
+		public int Semaster { set; get; }
 
 		/// <summary>
 		/// 上课时间

@@ -12,7 +12,6 @@ namespace Schelendar.Models
 {
     public class SchUserManager
     {
-        ///TODO: 考虑管理UserID，即在哪里自增一，存储需要什么类型的集合
         /// <summary>
         /// 学生集合
         /// </summary>
@@ -23,17 +22,30 @@ namespace Schelendar.Models
             SchUsers = new ConcurrentBag<SchUser>();
         }
 
-        ///TODO:AddUser
+        /// <summary>
+        /// 添加用户。若用户已存在则抛出ArgumentException
+        /// </summary>
+        /// <param name="user"></param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentException"></exception>
         public void AddUser(SchUser user)
         {
-            if(user == null)
+            if (user == null)
             {
                 throw new ArgumentNullException("user");
             }
+            if (SchUsers.Any(u => u.Equals(user)))
+            {
+                throw new ArgumentException($"已添加用户{user}");
+            }
             SchUsers.Add(user);
         }
-        
-        ///TODO:DeleteUser
+
+        /// <summary>
+        /// 尝试删除用户，若查询不到则抛出ArgumentException
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <exception cref="ArgumentException"></exception>
         public void TryDeleteUser(int userID)
         {
             if (!SchUsers.Any(o => o.SchUserID.Equals(userID)))
@@ -43,7 +55,16 @@ namespace Schelendar.Models
             SchUser u = SchUsers.FirstOrDefault(o => o.SchUserID.Equals(userID));
             SchUsers.TryTake(out u);
         }
-        ///TODO:UpdateUserByName
+        
+        /// <summary>
+        /// 更新指定用户信息
+        /// 若指定用户不存在则抛出ArgumentException
+        /// 若更新用户名格式不正确则抛出ArgumentException
+        /// </summary>
+        /// <param name="oldUserName">指定用户的用户名</param>
+        /// <param name="newUser">更新的用户信息</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         public bool UpdateUserByName(string oldUserName, SchUser newUser)
         {
             if(newUser == null)
@@ -66,10 +87,62 @@ namespace Schelendar.Models
             }
         }
 
-        ///TODO:GetUserByName
+        /// <summary>
+        /// 查询指定用户名的用户
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public SchUser GetUserByName(string Name)
+        {
+            if (SchUsers.All(o => o.UserName.Equals(Name)))
+            {
+                return SchUsers.FirstOrDefault(o => o.UserName.Equals(Name));
+            }
+            throw new ArgumentException($"未查询到名称为{Name}的用户，请检查输入");
+        }
 
+        /// <summary>
+        /// 根据用户ID和学期号获取课程
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <param name="semasterID">学期号</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public List<SchClass> GetUserSemasterClasses(int userID, int semasterID)
+        {
+            try
+            {
+                return SchUsers.First(o => o.SchUserID.Equals(userID)).SchClasses.Where(c => c.Semaster.Equals(semasterID)).ToList();
+            }
+            catch(ArgumentNullException e)
+            {
+                throw new ArgumentException($"未查询到ID为{userID}的用户，请检查输入");
+            }
+        }
 
-        ///TODO: path的赋值
+        ///TODO:根据用户名查询用户的学期课表
+        
+
+        ///这两个功能应该蛮常用的？或者说怎么样维护一个运行时的用户信息？
+        /// 1.当main运行的时候，维护一个用户（信息的持久化、信息的更改）。每次修改课程、事件等信息时，实际是修改该用户的指定信息--->那他妈不就是不需要一个用户管理类的管理列表了吗？（既然每次都肯定是对指定用户的操作）--->或者说维护的这个管理列表里只有一个用户，其他用户想要被管理需要登出当前的（删除列表元素），登入新的（添加进列表中）
+        ///TODO：为用户增加课程
+        
+        ///TODO: 删除用户指定课程
+
+        ///TODO: Txt2Event
+        /// 文本处理？可以先写个处理格式化文本的
+        ///
+        ///TODO: ShareEventByEmails
+        ///
+        ///TODO: GetEventByEmail
+        ///这个功能隔一段时间调用一次
+        ///需要用户的邮箱列表？
+        ///
+
+        ///TODO:每次操作的信息，持久化起来。->C# log
+
+        ///TODO: path的赋值的检测
         /// <summary>
         /// 从path导入指定ID的用户
         /// </summary>
@@ -94,7 +167,7 @@ namespace Schelendar.Models
 
 
 
-        ///TODO: path的赋值
+        ///TODO: path的赋值的检测
         /// <summary>
         /// 从path导入指定ID的用户的课程
         /// </summary>
@@ -117,7 +190,8 @@ namespace Schelendar.Models
                 throw new Exception($"Exception when importing, please check the correctness of the path: {path}");
             }
         }
-        ///TODO: path的赋值
+
+        ///TODO: path的赋值的检测
         /// <summary>
         /// 从path导入指定ID的用户的事件
         /// </summary>
@@ -154,7 +228,7 @@ namespace Schelendar.Models
             }
         }
 
-        ///TODO: 用户名字段作文件夹名不安全，需要创建或修改时检测
+        ///HACK: 用户名字段作文件夹名不安全，需要创建或修改时检测
         /// <summary>
         /// 导出学生基本数据
         /// </summary>
@@ -191,7 +265,6 @@ namespace Schelendar.Models
             try
             {
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<SchEvent>));
-                ///TODO: raw UserName here might be unsafe, need to detect when create or edit
                 using (FileStream fs = new FileStream(path/* + schuser.FirstOrDefault().UserName + "_Events.xml"*/, FileMode.Create))
                 {
                     xmlSerializer.Serialize(fs, this.SchUsers.Where(o => o.SchUserID.Equals(userID)).First().SchEvents.ToList());
@@ -218,7 +291,6 @@ namespace Schelendar.Models
             try
             {
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<SchClass>));
-                ///TODO: raw UserName here might be unsafe, need to detect when create or edit
                 using (FileStream fs = new FileStream(path, FileMode.Create))
                 {
                     xmlSerializer.Serialize(fs, this.SchUsers.Where(o => o.SchUserID.Equals(userID)).First().SchClasses.ToList());
