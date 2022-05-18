@@ -26,12 +26,15 @@ namespace Schelendar
         //向某个窗体发送某种信息
 
 
-        private int workTime;              //用户设置倒计时的时间
+        private int workTime;           //用户设置倒计时的时间
         private int restTime;
         private DateTime startTime;     //保存开始番茄钟的当地时间
         private bool isSave = false;    //是否保存数据
         private bool isRun = false;     //番茄钟是否正在运行
 
+        /// <summary>
+        /// 窗体构造函数
+        /// </summary>
         public TomatoClockForm()
         {
             InitializeComponent();
@@ -43,7 +46,11 @@ namespace Schelendar
             iudWorkTime.Value = pcbWorkTime.Value = 25; //工作时间
             iudRestTime.Value = pcbRestTime.Value = 5;  //休息时间         
         }
-
+        /// <summary>
+        /// 开始按钮的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnStart_Click(object sender, EventArgs e)
         {
             isSave = chkSave.Checked;                            //检查数据是否保存
@@ -62,13 +69,24 @@ namespace Schelendar
             btnPause.Text = "暂停计时";     //显示暂停按钮
             btnPause.Show();
         }
-        private String timeToString(int time)//时间转换成字符串
+        /// <summary>
+        /// 时间转换成字符串
+        /// </summary>
+        /// <param name="time"></param>
+        /// <returns></returns>
+        private String timeToString(int time)
         {
             int hours = time / 3600;
             int min = (time - 3600 * hours) / 60;
             int second = time % 60;
             return hours.ToString() + ":" + min.ToString() + ":" + second.ToString();
         }
+
+        /// <summary>
+        /// 工作时间计时器的Tick事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tmrWorkTime_Tick(object sender, EventArgs e)
         {
             if(workTime > 0)
@@ -84,6 +102,12 @@ namespace Schelendar
                 saveData();
             }
         }
+
+        /// <summary>
+        /// 休息时间计时器的Tick事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tmrRestTime_Tick(object sender, EventArgs e)
         {
             if (restTime > 0)
@@ -101,6 +125,9 @@ namespace Schelendar
             }
         }
 
+        /// <summary>
+        /// 存储数据到文件夹中
+        /// </summary>
         private void saveData()
         {
             int i = Convert.ToInt32(lblTomatoNums.Text);
@@ -122,6 +149,11 @@ namespace Schelendar
             }
         }
 
+        /// <summary>
+        /// 暂停按钮的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPause_Click(object sender, EventArgs e)
         {
 
@@ -139,6 +171,11 @@ namespace Schelendar
             }
         }
 
+        /// <summary>
+        /// 终止按钮的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAbort_Click(object sender, EventArgs e)
         {
             tmrWorkTime.Enabled = tmrRestTime.Enabled = false;
@@ -149,9 +186,6 @@ namespace Schelendar
             isRun = false;
             this.Opacity = 1;
             btnStart.Show();
-        }
-
-
-       
+        }  
     }
 }
