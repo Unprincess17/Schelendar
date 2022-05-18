@@ -35,7 +35,7 @@ namespace Schelendar
         /// 初始化当前第几周
         /// </summary>
         /// <param name="number">当前为第几周</param>
-        private void InitWeekNumber(int number)
+        private void UpdateWeekNumber(int number)
         {
             weekLable.Text = "WEEK " + number;
         }
