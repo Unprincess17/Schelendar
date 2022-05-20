@@ -15,7 +15,6 @@ namespace Schelendar
         [STAThread]
         static void Main()
         {
- Events_and_Classes
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new LoginForm());
@@ -41,12 +40,10 @@ namespace Schelendar
 
             Console.WriteLine(sf);
             Console.ReadKey();
-=======
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new LoginForm());
             Application.Run(new MainForm());
- UI_ClassTable
         }
     }
 }

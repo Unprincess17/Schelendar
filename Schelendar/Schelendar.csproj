@@ -72,8 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-
-=======
+      
     <Compile Include="CalendarForm.cs">
       <SubType>Form</SubType>
     </Compile>
