@@ -121,23 +121,44 @@ namespace Schelendar.Models
             }
         }
 
-        ///TODO:根据用户名查询用户的学期课表
-        
+        /// <summary>
+        /// 根据用户名和学期号获取课程
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="semasterID"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public List<SchClass> GetUserSemasterClasses(string userName, int semasterID)
+        {
+            try
+            {
+                return GetUserSemasterClasses(SchUsers.First(o => o.UserName.Equals(userName)).SchUserID, semasterID);
+            }
+            catch(ArgumentException e)
+            {
+                throw new ArgumentException($"未查询到名为{userName}的用户，请检查输入");
+            }
+        }
 
         ///这两个功能应该蛮常用的？或者说怎么样维护一个运行时的用户信息？
         /// 1.当main运行的时候，维护一个用户（信息的持久化、信息的更改）。每次修改课程、事件等信息时，实际是修改该用户的指定信息--->那他妈不就是不需要一个用户管理类的管理列表了吗？（既然每次都肯定是对指定用户的操作）--->或者说维护的这个管理列表里只有一个用户，其他用户想要被管理需要登出当前的（删除列表元素），登入新的（添加进列表中）
         ///TODO：为用户增加课程
+        ///TODO：根据添加的课程联想添加事件（考试、大作业...
         
         ///TODO: 删除用户指定课程
+        ///TODO：根据删除的时间联想删除事件
+        
+        ///TODO：事件组 事件的一种组织方式 里面的时间全部完成后才算整体完成
 
         ///TODO: Txt2Event
         /// 文本处理？可以先写个处理格式化文本的
-        ///
+        ///"5月20号 17:00 跑步"->SchEvent(...)
+        
         ///TODO: ShareEventByEmails
-        ///
+        
         ///TODO: GetEventByEmail
         ///这个功能隔一段时间调用一次
-        ///需要用户的邮箱列表？
+        ///需要用户的邮箱权限？
         ///
 
         ///TODO:每次操作的信息，持久化起来。->C# log
