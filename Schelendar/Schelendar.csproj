@@ -104,6 +104,8 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClassTime.cs" />
+    <Compile Include="Models\SchClassTable.cs" />
     <Compile Include="Models\SchUserManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
