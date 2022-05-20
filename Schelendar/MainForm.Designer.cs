@@ -29,16 +29,16 @@ namespace Schelendar
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("当前课表");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("其他");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("课程表", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("日程表");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("倒计时");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("番茄钟");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("农场");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("设置");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("当前课表");
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("其他");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("课程表", new System.Windows.Forms.TreeNode[] {
+            treeNode25,
+            treeNode26});
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("日程表");
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("倒计时");
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("番茄钟");
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("农场");
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("设置");
             this.uiSplitContainer1 = new Sunny.UI.UISplitContainer();
             this.uiNavMenu = new Sunny.UI.UINavMenu();
             this.uiPanel = new Sunny.UI.UIPanel();
@@ -81,29 +81,29 @@ namespace Schelendar
             this.uiNavMenu.Location = new System.Drawing.Point(0, 0);
             this.uiNavMenu.MenuStyle = Sunny.UI.UIMenuStyle.Custom;
             this.uiNavMenu.Name = "uiNavMenu";
-            treeNode1.Name = "menu_class_cur";
-            treeNode1.Text = "当前课表";
-            treeNode2.Name = "menu_class_last";
-            treeNode2.Text = "其他";
-            treeNode3.Name = "menu_class";
-            treeNode3.Text = "课程表";
-            treeNode4.Name = "menu_calendar";
-            treeNode4.Text = "日程表";
-            treeNode5.Name = "menu_deadline";
-            treeNode5.Text = "倒计时";
-            treeNode6.Name = "menu_tomatoclock";
-            treeNode6.Text = "番茄钟";
-            treeNode7.Name = "menu_farm";
-            treeNode7.Text = "农场";
-            treeNode8.Name = "menu_setting";
-            treeNode8.Text = "设置";
+            treeNode25.Name = "menu_class_cur";
+            treeNode25.Text = "当前课表";
+            treeNode26.Name = "menu_class_last";
+            treeNode26.Text = "其他";
+            treeNode27.Name = "menu_class";
+            treeNode27.Text = "课程表";
+            treeNode28.Name = "menu_calendar";
+            treeNode28.Text = "日程表";
+            treeNode29.Name = "menu_deadline";
+            treeNode29.Text = "倒计时";
+            treeNode30.Name = "menu_tomatoclock";
+            treeNode30.Text = "番茄钟";
+            treeNode31.Name = "menu_farm";
+            treeNode31.Text = "农场";
+            treeNode32.Name = "menu_setting";
+            treeNode32.Text = "设置";
             this.uiNavMenu.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode4,
-            treeNode5,
-            treeNode6,
-            treeNode7,
-            treeNode8});
+            treeNode27,
+            treeNode28,
+            treeNode29,
+            treeNode30,
+            treeNode31,
+            treeNode32});
             this.uiNavMenu.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.uiNavMenu.ScrollBarHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.uiNavMenu.ScrollBarPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
