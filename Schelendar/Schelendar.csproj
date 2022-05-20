@@ -72,6 +72,12 @@
     <Compile Include="DeadlineForm.Designer.cs">
       <DependentUpon>DeadlineForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FarmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FarmForm.Designer.cs">
+      <DependentUpon>FarmForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeadlineForm.resx">
       <DependentUpon>DeadlineForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FarmForm.resx">
+      <DependentUpon>FarmForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

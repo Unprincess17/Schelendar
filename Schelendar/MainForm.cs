@@ -49,6 +49,10 @@ namespace Schelendar
                         TomatoClockForm tomatoClockForm = new TomatoClockForm();
                         InitForm(tomatoClockForm);
                         break;
+                    case "menu_farm":
+                        FarmForm farmForm = new FarmForm();
+                        InitForm(farmForm);
+                        break;
                     case "menu_setting":
                         SettingForm settingForm = new SettingForm();
                         InitForm(settingForm);
