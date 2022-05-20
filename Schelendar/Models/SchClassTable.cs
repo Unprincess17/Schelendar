@@ -44,12 +44,11 @@ namespace Schelendar.Models
         /// <summary>
         /// 默认情况下的特别设置
         /// </summary>
-        public SchClassTable(int classTableId, String classTableName, DateTime startDateTime)
+        public SchClassTable(int classTableId, String classTableName)
         {
             DayClassNumber = 13;
             ClassTableId = classTableId;
             ClassTableName = classTableName;
-            StartDateTime = startDateTime;
             WeekLength = 20;
 
             EveryClassTime = new List<Dictionary<string, ClassTime>>()
@@ -77,7 +76,18 @@ namespace Schelendar.Models
                 new Dictionary<string, ClassTime>()
                     {{"StartTime", new ClassTime(20, 10)}, {"EndTime", new ClassTime(20, 55)}},
             };
-
         }
+
+
+        /// <summary>
+        /// 判断要添加的课程时间是否符合逻辑，如开始时间是否早于结束时间
+        /// </summary>
+        /// <param name="classPosition">要添加课程是第几节</param>
+        /// <returns></returns>
+        private bool IsTimeRule(int classPosition)
+        {
+            return true;
+        } 
+        
     }
 }
