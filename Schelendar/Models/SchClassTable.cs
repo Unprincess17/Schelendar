@@ -79,15 +79,16 @@ namespace Schelendar.Models
         }
 
 
+        /// TODO: 返回当前课程本事开始时间与结束时间的比较和与前一节课时间信息的比较
         /// <summary>
         /// 判断要添加的课程时间是否符合逻辑，如开始时间是否早于结束时间
         /// </summary>
         /// <param name="classPosition">要添加课程是第几节</param>
         /// <returns></returns>
-        private bool IsTimeRule(int classPosition)
+        public bool IsTimeRule(int classPosition)
         {
             return true;
-        } 
-        
+        }
+
     }
 }
