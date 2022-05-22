@@ -17,7 +17,8 @@ namespace Schelendar
         {
             this.AutoScaleMode = AutoScaleMode.None; //防止因为屏幕分辨率而导致的窗体变形
             InitializeComponent();
-        }
+        }[Description("取消按钮事件")]
+        [Category("SunnyUI")]
 
         private void LoginForm_ButtonLoginClick(object sender, EventArgs e)
         {

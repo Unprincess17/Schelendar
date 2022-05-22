@@ -186,6 +186,33 @@ namespace Schelendar.Models
             }
         }
 
+        /// TODO: importusers
+        /// <summary>
+        /// 导入全部用户基本信息,刨除Event和Class
+        /// </summary>
+        /// <param name="path">到SchUsers级</param>
+        /// <exception cref="Exception"></exception>
+        public void ImportUsers(string path = "./SchUsers")
+        {
+            try
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(SchUser));
+                foreach (object d in Directory.EnumerateDirectories(path)) 
+                {
+                    string dir = d as string;
+                    string XmltoExecute = Path.Combine(dir, dir.Substring(dir.LastIndexOf("\\")+1).Substring(0,dir.LastIndexOf("\\")),".xml");
+                    Console.WriteLine(XmltoExecute);
+                    //using (FileStream fs = new FileStream(d.ToString(), FileMode.Open))
+                    //{
+                    //    SchUsers.Add((SchUser)xmlSerializer.Deserialize(fs));
+                    //}
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Exception when importing, please check the correctness of the path: {path}");
+            }
+        }
 
 
         ///TODO: path的赋值的检测
@@ -249,6 +276,7 @@ namespace Schelendar.Models
             }
         }
 
+        ///TODO: path路径指向SchUsers/{userID}/.xml
         ///HACK: 用户名字段作文件夹名不安全，需要创建或修改时检测
         /// <summary>
         /// 导出学生基本数据
@@ -276,6 +304,7 @@ namespace Schelendar.Models
                 throw new Exception($"{e.Message}");
             }
         }
+        ///TODO: path路径指向SchUsers/{userID}/.xml
         /// <summary>
         /// 存储用户的事件
         /// </summary>
@@ -301,6 +330,7 @@ namespace Schelendar.Models
                 throw new Exception($"Exception when Exporting, please check the path or anything\n{e.Message}");
             }
         }
+        ///TODO: path路径指向SchUsers/{userID}/.xml
         /// <summary>
         /// 存储用户的课程
         /// </summary>
