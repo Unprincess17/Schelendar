@@ -28,139 +28,91 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.uiPanel1 = new Sunny.UI.UIPanel();
-            this.uiTableLayoutPanel1 = new Sunny.UI.UITableLayoutPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.uiPanelRight = new Sunny.UI.UIPanel();
             this.uiPanel3 = new Sunny.UI.UIPanel();
-            this.uiLabel4 = new Sunny.UI.UILabel();
-            this.uiProcessBar1 = new Sunny.UI.UIProcessBar();
+            this.lblSeedNum = new Sunny.UI.UILabel();
             this.uiLabel3 = new Sunny.UI.UILabel();
-            this.uiLabel2 = new Sunny.UI.UILabel();
+            this.lblSeedName = new Sunny.UI.UILabel();
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.uiPanel4 = new Sunny.UI.UIPanel();
-            this.uiButton2 = new Sunny.UI.UIButton();
-            this.uiButton1 = new Sunny.UI.UIButton();
+            this.btnBuy = new Sunny.UI.UIButton();
+            this.btnCancelSelected = new Sunny.UI.UIButton();
             this.uiLedLabel1 = new Sunny.UI.UILedLabel();
-            this.uiPanel2 = new Sunny.UI.UIPanel();
-            this.uiContextMenuStrip1 = new Sunny.UI.UIContextMenuStrip();
-            this.uiPanel5 = new Sunny.UI.UIPanel();
-            this.uiAvatar1 = new Sunny.UI.UIAvatar();
-            this.uiLabel5 = new Sunny.UI.UILabel();
-            this.uiLabel6 = new Sunny.UI.UILabel();
-            this.uiLabel7 = new Sunny.UI.UILabel();
-            this.uiLabel8 = new Sunny.UI.UILabel();
-            this.uiLabel9 = new Sunny.UI.UILabel();
-            this.uiLabel10 = new Sunny.UI.UILabel();
-            this.uiProcessBar2 = new Sunny.UI.UIProcessBar();
+            this.uiPanelLeft = new Sunny.UI.UIPanel();
+            this.tlpLand = new Sunny.UI.UITableLayoutPanel();
             this.uiPanel6 = new Sunny.UI.UIPanel();
+            this.btnCancelWeed = new Sunny.UI.UIButton();
+            this.btnWeed = new Sunny.UI.UIButton();
+            this.lblLeftRipenTime = new Sunny.UI.UILabel();
+            this.pcbLeftRipenTime = new Sunny.UI.UIProcessBar();
             this.uiLabel11 = new Sunny.UI.UILabel();
-            this.uiProcessBar3 = new Sunny.UI.UIProcessBar();
-            this.uiLabel12 = new Sunny.UI.UILabel();
-            this.uiButton3 = new Sunny.UI.UIButton();
-            this.uiButton4 = new Sunny.UI.UIButton();
-            this.uiButton5 = new Sunny.UI.UIButton();
-            this.uiTableLayoutPanel2 = new Sunny.UI.UITableLayoutPanel();
-            this.uiPanel1.SuspendLayout();
-            this.uiTableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.uiPanel5 = new Sunny.UI.UIPanel();
+            this.pcbExp = new Sunny.UI.UIProcessBar();
+            this.btnOpen = new Sunny.UI.UIButton();
+            this.lblMoney = new Sunny.UI.UILabel();
+            this.uiLabel9 = new Sunny.UI.UILabel();
+            this.uiLabel8 = new Sunny.UI.UILabel();
+            this.uiLabel7 = new Sunny.UI.UILabel();
+            this.lblUsername = new Sunny.UI.UILabel();
+            this.uiLabel5 = new Sunny.UI.UILabel();
+            this.uiAvatar1 = new Sunny.UI.UIAvatar();
+            this.tlpSeed = new Sunny.UI.UITableLayoutPanel();
+            this.uiPanelRight.SuspendLayout();
             this.uiPanel3.SuspendLayout();
             this.uiPanel4.SuspendLayout();
-            this.uiPanel2.SuspendLayout();
-            this.uiPanel5.SuspendLayout();
+            this.uiPanelLeft.SuspendLayout();
             this.uiPanel6.SuspendLayout();
+            this.uiPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
-            // uiPanel1
+            // uiPanelRight
             // 
-            this.uiPanel1.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.uiPanel1.Controls.Add(this.uiTableLayoutPanel1);
-            this.uiPanel1.Controls.Add(this.uiPanel3);
-            this.uiPanel1.Controls.Add(this.uiLedLabel1);
-            this.uiPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.uiPanel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiPanel1.Location = new System.Drawing.Point(873, 0);
-            this.uiPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiPanel1.Name = "uiPanel1";
-            this.uiPanel1.Size = new System.Drawing.Size(600, 846);
-            this.uiPanel1.TabIndex = 0;
-            this.uiPanel1.Text = null;
-            this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiPanel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiTableLayoutPanel1
-            // 
-            this.uiTableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.uiTableLayoutPanel1.ColumnCount = 4;
-            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
-            this.uiTableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiTableLayoutPanel1.Location = new System.Drawing.Point(0, 72);
-            this.uiTableLayoutPanel1.Name = "uiTableLayoutPanel1";
-            this.uiTableLayoutPanel1.RowCount = 4;
-            this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTableLayoutPanel1.Size = new System.Drawing.Size(600, 592);
-            this.uiTableLayoutPanel1.TabIndex = 2;
-            this.uiTableLayoutPanel1.TagString = null;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(4, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(142, 140);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.uiPanelRight.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.uiPanelRight.Controls.Add(this.tlpSeed);
+            this.uiPanelRight.Controls.Add(this.uiPanel3);
+            this.uiPanelRight.Controls.Add(this.uiLedLabel1);
+            this.uiPanelRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.uiPanelRight.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiPanelRight.Location = new System.Drawing.Point(720, 35);
+            this.uiPanelRight.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPanelRight.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiPanelRight.Name = "uiPanelRight";
+            this.uiPanelRight.Size = new System.Drawing.Size(672, 811);
+            this.uiPanelRight.TabIndex = 0;
+            this.uiPanelRight.Text = null;
+            this.uiPanelRight.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiPanelRight.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiPanel3
             // 
-            this.uiPanel3.Controls.Add(this.uiLabel4);
-            this.uiPanel3.Controls.Add(this.uiProcessBar1);
+            this.uiPanel3.Controls.Add(this.lblSeedNum);
             this.uiPanel3.Controls.Add(this.uiLabel3);
-            this.uiPanel3.Controls.Add(this.uiLabel2);
+            this.uiPanel3.Controls.Add(this.lblSeedName);
             this.uiPanel3.Controls.Add(this.uiLabel1);
             this.uiPanel3.Controls.Add(this.uiPanel4);
             this.uiPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.uiPanel3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiPanel3.Location = new System.Drawing.Point(0, 664);
+            this.uiPanel3.Location = new System.Drawing.Point(0, 629);
             this.uiPanel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel3.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel3.Name = "uiPanel3";
-            this.uiPanel3.Size = new System.Drawing.Size(600, 182);
+            this.uiPanel3.Size = new System.Drawing.Size(672, 182);
             this.uiPanel3.TabIndex = 1;
             this.uiPanel3.Text = null;
             this.uiPanel3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiPanel3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // uiLabel4
+            // lblSeedNum
             // 
-            this.uiLabel4.AutoSize = true;
-            this.uiLabel4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel4.Location = new System.Drawing.Point(142, 59);
-            this.uiLabel4.Name = "uiLabel4";
-            this.uiLabel4.Size = new System.Drawing.Size(28, 31);
-            this.uiLabel4.TabIndex = 5;
-            this.uiLabel4.Text = "3";
-            this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel4.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiProcessBar1
-            // 
-            this.uiProcessBar1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiProcessBar1.Location = new System.Drawing.Point(32, 93);
-            this.uiProcessBar1.MinimumSize = new System.Drawing.Size(70, 3);
-            this.uiProcessBar1.Name = "uiProcessBar1";
-            this.uiProcessBar1.Size = new System.Drawing.Size(238, 29);
-            this.uiProcessBar1.TabIndex = 4;
-            this.uiProcessBar1.Text = "uiProcessBar1";
-            this.uiProcessBar1.Value = 50;
-            this.uiProcessBar1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.lblSeedNum.AutoSize = true;
+            this.lblSeedNum.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblSeedNum.Location = new System.Drawing.Point(142, 59);
+            this.lblSeedNum.Name = "lblSeedNum";
+            this.lblSeedNum.Size = new System.Drawing.Size(28, 31);
+            this.lblSeedNum.TabIndex = 5;
+            this.lblSeedNum.Text = "3";
+            this.lblSeedNum.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblSeedNum.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiLabel3
             // 
@@ -174,17 +126,17 @@
             this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiLabel3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // uiLabel2
+            // lblSeedName
             // 
-            this.uiLabel2.AutoSize = true;
-            this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel2.Location = new System.Drawing.Point(142, 17);
-            this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(110, 31);
-            this.uiLabel2.TabIndex = 2;
-            this.uiLabel2.Text = "有机牧草";
-            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.lblSeedName.AutoSize = true;
+            this.lblSeedName.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblSeedName.Location = new System.Drawing.Point(142, 17);
+            this.lblSeedName.Name = "lblSeedName";
+            this.lblSeedName.Size = new System.Drawing.Size(110, 31);
+            this.lblSeedName.TabIndex = 2;
+            this.lblSeedName.Text = "有机牧草";
+            this.lblSeedName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblSeedName.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiLabel1
             // 
@@ -200,11 +152,11 @@
             // 
             // uiPanel4
             // 
-            this.uiPanel4.Controls.Add(this.uiButton2);
-            this.uiPanel4.Controls.Add(this.uiButton1);
+            this.uiPanel4.Controls.Add(this.btnBuy);
+            this.uiPanel4.Controls.Add(this.btnCancelSelected);
             this.uiPanel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.uiPanel4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiPanel4.Location = new System.Drawing.Point(476, 0);
+            this.uiPanel4.Location = new System.Drawing.Point(548, 0);
             this.uiPanel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel4.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel4.Name = "uiPanel4";
@@ -214,44 +166,44 @@
             this.uiPanel4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiPanel4.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // uiButton2
+            // btnBuy
             // 
-            this.uiButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiButton2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiButton2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton2.Location = new System.Drawing.Point(0, 59);
-            this.uiButton2.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiButton2.Name = "uiButton2";
-            this.uiButton2.Size = new System.Drawing.Size(124, 123);
-            this.uiButton2.TabIndex = 1;
-            this.uiButton2.Text = "购买";
-            this.uiButton2.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.btnBuy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuy.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnBuy.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnBuy.Location = new System.Drawing.Point(0, 59);
+            this.btnBuy.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnBuy.Name = "btnBuy";
+            this.btnBuy.Size = new System.Drawing.Size(124, 123);
+            this.btnBuy.TabIndex = 1;
+            this.btnBuy.Text = "购买";
+            this.btnBuy.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnBuy.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // uiButton1
+            // btnCancelSelected
             // 
-            this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiButton1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.uiButton1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.uiButton1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.uiButton1.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(115)))), ((int)(((byte)(115)))));
-            this.uiButton1.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.uiButton1.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton1.Location = new System.Drawing.Point(0, 0);
-            this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiButton1.Name = "uiButton1";
-            this.uiButton1.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.uiButton1.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(115)))), ((int)(((byte)(115)))));
-            this.uiButton1.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.uiButton1.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.uiButton1.Size = new System.Drawing.Size(124, 59);
-            this.uiButton1.Style = Sunny.UI.UIStyle.Red;
-            this.uiButton1.StyleCustomMode = true;
-            this.uiButton1.TabIndex = 0;
-            this.uiButton1.Text = "取消";
-            this.uiButton1.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.btnCancelSelected.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelSelected.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCancelSelected.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.btnCancelSelected.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.btnCancelSelected.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(115)))), ((int)(((byte)(115)))));
+            this.btnCancelSelected.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCancelSelected.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCancelSelected.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCancelSelected.Location = new System.Drawing.Point(0, 0);
+            this.btnCancelSelected.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnCancelSelected.Name = "btnCancelSelected";
+            this.btnCancelSelected.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.btnCancelSelected.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(115)))), ((int)(((byte)(115)))));
+            this.btnCancelSelected.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCancelSelected.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCancelSelected.Size = new System.Drawing.Size(124, 59);
+            this.btnCancelSelected.Style = Sunny.UI.UIStyle.Red;
+            this.btnCancelSelected.StyleCustomMode = true;
+            this.btnCancelSelected.TabIndex = 0;
+            this.btnCancelSelected.Text = "取消";
+            this.btnCancelSelected.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCancelSelected.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiLedLabel1
             // 
@@ -260,45 +212,154 @@
             this.uiLedLabel1.Location = new System.Drawing.Point(0, 0);
             this.uiLedLabel1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLedLabel1.Name = "uiLedLabel1";
-            this.uiLedLabel1.Size = new System.Drawing.Size(600, 72);
+            this.uiLedLabel1.Size = new System.Drawing.Size(672, 72);
             this.uiLedLabel1.TabIndex = 0;
             this.uiLedLabel1.Text = "SEED SHOP";
             this.uiLedLabel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // uiPanel2
+            // uiPanelLeft
             // 
-            this.uiPanel2.Controls.Add(this.uiTableLayoutPanel2);
-            this.uiPanel2.Controls.Add(this.uiPanel6);
-            this.uiPanel2.Controls.Add(this.uiPanel5);
-            this.uiPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiPanel2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiPanel2.Location = new System.Drawing.Point(0, 0);
-            this.uiPanel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiPanel2.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiPanel2.Name = "uiPanel2";
-            this.uiPanel2.Size = new System.Drawing.Size(873, 846);
-            this.uiPanel2.TabIndex = 1;
-            this.uiPanel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiPanel2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.uiPanelLeft.Controls.Add(this.tlpLand);
+            this.uiPanelLeft.Controls.Add(this.uiPanel6);
+            this.uiPanelLeft.Controls.Add(this.uiPanel5);
+            this.uiPanelLeft.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiPanelLeft.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiPanelLeft.Location = new System.Drawing.Point(0, 35);
+            this.uiPanelLeft.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPanelLeft.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiPanelLeft.Name = "uiPanelLeft";
+            this.uiPanelLeft.Size = new System.Drawing.Size(720, 811);
+            this.uiPanelLeft.TabIndex = 1;
+            this.uiPanelLeft.Text = null;
+            this.uiPanelLeft.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiPanelLeft.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // uiContextMenuStrip1
+            // tlpLand
             // 
-            this.uiContextMenuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiContextMenuStrip1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiContextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.uiContextMenuStrip1.Name = "uiContextMenuStrip1";
-            this.uiContextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            this.uiContextMenuStrip1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.tlpLand.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tlpLand.ColumnCount = 4;
+            this.tlpLand.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpLand.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpLand.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpLand.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpLand.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpLand.Location = new System.Drawing.Point(0, 216);
+            this.tlpLand.Name = "tlpLand";
+            this.tlpLand.RowCount = 4;
+            this.tlpLand.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpLand.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpLand.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpLand.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpLand.Size = new System.Drawing.Size(720, 595);
+            this.tlpLand.TabIndex = 2;
+            this.tlpLand.TagString = null;
+            // 
+            // uiPanel6
+            // 
+            this.uiPanel6.Controls.Add(this.btnCancelWeed);
+            this.uiPanel6.Controls.Add(this.btnWeed);
+            this.uiPanel6.Controls.Add(this.lblLeftRipenTime);
+            this.uiPanel6.Controls.Add(this.pcbLeftRipenTime);
+            this.uiPanel6.Controls.Add(this.uiLabel11);
+            this.uiPanel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.uiPanel6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiPanel6.Location = new System.Drawing.Point(0, 147);
+            this.uiPanel6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPanel6.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiPanel6.Name = "uiPanel6";
+            this.uiPanel6.Padding = new System.Windows.Forms.Padding(0, 10, 10, 10);
+            this.uiPanel6.Size = new System.Drawing.Size(720, 69);
+            this.uiPanel6.TabIndex = 1;
+            this.uiPanel6.Text = null;
+            this.uiPanel6.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiPanel6.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // btnCancelWeed
+            // 
+            this.btnCancelWeed.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelWeed.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnCancelWeed.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCancelWeed.Location = new System.Drawing.Point(468, 10);
+            this.btnCancelWeed.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnCancelWeed.Name = "btnCancelWeed";
+            this.btnCancelWeed.Size = new System.Drawing.Size(112, 49);
+            this.btnCancelWeed.TabIndex = 5;
+            this.btnCancelWeed.Text = "取消铲除";
+            this.btnCancelWeed.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCancelWeed.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // btnWeed
+            // 
+            this.btnWeed.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnWeed.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnWeed.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.btnWeed.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.btnWeed.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(115)))), ((int)(((byte)(115)))));
+            this.btnWeed.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnWeed.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnWeed.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnWeed.Location = new System.Drawing.Point(580, 10);
+            this.btnWeed.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.btnWeed.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnWeed.Name = "btnWeed";
+            this.btnWeed.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.btnWeed.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(115)))), ((int)(((byte)(115)))));
+            this.btnWeed.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnWeed.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnWeed.Size = new System.Drawing.Size(130, 49);
+            this.btnWeed.Style = Sunny.UI.UIStyle.Red;
+            this.btnWeed.StyleCustomMode = true;
+            this.btnWeed.TabIndex = 4;
+            this.btnWeed.Text = "铲除作物";
+            this.btnWeed.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnWeed.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // lblLeftRipenTime
+            // 
+            this.lblLeftRipenTime.AutoSize = true;
+            this.lblLeftRipenTime.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblLeftRipenTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblLeftRipenTime.Location = new System.Drawing.Point(158, 10);
+            this.lblLeftRipenTime.Name = "lblLeftRipenTime";
+            this.lblLeftRipenTime.Size = new System.Drawing.Size(68, 31);
+            this.lblLeftRipenTime.TabIndex = 2;
+            this.lblLeftRipenTime.Text = "0:0:0";
+            this.lblLeftRipenTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblLeftRipenTime.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // pcbLeftRipenTime
+            // 
+            this.pcbLeftRipenTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.pcbLeftRipenTime.Location = new System.Drawing.Point(232, 11);
+            this.pcbLeftRipenTime.MinimumSize = new System.Drawing.Size(70, 3);
+            this.pcbLeftRipenTime.Name = "pcbLeftRipenTime";
+            this.pcbLeftRipenTime.Size = new System.Drawing.Size(171, 30);
+            this.pcbLeftRipenTime.TabIndex = 1;
+            this.pcbLeftRipenTime.Text = "uiProcessBar3";
+            this.pcbLeftRipenTime.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel11
+            // 
+            this.uiLabel11.AutoSize = true;
+            this.uiLabel11.Dock = System.Windows.Forms.DockStyle.Left;
+            this.uiLabel11.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel11.Location = new System.Drawing.Point(0, 10);
+            this.uiLabel11.Name = "uiLabel11";
+            this.uiLabel11.Size = new System.Drawing.Size(158, 31);
+            this.uiLabel11.TabIndex = 0;
+            this.uiLabel11.Text = "距离成熟还有";
+            this.uiLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel11.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiPanel5
             // 
-            this.uiPanel5.Controls.Add(this.uiProcessBar2);
-            this.uiPanel5.Controls.Add(this.uiButton3);
-            this.uiPanel5.Controls.Add(this.uiLabel10);
+            this.uiPanel5.Controls.Add(this.pcbExp);
+            this.uiPanel5.Controls.Add(this.btnOpen);
+            this.uiPanel5.Controls.Add(this.lblMoney);
             this.uiPanel5.Controls.Add(this.uiLabel9);
             this.uiPanel5.Controls.Add(this.uiLabel8);
             this.uiPanel5.Controls.Add(this.uiLabel7);
-            this.uiPanel5.Controls.Add(this.uiLabel6);
+            this.uiPanel5.Controls.Add(this.lblUsername);
             this.uiPanel5.Controls.Add(this.uiLabel5);
             this.uiPanel5.Controls.Add(this.uiAvatar1);
             this.uiPanel5.Dock = System.Windows.Forms.DockStyle.Top;
@@ -307,69 +368,58 @@
             this.uiPanel5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel5.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel5.Name = "uiPanel5";
-            this.uiPanel5.Size = new System.Drawing.Size(873, 147);
+            this.uiPanel5.Size = new System.Drawing.Size(720, 147);
             this.uiPanel5.TabIndex = 0;
+            this.uiPanel5.Text = null;
             this.uiPanel5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiPanel5.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // uiAvatar1
+            // pcbExp
             // 
-            this.uiAvatar1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiAvatar1.Location = new System.Drawing.Point(12, 12);
-            this.uiAvatar1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiAvatar1.Name = "uiAvatar1";
-            this.uiAvatar1.Size = new System.Drawing.Size(60, 60);
-            this.uiAvatar1.TabIndex = 0;
-            this.uiAvatar1.Text = "uiAvatar1";
-            this.uiAvatar1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.pcbExp.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.pcbExp.Location = new System.Drawing.Point(180, 66);
+            this.pcbExp.MinimumSize = new System.Drawing.Size(70, 3);
+            this.pcbExp.Name = "pcbExp";
+            this.pcbExp.Size = new System.Drawing.Size(300, 29);
+            this.pcbExp.TabIndex = 8;
+            this.pcbExp.Text = "uiProcessBar2";
+            this.pcbExp.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // uiLabel5
+            // btnOpen
             // 
-            this.uiLabel5.AutoSize = true;
-            this.uiLabel5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel5.Location = new System.Drawing.Point(78, 26);
-            this.uiLabel5.Name = "uiLabel5";
-            this.uiLabel5.Size = new System.Drawing.Size(62, 31);
-            this.uiLabel5.TabIndex = 1;
-            this.uiLabel5.Text = "用户";
-            this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel5.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.btnOpen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOpen.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
+            this.btnOpen.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
+            this.btnOpen.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(175)))), ((int)(((byte)(83)))));
+            this.btnOpen.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.btnOpen.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.btnOpen.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnOpen.Location = new System.Drawing.Point(598, 99);
+            this.btnOpen.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
+            this.btnOpen.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(175)))), ((int)(((byte)(83)))));
+            this.btnOpen.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.btnOpen.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.btnOpen.Size = new System.Drawing.Size(112, 40);
+            this.btnOpen.Style = Sunny.UI.UIStyle.Orange;
+            this.btnOpen.StyleCustomMode = true;
+            this.btnOpen.TabIndex = 3;
+            this.btnOpen.Text = "开辟土地";
+            this.btnOpen.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnOpen.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // uiLabel6
+            // lblMoney
             // 
-            this.uiLabel6.AutoSize = true;
-            this.uiLabel6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel6.Location = new System.Drawing.Point(146, 26);
-            this.uiLabel6.Name = "uiLabel6";
-            this.uiLabel6.Size = new System.Drawing.Size(154, 31);
-            this.uiLabel6.TabIndex = 2;
-            this.uiLabel6.Text = "2020320001";
-            this.uiLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel6.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiLabel7
-            // 
-            this.uiLabel7.AutoSize = true;
-            this.uiLabel7.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel7.Location = new System.Drawing.Point(78, 64);
-            this.uiLabel7.Name = "uiLabel7";
-            this.uiLabel7.Size = new System.Drawing.Size(62, 31);
-            this.uiLabel7.TabIndex = 3;
-            this.uiLabel7.Text = "等级";
-            this.uiLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiLabel8
-            // 
-            this.uiLabel8.AutoSize = true;
-            this.uiLabel8.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel8.Location = new System.Drawing.Point(146, 64);
-            this.uiLabel8.Name = "uiLabel8";
-            this.uiLabel8.Size = new System.Drawing.Size(28, 31);
-            this.uiLabel8.TabIndex = 4;
-            this.uiLabel8.Text = "4";
-            this.uiLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel8.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.lblMoney.AutoSize = true;
+            this.lblMoney.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblMoney.Location = new System.Drawing.Point(146, 100);
+            this.lblMoney.Name = "lblMoney";
+            this.lblMoney.Size = new System.Drawing.Size(56, 31);
+            this.lblMoney.TabIndex = 7;
+            this.lblMoney.Text = "300";
+            this.lblMoney.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblMoney.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiLabel9
             // 
@@ -383,223 +433,137 @@
             this.uiLabel9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiLabel9.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // uiLabel10
+            // uiLabel8
             // 
-            this.uiLabel10.AutoSize = true;
-            this.uiLabel10.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel10.Location = new System.Drawing.Point(146, 100);
-            this.uiLabel10.Name = "uiLabel10";
-            this.uiLabel10.Size = new System.Drawing.Size(56, 31);
-            this.uiLabel10.TabIndex = 7;
-            this.uiLabel10.Text = "300";
-            this.uiLabel10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel10.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.uiLabel8.AutoSize = true;
+            this.uiLabel8.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel8.Location = new System.Drawing.Point(146, 64);
+            this.uiLabel8.Name = "uiLabel8";
+            this.uiLabel8.Size = new System.Drawing.Size(28, 31);
+            this.uiLabel8.TabIndex = 4;
+            this.uiLabel8.Text = "4";
+            this.uiLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel8.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // uiProcessBar2
+            // uiLabel7
             // 
-            this.uiProcessBar2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiProcessBar2.Location = new System.Drawing.Point(203, 66);
-            this.uiProcessBar2.MinimumSize = new System.Drawing.Size(70, 3);
-            this.uiProcessBar2.Name = "uiProcessBar2";
-            this.uiProcessBar2.Size = new System.Drawing.Size(300, 29);
-            this.uiProcessBar2.TabIndex = 8;
-            this.uiProcessBar2.Text = "uiProcessBar2";
-            this.uiProcessBar2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.uiLabel7.AutoSize = true;
+            this.uiLabel7.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel7.Location = new System.Drawing.Point(78, 64);
+            this.uiLabel7.Name = "uiLabel7";
+            this.uiLabel7.Size = new System.Drawing.Size(62, 31);
+            this.uiLabel7.TabIndex = 3;
+            this.uiLabel7.Text = "等级";
+            this.uiLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // uiPanel6
+            // lblUsername
             // 
-            this.uiPanel6.Controls.Add(this.uiButton5);
-            this.uiPanel6.Controls.Add(this.uiButton4);
-            this.uiPanel6.Controls.Add(this.uiLabel12);
-            this.uiPanel6.Controls.Add(this.uiProcessBar3);
-            this.uiPanel6.Controls.Add(this.uiLabel11);
-            this.uiPanel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.uiPanel6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiPanel6.Location = new System.Drawing.Point(0, 147);
-            this.uiPanel6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiPanel6.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiPanel6.Name = "uiPanel6";
-            this.uiPanel6.Size = new System.Drawing.Size(873, 69);
-            this.uiPanel6.TabIndex = 1;
-            this.uiPanel6.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiPanel6.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblUsername.Location = new System.Drawing.Point(146, 26);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(154, 31);
+            this.lblUsername.TabIndex = 2;
+            this.lblUsername.Text = "2020320001";
+            this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblUsername.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // uiLabel11
+            // uiLabel5
             // 
-            this.uiLabel11.AutoSize = true;
-            this.uiLabel11.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel11.Location = new System.Drawing.Point(12, 20);
-            this.uiLabel11.Name = "uiLabel11";
-            this.uiLabel11.Size = new System.Drawing.Size(158, 31);
-            this.uiLabel11.TabIndex = 0;
-            this.uiLabel11.Text = "距离成熟还有";
-            this.uiLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel11.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.uiLabel5.AutoSize = true;
+            this.uiLabel5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel5.Location = new System.Drawing.Point(78, 26);
+            this.uiLabel5.Name = "uiLabel5";
+            this.uiLabel5.Size = new System.Drawing.Size(62, 31);
+            this.uiLabel5.TabIndex = 1;
+            this.uiLabel5.Text = "用户";
+            this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel5.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // uiProcessBar3
+            // uiAvatar1
             // 
-            this.uiProcessBar3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiProcessBar3.Location = new System.Drawing.Point(250, 21);
-            this.uiProcessBar3.MinimumSize = new System.Drawing.Size(70, 3);
-            this.uiProcessBar3.Name = "uiProcessBar3";
-            this.uiProcessBar3.Size = new System.Drawing.Size(253, 30);
-            this.uiProcessBar3.TabIndex = 1;
-            this.uiProcessBar3.Text = "uiProcessBar3";
-            this.uiProcessBar3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.uiAvatar1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiAvatar1.Location = new System.Drawing.Point(12, 12);
+            this.uiAvatar1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiAvatar1.Name = "uiAvatar1";
+            this.uiAvatar1.Size = new System.Drawing.Size(60, 60);
+            this.uiAvatar1.TabIndex = 0;
+            this.uiAvatar1.Text = "uiAvatar1";
+            this.uiAvatar1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // uiLabel12
+            // tlpSeed
             // 
-            this.uiLabel12.AutoSize = true;
-            this.uiLabel12.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel12.Location = new System.Drawing.Point(176, 20);
-            this.uiLabel12.Name = "uiLabel12";
-            this.uiLabel12.Size = new System.Drawing.Size(68, 31);
-            this.uiLabel12.TabIndex = 2;
-            this.uiLabel12.Text = "0:0:0";
-            this.uiLabel12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel12.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiButton3
-            // 
-            this.uiButton3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiButton3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
-            this.uiButton3.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
-            this.uiButton3.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(175)))), ((int)(((byte)(83)))));
-            this.uiButton3.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
-            this.uiButton3.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
-            this.uiButton3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton3.Location = new System.Drawing.Point(754, 91);
-            this.uiButton3.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiButton3.Name = "uiButton3";
-            this.uiButton3.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
-            this.uiButton3.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(175)))), ((int)(((byte)(83)))));
-            this.uiButton3.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
-            this.uiButton3.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
-            this.uiButton3.Size = new System.Drawing.Size(112, 40);
-            this.uiButton3.Style = Sunny.UI.UIStyle.Orange;
-            this.uiButton3.StyleCustomMode = true;
-            this.uiButton3.TabIndex = 3;
-            this.uiButton3.Text = "开辟土地";
-            this.uiButton3.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiButton4
-            // 
-            this.uiButton4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiButton4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.uiButton4.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.uiButton4.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(115)))), ((int)(((byte)(115)))));
-            this.uiButton4.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.uiButton4.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.uiButton4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton4.Location = new System.Drawing.Point(608, 11);
-            this.uiButton4.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiButton4.Name = "uiButton4";
-            this.uiButton4.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.uiButton4.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(115)))), ((int)(((byte)(115)))));
-            this.uiButton4.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.uiButton4.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.uiButton4.Size = new System.Drawing.Size(130, 40);
-            this.uiButton4.Style = Sunny.UI.UIStyle.Red;
-            this.uiButton4.StyleCustomMode = true;
-            this.uiButton4.TabIndex = 4;
-            this.uiButton4.Text = "铲除作物";
-            this.uiButton4.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton4.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiButton5
-            // 
-            this.uiButton5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiButton5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton5.Location = new System.Drawing.Point(754, 11);
-            this.uiButton5.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiButton5.Name = "uiButton5";
-            this.uiButton5.Size = new System.Drawing.Size(112, 40);
-            this.uiButton5.TabIndex = 5;
-            this.uiButton5.Text = "取消铲除";
-            this.uiButton5.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton5.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiTableLayoutPanel2
-            // 
-            this.uiTableLayoutPanel2.ColumnCount = 4;
-            this.uiTableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiTableLayoutPanel2.Location = new System.Drawing.Point(0, 216);
-            this.uiTableLayoutPanel2.Name = "uiTableLayoutPanel2";
-            this.uiTableLayoutPanel2.RowCount = 4;
-            this.uiTableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTableLayoutPanel2.Size = new System.Drawing.Size(873, 630);
-            this.uiTableLayoutPanel2.TabIndex = 2;
-            this.uiTableLayoutPanel2.TagString = null;
+            this.tlpSeed.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
+            this.tlpSeed.ColumnCount = 4;
+            this.tlpSeed.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpSeed.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpSeed.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpSeed.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpSeed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpSeed.Location = new System.Drawing.Point(0, 72);
+            this.tlpSeed.Name = "tlpSeed";
+            this.tlpSeed.RowCount = 4;
+            this.tlpSeed.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpSeed.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpSeed.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpSeed.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpSeed.Size = new System.Drawing.Size(672, 557);
+            this.tlpSeed.TabIndex = 2;
+            this.tlpSeed.TagString = null;
             // 
             // FarmForm
             // 
-            this.AllowShowTitle = false;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1473, 846);
-            this.Controls.Add(this.uiPanel2);
-            this.Controls.Add(this.uiPanel1);
+            this.ClientSize = new System.Drawing.Size(1392, 846);
+            this.Controls.Add(this.uiPanelLeft);
+            this.Controls.Add(this.uiPanelRight);
             this.Name = "FarmForm";
-            this.Padding = new System.Windows.Forms.Padding(0);
-            this.ShowTitle = false;
             this.Text = "FarmForm";
             this.ZoomScaleRect = new System.Drawing.Rectangle(22, 22, 800, 450);
-            this.uiPanel1.ResumeLayout(false);
-            this.uiTableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.uiPanelRight.ResumeLayout(false);
             this.uiPanel3.ResumeLayout(false);
             this.uiPanel3.PerformLayout();
             this.uiPanel4.ResumeLayout(false);
-            this.uiPanel2.ResumeLayout(false);
-            this.uiPanel5.ResumeLayout(false);
-            this.uiPanel5.PerformLayout();
+            this.uiPanelLeft.ResumeLayout(false);
             this.uiPanel6.ResumeLayout(false);
             this.uiPanel6.PerformLayout();
+            this.uiPanel5.ResumeLayout(false);
+            this.uiPanel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Sunny.UI.UIPanel uiPanel1;
-        private Sunny.UI.UIPanel uiPanel2;
+        private Sunny.UI.UIPanel uiPanelRight;
+        private Sunny.UI.UIPanel uiPanelLeft;
         private Sunny.UI.UILedLabel uiLedLabel1;
         private Sunny.UI.UIPanel uiPanel3;
-        private Sunny.UI.UITableLayoutPanel uiTableLayoutPanel1;
         private Sunny.UI.UIPanel uiPanel4;
-        private Sunny.UI.UIButton uiButton2;
-        private Sunny.UI.UIButton uiButton1;
-        private Sunny.UI.UIProcessBar uiProcessBar1;
+        private Sunny.UI.UIButton btnBuy;
+        private Sunny.UI.UIButton btnCancelSelected;
         private Sunny.UI.UILabel uiLabel3;
-        private Sunny.UI.UILabel uiLabel2;
+        private Sunny.UI.UILabel lblSeedName;
         private Sunny.UI.UILabel uiLabel1;
-        private Sunny.UI.UIContextMenuStrip uiContextMenuStrip1;
-        private Sunny.UI.UILabel uiLabel4;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private Sunny.UI.UILabel lblSeedNum;
         private Sunny.UI.UIPanel uiPanel5;
-        private Sunny.UI.UILabel uiLabel10;
+        private Sunny.UI.UILabel lblMoney;
         private Sunny.UI.UILabel uiLabel9;
         private Sunny.UI.UILabel uiLabel8;
         private Sunny.UI.UILabel uiLabel7;
-        private Sunny.UI.UILabel uiLabel6;
+        private Sunny.UI.UILabel lblUsername;
         private Sunny.UI.UILabel uiLabel5;
         private Sunny.UI.UIAvatar uiAvatar1;
-        private Sunny.UI.UIProcessBar uiProcessBar2;
+        private Sunny.UI.UIProcessBar pcbExp;
         private Sunny.UI.UIPanel uiPanel6;
-        private Sunny.UI.UIProcessBar uiProcessBar3;
+        private Sunny.UI.UIProcessBar pcbLeftRipenTime;
         private Sunny.UI.UILabel uiLabel11;
-        private Sunny.UI.UIButton uiButton5;
-        private Sunny.UI.UIButton uiButton4;
-        private Sunny.UI.UILabel uiLabel12;
-        private Sunny.UI.UIButton uiButton3;
-        private Sunny.UI.UITableLayoutPanel uiTableLayoutPanel2;
+        private Sunny.UI.UIButton btnCancelWeed;
+        private Sunny.UI.UIButton btnWeed;
+        private Sunny.UI.UILabel lblLeftRipenTime;
+        private Sunny.UI.UIButton btnOpen;
+        private Sunny.UI.UITableLayoutPanel tlpLand;
+        private Sunny.UI.UITableLayoutPanel tlpSeed;
     }
 }
