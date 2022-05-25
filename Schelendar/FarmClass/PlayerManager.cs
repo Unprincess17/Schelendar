@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using System.Data.SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,8 +65,8 @@ namespace Schelendar.FarmClass
         {
             //1成功登陆，2找不到账号，3密码错误
             var fileName = "user.db";
-            SqliteConnection cn = new SqliteConnection("data source=" + fileName);//建立连接对象
-            SqliteCommand cmd = new SqliteCommand();
+            SQLiteConnection cn = new SQLiteConnection("data source=" + fileName);//建立连接对象
+            SQLiteCommand cmd = new SQLiteCommand();
             cn.Open();
             cmd.Connection = cn;
             cmd.CommandText = $"SELECT password FROM user where username='{Username}'";
@@ -118,8 +118,8 @@ namespace Schelendar.FarmClass
         {
             //连接数据库
             var fileName = "user.db";
-            SqliteConnection cn = new SqliteConnection("data source=" + fileName);//建立连接对象
-            SqliteCommand cmd = new SqliteCommand();
+            SQLiteConnection cn = new SQLiteConnection("data source=" + fileName);//建立连接对象
+            SQLiteCommand cmd = new SQLiteCommand();
             cn.Open();
             cmd.Connection = cn;
             //更新数据
@@ -165,10 +165,10 @@ namespace Schelendar.FarmClass
                 timestart[i] = 0;
             //保存玩家
             var fileName = "user.db";
-            SqliteConnection cn = new SqliteConnection("data source=" + fileName);//建立连接对象
-            SqliteCommand cmd = new SqliteCommand();
+            SQLiteConnection cn = new SQLiteConnection("data source=" + fileName);//建立连接对象
+            SQLiteCommand cmd = new SQLiteCommand();
             cmd.Connection = cn;
-            cmd.CommandText = $"INSERT INTO user VALUES('{Username}',{lv},{expnow},{expmax},{gold}," +
+            cmd.CommandText = $"INSERT INTO user VALUES('{Username}','1',{lv},{expnow},{expmax},{gold}," +
                 $"{seeds[1]},{seeds[2]},{seeds[3]},{seeds[4]},{seeds[5]},{seeds[6]},{seeds[7]},{seeds[8]},{seeds[9]},{seeds[10]},{seeds[11]},{seeds[12]},{seeds[13]},{seeds[14]},{seeds[15]},{seeds[16]}," +
                 $"{unlocked[1]},{unlocked[2]},{unlocked[3]},{unlocked[4]},{unlocked[5]},{unlocked[6]},{unlocked[7]},{unlocked[8]},{unlocked[9]},{unlocked[10]},{unlocked[11]},{unlocked[12]}," +
                 $"{planted[1]},{planted[2]},{planted[3]},{planted[4]},{planted[5]},{planted[6]},{planted[7]},{planted[8]},{planted[9]},{planted[10]},{planted[11]},{planted[12]}," +
