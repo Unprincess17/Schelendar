@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Data.Sqlite, Version=6.0.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Data.Sqlite.Core.6.0.5\lib\netstandard2.0\Microsoft.Data.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.core, Version=2.0.6.1341, Culture=neutral, PublicKeyToken=1488e028ca7ab535, processorArchitecture=MSIL">
+      <HintPath>packages\SQLitePCLRaw.core.2.0.6\lib\netstandard2.0\SQLitePCLRaw.core.dll</HintPath>
+    </Reference>
     <Reference Include="SunnyUI, Version=3.1.8.0, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb, processorArchitecture=MSIL">
       <HintPath>packages\SunnyUI.3.1.8\lib\net472\SunnyUI.dll</HintPath>
     </Reference>
@@ -40,8 +46,21 @@
       <HintPath>packages\SunnyUI.Common.3.1.2\lib\net472\SunnyUI.Common.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -72,6 +91,8 @@
     <Compile Include="DeadlineForm.Designer.cs">
       <DependentUpon>DeadlineForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FarmClass\PlayerManager.cs" />
+    <Compile Include="FarmClass\Seed.cs" />
     <Compile Include="FarmForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +151,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
@@ -150,6 +172,54 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\6.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\7.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\8.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\11.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\12.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\13.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\14.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\15.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\16.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
