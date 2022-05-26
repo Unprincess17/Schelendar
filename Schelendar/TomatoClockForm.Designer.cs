@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.uiMainPanel = new Sunny.UI.UIPanel();
+            this.btnSetting = new Sunny.UI.UIButton();
             this.lblRestTime = new Sunny.UI.UILabel();
             this.lblWorkTime = new Sunny.UI.UILabel();
             this.uiPanel1 = new Sunny.UI.UIPanel();
@@ -57,6 +58,7 @@
             // 
             // uiMainPanel
             // 
+            this.uiMainPanel.Controls.Add(this.btnSetting);
             this.uiMainPanel.Controls.Add(this.lblRestTime);
             this.uiMainPanel.Controls.Add(this.lblWorkTime);
             this.uiMainPanel.Controls.Add(this.uiPanel1);
@@ -82,13 +84,38 @@
             this.uiMainPanel.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiMainPanel.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // btnSetting
+            // 
+            this.btnSetting.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSetting.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
+            this.btnSetting.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
+            this.btnSetting.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(175)))), ((int)(((byte)(83)))));
+            this.btnSetting.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.btnSetting.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.btnSetting.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSetting.Location = new System.Drawing.Point(490, 50);
+            this.btnSetting.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnSetting.Name = "btnSetting";
+            this.btnSetting.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
+            this.btnSetting.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(175)))), ((int)(((byte)(83)))));
+            this.btnSetting.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.btnSetting.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.btnSetting.Size = new System.Drawing.Size(95, 34);
+            this.btnSetting.Style = Sunny.UI.UIStyle.Orange;
+            this.btnSetting.StyleCustomMode = true;
+            this.btnSetting.TabIndex = 20;
+            this.btnSetting.Text = "隐藏设置";
+            this.btnSetting.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSetting.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
+            // 
             // lblRestTime
             // 
             this.lblRestTime.AutoSize = true;
             this.lblRestTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblRestTime.Location = new System.Drawing.Point(212, 136);
             this.lblRestTime.Name = "lblRestTime";
-            this.lblRestTime.Size = new System.Drawing.Size(68, 31);
+            this.lblRestTime.Size = new System.Drawing.Size(58, 27);
             this.lblRestTime.TabIndex = 19;
             this.lblRestTime.Text = "0:0:0";
             this.lblRestTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -100,7 +127,7 @@
             this.lblWorkTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblWorkTime.Location = new System.Drawing.Point(212, 99);
             this.lblWorkTime.Name = "lblWorkTime";
-            this.lblWorkTime.Size = new System.Drawing.Size(68, 31);
+            this.lblWorkTime.Size = new System.Drawing.Size(58, 27);
             this.lblWorkTime.TabIndex = 18;
             this.lblWorkTime.Text = "0:0:0";
             this.lblWorkTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -161,7 +188,7 @@
             this.uiLabel6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel6.Location = new System.Drawing.Point(27, 9);
             this.uiLabel6.Name = "uiLabel6";
-            this.uiLabel6.Size = new System.Drawing.Size(206, 31);
+            this.uiLabel6.Size = new System.Drawing.Size(172, 27);
             this.uiLabel6.TabIndex = 16;
             this.uiLabel6.Text = "时间设置（分钟）";
             this.uiLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -173,7 +200,7 @@
             this.uiLabel5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel5.Location = new System.Drawing.Point(27, 112);
             this.uiLabel5.Name = "uiLabel5";
-            this.uiLabel5.Size = new System.Drawing.Size(110, 31);
+            this.uiLabel5.Size = new System.Drawing.Size(92, 27);
             this.uiLabel5.TabIndex = 15;
             this.uiLabel5.Text = "休息时间";
             this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -185,7 +212,7 @@
             this.uiLabel4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel4.Location = new System.Drawing.Point(27, 73);
             this.uiLabel4.Name = "uiLabel4";
-            this.uiLabel4.Size = new System.Drawing.Size(110, 31);
+            this.uiLabel4.Size = new System.Drawing.Size(92, 27);
             this.uiLabel4.TabIndex = 14;
             this.uiLabel4.Text = "工作时间";
             this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -255,6 +282,8 @@
             this.pcbRestTime.Location = new System.Drawing.Point(290, 136);
             this.pcbRestTime.MinimumSize = new System.Drawing.Size(70, 3);
             this.pcbRestTime.Name = "pcbRestTime";
+            this.pcbRestTime.ShowPercent = false;
+            this.pcbRestTime.ShowValue = false;
             this.pcbRestTime.Size = new System.Drawing.Size(300, 31);
             this.pcbRestTime.TabIndex = 6;
             this.pcbRestTime.Text = "uiProcessBar2";
@@ -268,6 +297,8 @@
             this.pcbWorkTime.Maximum = 25;
             this.pcbWorkTime.MinimumSize = new System.Drawing.Size(70, 3);
             this.pcbWorkTime.Name = "pcbWorkTime";
+            this.pcbWorkTime.ShowPercent = false;
+            this.pcbWorkTime.ShowValue = false;
             this.pcbWorkTime.Size = new System.Drawing.Size(300, 31);
             this.pcbWorkTime.TabIndex = 5;
             this.pcbWorkTime.Text = "uiProcessBar1";
@@ -280,7 +311,7 @@
             this.uiLabel3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel3.Location = new System.Drawing.Point(100, 136);
             this.uiLabel3.Name = "uiLabel3";
-            this.uiLabel3.Size = new System.Drawing.Size(110, 31);
+            this.uiLabel3.Size = new System.Drawing.Size(92, 27);
             this.uiLabel3.TabIndex = 4;
             this.uiLabel3.Text = "休息时间";
             this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -292,7 +323,7 @@
             this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel2.Location = new System.Drawing.Point(100, 99);
             this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(110, 31);
+            this.uiLabel2.Size = new System.Drawing.Size(92, 27);
             this.uiLabel2.TabIndex = 3;
             this.uiLabel2.Text = "工作时间";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -318,7 +349,7 @@
             this.lblTomatoNums.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblTomatoNums.Location = new System.Drawing.Point(336, 50);
             this.lblTomatoNums.Name = "lblTomatoNums";
-            this.lblTomatoNums.Size = new System.Drawing.Size(28, 31);
+            this.lblTomatoNums.Size = new System.Drawing.Size(24, 27);
             this.lblTomatoNums.TabIndex = 1;
             this.lblTomatoNums.Text = "0";
             this.lblTomatoNums.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -330,7 +361,7 @@
             this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel1.Location = new System.Drawing.Point(100, 50);
             this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(254, 31);
+            this.uiLabel1.Size = new System.Drawing.Size(212, 27);
             this.uiLabel1.TabIndex = 0;
             this.uiLabel1.Text = "本次使用获得番茄数：";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -389,5 +420,6 @@
         private System.Windows.Forms.Timer tmrRestTime;
         private Sunny.UI.UIIntegerUpDown iudRestTime;
         private Sunny.UI.UIIntegerUpDown iudWorkTime;
+        private Sunny.UI.UIButton btnSetting;
     }
 }

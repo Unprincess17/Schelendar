@@ -464,9 +464,9 @@
             this.lblRipenTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblRipenTime.Location = new System.Drawing.Point(273, 36);
             this.lblRipenTime.Name = "lblRipenTime";
-            this.lblRipenTime.Size = new System.Drawing.Size(58, 27);
+            this.lblRipenTime.Size = new System.Drawing.Size(108, 27);
             this.lblRipenTime.TabIndex = 9;
-            this.lblRipenTime.Text = "0:0:0";
+            this.lblRipenTime.Text = "0时0分0秒";
             this.lblRipenTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblRipenTime.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -898,9 +898,9 @@
             this.lblLeftRipenTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblLeftRipenTime.Location = new System.Drawing.Point(137, 30);
             this.lblLeftRipenTime.Name = "lblLeftRipenTime";
-            this.lblLeftRipenTime.Size = new System.Drawing.Size(58, 27);
+            this.lblLeftRipenTime.Size = new System.Drawing.Size(108, 27);
             this.lblLeftRipenTime.TabIndex = 2;
-            this.lblLeftRipenTime.Text = "0:0:0";
+            this.lblLeftRipenTime.Text = "0时0分0秒";
             this.lblLeftRipenTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblLeftRipenTime.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -1023,7 +1023,7 @@
             this.lblMoney.Name = "lblMoney";
             this.lblMoney.Size = new System.Drawing.Size(48, 27);
             this.lblMoney.TabIndex = 7;
-            this.lblMoney.Text = "300";
+            this.lblMoney.Text = "100";
             this.lblMoney.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblMoney.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -1047,7 +1047,7 @@
             this.lblLevel.Name = "lblLevel";
             this.lblLevel.Size = new System.Drawing.Size(24, 27);
             this.lblLevel.TabIndex = 4;
-            this.lblLevel.Text = "4";
+            this.lblLevel.Text = "1";
             this.lblLevel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblLevel.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 

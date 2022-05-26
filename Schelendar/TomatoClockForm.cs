@@ -186,6 +186,20 @@ namespace Schelendar
             isRun = false;
             this.Opacity = 1;
             btnStart.Show();
-        }  
+        }
+
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            if(btnSetting.Text == "隐藏设置")
+            {
+                btnSetting.Text = "显示设置";
+                uiPanel1.Hide();
+            }
+            else if( btnSetting.Text == "显示设置")
+            {
+                btnSetting.Text = "隐藏设置";
+                uiPanel1.Show();
+            }
+        }
     }
 }
