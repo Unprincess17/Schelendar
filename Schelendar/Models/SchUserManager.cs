@@ -200,6 +200,7 @@ namespace Schelendar.Models
                 foreach (object d in Directory.EnumerateDirectories(path)) 
                 {
                     string dir = d as string;
+                    ///TODO: 文件名的获取
                     string XmltoExecute = Path.Combine(dir, dir.Substring(dir.LastIndexOf("\\")+1).Substring(0,dir.LastIndexOf("\\")),".xml");
                     Console.WriteLine(XmltoExecute);
                     //using (FileStream fs = new FileStream(d.ToString(), FileMode.Open))
