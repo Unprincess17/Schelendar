@@ -10,17 +10,17 @@ namespace Schelendar
         /// <summary>
         /// 当前实际的周数
         /// </summary>
-        private int currentWeekNumber;
+        private int currentWeekNumber = 1;
 
         /// <summary>
         /// 当前课表的总周数
         /// </summary>
-        private int totalWeekNumber;
+        private int totalWeekNumber = 20;
 
         /// <summary>
         /// 当前页面所展示的课表的周数
         /// </summary>
-        private int displayedWeekNumber;
+        private int displayedWeekNumber = 1;
 
         public ClassTableForm()
         {
@@ -59,11 +59,20 @@ namespace Schelendar
 
 
         /// <summary>
-        /// 判断所展示的是否为第一周和最后一周,如果是则按钮功能无反应
+        /// 判断所展示的是否为第一周,如果是则上一周按钮功能无反应
         /// </summary>
-        private bool IsFirstOrLastWeek()
+        private bool IsFirstWeek()
         {
-            return displayedWeekNumber >= totalWeekNumber || displayedWeekNumber <= 1;
+            return displayedWeekNumber <= 1;
+        }
+
+        
+        /// <summary>
+        /// 判断是否为最后一周，若是，则下一周按钮无反应
+        /// </summary>
+        private bool IsLastWeek()
+        {
+            return displayedWeekNumber >= totalWeekNumber;
         }
 
 
@@ -73,9 +82,10 @@ namespace Schelendar
         /// </summary>
         private void btnPre_Click(object sender, EventArgs e)
         {
-            if (!IsFirstOrLastWeek())
+            if (!IsFirstWeek())
             {
                 displayedWeekNumber--;
+                UpdateWeekNumber(displayedWeekNumber);
             }
         }
 
@@ -86,9 +96,10 @@ namespace Schelendar
         /// </summary>
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (!IsFirstOrLastWeek())
+            if (!IsLastWeek())
             {
                 displayedWeekNumber++;
+                UpdateWeekNumber(displayedWeekNumber);
             }
         }
     }
