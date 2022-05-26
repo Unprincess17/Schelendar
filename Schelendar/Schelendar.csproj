@@ -85,6 +85,12 @@
     <Compile Include="ClassTableForm.Designer.cs">
       <DependentUpon>ClassTableForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClassTableSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClassTableSettingForm.Designer.cs">
+      <DependentUpon>ClassTableSettingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DeadlineForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClassTableForm.resx">
       <DependentUpon>ClassTableForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClassTableSettingForm.resx">
+      <DependentUpon>ClassTableSettingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DeadlineForm.resx">
       <DependentUpon>DeadlineForm.cs</DependentUpon>
