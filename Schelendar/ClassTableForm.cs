@@ -22,10 +22,15 @@ namespace Schelendar
         /// </summary>
         private int displayedWeekNumber = 1;
 
+        /// <summary>
+        /// 当前课表的Id
+        /// </summary>
+        private int classTableId;
+
         public ClassTableForm()
         {
             InitializeComponent();
-            //InitTableRows(13);
+            InitTableRows(13);
 
         }
 
