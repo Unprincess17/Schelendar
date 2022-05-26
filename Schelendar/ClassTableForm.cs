@@ -25,8 +25,7 @@ namespace Schelendar
         public ClassTableForm()
         {
             InitializeComponent();
-            uiClassTableLayoutPanel.AutoScroll = true;
-            //InitTableRows(4);
+            //InitTableRows(13);
 
         }
 
