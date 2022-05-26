@@ -33,10 +33,13 @@ namespace Schelendar
             initGroundList();           //初始化图片列表，便于管理
             initSeedPicList();          //初始化种子图片表，便于管理
             Seedlist.initSeeds();       //初始化种子数据
+            setToolTip();               //设置提示信息
 
             ///初始化显示界面
             lblUsername.Text = PlayerManager.username;
             lblLevel.Text = PlayerManager.lv.ToString();
+            lblExpMax.Text = PlayerManager.expmax.ToString();
+            lblExpNow.Text = PlayerManager.expnow.ToString();
             pcbExp.Maximum = PlayerManager.expmax;
             pcbExp.Value = PlayerManager.expnow;
             lblMoney.Text = PlayerManager.gold.ToString();
@@ -85,7 +88,13 @@ namespace Schelendar
             TimeSpan timeSpan = (DateTime.UtcNow - new DateTime(1970, 1, 1));
             return (int)timeSpan.TotalSeconds;
         }
-
+        private String timeToString(int time)
+        {
+            int hours = time / 3600;
+            int min = (time - 3600 * hours) / 60;
+            int second = time % 60;
+            return hours.ToString() + "时" + min.ToString() + "分" + second.ToString() + "秒";
+        }
         private void initSeedPicList()
         {
             seedPicList[1] = pictureBox1;
@@ -213,6 +222,10 @@ namespace Schelendar
             selectedSeed = i;
             lblSeedName.Text = Seedlist.seeds[i].name;
             lblSeedNum.Text = PlayerManager.seeds[i].ToString();
+            lblRipenGold.Text = Seedlist.seeds[i].gold.ToString();
+            lblRipenExp.Text = Seedlist.seeds[i].exp.ToString();
+            lblRipenTime.Text = timeToString(Seedlist.seeds[i].time);
+            lblPrice.Text = Seedlist.seeds[i].price.ToString();
             plant = PlayerManager.seeds[i] > 0 ? true : false;//选择种子余量大于0，可以种植
             if (plant)
             {
@@ -221,7 +234,6 @@ namespace Schelendar
             else
             {
                 this.Cursor = Cursors.Default;
-
             }
         }
 
@@ -252,6 +264,21 @@ namespace Schelendar
             }
         }
 
+        private void cancelSelectSeed() 
+        {
+            selectedSeed = 0;
+            lblSeedName.Text = "无";
+            lblSeedNum.Text = "0";
+            lblRipenGold.Text = "0";
+            lblRipenExp.Text = "0";
+            lblRipenTime.Text = "0时0分0秒";
+            lblPrice.Text = "0";
+            if (plant)
+            {
+                plant = false;
+                this.Cursor = Cursors.Default;
+            }
+        }
         /// <summary>
         /// 取消选中按钮的点击事件
         /// </summary>
@@ -259,14 +286,7 @@ namespace Schelendar
         /// <param name="e"></param>
         private void btnCancelSelected_Click(object sender, EventArgs e)
         {
-            selectedSeed = 0;
-            lblSeedName.Text = "无";
-            lblSeedNum.Text = "0";
-            if(plant)
-            {
-                plant = false;
-                this.Cursor = Cursors.Default;
-            }
+            cancelSelectSeed();
         }
 
         /// <summary>
@@ -330,6 +350,61 @@ namespace Schelendar
                 this.Cursor = Cursors.Default;
             }
         }
+
+        private void reapFarm(int i)    //收获第i块土地的作物
+        {
+            kill = false;
+            plant = false;
+            this.Cursor = Cursors.Default;
+            PlayerManager.gold += Seedlist.seeds[PlayerManager.planted[i]].gold;
+            PlayerManager.getexp(Seedlist.seeds[PlayerManager.planted[i]].exp);
+            PlayerManager.planted[i] = 0;
+            PlayerManager.timestart[i] = 0;
+            lblMoney.Text = PlayerManager.gold.ToString();
+            lblExpMax.Text = PlayerManager.expmax.ToString();
+            lblExpNow.Text = PlayerManager.expnow.ToString();
+            pcbExp.Maximum = PlayerManager.expmax;
+            pcbExp.Value = PlayerManager.expnow;
+            lblLevel.Text = PlayerManager.lv.ToString();
+            restGround++;
+            setGroundPic(i, 0);
+            selectedGround = 0;
+            lblLeftRipenTime.Text = "0时0分0秒";
+            pcbLeftRipenTime.Value = 0;
+            PlayerManager.savedata();
+            return;
+        }
+        private void plantFarm(int i)    //种植第i块土地的作物
+        {
+            PlayerManager.seeds[selectedSeed]--;
+            PlayerManager.planted[i] = selectedSeed;
+            PlayerManager.timestart[i] = calcTime();
+            lblSeedNum.Text = PlayerManager.seeds[selectedSeed].ToString();
+            selectedGround = i;
+            lblLeftRipenTime.Text = timeToString(Seedlist.seeds[selectedSeed].time);
+            pcbLeftRipenTime.Maximum = Seedlist.seeds[selectedSeed].time;
+            pcbLeftRipenTime.Value = pcbLeftRipenTime.Maximum;
+            setGroundPic(i, 17);
+            PlayerManager.savedata();
+            restGround--;
+            if (restGround == 0)
+            {
+                cancelSelectSeed();
+            }
+            return;
+        }
+        private void killFarm(int i)    //铲除第i块土地的作物
+        {
+            PlayerManager.planted[i] = 0;
+            PlayerManager.timestart[i] = 0;
+            setGroundPic(i, 0);
+            selectedGround = 0;
+            lblLeftRipenTime.Text = "0时0分0秒";
+            pcbLeftRipenTime.Value = 0;
+            PlayerManager.savedata();
+            restGround++;
+        }
+
         #region 选择土地
         private void pictureBox17_Click(object sender, EventArgs e)
         {
@@ -395,25 +470,9 @@ namespace Schelendar
         {
             if (PlayerManager.unlocked[i] == 0)
                 return;
-            if(PlayerManager.planted[i] > 0 && isRipe(i))
+            if(PlayerManager.planted[i] > 0 && isRipe(i)) //作物成熟
             {
-                kill = false;
-                plant = false;
-                this.Cursor = Cursors.Default;
-                PlayerManager.gold += Seedlist.seeds[PlayerManager.planted[i]].gold;
-                PlayerManager.getexp(Seedlist.seeds[PlayerManager.planted[i]].exp);
-                lblMoney.Text = PlayerManager.gold.ToString();
-                pcbExp.Maximum = PlayerManager.expmax;
-                pcbExp.Value = PlayerManager.expnow;
-                lblLevel.Text = PlayerManager.lv.ToString();
-                PlayerManager.planted[i] = 0;
-                PlayerManager.timestart[i] = 0;
-                restGround++;
-                setGroundPic(i, 0);
-                selectedGround = 0;
-                lblLeftRipenTime.Text = "0";
-                pcbLeftRipenTime.Value = 0;
-                PlayerManager.savedata();
+                reapFarm(i);
                 return;
             }
             if(plant)
@@ -422,35 +481,13 @@ namespace Schelendar
                     return;
                 if (PlayerManager.seeds[selectedSeed] >= 1)
                 {
-                    PlayerManager.seeds[selectedSeed]--;
-                    lblSeedNum.Text = PlayerManager.seeds[selectedSeed].ToString();
-                    PlayerManager.planted[i] = selectedSeed;
-                    PlayerManager.timestart[i] = calcTime();
-                    selectedGround = i;
-                    lblLeftRipenTime.Text = Seedlist.seeds[selectedSeed].time.ToString();
-                    pcbLeftRipenTime.Maximum = Seedlist.seeds[selectedSeed].time;
-                    pcbLeftRipenTime.Value = pcbLeftRipenTime.Maximum;
-                    setGroundPic(i, 17);
-                    PlayerManager.savedata();
-                    restGround--;
-                    if (restGround == 0)
-                    {
-                        selectedSeed = 0;
-                        lblSeedName.Text = "无";
-                        lblSeedNum.Text = "0";
-                        plant = false;
-                        this.Cursor = Cursors.Default;
-                    }
+                    plantFarm(i);
                     return;
                 }
                 else
                 {
                     MessageBox.Show("种子不够啦，换别的种子试试吧！");
-                    selectedSeed = 0;
-                    lblSeedName.Text = "无";
-                    lblSeedNum.Text = "0";
-                    plant = false;
-                    this.Cursor = Cursors.Default;
+                    cancelSelectSeed();
                     return;
                 }
             }
@@ -458,14 +495,7 @@ namespace Schelendar
             {
                 if (PlayerManager.planted[i] > 0)
                 {
-                    PlayerManager.planted[i] = 0;
-                    PlayerManager.timestart[i] = 0;
-                    setGroundPic(i, 0);
-                    selectedGround = 0;
-                    lblLeftRipenTime.Text = "0";
-                    pcbLeftRipenTime.Value = 0;
-                    PlayerManager.savedata();
-                    restGround++;
+                    killFarm(i);
                     return;
                 }
                 else
@@ -474,9 +504,10 @@ namespace Schelendar
             if (PlayerManager.planted[i] > 0)
             {
                 selectedGround = i;
-                lblLeftRipenTime.Text = (PlayerManager.timestart[i] + Seedlist.seeds[PlayerManager.planted[i]].time - calcTime()).ToString();
+                int t = PlayerManager.timestart[i] + Seedlist.seeds[PlayerManager.planted[i]].time - calcTime();
                 pcbLeftRipenTime.Maximum = Seedlist.seeds[PlayerManager.planted[i]].time;
-                pcbLeftRipenTime.Value = lblLeftRipenTime.Text.ToInt();
+                pcbLeftRipenTime.Value = t;
+                lblLeftRipenTime.Text = timeToString(t);
                 return;
             }
         }
@@ -502,11 +533,28 @@ namespace Schelendar
                 {
                     if (lblLeftRipenTime.Text == "可收割")
                         return;
-                    lblLeftRipenTime.Text = (Convert.ToInt32(lblLeftRipenTime.Text) - 1).ToString();
-                    pcbLeftRipenTime.Value = lblLeftRipenTime.Text.ToInt();
-                    if (Convert.ToInt32(lblLeftRipenTime.Text) <= 0)
+                    pcbLeftRipenTime.Value--;                    
+                    if (pcbLeftRipenTime.Value <= 0)
                         lblLeftRipenTime.Text = "可收割";
+                    else
+                        lblLeftRipenTime.Text = timeToString(pcbLeftRipenTime.Value);
+                    //lblLeftRipenTime.Text = (Convert.ToInt32(lblLeftRipenTime.Text) - 1).ToString();
+                    //pcbLeftRipenTime.Value = lblLeftRipenTime.Text.ToInt();
                 }
+            }
+        }
+        private void setToolTip()
+        {
+            for (int i = 1; i < 16; i++)
+            {
+                string tips = "";
+                tips += $"种子id:{Seedlist.seeds[i].id}\r\n";
+                tips += $"种子名称:{Seedlist.seeds[i].name}\r\n";
+                tips += $"种子价格:{Seedlist.seeds[i].price}\r\n";
+                tips += $"成熟时间:{Seedlist.seeds[i].time}\r\n";
+                tips += $"收割经验:{Seedlist.seeds[i].exp}\r\n";
+                tips += $"出售价格:{Seedlist.seeds[i].gold}\r\n";
+                uiToolTip1.SetToolTip(seedPicList[i], tips);
             }
         }
     }
