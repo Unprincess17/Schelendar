@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Sunny.UI;
+using Schelendar.Models;
 
 
 namespace Schelendar
@@ -10,7 +11,7 @@ namespace Schelendar
         /// <summary>
         /// 当前实际的周数
         /// </summary>
-        private int currentWeekNumber = 1;
+        private int curWeekNumber = 1;
 
         /// <summary>
         /// 当前课表的总周数
@@ -26,11 +27,21 @@ namespace Schelendar
         /// 当前课表的Id
         /// </summary>
         private int classTableId;
-
+        
+        /// <summary>
+        /// 课表对象
+        /// </summary>
+        private SchClassTable _schClassTable;
+        
+        
+        /// TODO: 构造函数需要传入课表ID
+        /// <summary>
+        /// 
+        /// </summary>
         public ClassTableForm()
         {
             InitializeComponent();
-            InitTableRows(13);
+            // InitTableRows(13);
 
         }
 
@@ -106,6 +117,26 @@ namespace Schelendar
                 displayedWeekNumber++;
                 UpdateWeekNumber(displayedWeekNumber);
             }
+        }
+
+
+        /// TODO: 需要根据系统时间，与传入课表的初始时间做差计算当前周数
+        /// <summary>
+        /// 获取系统时间，计算当前周数
+        /// </summary>
+        private void SetCurWeekNumber()
+        {
+            
+        }
+
+
+        /// TODO: 需要根据课表对象，设置显示，使用button来进行课表的显示
+        /// <summary>
+        /// 刷新当前页面对应周数的课程
+        /// </summary>
+        private void UpdateClass()
+        {
+            
         }
     }
 }
