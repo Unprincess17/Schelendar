@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using Sunny.UI;
 
 
@@ -24,10 +25,9 @@ namespace Schelendar
         public ClassTableForm()
         {
             InitializeComponent();
-            InitTableRows(2);
-            // classTableView.Rows[0].Cells[0].Value = "s\nf";
-            // classTableView.Rows[0].Height = 50;
-            classTableView.ClearRows();
+            uiClassTableLayoutPanel.AutoScroll = true;
+            //InitTableRows(4);
+
         }
 
 
@@ -45,9 +45,10 @@ namespace Schelendar
         /// <param name="number">每天课程数量</param>
         private void InitTableRows(int number)
         {
-            for (int i = 0; i < number; i++)
+            while (uiClassTableLayoutPanel.RowCount <= number)
             {
-                classTableView.AddRow();
+                uiClassTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 100));
+                uiClassTableLayoutPanel.RowCount++;
             }
         }
 
@@ -77,10 +78,6 @@ namespace Schelendar
             {
                 displayedWeekNumber--;
             }
-            else
-            {
-                classTableView.ClearRows();
-            }
         }
 
 
@@ -93,10 +90,6 @@ namespace Schelendar
             if (!IsFirstOrLastWeek())
             {
                 displayedWeekNumber++;
-            }
-            else
-            {
-                classTableView.ClearRows();
             }
         }
     }
