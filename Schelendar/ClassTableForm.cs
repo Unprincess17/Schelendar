@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Sunny.UI;
 using Schelendar.Models;
@@ -32,8 +33,13 @@ namespace Schelendar
         /// 课表对象
         /// </summary>
         private SchClassTable _schClassTable;
-        
-        
+
+        /// <summary>
+        /// 课表中提取的课程列表
+        /// </summary>
+        private List<SchClass> _schClasses;
+
+
         /// TODO: 构造函数需要传入课表ID
         /// <summary>
         /// 
