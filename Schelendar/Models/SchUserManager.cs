@@ -78,7 +78,8 @@ namespace Schelendar.Models
             try
             {
                 SchUser u = SchUsers.FirstOrDefault(o => o.UserName.Equals(oldUserName));
-                u=newUser;
+                SchUsers.TryTake(out u);
+                SchUsers.Add(newUser);
                 return true;
             }
             catch(ArgumentException e)
@@ -141,8 +142,19 @@ namespace Schelendar.Models
         }
 
         ///这两个功能应该蛮常用的？或者说怎么样维护一个运行时的用户信息？
-        /// 1.当main运行的时候，维护一个用户（信息的持久化、信息的更改）。每次修改课程、事件等信息时，实际是修改该用户的指定信息--->那他妈不就是不需要一个用户管理类的管理列表了吗？（既然每次都肯定是对指定用户的操作）--->或者说维护的这个管理列表里只有一个用户，其他用户想要被管理需要登出当前的（删除列表元素），登入新的（添加进列表中）
+        /// 1.当main运行的时候，维护一个用户（信息的持久化、信息的更改）。每次修改课程、事件等信息时，实际是修改该用户的指定信息--->不需要一个用户管理类的管理列表了吗？（既然每次都肯定是对指定用户的操作）--->或者说维护的这个管理列表里只有一个用户，其他用户想要被管理需要登出当前的（删除列表元素），登入新的（添加进列表中）
         ///TODO：为用户增加课程
+        public void AddClass(int userID, SchClass c)
+        {
+            try
+            {
+                SchUsers.First(o=>o.SchUserID.Equals(userID)).SchClasses.Add(c);
+            }
+            catch(ArgumentNullException e)
+            {
+                throw new ArgumentNullException($"未找到ID为{userID}的用户，请重新检查输入");
+            }
+        }
         ///TODO：根据添加的课程联想添加事件（考试、大作业...
         
         ///TODO: 删除用户指定课程
@@ -152,7 +164,13 @@ namespace Schelendar.Models
 
         ///TODO: Txt2Event
         /// 文本处理？可以先写个处理格式化文本的
-        ///"5月20号 17:00 跑步"->SchEvent(...)
+        ///"5月20号5点跑步"->SchEvent(...)
+        public void Txt2Event(string msg)
+        {
+            List<string> fmts = new List<string>();
+            fmts.Add("明天");
+
+        }
         
         ///TODO: ShareEventByEmails
         
@@ -186,6 +204,33 @@ namespace Schelendar.Models
             }
         }
 
+        /// <summary>
+        /// 导入全部用户基本信息,刨除Event和Class
+        /// </summary>
+        /// <param name="path">到SchUsers级</param>
+        /// <exception cref="Exception"></exception>
+        public void ImportUsers(string path = "./SchUsers")
+        {
+            try
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(SchUser));
+                foreach (object d in Directory.EnumerateDirectories(path)) 
+                {
+                    string dir = d as string;
+                    string XmltoExecute = dir + "\\" + dir.Substring(dir.LastIndexOf("\\")+1) + ".xml";
+                    //Console.WriteLine(XmltoExecute);
+                    using (FileStream fs = new FileStream(XmltoExecute, FileMode.Open))
+                    {
+                        
+                        SchUsers.Add((SchUser)xmlSerializer.Deserialize(fs));
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Exception when importing, please check the correctness of the path: {path}");
+            }
+        }
 
 
         ///TODO: path的赋值的检测
@@ -195,12 +240,13 @@ namespace Schelendar.Models
         /// <param name="path"></param>
         /// <param name="userID"></param>
         /// <exception cref="Exception"></exception>
-        public void ImportClasses(ref SchUser user, string path)
+        public void ImportClasses(int userID, string path)
         {
             try
             {
                 ///HACK:类型问题。Bag不能被序列化
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(ConcurrentBag<SchEvent>));
+                SchUser user = SchUsers.First(o => o.SchUserID.Equals(userID));
                 using (FileStream fs = new FileStream(path, FileMode.Open))
                 {
                     user.SchClasses = (ConcurrentBag<SchClass>)xmlSerializer.Deserialize(fs);
@@ -216,25 +262,32 @@ namespace Schelendar.Models
         /// <summary>
         /// 从path导入指定ID的用户的事件
         /// </summary>
-        /// <param name="path"></param>
-        /// <param name="userID"></param>
+        /// <param name="userID">eg. 0</param>
+        /// <param name="path">Users Directory. Eg. "./SchUsers/</param>
         /// <exception cref="Exception"></exception>
-        public void ImportEvents(ref SchUser user, string path)
+        public void ImportEvents(int userID, string _path)
         {
             try
             {
                 ///HACK:类型问题。Bag不能被序列化
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(ConcurrentBag<SchEvent>));
-                ConcurrentBag<SchEvent> events;
+                SchUser user = SchUsers.First(o => o.SchUserID.Equals(userID));
+                if(user == null)
+                {
+                    throw new ArgumentNullException($"未找到ID为{userID}的用户，请重新检查输入");
+                }
+                List<SchEvent> events_list = new List<SchEvent>();
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<SchEvent>));
+                string path = _path + "\\" + user.UserName + "\\" + user.UserName + ".xml";
+                //ConcurrentBag<SchEvent> events;
                 if (!File.Exists(path))
                 {
                     throw new ArgumentException($"Exception when importing, please check the correctness of the path: {path}");
                 }
                 using (FileStream fs = new FileStream(path, FileMode.Open))
                 {
-                    events = (ConcurrentBag<SchEvent>)xmlSerializer.Deserialize(fs);
+                    events_list = xmlSerializer.Deserialize(fs) as List<SchEvent>;
                 }
-                foreach(SchEvent e in events)
+                foreach(SchEvent e in events_list)
                 {
                     user.SchEvents.Add(e);
                 }
@@ -249,6 +302,7 @@ namespace Schelendar.Models
             }
         }
 
+        ///TODO: path路径指向SchUsers/{userID}/.xml
         ///HACK: 用户名字段作文件夹名不安全，需要创建或修改时检测
         /// <summary>
         /// 导出学生基本数据
@@ -276,6 +330,8 @@ namespace Schelendar.Models
                 throw new Exception($"{e.Message}");
             }
         }
+
+        ///TODO: path路径指向SchUsers/{userID}/.xml
         /// <summary>
         /// 存储用户的事件
         /// </summary>
@@ -301,6 +357,8 @@ namespace Schelendar.Models
                 throw new Exception($"Exception when Exporting, please check the path or anything\n{e.Message}");
             }
         }
+
+        ///TODO: path路径指向SchUsers/{userID}/.xml
         /// <summary>
         /// 存储用户的课程
         /// </summary>
@@ -326,6 +384,16 @@ namespace Schelendar.Models
             {
                 throw new Exception($"{e.Message}");
             }
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach(SchUser u in SchUsers)
+            {
+                sb.Append(u.UserName+"\n");
+            }
+            return sb.ToString();
         }
     }
 }

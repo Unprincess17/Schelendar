@@ -13,6 +13,7 @@ namespace Schelendar.Models
     /// events, basic item
     /// </summary>
     [Serializable]
+    [XmlRoot("xml")]
     public class SchEvent : IEquatable<SchEvent>/*, IXmlSerializable*/
     {
         /// <summary>
