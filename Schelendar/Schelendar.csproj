@@ -110,6 +110,12 @@
     <Compile Include="DeadlineForm.Designer.cs">
       <DependentUpon>DeadlineForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EnterFarmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnterFarmForm.Designer.cs">
+      <DependentUpon>EnterFarmForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FarmClass\DBHelper.cs" />
     <Compile Include="FarmClass\PlayerManager.cs" />
     <Compile Include="FarmClass\Seed.cs" />
@@ -158,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeadlineForm.resx">
       <DependentUpon>DeadlineForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EnterFarmForm.resx">
+      <DependentUpon>EnterFarmForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FarmForm.resx">
       <DependentUpon>FarmForm.cs</DependentUpon>
