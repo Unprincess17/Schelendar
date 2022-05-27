@@ -318,6 +318,15 @@
     </BootstrapperPackage>
 
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\farmpic.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\farm2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\farm3.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
