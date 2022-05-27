@@ -31,7 +31,8 @@ namespace Schelendar
         {
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("当前课表");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("其他");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("课程表", new System.Windows.Forms.TreeNode[] {treeNode1, treeNode2});
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("添加课表");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("课程表", new System.Windows.Forms.TreeNode[] {treeNode1, treeNode2, treeNode8});
             System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("日程表");
             System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("倒计时");
             System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("番茄钟");
@@ -92,6 +93,8 @@ namespace Schelendar
             treeNode6.Text = "番茄钟";
             treeNode7.Name = "menu_setting";
             treeNode7.Text = "设置";
+            treeNode8.Name = "menu_class_add";
+            treeNode8.Text = "添加课表";
             this.uiNavMenu.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {treeNode3, treeNode4, treeNode5, treeNode6, treeNode7});
             this.uiNavMenu.ScrollBarColor = System.Drawing.Color.FromArgb(((int) (((byte) (240)))), ((int) (((byte) (240)))), ((int) (((byte) (240)))));
             this.uiNavMenu.ScrollBarHoverColor = System.Drawing.Color.FromArgb(((int) (((byte) (240)))), ((int) (((byte) (240)))), ((int) (((byte) (240)))));
