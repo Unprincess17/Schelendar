@@ -9,5 +9,30 @@ namespace Schelendar
         {
             InitializeComponent();
         }
+
+        private void btnQuit_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void btnChangePath_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void btnImport_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void btnExport_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void btnWithdraw_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

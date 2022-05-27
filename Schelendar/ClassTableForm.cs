@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
 using Sunny.UI;
+using Schelendar.Models;
 
 
 namespace Schelendar
@@ -9,25 +13,62 @@ namespace Schelendar
         /// <summary>
         /// 当前实际的周数
         /// </summary>
-        private int currentWeekNumber;
+        private int curWeekNumber = 1;
 
         /// <summary>
         /// 当前课表的总周数
         /// </summary>
-        private int totalWeekNumber;
+        private int totalWeekNumber = 20;
 
         /// <summary>
         /// 当前页面所展示的课表的周数
         /// </summary>
-        private int displayedWeekNumber;
+        private int displayedWeekNumber = 1;
 
+        /// <summary>
+        /// 当前课表的Id
+        /// </summary>
+        private int classTableId;
+        
+        /// <summary>
+        /// 课表对象
+        /// </summary>
+        private SchClassTable _schClassTable = new SchClassTable(12, "KK");
+
+        /// <summary>
+        /// 课表中提取的课程列表
+        /// </summary>
+        private List<SchClass> _schClasses;
+
+
+        /// TODO: 构造函数需要传入课表ID
+        /// <summary>
+        /// 
+        /// </summary>
         public ClassTableForm()
         {
             InitializeComponent();
-            InitTableRows(2);
-            // classTableView.Rows[0].Cells[0].Value = "s\nf";
-            // classTableView.Rows[0].Height = 50;
-            classTableView.ClearRows();
+            // InitTableRows(13);
+            InitTableRows(_schClassTable.DayClassNumber);
+            totalWeekNumber = _schClassTable.WeekLength;
+            // 初始化时间
+            for (int i = 0; i < _schClassTable.DayClassNumber; i++)
+            {
+                UITextBox uiTextBox = new UITextBox();
+                uiTextBox.Dock = DockStyle.Fill;
+                uiTextBox.Multiline = true;
+                uiTextBox.TextAlignment = ContentAlignment.MiddleCenter;
+                uiTextBox.ReadOnly = true;
+                uiTextBox.Lines = new[]
+                {
+                    _schClassTable.EveryClassTime[i].GetValue("StartTime").ToString(),
+                    "|",
+                    _schClassTable.EveryClassTime[i].GetValue("EndTime").ToString()
+                };
+                uiClassTableLayoutPanel.Controls.Add(uiTextBox, 0, i);
+            }
+            
+
         }
 
 
@@ -45,9 +86,10 @@ namespace Schelendar
         /// <param name="number">每天课程数量</param>
         private void InitTableRows(int number)
         {
-            for (int i = 0; i < number; i++)
+            while (uiClassTableLayoutPanel.RowCount < number)
             {
-                classTableView.AddRow();
+                uiClassTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 80));
+                uiClassTableLayoutPanel.RowCount++;
             }
         }
 
@@ -59,11 +101,20 @@ namespace Schelendar
 
 
         /// <summary>
-        /// 判断所展示的是否为第一周和最后一周,如果是则按钮功能无反应
+        /// 判断所展示的是否为第一周,如果是则上一周按钮功能无反应
         /// </summary>
-        private bool IsFirstOrLastWeek()
+        private bool IsFirstWeek()
         {
-            return displayedWeekNumber >= totalWeekNumber || displayedWeekNumber <= 1;
+            return displayedWeekNumber <= 1;
+        }
+
+        
+        /// <summary>
+        /// 判断是否为最后一周，若是，则下一周按钮无反应
+        /// </summary>
+        private bool IsLastWeek()
+        {
+            return displayedWeekNumber >= totalWeekNumber;
         }
 
 
@@ -73,13 +124,10 @@ namespace Schelendar
         /// </summary>
         private void btnPre_Click(object sender, EventArgs e)
         {
-            if (!IsFirstOrLastWeek())
+            if (!IsFirstWeek())
             {
                 displayedWeekNumber--;
-            }
-            else
-            {
-                classTableView.ClearRows();
+                UpdateWeekNumber(displayedWeekNumber);
             }
         }
 
@@ -90,14 +138,40 @@ namespace Schelendar
         /// </summary>
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (!IsFirstOrLastWeek())
+            if (!IsLastWeek())
             {
                 displayedWeekNumber++;
+                UpdateWeekNumber(displayedWeekNumber);
             }
-            else
-            {
-                classTableView.ClearRows();
-            }
+        }
+
+
+        /// TODO: 需要根据系统时间，与传入课表的初始时间做差计算当前周数
+        /// <summary>
+        /// 获取系统时间，计算当前周数
+        /// </summary>
+        private void SetCurWeekNumber()
+        {
+            
+        }
+
+
+        /// TODO: 需要根据课表对象，设置显示，使用button来进行课表的显示
+        /// <summary>
+        /// 刷新当前页面对应周数的课程
+        /// </summary>
+        private void UpdateClass()
+        {
+            
+        }
+
+        
+        /// <summary>
+        /// 判断课程是否在当前展示
+        /// </summary>
+        private bool IsClassShow(SchClass schClass)
+        {
+            return schClass.StartWeek <= displayedWeekNumber && schClass.EndWeek >= displayedWeekNumber;
         }
     }
 }

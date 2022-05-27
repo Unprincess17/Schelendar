@@ -15,7 +15,8 @@ namespace Schelendar
         [STAThread]
         static void Main()
         {
-            SchUserManager schUserManager = new SchUserManager();
+
+            //SchUserManager schUserManager = new SchUserManager();
 
             //SchUser sf = new SchUser(0, "Gong Shufan");
             //sf.SchClasses.Add(new SchClass(0, "数据库", 3.ToString(), 2.ToString(), 106.ToString(), "", 1, 16, 1, 4, "08:00", "10:35"));
@@ -42,7 +43,7 @@ namespace Schelendar
             //System.Console.WriteLine(schUserManager);
             //schUserManager.ImportEvents(1, "./SchUsers/");
 
-            Console.WriteLine(typeof(List<SchEvent>));
+            //Console.WriteLine(typeof(List<SchEvent>));
             //Console.ReadKey();
 
             //Application.EnableVisualStyles();
@@ -50,6 +51,13 @@ namespace Schelendar
             //MainForm mainFormd = new MainForm();
             //MyLoginForm myLoginForm = new MyLoginForm();
             //Application.Run(myLoginForm);
+
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new LoginForm());
+            //Application.Run(new FarmForm());
+            Application.Run(new MainForm());
 
         }
     }
