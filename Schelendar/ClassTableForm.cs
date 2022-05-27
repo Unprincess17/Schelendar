@@ -164,5 +164,14 @@ namespace Schelendar
         {
             
         }
+
+        
+        /// <summary>
+        /// 判断课程是否在当前展示
+        /// </summary>
+        private bool IsClassShow(SchClass schClass)
+        {
+            return schClass.StartWeek <= displayedWeekNumber && schClass.EndWeek >= displayedWeekNumber;
+        }
     }
 }
