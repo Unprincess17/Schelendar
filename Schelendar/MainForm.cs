@@ -37,6 +37,10 @@ namespace Schelendar
                         ClassTableForm classTableFormLast = new ClassTableForm();
                         InitForm(classTableFormLast);
                         break;
+                    case "menu_class_add":
+                        ClassTableSettingForm classTableSettingForm = new ClassTableSettingForm();
+                        InitForm(classTableSettingForm);
+                        break;
                     case "menu_calendar":
                         CalendarForm calendarForm = new CalendarForm();
                         InitForm(calendarForm);
