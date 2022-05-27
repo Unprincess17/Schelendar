@@ -151,6 +151,7 @@ namespace Schelendar
             // 
             // uiTextBoxMonday
             // 
+            this.uiTextBoxMonday.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (80)))), ((int) (((byte) (160)))), ((int) (((byte) (255)))));
             this.uiTextBoxMonday.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.uiTextBoxMonday.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiTextBoxMonday.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
@@ -158,6 +159,7 @@ namespace Schelendar
             this.uiTextBoxMonday.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiTextBoxMonday.MinimumSize = new System.Drawing.Size(1, 16);
             this.uiTextBoxMonday.Name = "uiTextBoxMonday";
+            this.uiTextBoxMonday.ReadOnly = true;
             this.uiTextBoxMonday.ShowText = false;
             this.uiTextBoxMonday.Size = new System.Drawing.Size(95, 36);
             this.uiTextBoxMonday.TabIndex = 0;
@@ -174,6 +176,7 @@ namespace Schelendar
             this.uiTextBoxTuesday.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiTextBoxTuesday.MinimumSize = new System.Drawing.Size(1, 16);
             this.uiTextBoxTuesday.Name = "uiTextBoxTuesday";
+            this.uiTextBoxTuesday.ReadOnly = true;
             this.uiTextBoxTuesday.ShowText = false;
             this.uiTextBoxTuesday.Size = new System.Drawing.Size(95, 36);
             this.uiTextBoxTuesday.TabIndex = 1;
@@ -190,6 +193,7 @@ namespace Schelendar
             this.uiTextBoxWednesday.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiTextBoxWednesday.MinimumSize = new System.Drawing.Size(1, 16);
             this.uiTextBoxWednesday.Name = "uiTextBoxWednesday";
+            this.uiTextBoxWednesday.ReadOnly = true;
             this.uiTextBoxWednesday.ShowText = false;
             this.uiTextBoxWednesday.Size = new System.Drawing.Size(95, 36);
             this.uiTextBoxWednesday.TabIndex = 2;
@@ -206,6 +210,7 @@ namespace Schelendar
             this.uiTextBoxThursday.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiTextBoxThursday.MinimumSize = new System.Drawing.Size(1, 16);
             this.uiTextBoxThursday.Name = "uiTextBoxThursday";
+            this.uiTextBoxThursday.ReadOnly = true;
             this.uiTextBoxThursday.ShowText = false;
             this.uiTextBoxThursday.Size = new System.Drawing.Size(95, 36);
             this.uiTextBoxThursday.TabIndex = 3;
@@ -222,6 +227,7 @@ namespace Schelendar
             this.uiTextBoxFriday.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiTextBoxFriday.MinimumSize = new System.Drawing.Size(1, 16);
             this.uiTextBoxFriday.Name = "uiTextBoxFriday";
+            this.uiTextBoxFriday.ReadOnly = true;
             this.uiTextBoxFriday.ShowText = false;
             this.uiTextBoxFriday.Size = new System.Drawing.Size(95, 36);
             this.uiTextBoxFriday.TabIndex = 4;
@@ -238,6 +244,7 @@ namespace Schelendar
             this.uiTextBoxSaturday.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiTextBoxSaturday.MinimumSize = new System.Drawing.Size(1, 16);
             this.uiTextBoxSaturday.Name = "uiTextBoxSaturday";
+            this.uiTextBoxSaturday.ReadOnly = true;
             this.uiTextBoxSaturday.ShowText = false;
             this.uiTextBoxSaturday.Size = new System.Drawing.Size(95, 36);
             this.uiTextBoxSaturday.TabIndex = 5;
@@ -254,6 +261,7 @@ namespace Schelendar
             this.uiTextBoxSunday.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiTextBoxSunday.MinimumSize = new System.Drawing.Size(1, 16);
             this.uiTextBoxSunday.Name = "uiTextBoxSunday";
+            this.uiTextBoxSunday.ReadOnly = true;
             this.uiTextBoxSunday.ShowText = false;
             this.uiTextBoxSunday.Size = new System.Drawing.Size(102, 36);
             this.uiTextBoxSunday.TabIndex = 6;
@@ -277,9 +285,8 @@ namespace Schelendar
             this.uiClassTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiClassTableLayoutPanel.Location = new System.Drawing.Point(0, 95);
             this.uiClassTableLayoutPanel.Name = "uiClassTableLayoutPanel";
-            this.uiClassTableLayoutPanel.RowCount = 2;
-            this.uiClassTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.uiClassTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.uiClassTableLayoutPanel.RowCount = 1;
+            this.uiClassTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.uiClassTableLayoutPanel.Size = new System.Drawing.Size(800, 355);
             this.uiClassTableLayoutPanel.TabIndex = 4;
             this.uiClassTableLayoutPanel.TagString = null;

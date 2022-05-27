@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using Sunny.UI;
 using Schelendar.Models;
@@ -32,7 +33,7 @@ namespace Schelendar
         /// <summary>
         /// 课表对象
         /// </summary>
-        private SchClassTable _schClassTable;
+        private SchClassTable _schClassTable = new SchClassTable(12, "KK");
 
         /// <summary>
         /// 课表中提取的课程列表
@@ -48,6 +49,25 @@ namespace Schelendar
         {
             InitializeComponent();
             // InitTableRows(13);
+            InitTableRows(_schClassTable.DayClassNumber);
+            totalWeekNumber = _schClassTable.WeekLength;
+            // 初始化时间
+            for (int i = 0; i < _schClassTable.DayClassNumber; i++)
+            {
+                UITextBox uiTextBox = new UITextBox();
+                uiTextBox.Dock = DockStyle.Fill;
+                uiTextBox.Multiline = true;
+                uiTextBox.TextAlignment = ContentAlignment.MiddleCenter;
+                uiTextBox.ReadOnly = true;
+                uiTextBox.Lines = new[]
+                {
+                    _schClassTable.EveryClassTime[i].GetValue("StartTime").ToString(),
+                    "|",
+                    _schClassTable.EveryClassTime[i].GetValue("EndTime").ToString()
+                };
+                uiClassTableLayoutPanel.Controls.Add(uiTextBox, 0, i);
+            }
+            
 
         }
 
@@ -66,9 +86,9 @@ namespace Schelendar
         /// <param name="number">每天课程数量</param>
         private void InitTableRows(int number)
         {
-            while (uiClassTableLayoutPanel.RowCount <= number)
+            while (uiClassTableLayoutPanel.RowCount < number)
             {
-                uiClassTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 100));
+                uiClassTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 80));
                 uiClassTableLayoutPanel.RowCount++;
             }
         }

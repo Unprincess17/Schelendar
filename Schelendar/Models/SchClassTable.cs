@@ -46,7 +46,7 @@ namespace Schelendar.Models
         /// </summary>
         public SchClassTable(int classTableId, String classTableName)
         {
-            DayClassNumber = 13;
+            DayClassNumber = 11;
             ClassTableId = classTableId;
             ClassTableName = classTableName;
             WeekLength = 20;
@@ -54,17 +54,17 @@ namespace Schelendar.Models
             EveryClassTime = new List<Dictionary<string, ClassTime>>()
             {
                 new Dictionary<string, ClassTime>()
-                    {{"StartTime", new ClassTime(8, 0)}, {"EndTime", new ClassTime(8, 45)}},
+                    {{"StartTime", new ClassTime(08, 00)}, {"EndTime", new ClassTime(08, 45)}},
                 new Dictionary<string, ClassTime>()
-                    {{"StartTime", new ClassTime(8, 50)}, {"EndTime", new ClassTime(9, 35)}},
+                    {{"StartTime", new ClassTime(08, 50)}, {"EndTime", new ClassTime(09, 35)}},
                 new Dictionary<string, ClassTime>()
-                    {{"StartTime", new ClassTime(9, 50)}, {"EndTime", new ClassTime(10, 35)}},
+                    {{"StartTime", new ClassTime(09, 50)}, {"EndTime", new ClassTime(10, 35)}},
                 new Dictionary<string, ClassTime>()
                     {{"StartTime", new ClassTime(10, 40)}, {"EndTime", new ClassTime(11, 25)}},
                 new Dictionary<string, ClassTime>()
                     {{"StartTime", new ClassTime(11, 30)}, {"EndTime", new ClassTime(12, 15)}},
                 new Dictionary<string, ClassTime>()
-                    {{"StartTime", new ClassTime(14, 5)}, {"EndTime", new ClassTime(14, 50)}},
+                    {{"StartTime", new ClassTime(14, 05)}, {"EndTime", new ClassTime(14, 50)}},
                 new Dictionary<string, ClassTime>()
                     {{"StartTime", new ClassTime(14, 55)}, {"EndTime", new ClassTime(15, 40)}},
                 new Dictionary<string, ClassTime>()
@@ -72,7 +72,7 @@ namespace Schelendar.Models
                 new Dictionary<string, ClassTime>()
                     {{"StartTime", new ClassTime(18, 30)}, {"EndTime", new ClassTime(19, 15)}},
                 new Dictionary<string, ClassTime>()
-                    {{"StartTime", new ClassTime(19, 20)}, {"EndTime", new ClassTime(20, 5)}},
+                    {{"StartTime", new ClassTime(19, 20)}, {"EndTime", new ClassTime(20, 05)}},
                 new Dictionary<string, ClassTime>()
                     {{"StartTime", new ClassTime(20, 10)}, {"EndTime", new ClassTime(20, 55)}},
             };
