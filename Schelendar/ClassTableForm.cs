@@ -86,10 +86,18 @@ namespace Schelendar
         /// <param name="number">每天课程数量</param>
         private void InitTableRows(int number)
         {
+            uiClassTableLayoutPanel.RowCount = 0;
             while (uiClassTableLayoutPanel.RowCount < number)
             {
                 uiClassTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 80));
                 uiClassTableLayoutPanel.RowCount++;
+                for (int i = 0; i < 7; i++)
+                {
+                    UIPanel uiPanel = new UIPanel();
+                    uiPanel.Dock = DockStyle.Fill;
+                    uiPanel.DoubleClick += (sender, args) => { };
+                }
+                
             }
         }
 
@@ -172,6 +180,12 @@ namespace Schelendar
         private bool IsClassShow(SchClass schClass)
         {
             return schClass.StartWeek <= displayedWeekNumber && schClass.EndWeek >= displayedWeekNumber;
+        }
+
+
+        private void addClickListener()
+        {
+            
         }
     }
 }
