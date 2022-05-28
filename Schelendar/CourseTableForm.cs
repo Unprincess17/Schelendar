@@ -133,8 +133,6 @@ namespace Schelendar
         /// <summary>
         /// 双击添加课程
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void uiClassLabel_DoubleClick(object sender, EventArgs e)
         {
             UILabel uiLabel = (UILabel) sender;
