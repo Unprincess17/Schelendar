@@ -16,11 +16,6 @@ namespace Schelendar
         private int curWeekNumber = 1;
 
         /// <summary>
-        /// 当前课表的总周数
-        /// </summary>
-        private int totalWeekNumber = 20;
-
-        /// <summary>
         /// 当前页面所展示的课表的周数
         /// </summary>
         private int displayedWeekNumber = 1;
@@ -50,7 +45,6 @@ namespace Schelendar
             InitializeComponent();
             // InitTableRows(13);
             InitTableRows(_schCourseTable.DayCourseNumber);
-            totalWeekNumber = _schCourseTable.WeekLength;
             // 初始化时间
             for (int i = 0; i < _schCourseTable.DayCourseNumber; i++)
             {
@@ -129,7 +123,7 @@ namespace Schelendar
         }
 
         
-        /// TODO: 需要弹出一个新的界面来实现添加课程的功能
+        /// TODO: 如何根据点击的Label来获取课程的Id来创建add页面
         /// <summary>
         /// 双击添加课程
         /// </summary>
@@ -137,6 +131,10 @@ namespace Schelendar
         {
             UILabel uiLabel = (UILabel) sender;
             uiLabel.Text = "双击处";
+            
+            CourseAddForm courseAddForm = new CourseAddForm(0, _schCourseTable.DayCourseNumber,
+                uiClassTableLayoutPanel.GetColumn(uiLabel), _schCourseTable.WeekLength);
+            courseAddForm.ShowDialog();
         }
 
 
@@ -160,7 +158,7 @@ namespace Schelendar
         /// </summary>
         private bool IsLastWeek()
         {
-            return displayedWeekNumber >= totalWeekNumber;
+            return displayedWeekNumber >= _schCourseTable.WeekLength;
         }
 
 
