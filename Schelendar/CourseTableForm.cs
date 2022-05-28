@@ -38,7 +38,7 @@ namespace Schelendar
         /// <summary>
         /// 课表中提取的课程列表
         /// </summary>
-        private List<SchCourse> _schClasses;
+        private List<SchCourse> _schCourses;
 
 
         /// TODO: 构造函数需要传入课表ID
@@ -54,18 +54,12 @@ namespace Schelendar
             // 初始化时间
             for (int i = 0; i < _schCourseTable.DayCourseNumber; i++)
             {
-                UITextBox uiTextBox = new UITextBox();
-                uiTextBox.Dock = DockStyle.Fill;
-                uiTextBox.Multiline = true;
-                uiTextBox.TextAlignment = ContentAlignment.MiddleCenter;
-                uiTextBox.ReadOnly = true;
-                uiTextBox.Lines = new[]
-                {
-                    _schCourseTable.EveryCourseTime[i].GetValue("StartTime").ToString(),
-                    "|",
-                    _schCourseTable.EveryCourseTime[i].GetValue("EndTime").ToString()
-                };
-                uiClassTableLayoutPanel.Controls.Add(uiTextBox, 0, i);
+                UILabel uiTimeLable = new UILabel();
+                uiTimeLable.Dock = DockStyle.Fill;
+                uiTimeLable.TextAlign = ContentAlignment.MiddleCenter;
+                uiTimeLable.Text = _schCourseTable.EveryCourseTime[i].GetValue("StartTime") + Environment.NewLine +
+                                   _schCourseTable.EveryCourseTime[i].GetValue("EndTime");
+                uiClassTableLayoutPanel.Controls.Add(uiTimeLable, 0, i);
             }
             
 
@@ -81,9 +75,10 @@ namespace Schelendar
             weekLable.Text = "WEEK " + number;
         }
 
-
-        /// TODO: 课表初始设定节数和每节课时间，还需考虑如何传入时间
-        /// <param name="number">每天课程数量</param>
+        
+        /// <summary>
+        /// 单元格初始化
+        /// </summary>
         private void InitTableRows(int number)
         {
             uiClassTableLayoutPanel.RowCount = 0;
@@ -93,12 +88,57 @@ namespace Schelendar
                 uiClassTableLayoutPanel.RowCount++;
                 for (int i = 0; i < 7; i++)
                 {
-                    UIPanel uiPanel = new UIPanel();
-                    uiPanel.Dock = DockStyle.Fill;
-                    uiPanel.DoubleClick += (sender, args) => { };
+                    UILabel uiClassLabel = new UILabel();
+                    uiClassLabel.Dock = DockStyle.Fill;
+                    uiClassLabel.DoubleClick += uiClassLabel_DoubleClick;
+                    uiClassLabel.MouseHover += uiClassLabel_MouseHover;
+                    uiClassLabel.MouseLeave += uiClassLabel_MouseLeave;
+                    uiClassTableLayoutPanel.Controls.Add(uiClassLabel, i+1, uiClassTableLayoutPanel.RowCount-1);
                 }
                 
             }
+        }
+
+
+        /// <summary>
+        /// 鼠标停留在课程单元格时的提示信息
+        /// </summary>
+        private void uiClassLabel_MouseHover(object sender, EventArgs e)
+        {
+            UILabel uiLabel = (UILabel) sender;
+            if (uiLabel.Text.Equals(String.Empty))
+            {
+                uiLabel.Text = "双击添加课程";
+                uiLabel.TextAlign = ContentAlignment.MiddleCenter;
+            }
+            
+        }
+
+
+        /// <summary>
+        /// 鼠标离开课程单元格后的提示信息
+        /// </summary>
+        private void uiClassLabel_MouseLeave(object sender, EventArgs e)
+        {
+            UILabel uiLabel = (UILabel) sender;
+            if (uiLabel.Text.Equals("双击添加课程"))
+            {
+                uiLabel.Text = String.Empty;
+            }
+            
+        }
+
+        
+        /// TODO: 需要弹出一个新的界面来实现添加课程的功能
+        /// <summary>
+        /// 双击添加课程
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiClassLabel_DoubleClick(object sender, EventArgs e)
+        {
+            UILabel uiLabel = (UILabel) sender;
+            uiLabel.Text = "双击处";
         }
 
 
@@ -164,7 +204,7 @@ namespace Schelendar
         }
 
 
-        /// TODO: 需要根据课表对象，设置显示，使用button来进行课表的显示
+        /// TODO: 需要根据课表对象，设置显示，使用UILabel来进行课表的显示
         /// <summary>
         /// 刷新当前页面对应周数的课程
         /// </summary>
@@ -177,9 +217,9 @@ namespace Schelendar
         /// <summary>
         /// 判断课程是否在当前展示
         /// </summary>
-        private bool IsClassShow(SchCourse schCourse)
+        private bool IsCourseShow(SchCourse schClass)
         {
-            return schCourse.StartWeek <= displayedWeekNumber && schCourse.EndWeek >= displayedWeekNumber;
+            return schClass.StartWeek <= displayedWeekNumber && schClass.EndWeek >= displayedWeekNumber;
         }
 
 

@@ -38,14 +38,14 @@ namespace Schelendar
             this.btnNext = new Sunny.UI.UIButton();
             this.btnPre = new Sunny.UI.UIButton();
             this.uiTimeTableLayoutPanel = new Sunny.UI.UITableLayoutPanel();
-            this.uiTextBoxMonday = new Sunny.UI.UITextBox();
-            this.uiTextBoxTuesday = new Sunny.UI.UITextBox();
-            this.uiTextBoxWednesday = new Sunny.UI.UITextBox();
-            this.uiTextBoxThursday = new Sunny.UI.UITextBox();
-            this.uiTextBoxFriday = new Sunny.UI.UITextBox();
-            this.uiTextBoxSaturday = new Sunny.UI.UITextBox();
-            this.uiTextBoxSunday = new Sunny.UI.UITextBox();
             this.uiClassTableLayoutPanel = new Sunny.UI.UITableLayoutPanel();
+            this.uiLabel1 = new Sunny.UI.UILabel();
+            this.uiLabel2 = new Sunny.UI.UILabel();
+            this.uiLabel3 = new Sunny.UI.UILabel();
+            this.uiLabel4 = new Sunny.UI.UILabel();
+            this.uiLabel5 = new Sunny.UI.UILabel();
+            this.uiLabel6 = new Sunny.UI.UILabel();
+            this.uiLabel7 = new Sunny.UI.UILabel();
             this.titlePanel.SuspendLayout();
             this.uiTimeTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
@@ -123,23 +123,22 @@ namespace Schelendar
             // uiTimeTableLayoutPanel
             // 
             this.uiTimeTableLayoutPanel.AutoScroll = true;
-            this.uiTimeTableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.uiTimeTableLayoutPanel.ColumnCount = 8;
             this.uiTimeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.027093F));
             this.uiTimeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.13899F));
-            this.uiTimeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.13899F));
-            this.uiTimeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.13899F));
-            this.uiTimeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.13899F));
-            this.uiTimeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.13899F));
-            this.uiTimeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.13899F));
-            this.uiTimeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.13899F));
-            this.uiTimeTableLayoutPanel.Controls.Add(this.uiTextBoxMonday, 1, 0);
-            this.uiTimeTableLayoutPanel.Controls.Add(this.uiTextBoxTuesday, 2, 0);
-            this.uiTimeTableLayoutPanel.Controls.Add(this.uiTextBoxWednesday, 3, 0);
-            this.uiTimeTableLayoutPanel.Controls.Add(this.uiTextBoxThursday, 4, 0);
-            this.uiTimeTableLayoutPanel.Controls.Add(this.uiTextBoxFriday, 5, 0);
-            this.uiTimeTableLayoutPanel.Controls.Add(this.uiTextBoxSaturday, 6, 0);
-            this.uiTimeTableLayoutPanel.Controls.Add(this.uiTextBoxSunday, 7, 0);
+            this.uiTimeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.625F));
+            this.uiTimeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.375F));
+            this.uiTimeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.125F));
+            this.uiTimeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.875F));
+            this.uiTimeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.125F));
+            this.uiTimeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.5F));
+            this.uiTimeTableLayoutPanel.Controls.Add(this.uiLabel1, 1, 0);
+            this.uiTimeTableLayoutPanel.Controls.Add(this.uiLabel2, 2, 0);
+            this.uiTimeTableLayoutPanel.Controls.Add(this.uiLabel3, 3, 0);
+            this.uiTimeTableLayoutPanel.Controls.Add(this.uiLabel4, 4, 0);
+            this.uiTimeTableLayoutPanel.Controls.Add(this.uiLabel5, 5, 0);
+            this.uiTimeTableLayoutPanel.Controls.Add(this.uiLabel6, 6, 0);
+            this.uiTimeTableLayoutPanel.Controls.Add(this.uiLabel7, 7, 0);
             this.uiTimeTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.uiTimeTableLayoutPanel.Location = new System.Drawing.Point(0, 47);
             this.uiTimeTableLayoutPanel.Name = "uiTimeTableLayoutPanel";
@@ -148,126 +147,6 @@ namespace Schelendar
             this.uiTimeTableLayoutPanel.Size = new System.Drawing.Size(800, 48);
             this.uiTimeTableLayoutPanel.TabIndex = 3;
             this.uiTimeTableLayoutPanel.TagString = null;
-            // 
-            // uiTextBoxMonday
-            // 
-            this.uiTextBoxMonday.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (80)))), ((int) (((byte) (160)))), ((int) (((byte) (255)))));
-            this.uiTextBoxMonday.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBoxMonday.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiTextBoxMonday.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
-            this.uiTextBoxMonday.Location = new System.Drawing.Point(69, 6);
-            this.uiTextBoxMonday.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBoxMonday.MinimumSize = new System.Drawing.Size(1, 16);
-            this.uiTextBoxMonday.Name = "uiTextBoxMonday";
-            this.uiTextBoxMonday.ReadOnly = true;
-            this.uiTextBoxMonday.ShowText = false;
-            this.uiTextBoxMonday.Size = new System.Drawing.Size(95, 36);
-            this.uiTextBoxMonday.TabIndex = 0;
-            this.uiTextBoxMonday.Text = "星期一";
-            this.uiTextBoxMonday.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiTextBoxMonday.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiTextBoxTuesday
-            // 
-            this.uiTextBoxTuesday.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBoxTuesday.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiTextBoxTuesday.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
-            this.uiTextBoxTuesday.Location = new System.Drawing.Point(173, 6);
-            this.uiTextBoxTuesday.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBoxTuesday.MinimumSize = new System.Drawing.Size(1, 16);
-            this.uiTextBoxTuesday.Name = "uiTextBoxTuesday";
-            this.uiTextBoxTuesday.ReadOnly = true;
-            this.uiTextBoxTuesday.ShowText = false;
-            this.uiTextBoxTuesday.Size = new System.Drawing.Size(95, 36);
-            this.uiTextBoxTuesday.TabIndex = 1;
-            this.uiTextBoxTuesday.Text = "星期二";
-            this.uiTextBoxTuesday.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiTextBoxTuesday.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiTextBoxWednesday
-            // 
-            this.uiTextBoxWednesday.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBoxWednesday.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiTextBoxWednesday.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
-            this.uiTextBoxWednesday.Location = new System.Drawing.Point(277, 6);
-            this.uiTextBoxWednesday.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBoxWednesday.MinimumSize = new System.Drawing.Size(1, 16);
-            this.uiTextBoxWednesday.Name = "uiTextBoxWednesday";
-            this.uiTextBoxWednesday.ReadOnly = true;
-            this.uiTextBoxWednesday.ShowText = false;
-            this.uiTextBoxWednesday.Size = new System.Drawing.Size(95, 36);
-            this.uiTextBoxWednesday.TabIndex = 2;
-            this.uiTextBoxWednesday.Text = "星期三";
-            this.uiTextBoxWednesday.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiTextBoxWednesday.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiTextBoxThursday
-            // 
-            this.uiTextBoxThursday.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBoxThursday.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiTextBoxThursday.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
-            this.uiTextBoxThursday.Location = new System.Drawing.Point(381, 6);
-            this.uiTextBoxThursday.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBoxThursday.MinimumSize = new System.Drawing.Size(1, 16);
-            this.uiTextBoxThursday.Name = "uiTextBoxThursday";
-            this.uiTextBoxThursday.ReadOnly = true;
-            this.uiTextBoxThursday.ShowText = false;
-            this.uiTextBoxThursday.Size = new System.Drawing.Size(95, 36);
-            this.uiTextBoxThursday.TabIndex = 3;
-            this.uiTextBoxThursday.Text = "星期四";
-            this.uiTextBoxThursday.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiTextBoxThursday.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiTextBoxFriday
-            // 
-            this.uiTextBoxFriday.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBoxFriday.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiTextBoxFriday.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
-            this.uiTextBoxFriday.Location = new System.Drawing.Point(485, 6);
-            this.uiTextBoxFriday.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBoxFriday.MinimumSize = new System.Drawing.Size(1, 16);
-            this.uiTextBoxFriday.Name = "uiTextBoxFriday";
-            this.uiTextBoxFriday.ReadOnly = true;
-            this.uiTextBoxFriday.ShowText = false;
-            this.uiTextBoxFriday.Size = new System.Drawing.Size(95, 36);
-            this.uiTextBoxFriday.TabIndex = 4;
-            this.uiTextBoxFriday.Text = "星期五";
-            this.uiTextBoxFriday.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiTextBoxFriday.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiTextBoxSaturday
-            // 
-            this.uiTextBoxSaturday.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBoxSaturday.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiTextBoxSaturday.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
-            this.uiTextBoxSaturday.Location = new System.Drawing.Point(589, 6);
-            this.uiTextBoxSaturday.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBoxSaturday.MinimumSize = new System.Drawing.Size(1, 16);
-            this.uiTextBoxSaturday.Name = "uiTextBoxSaturday";
-            this.uiTextBoxSaturday.ReadOnly = true;
-            this.uiTextBoxSaturday.ShowText = false;
-            this.uiTextBoxSaturday.Size = new System.Drawing.Size(95, 36);
-            this.uiTextBoxSaturday.TabIndex = 5;
-            this.uiTextBoxSaturday.Text = "星期六";
-            this.uiTextBoxSaturday.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiTextBoxSaturday.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiTextBoxSunday
-            // 
-            this.uiTextBoxSunday.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBoxSunday.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiTextBoxSunday.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
-            this.uiTextBoxSunday.Location = new System.Drawing.Point(693, 6);
-            this.uiTextBoxSunday.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBoxSunday.MinimumSize = new System.Drawing.Size(1, 16);
-            this.uiTextBoxSunday.Name = "uiTextBoxSunday";
-            this.uiTextBoxSunday.ReadOnly = true;
-            this.uiTextBoxSunday.ShowText = false;
-            this.uiTextBoxSunday.Size = new System.Drawing.Size(102, 36);
-            this.uiTextBoxSunday.TabIndex = 6;
-            this.uiTextBoxSunday.Text = "星期天";
-            this.uiTextBoxSunday.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiTextBoxSunday.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiClassTableLayoutPanel
             // 
@@ -291,6 +170,90 @@ namespace Schelendar
             this.uiClassTableLayoutPanel.TabIndex = 4;
             this.uiClassTableLayoutPanel.TagString = null;
             // 
+            // uiLabel1
+            // 
+            this.uiLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.uiLabel1.Location = new System.Drawing.Point(66, 0);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(98, 48);
+            this.uiLabel1.TabIndex = 0;
+            this.uiLabel1.Text = "星期一";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiLabel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel2
+            // 
+            this.uiLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.uiLabel2.Location = new System.Drawing.Point(170, 0);
+            this.uiLabel2.Name = "uiLabel2";
+            this.uiLabel2.Size = new System.Drawing.Size(94, 48);
+            this.uiLabel2.TabIndex = 1;
+            this.uiLabel2.Text = "星期二";
+            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiLabel2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel3
+            // 
+            this.uiLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiLabel3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.uiLabel3.Location = new System.Drawing.Point(270, 0);
+            this.uiLabel3.Name = "uiLabel3";
+            this.uiLabel3.Size = new System.Drawing.Size(92, 48);
+            this.uiLabel3.TabIndex = 2;
+            this.uiLabel3.Text = "星期三";
+            this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiLabel3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel4
+            // 
+            this.uiLabel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiLabel4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.uiLabel4.Location = new System.Drawing.Point(368, 0);
+            this.uiLabel4.Name = "uiLabel4";
+            this.uiLabel4.Size = new System.Drawing.Size(106, 48);
+            this.uiLabel4.TabIndex = 3;
+            this.uiLabel4.Text = "星期四";
+            this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiLabel4.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel5
+            // 
+            this.uiLabel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiLabel5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.uiLabel5.Location = new System.Drawing.Point(480, 0);
+            this.uiLabel5.Name = "uiLabel5";
+            this.uiLabel5.Size = new System.Drawing.Size(88, 48);
+            this.uiLabel5.TabIndex = 4;
+            this.uiLabel5.Text = "星期五";
+            this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiLabel5.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel6
+            // 
+            this.uiLabel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiLabel6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.uiLabel6.Location = new System.Drawing.Point(574, 0);
+            this.uiLabel6.Name = "uiLabel6";
+            this.uiLabel6.Size = new System.Drawing.Size(82, 48);
+            this.uiLabel6.TabIndex = 5;
+            this.uiLabel6.Text = "星期六";
+            this.uiLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiLabel6.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel7
+            // 
+            this.uiLabel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiLabel7.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.uiLabel7.Location = new System.Drawing.Point(662, 0);
+            this.uiLabel7.Name = "uiLabel7";
+            this.uiLabel7.Size = new System.Drawing.Size(135, 48);
+            this.uiLabel7.TabIndex = 6;
+            this.uiLabel7.Text = "星期天";
+            this.uiLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiLabel7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
             // ClassTableForm
             // 
             this.AllowShowTitle = false;
@@ -310,16 +273,15 @@ namespace Schelendar
             this.ResumeLayout(false);
         }
 
+        private Sunny.UI.UILabel uiLabel1;
+        private Sunny.UI.UILabel uiLabel2;
+        private Sunny.UI.UILabel uiLabel3;
+        private Sunny.UI.UILabel uiLabel4;
+        private Sunny.UI.UILabel uiLabel5;
+        private Sunny.UI.UILabel uiLabel6;
+        private Sunny.UI.UILabel uiLabel7;
+
         private Sunny.UI.UITableLayoutPanel uiClassTableLayoutPanel;
-
-        private Sunny.UI.UITextBox uiTextBoxTuesday;
-        private Sunny.UI.UITextBox uiTextBoxWednesday;
-        private Sunny.UI.UITextBox uiTextBoxThursday;
-        private Sunny.UI.UITextBox uiTextBoxFriday;
-        private Sunny.UI.UITextBox uiTextBoxSaturday;
-        private Sunny.UI.UITextBox uiTextBoxSunday;
-
-        private Sunny.UI.UITextBox uiTextBoxMonday;
 
         private Sunny.UI.UITableLayoutPanel uiTimeTableLayoutPanel;
 
