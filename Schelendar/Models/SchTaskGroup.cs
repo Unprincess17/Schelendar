@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Schelendar.Models
 {
-    public class SchEventGroup
+    public class SchTaskGroup
     {
-        public List<SchEvent> SchEvents { get; set; }
+        public List<SchTask> SchTasks { get; set; }
     }
 }

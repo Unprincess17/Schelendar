@@ -3,22 +3,22 @@ using System.Collections.Generic;
 
 namespace Schelendar.Models
 {
-    public class SchClassTable
+    public class SchCourseTable
     {
         /// <summary>
         /// 该课表每天的课程总节数
         /// </summary>
-        public int DayClassNumber { set; get; }
+        public int DayCourseNumber { set; get; }
         
         /// <summary>
         /// 课表或学期的ID
         /// </summary>
-        public int ClassTableId { set; get; }
+        public int CourseTableId { set; get; }
         
         /// <summary>
         /// 课表的名字
         /// </summary>
-        public String ClassTableName { set; get; }
+        public String CourseTableName { set; get; }
         
         /// <summary>
         /// 课表的开始时间
@@ -33,48 +33,48 @@ namespace Schelendar.Models
         /// <summary>
         /// 课表中每天课程的开始与结束时间，字典包含开始与结束
         /// </summary>
-        public List<Dictionary<String, ClassTime>> EveryClassTime;
+        public List<Dictionary<String, CourseTime>> EveryCourseTime;
 
         /// <summary>
         /// 本学期课表要包含的课程Id
         /// </summary>
-        public List<int> ClassId;
+        public List<int> CourseId;
 
 
         /// <summary>
         /// 默认情况下的特别设置
         /// </summary>
-        public SchClassTable(int classTableId, String classTableName)
+        public SchCourseTable(int courseTableId, String courseTableName)
         {
-            DayClassNumber = 11;
-            ClassTableId = classTableId;
-            ClassTableName = classTableName;
+            DayCourseNumber = 11;
+            CourseTableId = courseTableId;
+            CourseTableName = courseTableName;
             WeekLength = 20;
 
-            EveryClassTime = new List<Dictionary<string, ClassTime>>()
+            EveryCourseTime = new List<Dictionary<string, CourseTime>>()
             {
-                new Dictionary<string, ClassTime>()
-                    {{"StartTime", new ClassTime(08, 00)}, {"EndTime", new ClassTime(08, 45)}},
-                new Dictionary<string, ClassTime>()
-                    {{"StartTime", new ClassTime(08, 50)}, {"EndTime", new ClassTime(09, 35)}},
-                new Dictionary<string, ClassTime>()
-                    {{"StartTime", new ClassTime(09, 50)}, {"EndTime", new ClassTime(10, 35)}},
-                new Dictionary<string, ClassTime>()
-                    {{"StartTime", new ClassTime(10, 40)}, {"EndTime", new ClassTime(11, 25)}},
-                new Dictionary<string, ClassTime>()
-                    {{"StartTime", new ClassTime(11, 30)}, {"EndTime", new ClassTime(12, 15)}},
-                new Dictionary<string, ClassTime>()
-                    {{"StartTime", new ClassTime(14, 05)}, {"EndTime", new ClassTime(14, 50)}},
-                new Dictionary<string, ClassTime>()
-                    {{"StartTime", new ClassTime(14, 55)}, {"EndTime", new ClassTime(15, 40)}},
-                new Dictionary<string, ClassTime>()
-                    {{"StartTime", new ClassTime(15, 45)}, {"EndTime", new ClassTime(16, 30)}},
-                new Dictionary<string, ClassTime>()
-                    {{"StartTime", new ClassTime(18, 30)}, {"EndTime", new ClassTime(19, 15)}},
-                new Dictionary<string, ClassTime>()
-                    {{"StartTime", new ClassTime(19, 20)}, {"EndTime", new ClassTime(20, 05)}},
-                new Dictionary<string, ClassTime>()
-                    {{"StartTime", new ClassTime(20, 10)}, {"EndTime", new ClassTime(20, 55)}},
+                new Dictionary<string, CourseTime>()
+                    {{"StartTime", new CourseTime(08, 00)}, {"EndTime", new CourseTime(08, 45)}},
+                new Dictionary<string, CourseTime>()
+                    {{"StartTime", new CourseTime(08, 50)}, {"EndTime", new CourseTime(09, 35)}},
+                new Dictionary<string, CourseTime>()
+                    {{"StartTime", new CourseTime(09, 50)}, {"EndTime", new CourseTime(10, 35)}},
+                new Dictionary<string, CourseTime>()
+                    {{"StartTime", new CourseTime(10, 40)}, {"EndTime", new CourseTime(11, 25)}},
+                new Dictionary<string, CourseTime>()
+                    {{"StartTime", new CourseTime(11, 30)}, {"EndTime", new CourseTime(12, 15)}},
+                new Dictionary<string, CourseTime>()
+                    {{"StartTime", new CourseTime(14, 05)}, {"EndTime", new CourseTime(14, 50)}},
+                new Dictionary<string, CourseTime>()
+                    {{"StartTime", new CourseTime(14, 55)}, {"EndTime", new CourseTime(15, 40)}},
+                new Dictionary<string, CourseTime>()
+                    {{"StartTime", new CourseTime(15, 45)}, {"EndTime", new CourseTime(16, 30)}},
+                new Dictionary<string, CourseTime>()
+                    {{"StartTime", new CourseTime(18, 30)}, {"EndTime", new CourseTime(19, 15)}},
+                new Dictionary<string, CourseTime>()
+                    {{"StartTime", new CourseTime(19, 20)}, {"EndTime", new CourseTime(20, 05)}},
+                new Dictionary<string, CourseTime>()
+                    {{"StartTime", new CourseTime(20, 10)}, {"EndTime", new CourseTime(20, 55)}},
             };
         }
 

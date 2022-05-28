@@ -3,24 +3,24 @@
 
 namespace Schelendar.Models
 {
-    public class ClassTime
+    public class CourseTime
     {
         public int Hour { get; set; }
         public int Minute { get; set; }
 
-        public ClassTime(int hour, int minute)
+        public CourseTime(int hour, int minute)
         {
             Hour = hour;
             Minute = minute;
         }
 
-        public ClassTime(DateTime d)
+        public CourseTime(DateTime d)
         {
             Hour = d.Hour;
             Minute = d.Minute;
         }
 
-        public ClassTime(string time)
+        public CourseTime(string time)
         {
             DateTime d = DateTime.Parse(time);
             Hour = d.Hour;
@@ -29,7 +29,7 @@ namespace Schelendar.Models
 
         public override bool Equals(object obj)
         {
-            return obj is ClassTime time &&
+            return obj is CourseTime time &&
                    Hour == time.Hour &&
                    Minute == time.Minute;
         }
@@ -39,9 +39,9 @@ namespace Schelendar.Models
             return Hour.ToString() + ":" + Minute.ToString();
         }
 
-        public static implicit operator ClassTime(string time)
+        public static implicit operator CourseTime(string time)
         {
-            return new ClassTime(time);
+            return new CourseTime(time);
         }
     }
 }

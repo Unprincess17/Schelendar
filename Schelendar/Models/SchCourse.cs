@@ -11,22 +11,22 @@ namespace Schelendar.Models
 	/// <summary>
 	/// classes, derived from events
 	/// </summary>
-	public class SchClass : SchEvent, IEquatable<SchClass>
+	public class SchCourse : SchTask, IEquatable<SchCourse>
     {
 		/// <summary>
 		/// 课程ID
 		/// </summary>
-		public int SchClassID { get; set; }
+		public int SchCourseID { get; set; }
 
 		/// <summary>
 		/// 课程名
 		/// </summary>
-		public string SchClassName { get; set; }
+		public string SchCourseName { get; set; }
 
 		/// <summary>
 		/// 上课教室的信息
 		/// </summary>
-		public ClassLocation SchClassLocation { get; set; }
+		public ClassLocation ClassLocation { get; set; }
 		
 		/// <summary>
 		/// 教师信息
@@ -53,18 +53,18 @@ namespace Schelendar.Models
 		/// <summary>
 		/// 上课时间
 		/// </summary>
-		public ClassTime StartTime { get; set; }
+		public CourseTime StartTime { get; set; }
 
 		/// <summary>
 		/// 下课时间
 		/// </summary>
-		public ClassTime EndTime { get; set; }
+		public CourseTime EndTime { get; set; }
 
 		/// <summary>
 		/// Class的构造函数
 		/// </summary>
-		/// <param name="schClassID"></param>
-		/// <param name="schClassName"></param>
+		/// <param name="schCourseId"></param>
+		/// <param name="schCourseName"></param>
 		/// <param name="district">校区</param>
 		/// <param name="building"></param>
 		/// <param name="classroom"></param>
@@ -75,11 +75,11 @@ namespace Schelendar.Models
 		/// <param name="semaster"></param>
 		/// <param name="startTime">上课时间，格式为"HH:MM"</param>
 		/// <param name="endTime">下课时间，格式为"HH:MM"</param>
-		public SchClass(int schClassID, string schClassName, string district, string building, string classroom, string teacherName, int startWeek, int endWeek, int dayofWeek, int semaster, string startTime, string endTime):base(schClassID, schClassName, district+building+classroom, DateTime.Now, DateTime.Now, 1, 0)
+		public SchCourse(int schCourseId, string schCourseName, string district, string building, string classroom, string teacherName, int startWeek, int endWeek, int dayofWeek, int semaster, string startTime, string endTime):base(schCourseId, schCourseName, district+building+classroom, DateTime.Now, DateTime.Now, 1, 0)
         {
-            SchClassID = schClassID;
-            SchClassName = schClassName;
-            SchClassLocation = new ClassLocation(district, building, classroom);
+            SchCourseID = schCourseId;
+            SchCourseName = schCourseName;
+            ClassLocation = new ClassLocation(district, building, classroom);
             TeacherName = teacherName;
             StartWeek = startWeek;
             EndWeek = endWeek;
@@ -88,37 +88,37 @@ namespace Schelendar.Models
 			StartTime = startTime;
 			EndTime = endTime;
         }
-		public SchClass() 
+		public SchCourse() 
         {
 		}
 
 		
         public override bool Equals(object obj)
         {
-            return Equals(obj as SchClass);
+            return Equals(obj as SchCourse);
         }
 
-        public bool Equals(SchClass other)
+        public bool Equals(SchCourse other)
         {
             return !(other is null) &&
                    UserID == other.UserID &&
-                   SchClassID == other.SchClassID;
+                   SchCourseID == other.SchCourseID;
         }
 
         public override int GetHashCode()
         {
             int hashCode = -1737701667;
             hashCode = hashCode * -1521134295 + UserID.GetHashCode();
-            hashCode = hashCode * -1521134295 + SchClassID.GetHashCode();
+            hashCode = hashCode * -1521134295 + SchCourseID.GetHashCode();
             return hashCode;
         }
 
-        public static bool operator ==(SchClass left, SchClass right)
+        public static bool operator ==(SchCourse left, SchCourse right)
         {
-            return EqualityComparer<SchClass>.Default.Equals(left, right);
+            return EqualityComparer<SchCourse>.Default.Equals(left, right);
         }
 
-        public static bool operator !=(SchClass left, SchClass right)
+        public static bool operator !=(SchCourse left, SchCourse right)
         {
             return !(left == right);
         }

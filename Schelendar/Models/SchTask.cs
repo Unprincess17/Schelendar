@@ -14,21 +14,21 @@ namespace Schelendar.Models
     /// </summary>
     [Serializable]
     [XmlRoot("xml")]
-    public class SchEvent : IEquatable<SchEvent>/*, IXmlSerializable*/
+    public class SchTask : IEquatable<SchTask>/*, IXmlSerializable*/
     {
         /// <summary>
         /// 事件ID
         /// </summary>
         [XmlElementAttribute("EventID")]
-        public int SchEventID { get; set; }
+        public int SchTaskID { get; set; }
         /// <summary>
         /// 事件描述信息
         /// </summary>
-        public string SchEventInfo { get; set; }  
+        public string SchTaskInfo { get; set; }  
         /// <summary>
         /// 事件地点
         /// </summary>
-        public string SchEventLocation { get; set; }
+        public string SchTaskLocation { get; set; }
 
         /// <summary>
         /// 事件起始时间
@@ -52,36 +52,36 @@ namespace Schelendar.Models
         /// </summary>
         public int UserID { get; set; }
 
-        public SchEvent(int schEventID, string schEventInfo, string schEventLocation, DateTime startDate, DateTime endDate, int isRepeat, int isDone)
+        public SchTask(int schTaskId, string schTaskInfo, string schTaskLocation, DateTime startDate, DateTime endDate, int isRepeat, int isDone)
         {
-            SchEventID = schEventID;
-            SchEventInfo = schEventInfo;
-            SchEventLocation = schEventLocation;
+            SchTaskID = schTaskId;
+            SchTaskInfo = schTaskInfo;
+            SchTaskLocation = schTaskLocation;
             StartDate = startDate;
             EndDate = endDate;
             this.isRepeat = isRepeat;
             this.isDone = isDone;
         }
-        public SchEvent()
+        public SchTask()
         {
         }
 
         public override bool Equals(object obj)
         {
-            return Equals(obj as SchEvent);
+            return Equals(obj as SchTask);
         }
 
-        public bool Equals(SchEvent other)
+        public bool Equals(SchTask other)
         {
             return !(other is null) &&
-                   SchEventID == other.SchEventID &&
+                   SchTaskID == other.SchTaskID &&
                    UserID == other.UserID;
         }
 
         public override int GetHashCode()
         {
             int hashCode = 539429797;
-            hashCode = hashCode * -1521134295 + SchEventID.GetHashCode();
+            hashCode = hashCode * -1521134295 + SchTaskID.GetHashCode();
             hashCode = hashCode * -1521134295 + UserID.GetHashCode();
             return hashCode;
         }
@@ -101,12 +101,12 @@ namespace Schelendar.Models
         //    writer.WriteElementStringAsync("EventID", "SchEventID", "Schelendar.Models", SchEventID.ToString());
         //}
 
-        public static bool operator ==(SchEvent left, SchEvent right)
+        public static bool operator ==(SchTask left, SchTask right)
         {
-            return EqualityComparer<SchEvent>.Default.Equals(left, right);
+            return EqualityComparer<SchTask>.Default.Equals(left, right);
         }
 
-        public static bool operator !=(SchEvent left, SchEvent right)
+        public static bool operator !=(SchTask left, SchTask right)
         {
             return !(left == right);
         }

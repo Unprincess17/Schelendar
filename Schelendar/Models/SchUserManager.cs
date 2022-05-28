@@ -110,7 +110,7 @@ namespace Schelendar.Models
         /// <param name="semasterID">学期号</param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public List<SchClass> GetUserSemasterClasses(int userID, int semasterID)
+        public List<SchCourse> GetUserSemasterClasses(int userID, int semasterID)
         {
             try
             {
@@ -129,7 +129,7 @@ namespace Schelendar.Models
         /// <param name="semasterID"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public List<SchClass> GetUserSemasterClasses(string userName, int semasterID)
+        public List<SchCourse> GetUserSemasterClasses(string userName, int semasterID)
         {
             try
             {
@@ -144,7 +144,7 @@ namespace Schelendar.Models
         ///这两个功能应该蛮常用的？或者说怎么样维护一个运行时的用户信息？
         /// 1.当main运行的时候，维护一个用户（信息的持久化、信息的更改）。每次修改课程、事件等信息时，实际是修改该用户的指定信息--->不需要一个用户管理类的管理列表了吗？（既然每次都肯定是对指定用户的操作）--->或者说维护的这个管理列表里只有一个用户，其他用户想要被管理需要登出当前的（删除列表元素），登入新的（添加进列表中）
         ///TODO：为用户增加课程
-        public void AddClass(int userID, SchClass c)
+        public void AddClass(int userID, SchCourse c)
         {
             try
             {
@@ -245,11 +245,11 @@ namespace Schelendar.Models
             try
             {
                 ///HACK:类型问题。Bag不能被序列化
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(ConcurrentBag<SchEvent>));
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(ConcurrentBag<SchTask>));
                 SchUser user = SchUsers.First(o => o.SchUserID.Equals(userID));
                 using (FileStream fs = new FileStream(path, FileMode.Open))
                 {
-                    user.SchClasses = (ConcurrentBag<SchClass>)xmlSerializer.Deserialize(fs);
+                    user.SchClasses = (ConcurrentBag<SchCourse>)xmlSerializer.Deserialize(fs);
                 }
             }
             catch (Exception e)
@@ -275,8 +275,8 @@ namespace Schelendar.Models
                 {
                     throw new ArgumentNullException($"未找到ID为{userID}的用户，请重新检查输入");
                 }
-                List<SchEvent> events_list = new List<SchEvent>();
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<SchEvent>));
+                List<SchTask> events_list = new List<SchTask>();
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<SchTask>));
                 string path = _path + "\\" + user.UserName + "\\" + user.UserName + ".xml";
                 //ConcurrentBag<SchEvent> events;
                 if (!File.Exists(path))
@@ -285,9 +285,9 @@ namespace Schelendar.Models
                 }
                 using (FileStream fs = new FileStream(path, FileMode.Open))
                 {
-                    events_list = xmlSerializer.Deserialize(fs) as List<SchEvent>;
+                    events_list = xmlSerializer.Deserialize(fs) as List<SchTask>;
                 }
-                foreach(SchEvent e in events_list)
+                foreach(SchTask e in events_list)
                 {
                     user.SchEvents.Add(e);
                 }
@@ -341,7 +341,7 @@ namespace Schelendar.Models
         public void ExportEvents(int userID, string path) {
             try
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<SchEvent>));
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<SchTask>));
                 using (FileStream fs = new FileStream(path/* + schuser.FirstOrDefault().UserName + "_Events.xml"*/, FileMode.Create))
                 {
                     xmlSerializer.Serialize(fs, this.SchUsers.Where(o => o.SchUserID.Equals(userID)).First().SchEvents.ToList());
@@ -369,7 +369,7 @@ namespace Schelendar.Models
         {
             try
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<SchClass>));
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<SchCourse>));
                 using (FileStream fs = new FileStream(path, FileMode.Create))
                 {
                     xmlSerializer.Serialize(fs, this.SchUsers.Where(o => o.SchUserID.Equals(userID)).First().SchClasses.ToList());

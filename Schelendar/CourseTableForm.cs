@@ -33,12 +33,12 @@ namespace Schelendar
         /// <summary>
         /// 课表对象
         /// </summary>
-        private SchClassTable _schClassTable = new SchClassTable(12, "KK");
+        private SchCourseTable _schCourseTable = new SchCourseTable(12, "KK");
 
         /// <summary>
         /// 课表中提取的课程列表
         /// </summary>
-        private List<SchClass> _schClasses;
+        private List<SchCourse> _schClasses;
 
 
         /// TODO: 构造函数需要传入课表ID
@@ -49,10 +49,10 @@ namespace Schelendar
         {
             InitializeComponent();
             // InitTableRows(13);
-            InitTableRows(_schClassTable.DayClassNumber);
-            totalWeekNumber = _schClassTable.WeekLength;
+            InitTableRows(_schCourseTable.DayCourseNumber);
+            totalWeekNumber = _schCourseTable.WeekLength;
             // 初始化时间
-            for (int i = 0; i < _schClassTable.DayClassNumber; i++)
+            for (int i = 0; i < _schCourseTable.DayCourseNumber; i++)
             {
                 UITextBox uiTextBox = new UITextBox();
                 uiTextBox.Dock = DockStyle.Fill;
@@ -61,9 +61,9 @@ namespace Schelendar
                 uiTextBox.ReadOnly = true;
                 uiTextBox.Lines = new[]
                 {
-                    _schClassTable.EveryClassTime[i].GetValue("StartTime").ToString(),
+                    _schCourseTable.EveryCourseTime[i].GetValue("StartTime").ToString(),
                     "|",
-                    _schClassTable.EveryClassTime[i].GetValue("EndTime").ToString()
+                    _schCourseTable.EveryCourseTime[i].GetValue("EndTime").ToString()
                 };
                 uiClassTableLayoutPanel.Controls.Add(uiTextBox, 0, i);
             }
@@ -177,9 +177,9 @@ namespace Schelendar
         /// <summary>
         /// 判断课程是否在当前展示
         /// </summary>
-        private bool IsClassShow(SchClass schClass)
+        private bool IsClassShow(SchCourse schCourse)
         {
-            return schClass.StartWeek <= displayedWeekNumber && schClass.EndWeek >= displayedWeekNumber;
+            return schCourse.StartWeek <= displayedWeekNumber && schCourse.EndWeek >= displayedWeekNumber;
         }
 
 

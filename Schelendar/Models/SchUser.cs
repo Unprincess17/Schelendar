@@ -12,8 +12,8 @@ using System.Text.RegularExpressions;
 namespace Schelendar.Models
 {
     [Serializable]
-    [XmlInclude(typeof(SchEvent))]
-    [XmlInclude(typeof (SchClass))]
+    [XmlInclude(typeof(SchTask))]
+    [XmlInclude(typeof (SchCourse))]
     public class SchUser
     {
         /// <summary>
@@ -48,13 +48,13 @@ namespace Schelendar.Models
         /// 个人的事件
         /// </summary>
         [XmlIgnore]
-        public ConcurrentBag<SchEvent> SchEvents { set; get; }
+        public ConcurrentBag<SchTask> SchEvents { set; get; }
 
         /// <summary>
         /// 个人的课程
         /// </summary>
         [XmlIgnore]
-        public ConcurrentBag<SchClass> SchClasses { get; set; }
+        public ConcurrentBag<SchCourse> SchClasses { get; set; }
 
         public SchUser(int schUserID, string userName, int isRmbMe = 0, int isRmbPasswd = 0, int isAutoLogin = 0)
         {
@@ -71,8 +71,8 @@ namespace Schelendar.Models
                 this.IsRmbMe = isRmbMe;
                 this.IsRmbPasswd = isRmbPasswd;
                 this.IsAutoLogin = isAutoLogin;
-                this.SchEvents = new ConcurrentBag<SchEvent>();
-                this.SchClasses = new ConcurrentBag<SchClass>();
+                this.SchEvents = new ConcurrentBag<SchTask>();
+                this.SchClasses = new ConcurrentBag<SchCourse>();
             }
             catch(InsufficientMemoryException e1)
             {
@@ -106,13 +106,13 @@ namespace Schelendar.Models
             IsRmbMe = previousUser.IsRmbMe;
             IsRmbPasswd = previousUser.IsRmbPasswd;
             IsAutoLogin = previousUser.IsAutoLogin;
-            SchEvents = new ConcurrentBag<SchEvent>();
-            SchClasses = new ConcurrentBag<SchClass>();
-            foreach(SchClass schClass in previousUser.SchClasses)
+            SchEvents = new ConcurrentBag<SchTask>();
+            SchClasses = new ConcurrentBag<SchCourse>();
+            foreach(SchCourse schClass in previousUser.SchClasses)
             {
                 SchClasses.Add(schClass);
             }
-            foreach(SchEvent schEvent in previousUser.SchEvents)
+            foreach(SchTask schEvent in previousUser.SchEvents)
             {
                 SchEvents.Add(schEvent);
             }
