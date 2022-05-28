@@ -51,14 +51,14 @@ namespace Schelendar.Models
 		public int Semaster { set; get; }
 
 		/// <summary>
-		/// 上课时间
+		/// 上课时间第几节
 		/// </summary>
-		public CourseTime StartTime { get; set; }
+		public int StartTime { get; set; }
 
 		/// <summary>
-		/// 下课时间
+		/// 下课时的节数
 		/// </summary>
-		public CourseTime EndTime { get; set; }
+		public int EndTime { get; set; }
 
 		/// <summary>
 		/// Class的构造函数
@@ -75,7 +75,7 @@ namespace Schelendar.Models
 		/// <param name="semaster"></param>
 		/// <param name="startTime">上课时间，格式为"HH:MM"</param>
 		/// <param name="endTime">下课时间，格式为"HH:MM"</param>
-		public SchCourse(int schCourseId, string schCourseName, string district, string building, string classroom, string teacherName, int startWeek, int endWeek, int dayofWeek, int semaster, string startTime, string endTime):base(schCourseId, schCourseName, district+building+classroom, DateTime.Now, DateTime.Now, 1, 0)
+		public SchCourse(int schCourseId, string schCourseName, string district, string building, string classroom, string teacherName, int startWeek, int endWeek, int dayofWeek, int semaster, int startTime, int endTime):base(schCourseId, schCourseName, district+building+classroom, DateTime.Now, DateTime.Now, 1, 0)
         {
             SchCourseID = schCourseId;
             SchCourseName = schCourseName;
