@@ -130,19 +130,19 @@ namespace Schelendar
         private void uiClassLabel_DoubleClick(object sender, EventArgs e)
         {
             UILabel uiLabel = (UILabel) sender;
-            uiLabel.Text = "双击处";
-            
-            CourseAddForm courseAddForm = new CourseAddForm(0, _schCourseTable.DayCourseNumber,
-                uiClassTableLayoutPanel.GetColumn(uiLabel), _schCourseTable.WeekLength);
+
+            CourseAddForm courseAddForm = new CourseAddForm(0, _schCourseTable.DayCourseNumber, 
+                uiClassTableLayoutPanel.GetColumn(uiLabel), _schCourseTable.WeekLength, 
+                _schCourseTable.CourseTableId);
             courseAddForm.ShowDialog();
+            if (courseAddForm.DialogResult == DialogResult.OK)
+            {
+                SchCourse schCourse = courseAddForm.SchCourse;
+                courseAddForm.Dispose();
+                UpdateCourseShow(uiLabel, schCourse);
+            }
         }
-
-
-        /// TODO: 课表的数据绑定，如何传入课程数据
-        private void BindingClass()
-        {
-        }
-
+        
 
         /// <summary>
         /// 判断所展示的是否为第一周,如果是则上一周按钮功能无反应
@@ -161,8 +161,7 @@ namespace Schelendar
             return displayedWeekNumber >= _schCourseTable.WeekLength;
         }
 
-
-        /// TODO: 需要调用绑定课程的方法来刷新
+        
         /// <summary>
         /// 展示前一周课程的按钮
         /// </summary>
@@ -172,11 +171,11 @@ namespace Schelendar
             {
                 displayedWeekNumber--;
                 UpdateWeekNumber(displayedWeekNumber);
+                UpdateCourseShow(displayedWeekNumber);
             }
         }
 
-
-        /// TODO: 需要调用绑定课程的方法来刷新
+        
         /// <summary>
         /// 展示下一周课程的按钮
         /// </summary>
@@ -186,6 +185,7 @@ namespace Schelendar
             {
                 displayedWeekNumber++;
                 UpdateWeekNumber(displayedWeekNumber);
+                UpdateCourseShow(displayedWeekNumber);
             }
         }
 
@@ -200,13 +200,23 @@ namespace Schelendar
         }
 
 
-        /// TODO: 需要根据课表对象，设置显示，使用UILabel来进行课表的显示
+        /// TODO: 根据当前周数，刷新全局课表
         /// <summary>
-        /// 刷新当前页面对应周数的课程
+        /// 刷新全局页面对应周数的课程
         /// </summary>
-        private void UpdateClass()
+        private void UpdateCourseShow(int displayWeekNumber)
         {
             
+        }
+
+
+        /// TODO: 如何重新布局所修改的表格中的Label
+        /// <summary>
+        /// 针对新添加或修改的课程单独刷新展示
+        /// </summary>
+        private void UpdateCourseShow(UILabel uiLabel, SchCourse newSchCourse)
+        {
+            uiLabel.Text = "双击处";
         }
 
         
@@ -216,12 +226,6 @@ namespace Schelendar
         private bool IsCourseShow(SchCourse schClass)
         {
             return schClass.StartWeek <= displayedWeekNumber && schClass.EndWeek >= displayedWeekNumber;
-        }
-
-
-        private void addClickListener()
-        {
-            
         }
     }
 }

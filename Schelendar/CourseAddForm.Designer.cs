@@ -297,8 +297,12 @@ namespace Schelendar
             // 
             this.startWeekIUD.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.startWeekIUD.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.startWeekIUD.HasMaximum = true;
+            this.startWeekIUD.HasMinimum = true;
             this.startWeekIUD.Location = new System.Drawing.Point(44, 5);
             this.startWeekIUD.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.startWeekIUD.MaximumEnabled = true;
+            this.startWeekIUD.MinimumEnabled = true;
             this.startWeekIUD.MinimumSize = new System.Drawing.Size(100, 0);
             this.startWeekIUD.Name = "startWeekIUD";
             this.startWeekIUD.ShowText = false;
@@ -306,7 +310,9 @@ namespace Schelendar
             this.startWeekIUD.TabIndex = 0;
             this.startWeekIUD.Text = "uiIntegerUpDown1";
             this.startWeekIUD.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.startWeekIUD.Value = 1;
             this.startWeekIUD.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.startWeekIUD.ValueChanged += new Sunny.UI.UIIntegerUpDown.OnValueChanged(this.startWeekIUD_ValueChanged);
             // 
             // uiLabel6
             // 
@@ -374,8 +380,12 @@ namespace Schelendar
             // 
             this.endTimeIUD.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.endTimeIUD.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.endTimeIUD.HasMaximum = true;
+            this.endTimeIUD.HasMinimum = true;
             this.endTimeIUD.Location = new System.Drawing.Point(47, 8);
             this.endTimeIUD.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.endTimeIUD.MaximumEnabled = true;
+            this.endTimeIUD.MinimumEnabled = true;
             this.endTimeIUD.MinimumSize = new System.Drawing.Size(100, 0);
             this.endTimeIUD.Name = "endTimeIUD";
             this.endTimeIUD.ShowText = false;
@@ -383,7 +393,9 @@ namespace Schelendar
             this.endTimeIUD.TabIndex = 4;
             this.endTimeIUD.Text = "uiIntegerUpDown4";
             this.endTimeIUD.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.endTimeIUD.Value = 1;
             this.endTimeIUD.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.endTimeIUD.ValueChanged += new Sunny.UI.UIIntegerUpDown.OnValueChanged(this.endTimeIUD_ValueChanged);
             // 
             // uiLabel16
             // 
@@ -432,8 +444,12 @@ namespace Schelendar
             // 
             this.startTimeIUD.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.startTimeIUD.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.startTimeIUD.HasMaximum = true;
+            this.startTimeIUD.HasMinimum = true;
             this.startTimeIUD.Location = new System.Drawing.Point(47, 8);
             this.startTimeIUD.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.startTimeIUD.MaximumEnabled = true;
+            this.startTimeIUD.MinimumEnabled = true;
             this.startTimeIUD.MinimumSize = new System.Drawing.Size(100, 0);
             this.startTimeIUD.Name = "startTimeIUD";
             this.startTimeIUD.ShowText = false;
@@ -441,7 +457,9 @@ namespace Schelendar
             this.startTimeIUD.TabIndex = 4;
             this.startTimeIUD.Text = "uiIntegerUpDown1";
             this.startTimeIUD.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.startTimeIUD.Value = 1;
             this.startTimeIUD.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.startTimeIUD.ValueChanged += new Sunny.UI.UIIntegerUpDown.OnValueChanged(this.startTimeIUD_ValueChanged);
             // 
             // uiLabel11
             // 
@@ -525,8 +543,12 @@ namespace Schelendar
             // 
             this.endWeekIUD.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.endWeekIUD.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.endWeekIUD.HasMaximum = true;
+            this.endWeekIUD.HasMinimum = true;
             this.endWeekIUD.Location = new System.Drawing.Point(44, 5);
             this.endWeekIUD.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.endWeekIUD.MaximumEnabled = true;
+            this.endWeekIUD.MinimumEnabled = true;
             this.endWeekIUD.MinimumSize = new System.Drawing.Size(100, 0);
             this.endWeekIUD.Name = "endWeekIUD";
             this.endWeekIUD.ShowText = false;
@@ -534,7 +556,9 @@ namespace Schelendar
             this.endWeekIUD.TabIndex = 2;
             this.endWeekIUD.Text = "uiIntegerUpDown1";
             this.endWeekIUD.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.endWeekIUD.Value = 1;
             this.endWeekIUD.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.endWeekIUD.ValueChanged += new Sunny.UI.UIIntegerUpDown.OnValueChanged(this.endWeekIUD_ValueChanged);
             // 
             // uiPanel1
             // 
@@ -555,6 +579,7 @@ namespace Schelendar
             // 
             this.ensureBtn.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ensureBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ensureBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.ensureBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.ensureBtn.Location = new System.Drawing.Point(212, 2);
             this.ensureBtn.MinimumSize = new System.Drawing.Size(1, 1);

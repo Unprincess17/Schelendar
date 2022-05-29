@@ -9,9 +9,14 @@ namespace Schelendar
     public partial class CourseAddForm : UIForm
     {
         /// <summary>
-        /// 要修改的课程名
+        /// 要修改的课程
         /// </summary>
         private int courseId;
+
+        /// <summary>
+        /// 当前课表的学期
+        /// </summary>
+        private int semaster;
 
         /// <summary>
         /// 一天中的课程数量
@@ -33,7 +38,7 @@ namespace Schelendar
         /// </summary>
         public SchCourse SchCourse;
 
-        public CourseAddForm(int courseId, int dayCourseNumber, int dayOfWeek, int weekLength)
+        public CourseAddForm(int courseId, int dayCourseNumber, int dayOfWeek, int weekLength, int semaster)
         {
             InitializeComponent();
             InitTextBox();
@@ -41,37 +46,26 @@ namespace Schelendar
             this.dayCourseNumber = dayCourseNumber;
             this.dayOfWeek = dayOfWeek;
             this.weekLength = weekLength;
+            this.semaster = semaster;
+            startTimeIUD.Minimum = 1;
+            endTimeIUD.Minimum = 1;
+            startTimeIUD.Maximum = endTimeIUD.Minimum;
+            endTimeIUD.Maximum = dayCourseNumber;
+            startWeekIUD.Minimum = 1;
+            endWeekIUD.Minimum = 1;
+            startWeekIUD.Maximum = endTimeIUD.Minimum;
+            endWeekIUD.Maximum = weekLength;
         }
 
 
-        /// TODO: 根据传入课程ID来在查找课程信息
+        /// TODO: 根据传入课程ID来在查找课程信息以及显示到界面
         /// <summary>
         /// 假如原位置已有课程，则需要先将原课程信息显示，然后修改
         /// </summary>
         private void InitCourseInfo()
         {
         }
-
-
-        /// TODO: 使用SchCourseManage
-        /// <summary>
-        /// 判断课程事件设置是否合法
-        /// </summary>
-        private bool IsTimeRule()
-        {
-            return true;
-        }
-
-
-        /// TODO: 使用SchCourseManger
-        /// <summary>
-        /// 判断课程上课周数设置是否合法
-        /// </summary>
-        private bool IsWeekRule()
-        {
-            return true;
-        }
-
+        
 
         /// <summary>
         /// 因为SunnyUI原因只能在代码中动态改变颜色
@@ -139,7 +133,7 @@ namespace Schelendar
         }
 
 
-        /// TODO: 储存新创建或修改的课程信息，返回到成员变量SchCourse来使课表界面刷新
+        /// TODO: Manager中调用数据库添加函数，返回为true时新建课程对象来传递，储存新创建或修改的课程信息，返回到成员变量SchCourse来使课表界面刷新
         /// <summary>
         /// 确认点击事件
         /// </summary>
@@ -147,9 +141,49 @@ namespace Schelendar
         /// <param name="e"></param>
         private void ensureBtn_Click(object sender, EventArgs e)
         {
-            if (IsTimeRule() && IsWeekRule())
-            {
-            }
+            SchCourse = new SchCourse(courseNameTB.Text, locationDistrictTB.Text, locationBuildingTB.Text,
+                locationRoomTB.Text, teacherNameTB.Text, startWeekIUD.Value, endWeekIUD.Value, dayOfWeek, semaster,
+                startTimeIUD.Value, endTimeIUD.Value);
+        }
+
+        /// <summary>
+        /// 动态改变结束时间最小值为开始时间的值，保证逻辑正确
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="value"></param>
+        private void startTimeIUD_ValueChanged(object sender, int value)
+        {
+            endTimeIUD.Minimum = ((UIIntegerUpDown) sender).Value;
+        }
+
+        /// <summary>
+        /// 动态改变开始时间最大值为结束时间的值，保证逻辑正确
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="value"></param>
+        private void endTimeIUD_ValueChanged(object sender, int value)
+        {
+            startTimeIUD.Maximum = ((UIIntegerUpDown) sender).Value;
+        }
+
+        /// <summary>
+        /// 动态改变结束周数最小值为开始周数的值，保证逻辑正确
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="value"></param>
+        private void startWeekIUD_ValueChanged(object sender, int value)
+        {
+            endWeekIUD.Minimum = ((UIIntegerUpDown) sender).Value;
+        }
+
+        /// <summary>
+        /// 动态改变开始周数最大值为结束周数的值，保证逻辑正确
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="value"></param>
+        private void endWeekIUD_ValueChanged(object sender, int value)
+        {
+            startWeekIUD.Maximum = ((UIIntegerUpDown) sender).Value;
         }
     }
 }
