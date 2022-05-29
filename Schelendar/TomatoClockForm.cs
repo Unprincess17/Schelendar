@@ -61,7 +61,8 @@ namespace Schelendar
             
             tmrWorkTime.Enabled = true;                          //开始计时   
             pcbWorkTime.Value = pcbWorkTime.Maximum = workTime;
-            pcbRestTime.Value = pcbRestTime.Maximum = restTime;
+            if(restTime > 0)
+                pcbRestTime.Value = pcbRestTime.Maximum = restTime;
 
             pcbWorkTime.Step = pcbRestTime.Step = 1;
             isRun = true;                   //正在运行
@@ -122,6 +123,7 @@ namespace Schelendar
                 SetForegroundWindow(this.Handle);
                 MessageBox.Show("恭喜完成一个番茄钟周期");
                 btnStart.Show();
+                btnPause.Hide();
             }
         }
 
@@ -180,6 +182,7 @@ namespace Schelendar
         {
             tmrWorkTime.Enabled = tmrRestTime.Enabled = false;
             btnPause.Text = "暂停计时";
+            btnPause.Hide();
             lblWorkTime.Text = lblRestTime.Text =  "0:0:0";
             workTime = restTime = 0;
             pcbWorkTime.Value = pcbRestTime.Value = 0;

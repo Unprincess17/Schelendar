@@ -155,8 +155,11 @@
             // iudRestTime
             // 
             this.iudRestTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.iudRestTime.HasMinimum = true;
             this.iudRestTime.Location = new System.Drawing.Point(144, 114);
             this.iudRestTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.iudRestTime.Minimum = 0;
+            this.iudRestTime.MinimumEnabled = true;
             this.iudRestTime.MinimumSize = new System.Drawing.Size(100, 0);
             this.iudRestTime.Name = "iudRestTime";
             this.iudRestTime.ShowText = false;
@@ -170,8 +173,11 @@
             // iudWorkTime
             // 
             this.iudWorkTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.iudWorkTime.HasMinimum = true;
             this.iudWorkTime.Location = new System.Drawing.Point(144, 73);
             this.iudWorkTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.iudWorkTime.Minimum = 1;
+            this.iudWorkTime.MinimumEnabled = true;
             this.iudWorkTime.MinimumSize = new System.Drawing.Size(100, 0);
             this.iudWorkTime.Name = "iudWorkTime";
             this.iudWorkTime.ShowText = false;
