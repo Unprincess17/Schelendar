@@ -16,7 +16,31 @@ namespace Schelendar
         static void Main()
         {
 
-            //SchUserManager schUserManager = new SchUserManager();
+            UserManagerTest();
+            //DBTest();
+
+
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            ////Application.Run(new LoginForm());
+            ////Application.Run(new FarmForm());
+            //Application.Run(new MainForm());
+
+        }
+
+        static void DBTest()
+        {
+            SchUserDBHelper dbHelper = new SchUserDBHelper();
+            dbHelper.CreateUsersDB();
+        }
+
+        static void UserManagerTest()
+        {
+            SchUserDBHelper dbHelper = new SchUserDBHelper();
+            dbHelper.CreateUsersDB();
+            SchUserManager.AddUser(new SchUser("fs","123"));
+
+
 
             //SchUser sf = new SchUser(0, "Gong Shufan");
             //sf.SchClasses.Add(new SchClass(0, "数据库", 3.ToString(), 2.ToString(), 106.ToString(), "", 1, 16, 1, 4, "08:00", "10:35"));
@@ -45,20 +69,6 @@ namespace Schelendar
 
             //Console.WriteLine(typeof(List<SchEvent>));
             //Console.ReadKey();
-
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //MainForm mainFormd = new MainForm();
-            //MyLoginForm myLoginForm = new MyLoginForm();
-            //Application.Run(myLoginForm);
-
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new LoginForm());
-            //Application.Run(new FarmForm());
-            Application.Run(new MainForm());
-
         }
     }
 }

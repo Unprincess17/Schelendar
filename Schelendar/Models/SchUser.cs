@@ -17,7 +17,7 @@ namespace Schelendar.Models
     public class SchUser
     {
         /// <summary>
-        /// 用户ID
+        /// 用户ID,最小为1
         /// </summary>
         public int SchUserID { get; set; }  
         
@@ -30,6 +30,11 @@ namespace Schelendar.Models
         /// 用户经验值
         /// </summary>
         public int UserExperience { get; set; }
+        
+        /// <summary>
+        /// 账户密码
+        /// </summary>
+        public string Password { get; set; }
 
         /// <summary>
         /// 记住我字段
@@ -56,7 +61,7 @@ namespace Schelendar.Models
         [XmlIgnore]
         public ConcurrentBag<SchCourse> SchClasses { get; set; }
 
-        public SchUser(int schUserID, string userName, int isRmbMe = 0, int isRmbPasswd = 0, int isAutoLogin = 0)
+        public SchUser( string userName, string password, int schUserID = 0, int isRmbMe = 0, int isRmbPasswd = 0, int isAutoLogin = 0)
         {
             try
             {
@@ -67,6 +72,7 @@ namespace Schelendar.Models
                 }
                 this.SchUserID = schUserID;
                 this.UserName = userName;
+                this.Password = password;
                 this.UserExperience = 0;
                 this.IsRmbMe = isRmbMe;
                 this.IsRmbPasswd = isRmbPasswd;

@@ -64,12 +64,12 @@ namespace Schelendar.FarmClass
         public static int readdata(string Username)
         {
             //1成功登陆，2找不到账号，3密码错误
-            var fileName = "user.db";
+            var fileName = "FarmUsers.db";
             SQLiteConnection cn = new SQLiteConnection("data source=" + fileName);//建立连接对象
             SQLiteCommand cmd = new SQLiteCommand();
             cn.Open();
             cmd.Connection = cn;
-            cmd.CommandText = $"SELECT password FROM user where username='{Username}'";
+            cmd.CommandText = $"SELECT password FROM FarmUsers where username='{Username}'";
             var result = cmd.ExecuteScalar();
             cn.Close();
             if (result == null)//返回为空，没这个用户
@@ -82,32 +82,32 @@ namespace Schelendar.FarmClass
                 username = Username;
                 //具体读取数据
                 cn.Open();
-                cmd.CommandText = $"SELECT lv FROM user where username='{Username}'";
+                cmd.CommandText = $"SELECT lv FROM FarmUsers where username='{Username}'";
                 lv = (int)cmd.ExecuteScalar();
-                cmd.CommandText = $"SELECT expnow FROM user where username='{Username}'";
+                cmd.CommandText = $"SELECT expnow FROM FarmUsers where username='{Username}'";
                 expnow = (int)cmd.ExecuteScalar();
-                cmd.CommandText = $"SELECT expmax FROM user where username='{Username}'";
+                cmd.CommandText = $"SELECT expmax FROM FarmUsers where username='{Username}'";
                 expmax = (int)cmd.ExecuteScalar();
-                cmd.CommandText = $"SELECT gold FROM user where username='{Username}'";
+                cmd.CommandText = $"SELECT gold FROM FarmUsers where username='{Username}'";
                 gold = (int)cmd.ExecuteScalar();
                 for (int i = 1; i <= 16; i++)
                 {
-                    cmd.CommandText = $"SELECT {"seed" + i} FROM user where username='{Username}'";
+                    cmd.CommandText = $"SELECT {"seed" + i} FROM FarmUsers where username='{Username}'";
                     seeds[i] = (int)cmd.ExecuteScalar();
                 }
                 for (int i = 1; i <= 12; i++)
                 {
-                    cmd.CommandText = $"SELECT {"unlocked" + i} FROM user where username='{Username}'";
+                    cmd.CommandText = $"SELECT {"unlocked" + i} FROM FarmUsers where username='{Username}'";
                     unlocked[i] = (int)cmd.ExecuteScalar();
                 }
                 for (int i = 1; i <= 12; i++)
                 {
-                    cmd.CommandText = $"SELECT {"planted" + i} FROM user where username='{Username}'";
+                    cmd.CommandText = $"SELECT {"planted" + i} FROM FarmUsers where username='{Username}'";
                     planted[i] = (int)cmd.ExecuteScalar();
                 }
                 for (int i = 1; i <= 12; i++)
                 {
-                    cmd.CommandText = $"SELECT {"ts" + i} FROM user where username='{Username}'";
+                    cmd.CommandText = $"SELECT {"ts" + i} FROM FarmUsers where username='{Username}'";
                     timestart[i] = (int)cmd.ExecuteScalar();
                 }
                 cn.Close();
@@ -117,7 +117,7 @@ namespace Schelendar.FarmClass
         public static void savedata()//保存玩家数据
         {
             //连接数据库
-            var fileName = "user.db";
+            var fileName = "FarmUsers.db";
             SQLiteConnection cn = new SQLiteConnection("data source=" + fileName);//建立连接对象
             SQLiteCommand cmd = new SQLiteCommand();
             cn.Open();
@@ -164,7 +164,7 @@ namespace Schelendar.FarmClass
             for (int i = 1; i <= 12; i++)
                 timestart[i] = 0;
             //保存玩家
-            var fileName = "user.db";
+            var fileName = "FarmUsers.db";
             SQLiteConnection cn = new SQLiteConnection("data source=" + fileName);//建立连接对象
             SQLiteCommand cmd = new SQLiteCommand();
             cmd.Connection = cn;

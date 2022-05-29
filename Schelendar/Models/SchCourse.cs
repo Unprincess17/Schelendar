@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using System.Data.SQLite;
 
 namespace Schelendar.Models
 {
@@ -13,9 +14,9 @@ namespace Schelendar.Models
 	/// </summary>
 	public class SchCourse : SchTask, IEquatable<SchCourse>
     {
-		/// <summary>
-		/// 课程ID
-		/// </summary>
+        /// <summary>
+        /// 课程ID
+        /// </summary>
 		public int SchCourseID { get; set; }
 
 		/// <summary>
@@ -75,7 +76,7 @@ namespace Schelendar.Models
 		/// <param name="semaster"></param>
 		/// <param name="startTime">上课时间，格式为"HH:MM"</param>
 		/// <param name="endTime">下课时间，格式为"HH:MM"</param>
-		public SchCourse(int schCourseId, string schCourseName, string district, string building, string classroom, string teacherName, int startWeek, int endWeek, int dayofWeek, int semaster, string startTime, string endTime):base(schCourseId, schCourseName, district+building+classroom, DateTime.Now, DateTime.Now, 1, 0)
+		public SchCourse(int schCourseId, string schCourseName, string district, string building, string classroom, string teacherName, int startWeek, int endWeek, int dayofWeek, int semaster, string startTime, string endTime):base(schCourseId, schCourseName, district+building+classroom, DateTime.Now, DateTime.Now, 1)
         {
             SchCourseID = schCourseId;
             SchCourseName = schCourseName;

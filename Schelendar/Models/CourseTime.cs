@@ -27,6 +27,12 @@ namespace Schelendar.Models
             Minute= d.Minute;
         }
 
+        public CourseTime()
+        {
+            Hour = 0;
+            Minute = 0;
+        }
+
         public override bool Equals(object obj)
         {
             return obj is CourseTime time &&
