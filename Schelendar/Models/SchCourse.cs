@@ -128,6 +128,18 @@ namespace Schelendar.Models
         }
 
 
+        /// <summary>
+        /// 用来保存旧的时间信息来更新显示
+        /// </summary>
+        /// <param name="startTime"></param>
+        /// <param name="endTime"></param>
+        public SchCourse(int startTime, int endTime)
+        {
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+        }
+
+
         public override bool Equals(object obj)
         {
             return Equals(obj as SchCourse);
