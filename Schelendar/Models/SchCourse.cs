@@ -51,7 +51,7 @@ namespace Schelendar.Models
         /// <summary>
         /// 上该课程的学期
         /// </summary>
-        public int Semaster { set; get; }
+        public int Semester { set; get; }
 
         /// <summary>
         /// 上课时间第几节
@@ -75,11 +75,11 @@ namespace Schelendar.Models
         /// <param name="startWeek"></param>
         /// <param name="endWeek"></param>
         /// <param name="dayofWeek"></param>
-        /// <param name="semaster"></param>
+        /// <param name="semester"></param>
         /// <param name="startTime">上课时间</param>
         /// <param name="endTime">下课时间</param>
         public SchCourse(int schCourseId, string schCourseName, string district, string building, string classroom,
-            string teacherName, int startWeek, int endWeek, int dayofWeek, int semaster, int startTime, int endTime) :
+            string teacherName, int startWeek, int endWeek, int dayofWeek, int semester, int startTime, int endTime) :
             base(schCourseId, schCourseName, district + building + classroom, DateTime.Now, DateTime.Now, 1, 0)
         {
             SchCourseID = schCourseId;
@@ -89,7 +89,7 @@ namespace Schelendar.Models
             StartWeek = startWeek;
             EndWeek = endWeek;
             DayofWeek = dayofWeek;
-            Semaster = semaster;
+            Semester = semester;
             StartTime = startTime;
             EndTime = endTime;
         }
@@ -110,11 +110,11 @@ namespace Schelendar.Models
         /// <param name="startWeek"></param>
         /// <param name="endWeek"></param>
         /// <param name="dayofWeek"></param>
-        /// <param name="semaster"></param>
+        /// <param name="semester"></param>
         /// <param name="startTime"></param>
         /// <param name="endTime"></param>
         public SchCourse(string schCourseName, string district, string building, string classroom, string teacherName,
-            int startWeek, int endWeek, int dayofWeek, int semaster, int startTime, int endTime)
+            int startWeek, int endWeek, int dayofWeek, int semester, int startTime, int endTime)
         {
             this.SchCourseName = schCourseName;
             this.ClassLocation = new ClassLocation(district, building, classroom);
@@ -122,7 +122,7 @@ namespace Schelendar.Models
             this.StartWeek = startWeek;
             this.EndWeek = endWeek;
             this.DayofWeek = dayofWeek;
-            this.Semaster = semaster;
+            this.Semester = semester;
             this.StartTime = startTime;
             this.EndTime = endTime;
         }

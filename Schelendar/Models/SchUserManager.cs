@@ -114,7 +114,7 @@ namespace Schelendar.Models
         {
             try
             {
-                return SchUsers.First(o => o.SchUserID.Equals(userID)).SchClasses.Where(c => c.Semaster.Equals(semasterID)).ToList();
+                return SchUsers.First(o => o.SchUserID.Equals(userID)).SchClasses.Where(c => c.Semester.Equals(semasterID)).ToList();
             }
             catch(ArgumentNullException e)
             {

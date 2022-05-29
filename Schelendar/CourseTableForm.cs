@@ -24,7 +24,7 @@ namespace Schelendar
         /// 当前课表的Id
         /// </summary>
         private int classTableId;
-        
+
         /// <summary>
         /// 课表对象
         /// </summary>
@@ -43,7 +43,6 @@ namespace Schelendar
         public ClassTableForm()
         {
             InitializeComponent();
-            // InitTableRows(13);
             InitTableRows(_schCourseTable.DayCourseNumber);
             // 初始化时间
             for (int i = 0; i < _schCourseTable.DayCourseNumber; i++)
@@ -55,8 +54,6 @@ namespace Schelendar
                                    _schCourseTable.EveryCourseTime[i].GetValue("EndTime");
                 uiClassTableLayoutPanel.Controls.Add(uiTimeLable, 0, i);
             }
-            
-
         }
 
 
@@ -69,7 +66,7 @@ namespace Schelendar
             weekLable.Text = "WEEK " + number;
         }
 
-        
+
         /// <summary>
         /// 单元格初始化
         /// </summary>
@@ -87,9 +84,8 @@ namespace Schelendar
                     uiClassLabel.DoubleClick += uiClassLabel_DoubleClick;
                     uiClassLabel.MouseHover += uiClassLabel_MouseHover;
                     uiClassLabel.MouseLeave += uiClassLabel_MouseLeave;
-                    uiClassTableLayoutPanel.Controls.Add(uiClassLabel, i+1, uiClassTableLayoutPanel.RowCount-1);
+                    uiClassTableLayoutPanel.Controls.Add(uiClassLabel, i + 1, uiClassTableLayoutPanel.RowCount - 1);
                 }
-                
             }
         }
 
@@ -105,7 +101,6 @@ namespace Schelendar
                 uiLabel.Text = "双击添加课程";
                 uiLabel.TextAlign = ContentAlignment.MiddleCenter;
             }
-            
         }
 
 
@@ -119,10 +114,9 @@ namespace Schelendar
             {
                 uiLabel.Text = String.Empty;
             }
-            
         }
 
-        
+
         /// TODO: 如何根据点击的Label来获取课程的Id来创建add页面
         /// <summary>
         /// 双击添加课程
@@ -131,18 +125,18 @@ namespace Schelendar
         {
             UILabel uiLabel = (UILabel) sender;
 
-            CourseAddForm courseAddForm = new CourseAddForm(0, _schCourseTable.DayCourseNumber, 
-                uiClassTableLayoutPanel.GetColumn(uiLabel), _schCourseTable.WeekLength, 
+            CourseAddForm courseAddForm = new CourseAddForm(0, _schCourseTable.DayCourseNumber,
+                uiClassTableLayoutPanel.GetColumn(uiLabel), _schCourseTable.WeekLength,
                 _schCourseTable.CourseTableId);
             courseAddForm.ShowDialog();
             if (courseAddForm.DialogResult == DialogResult.OK)
             {
                 SchCourse schCourse = courseAddForm.SchCourse;
                 courseAddForm.Dispose();
-                UpdateCourseShow(uiLabel, schCourse);
+                UpdateCourseShow(uiLabel,schCourse);
             }
         }
-        
+
 
         /// <summary>
         /// 判断所展示的是否为第一周,如果是则上一周按钮功能无反应
@@ -152,7 +146,7 @@ namespace Schelendar
             return displayedWeekNumber <= 1;
         }
 
-        
+
         /// <summary>
         /// 判断是否为最后一周，若是，则下一周按钮无反应
         /// </summary>
@@ -161,7 +155,7 @@ namespace Schelendar
             return displayedWeekNumber >= _schCourseTable.WeekLength;
         }
 
-        
+
         /// <summary>
         /// 展示前一周课程的按钮
         /// </summary>
@@ -175,7 +169,7 @@ namespace Schelendar
             }
         }
 
-        
+
         /// <summary>
         /// 展示下一周课程的按钮
         /// </summary>
@@ -196,7 +190,6 @@ namespace Schelendar
         /// </summary>
         private void SetCurWeekNumber()
         {
-            
         }
 
 
@@ -206,7 +199,6 @@ namespace Schelendar
         /// </summary>
         private void UpdateCourseShow(int displayWeekNumber)
         {
-            
         }
 
 
@@ -216,16 +208,73 @@ namespace Schelendar
         /// </summary>
         private void UpdateCourseShow(UILabel uiLabel, SchCourse newSchCourse)
         {
-            uiLabel.Text = "双击处";
+            int oldStartTime = uiClassTableLayoutPanel.GetRow(uiLabel) + 1;
+            int oldEndTime = oldStartTime + uiClassTableLayoutPanel.GetRowSpan(uiLabel) - 1;
+            if (oldStartTime != newSchCourse.StartTime)
+            {
+                uiLabel.Text = String.Empty;
+                uiLabel.BackColor = Color.FromArgb(243, 249, 255);
+                uiClassTableLayoutPanel.SetRowSpan(uiLabel, 1);
+                SetRangeVisible(newSchCourse.DayofWeek, oldStartTime, oldEndTime, true);
+                SetRangeVisible(newSchCourse.DayofWeek, newSchCourse.StartTime, newSchCourse.EndTime, false);
+
+                Control control =
+                    uiClassTableLayoutPanel.GetControlFromPosition(newSchCourse.DayofWeek, newSchCourse.StartTime - 1);
+                WriteCourseInfo(control, newSchCourse);
+                uiClassTableLayoutPanel.SetRowSpan(control, newSchCourse.EndTime - newSchCourse.StartTime + 1);
+            }
+            else
+            {
+                if (oldEndTime < newSchCourse.EndTime)
+                {
+                    SetRangeVisible(newSchCourse.DayofWeek, oldEndTime, newSchCourse.EndTime, false);
+                    uiClassTableLayoutPanel.SetRowSpan(uiLabel, newSchCourse.EndTime - newSchCourse.StartTime + 1);
+                }
+                else
+                {
+                    SetRangeVisible(newSchCourse.DayofWeek, newSchCourse.EndTime, oldEndTime, true);
+                    uiClassTableLayoutPanel.SetRowSpan(uiLabel, newSchCourse.EndTime - newSchCourse.StartTime + 1);
+                }
+                WriteCourseInfo(uiLabel, newSchCourse);
+            }
         }
 
-        
+
+        /// <summary>
+        /// 设置课表单元格对应列的行范围的Visible值
+        /// </summary>
+        /// <param name="column">列</param>
+        /// <param name="rowBegin">开始行数</param>
+        /// <param name="rowEnd">结束行数</param>
+        /// <param name="visible">是否可见</param>
+        private void SetRangeVisible(int column, int rowBegin, int rowEnd, bool visible)
+        {
+            for (int i = rowBegin; i < rowEnd; i++)
+            {
+                uiClassTableLayoutPanel.GetControlFromPosition(column, i).Visible = visible;
+            }
+        }
+
+
         /// <summary>
         /// 判断课程是否在当前展示
         /// </summary>
         private bool IsCourseShow(SchCourse schClass)
         {
             return schClass.StartWeek <= displayedWeekNumber && schClass.EndWeek >= displayedWeekNumber;
+        }
+
+
+        /// <summary>
+        /// 填写课程信息的单元格
+        /// </summary>
+        /// <param name="uiLabel"></param>
+        /// <param name="course"></param>
+        private void WriteCourseInfo(Control uiLabel, SchCourse course)
+        {
+            uiLabel.Text = course.SchCourseName + Environment.NewLine + course.ClassLocation +
+                           Environment.NewLine + course.TeacherName;
+            uiLabel.BackColor = Color.Chocolate;
         }
     }
 }

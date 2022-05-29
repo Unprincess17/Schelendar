@@ -16,7 +16,7 @@ namespace Schelendar
         /// <summary>
         /// 当前课表的学期
         /// </summary>
-        private int semaster;
+        private int semester;
 
         /// <summary>
         /// 一天中的课程数量
@@ -38,7 +38,7 @@ namespace Schelendar
         /// </summary>
         public SchCourse SchCourse;
 
-        public CourseAddForm(int courseId, int dayCourseNumber, int dayOfWeek, int weekLength, int semaster)
+        public CourseAddForm(int courseId, int dayCourseNumber, int dayOfWeek, int weekLength, int semester)
         {
             InitializeComponent();
             InitTextBox();
@@ -46,7 +46,7 @@ namespace Schelendar
             this.dayCourseNumber = dayCourseNumber;
             this.dayOfWeek = dayOfWeek;
             this.weekLength = weekLength;
-            this.semaster = semaster;
+            this.semester = semester;
             startTimeIUD.Minimum = 1;
             endTimeIUD.Minimum = 1;
             startTimeIUD.Maximum = endTimeIUD.Minimum;
@@ -65,7 +65,7 @@ namespace Schelendar
         private void InitCourseInfo()
         {
         }
-        
+
 
         /// <summary>
         /// 因为SunnyUI原因只能在代码中动态改变颜色
@@ -142,9 +142,10 @@ namespace Schelendar
         private void ensureBtn_Click(object sender, EventArgs e)
         {
             SchCourse = new SchCourse(courseNameTB.Text, locationDistrictTB.Text, locationBuildingTB.Text,
-                locationRoomTB.Text, teacherNameTB.Text, startWeekIUD.Value, endWeekIUD.Value, dayOfWeek, semaster,
+                locationRoomTB.Text, teacherNameTB.Text, startWeekIUD.Value, endWeekIUD.Value, dayOfWeek, semester,
                 startTimeIUD.Value, endTimeIUD.Value);
         }
+
 
         /// <summary>
         /// 动态改变结束时间最小值为开始时间的值，保证逻辑正确
@@ -156,6 +157,7 @@ namespace Schelendar
             endTimeIUD.Minimum = ((UIIntegerUpDown) sender).Value;
         }
 
+        
         /// <summary>
         /// 动态改变开始时间最大值为结束时间的值，保证逻辑正确
         /// </summary>
@@ -165,6 +167,7 @@ namespace Schelendar
         {
             startTimeIUD.Maximum = ((UIIntegerUpDown) sender).Value;
         }
+        
 
         /// <summary>
         /// 动态改变结束周数最小值为开始周数的值，保证逻辑正确
@@ -176,6 +179,7 @@ namespace Schelendar
             endWeekIUD.Minimum = ((UIIntegerUpDown) sender).Value;
         }
 
+        
         /// <summary>
         /// 动态改变开始周数最大值为结束周数的值，保证逻辑正确
         /// </summary>
