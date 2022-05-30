@@ -48,6 +48,7 @@ namespace Schelendar
         {
             public static readonly Color DefaultColor = Color.FromArgb(243, 249, 255);
             public static readonly Color DodgerBlue = Color.DodgerBlue;
+            public static readonly Color WaitForEdit = Color.LightGray;
         }
 
 
@@ -57,12 +58,12 @@ namespace Schelendar
         /// </summary>
         public ClassTableForm()
         {
+            Visible = false;
             InitializeComponent();
-
             InitTableRows(_schCourseTable.DayCourseNumber);
-            // 初始化时间
-            //SetCurWeekNumber();
-            //MarkToday();
+            // TODO: 初始化时间
+            // SetCurWeekNumber();
+            // MarkToday();
             for (int i = 0; i < _schCourseTable.DayCourseNumber; i++)
             {
                 UILabel uiTimeLable = new UILabel();
@@ -72,6 +73,11 @@ namespace Schelendar
                                    _schCourseTable.EveryCourseTime[i].GetValue("EndTime");
                 uiClassTableLayoutPanel.Controls.Add(uiTimeLable, 0, i);
             }
+
+            // TODO: 初始化课表,在这里查询得到列表
+            // InitMap();
+            // UpdateCourseShow();
+            Visible = true;
         }
 
 
@@ -157,19 +163,38 @@ namespace Schelendar
         private void uiClassLabel_DoubleClick(object sender, EventArgs e)
         {
             UILabel uiLabel = (UILabel) sender;
+            Color oldColor = uiLabel.BackColor;
+            uiLabel.BackColor = CourseTableColor.WaitForEdit;
+            SchCourse course = courseUILableMap.GetValue(uiLabel);
+            CourseAddForm courseAddForm;
+            if (course == null)
+            {
+                courseAddForm = new CourseAddForm(uiClassTableLayoutPanel.GetRow(uiLabel) + 1,
+                    _schCourseTable.DayCourseNumber,
+                    uiClassTableLayoutPanel.GetColumn(uiLabel), _schCourseTable.WeekLength,
+                    _schCourseTable.CourseTableId);
+            }
+            else
+            {
+                courseAddForm = new CourseAddForm(course, _schCourseTable.DayCourseNumber,
+                    uiClassTableLayoutPanel.GetColumn(uiLabel), _schCourseTable.WeekLength,
+                    _schCourseTable.CourseTableId);
+            }
 
-            CourseAddForm courseAddForm = new CourseAddForm(0, _schCourseTable.DayCourseNumber,
-                uiClassTableLayoutPanel.GetColumn(uiLabel), _schCourseTable.WeekLength,
-                _schCourseTable.CourseTableId);
             courseAddForm.ShowDialog();
             if (courseAddForm.DialogResult == DialogResult.OK)
             {
+                courseUILableMap.Remove(uiLabel);
                 SchCourse schCourse = courseAddForm.SchCourse;
                 courseAddForm.Dispose();
                 UpdateCourseShow(uiLabel, schCourse);
                 Control control =
                     uiClassTableLayoutPanel.GetControlFromPosition(schCourse.DayofWeek, schCourse.StartTime - 1);
                 courseUILableMap.Add((UILabel) control, schCourse);
+            }
+            else if (courseAddForm.DialogResult == DialogResult.Cancel)
+            {
+                uiLabel.BackColor = oldColor;
             }
         }
 
@@ -273,7 +298,7 @@ namespace Schelendar
         {
             int oldStartTime = uiClassTableLayoutPanel.GetRow(uiLabel) + 1;
             int oldEndTime = oldStartTime + uiClassTableLayoutPanel.GetRowSpan(uiLabel) - 1;
-            SchCourse oldCourse = new SchCourse(oldStartTime, oldEndTime);
+            SchCourse oldCourse = new SchCourse(newSchCourse.DayofWeek, oldStartTime, oldEndTime);
             HideCourse(uiLabel, oldCourse);
             if (IsCourseShow(newSchCourse))
             {

@@ -38,22 +38,41 @@ namespace Schelendar
         /// </summary>
         public SchCourse SchCourse;
 
-        public CourseAddForm(int courseId, int dayCourseNumber, int dayOfWeek, int weekLength, int semester)
+        public CourseAddForm(SchCourse course, int dayCourseNumber, int dayOfWeek, int weekLength, int semester)
         {
             InitializeComponent();
-            InitTextBox();
-            this.courseId = courseId;
+            InitCourseInfo(course);
+            InitIudMaxAndMin(weekLength, dayCourseNumber);
             this.dayCourseNumber = dayCourseNumber;
             this.dayOfWeek = dayOfWeek;
             this.weekLength = weekLength;
             this.semester = semester;
+        }
+        
+        
+        public CourseAddForm(int startTime, int dayCourseNumber, int dayOfWeek, int weekLength, int semester)
+        {
+            InitializeComponent();
+            InitTextBox();
+            startTimeIUD.Value = startTime;
+            endTimeIUD.Value = startTime;
+            InitIudMaxAndMin(weekLength, dayCourseNumber);
+            this.dayCourseNumber = dayCourseNumber;
+            this.dayOfWeek = dayOfWeek;
+            this.weekLength = weekLength;
+            this.semester = semester;
+        }
+
+
+        private void InitIudMaxAndMin(int weekLength, int dayCourseNumber)
+        {
             startTimeIUD.Minimum = 1;
-            endTimeIUD.Minimum = 1;
-            startTimeIUD.Maximum = endTimeIUD.Minimum;
+            endTimeIUD.Minimum = startTimeIUD.Value;
+            startTimeIUD.Maximum = endTimeIUD.Value;
             endTimeIUD.Maximum = dayCourseNumber;
             startWeekIUD.Minimum = 1;
             endWeekIUD.Minimum = 1;
-            startWeekIUD.Maximum = endTimeIUD.Minimum;
+            startWeekIUD.Maximum = endTimeIUD.Value;
             endWeekIUD.Maximum = weekLength;
         }
 
@@ -62,8 +81,17 @@ namespace Schelendar
         /// <summary>
         /// 假如原位置已有课程，则需要先将原课程信息显示，然后修改
         /// </summary>
-        private void InitCourseInfo()
+        private void InitCourseInfo(SchCourse schCourse)
         {
+            courseNameTB.Text = schCourse.SchCourseName;
+            locationDistrictTB.Text = schCourse.ClassLocation.District;
+            locationBuildingTB.Text = schCourse.ClassLocation.Building;
+            locationRoomTB.Text = schCourse.ClassLocation.Classroom;
+            teacherNameTB.Text = schCourse.TeacherName;
+            startTimeIUD.Value = schCourse.StartTime;
+            endTimeIUD.Value = schCourse.EndTime;
+            startWeekIUD.Value = schCourse.StartWeek;
+            endWeekIUD.Value = schCourse.EndWeek;
         }
 
 
