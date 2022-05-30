@@ -10,11 +10,11 @@ using System.Data.SQLite;
 
 namespace Schelendar.FarmClass
 {
-    public class DBHelper
+    public class FarmDBHelper
     {
         public void create()
         {
-            var fileName = "user.db";
+            var fileName = "FarmUsers.db";
             if (File.Exists(fileName) == false)//不存在用户文件
             {
                 SQLiteConnection.CreateFile(fileName);//创建数据库
@@ -26,7 +26,7 @@ namespace Schelendar.FarmClass
             cn.Open();//连接
             cmd.Connection = cn;
             cmd.CommandText =
-                "CREATE TABLE IF NOT EXISTS user(" +
+                "CREATE TABLE IF NOT EXISTS FarmUsers(" +
                 "username varchar(10) UNIQUE," +
                 "password varchar(100)," +
                 "lv int," +

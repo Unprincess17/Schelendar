@@ -25,8 +25,8 @@ namespace Schelendar
         private bool plant = false;     //种植模式
         public FarmForm()
         {
-            DBHelper dBHelper = new DBHelper();
-            dBHelper.create();
+            FarmDBHelper farmDBHelper = new FarmDBHelper();
+            farmDBHelper.create();
             //PlayerManager.initnewplayer("test");
             PlayerManager.readdata("test");
             InitializeComponent();      //初始化组件

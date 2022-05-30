@@ -21,6 +21,8 @@ namespace Schelendar.Models
         /// </summary>
         [XmlElementAttribute("EventID")]
         public int SchTaskID { get; set; }
+
+        public int SchTaskGroupID { get; set; }
         /// <summary>
         /// 事件描述信息
         /// </summary>
@@ -52,9 +54,21 @@ namespace Schelendar.Models
         /// </summary>
         public int UserID { get; set; }
 
-        public SchTask(int schTaskId, string schTaskInfo, string schTaskLocation, DateTime startDate, DateTime endDate, int isRepeat, int isDone)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="schTaskId"></param>
+        /// <param name="schTaskInfo"></param>
+        /// <param name="schTaskLocation"></param>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <param name="isRepeat"></param>
+        /// <param name="isDone"></param>
+        /// <param name="schTaskGroupID">默认为0，表示非组事件</param>
+        public SchTask(int schTaskId, string schTaskInfo, string schTaskLocation, DateTime startDate, DateTime endDate, int isRepeat = 0, int isDone = 0, int schTaskGroupID = 0)
         {
             SchTaskID = schTaskId;
+            SchTaskGroupID = schTaskGroupID; 
             SchTaskInfo = schTaskInfo;
             SchTaskLocation = schTaskLocation;
             StartDate = startDate;

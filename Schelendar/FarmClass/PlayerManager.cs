@@ -64,12 +64,12 @@ namespace Schelendar.FarmClass
         public static int readdata(string Username)
         {
             //1成功登陆，2找不到账号，3密码错误
-            var fileName = "user.db";
+            var fileName = "FarmUsers.db";
             SQLiteConnection cn = new SQLiteConnection("data source=" + fileName);//建立连接对象
             SQLiteCommand cmd = new SQLiteCommand();
             cn.Open();
             cmd.Connection = cn;
-            cmd.CommandText = $"SELECT password FROM user where username='{Username}'";
+            cmd.CommandText = $"SELECT password FROM FarmUsers where username='{Username}'";
             var result = cmd.ExecuteScalar();
             cn.Close();
             if (result == null)//返回为空，没这个用户
@@ -82,32 +82,32 @@ namespace Schelendar.FarmClass
                 username = Username;
                 //具体读取数据
                 cn.Open();
-                cmd.CommandText = $"SELECT lv FROM user where username='{Username}'";
+                cmd.CommandText = $"SELECT lv FROM FarmUsers where username='{Username}'";
                 lv = (int)cmd.ExecuteScalar();
-                cmd.CommandText = $"SELECT expnow FROM user where username='{Username}'";
+                cmd.CommandText = $"SELECT expnow FROM FarmUsers where username='{Username}'";
                 expnow = (int)cmd.ExecuteScalar();
-                cmd.CommandText = $"SELECT expmax FROM user where username='{Username}'";
+                cmd.CommandText = $"SELECT expmax FROM FarmUsers where username='{Username}'";
                 expmax = (int)cmd.ExecuteScalar();
-                cmd.CommandText = $"SELECT gold FROM user where username='{Username}'";
+                cmd.CommandText = $"SELECT gold FROM FarmUsers where username='{Username}'";
                 gold = (int)cmd.ExecuteScalar();
                 for (int i = 1; i <= 16; i++)
                 {
-                    cmd.CommandText = $"SELECT {"seed" + i} FROM user where username='{Username}'";
+                    cmd.CommandText = $"SELECT {"seed" + i} FROM FarmUsers where username='{Username}'";
                     seeds[i] = (int)cmd.ExecuteScalar();
                 }
                 for (int i = 1; i <= 12; i++)
                 {
-                    cmd.CommandText = $"SELECT {"unlocked" + i} FROM user where username='{Username}'";
+                    cmd.CommandText = $"SELECT {"unlocked" + i} FROM FarmUsers where username='{Username}'";
                     unlocked[i] = (int)cmd.ExecuteScalar();
                 }
                 for (int i = 1; i <= 12; i++)
                 {
-                    cmd.CommandText = $"SELECT {"planted" + i} FROM user where username='{Username}'";
+                    cmd.CommandText = $"SELECT {"planted" + i} FROM FarmUsers where username='{Username}'";
                     planted[i] = (int)cmd.ExecuteScalar();
                 }
                 for (int i = 1; i <= 12; i++)
                 {
-                    cmd.CommandText = $"SELECT {"ts" + i} FROM user where username='{Username}'";
+                    cmd.CommandText = $"SELECT {"ts" + i} FROM FarmUsers where username='{Username}'";
                     timestart[i] = (int)cmd.ExecuteScalar();
                 }
                 cn.Close();
@@ -117,26 +117,26 @@ namespace Schelendar.FarmClass
         public static void savedata()//保存玩家数据
         {
             //连接数据库
-            var fileName = "user.db";
+            var fileName = "FarmUsers.db";
             SQLiteConnection cn = new SQLiteConnection("data source=" + fileName);//建立连接对象
             SQLiteCommand cmd = new SQLiteCommand();
             cn.Open();
             cmd.Connection = cn;
             //更新数据
-            cmd.CommandText = $"UPDATE user SET lv={lv},expnow={expnow},expmax={expmax},gold={gold} WHERE username='{username}'";
+            cmd.CommandText = $"UPDATE FarmUsers SET lv={lv},expnow={expnow},expmax={expmax},gold={gold} WHERE username='{username}'";
             cmd.ExecuteNonQuery();
             for (int i = 1; i <= 16; i++)
             {
-                cmd.CommandText = $"UPDATE user SET seed{i}={seeds[i]} WHERE username='{username}'";
+                cmd.CommandText = $"UPDATE FarmUsers SET seed{i}={seeds[i]} WHERE username='{username}'";
                 cmd.ExecuteNonQuery();
             }
             for (int i = 1; i <= 12; i++)
             {
-                cmd.CommandText = $"UPDATE user SET unlocked{i}={unlocked[i]} WHERE username='{username}'";
+                cmd.CommandText = $"UPDATE FarmUsers SET unlocked{i}={unlocked[i]} WHERE username='{username}'";
                 cmd.ExecuteNonQuery();
-                cmd.CommandText = $"UPDATE user SET planted{i}={planted[i]} WHERE username='{username}'";
+                cmd.CommandText = $"UPDATE FarmUsers SET planted{i}={planted[i]} WHERE username='{username}'";
                 cmd.ExecuteNonQuery();
-                cmd.CommandText = $"UPDATE user SET ts{i}={timestart[i]} WHERE username='{username}'";
+                cmd.CommandText = $"UPDATE FarmUsers SET ts{i}={timestart[i]} WHERE username='{username}'";
                 cmd.ExecuteNonQuery();
             }
             cn.Close();
@@ -164,11 +164,11 @@ namespace Schelendar.FarmClass
             for (int i = 1; i <= 12; i++)
                 timestart[i] = 0;
             //保存玩家
-            var fileName = "user.db";
+            var fileName = "FarmUsers.db";
             SQLiteConnection cn = new SQLiteConnection("data source=" + fileName);//建立连接对象
             SQLiteCommand cmd = new SQLiteCommand();
             cmd.Connection = cn;
-            cmd.CommandText = $"INSERT INTO user VALUES('{Username}','1',{lv},{expnow},{expmax},{gold}," +
+            cmd.CommandText = $"INSERT INTO FarmUsers VALUES('{Username}','1',{lv},{expnow},{expmax},{gold}," +
                 $"{seeds[1]},{seeds[2]},{seeds[3]},{seeds[4]},{seeds[5]},{seeds[6]},{seeds[7]},{seeds[8]},{seeds[9]},{seeds[10]},{seeds[11]},{seeds[12]},{seeds[13]},{seeds[14]},{seeds[15]},{seeds[16]}," +
                 $"{unlocked[1]},{unlocked[2]},{unlocked[3]},{unlocked[4]},{unlocked[5]},{unlocked[6]},{unlocked[7]},{unlocked[8]},{unlocked[9]},{unlocked[10]},{unlocked[11]},{unlocked[12]}," +
                 $"{planted[1]},{planted[2]},{planted[3]},{planted[4]},{planted[5]},{planted[6]},{planted[7]},{planted[8]},{planted[9]},{planted[10]},{planted[11]},{planted[12]}," +
