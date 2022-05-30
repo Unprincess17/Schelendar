@@ -14,7 +14,7 @@ namespace Schelendar.Models
         /// <summary>
         /// 创建用户表
         /// </summary>
-        public void CreateUsersDB(string fileName = "SchUsers.db")
+        public void CreateUsersDB(string fileName = "SchInfos.db")
         {
             if (File.Exists(fileName) == false)//不存在用户文件
             {
@@ -27,7 +27,7 @@ namespace Schelendar.Models
             cmd.Connection = cn;
             cmd.CommandText =
                 "CREATE TABLE IF NOT EXISTS SchUsers(" +
-                "SchUserID int PRIMARY KEY," +
+                "SchUserID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
                 "UserName varchar(10)," +
                 "Password varchar(100)," +
                 "UserExperience int," +
@@ -41,7 +41,7 @@ namespace Schelendar.Models
 
         }
 
-        public void CreateCoursesDB(string fileName = "Courses.db")
+        public void CreateCoursesDB(string fileName = "SchInfos.db")
         {
             if (File.Exists(fileName) == false)//不存在课程文件
             {
@@ -55,29 +55,30 @@ namespace Schelendar.Models
                 cn.Open();
                 cmd.Connection = cn;
                 cmd.CommandText =
-                    "SchCourseID int NOT NULL," +
-                    "SchUserID int," +
-                    "SchCourseName varchar(100) NOT NULL," +
-                    "District varchar(100)," +
-                    "Building varchar(100)," +
-                    "Classroom varchar(100)," +
-                    "TeacherName varchar(100)," +
-                    "StartWeek int," +
-                    "EndWeek int," +
-                    "DayofWeek int," +
-                    "Semaster int," +
-                    "StartTime varchar(100)," +
-                    "EndTime varchar(100)," +
-                    "FOREIGN KEY (SchCourseID)," +
-                    "FOREIGN KEY (SchUserID) REFERENCES SchUsers(SchUserID)" +
-                    ")";
+                    "CREATE TABLE IF NOT EXISTS [SchCourses](" +
+                    "[SchCourseID] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                    "[SchCourseName] varchar(100) NOT NULL," +
+                    "[District] varchar(100)," +
+                    "[Building] varchar(100)," +
+                    "[Classroom] varchar(100)," +
+                    "[TeacherName] varchar(100)," +
+                    "[StartWeek] int," +
+                    "[EndWeek] int," +
+                    "[DayofWeek] int," +
+                    "[Semaster] int," +
+                    "[StartTime] varchar(100)," +
+                    "[EndTime] varchar(100)," +
+                    /*"FOREIGN KEY (SchCourseID)," +*/
+                    "[SchUserID] int NOT NULL," +
+                    "FOREIGN KEY(SchUserID) REFERENCES SchUsers(SchUserID)" +
+                    ");";
                 cmd.ExecuteNonQuery();
                 cn.Close();//关闭连接
 
             }
         }
         
-        public void CreateTasksDB(string fileName = "Tasks.db")
+        public void CreateTasksDB(string fileName = "SchInfos.db")
         {
             if (File.Exists(fileName) == false)//不存在任务文件
             {
@@ -91,6 +92,7 @@ namespace Schelendar.Models
                 cn.Open();
                 cmd.Connection = cn;
                 cmd.CommandText =
+                    "CREATE TABLE IF NOT EXISTS SchTasks(" +
                     "SchTaskID int NOT NULL," +
                     "SchTaskGroupID int," +
                     "SchUserID int," +

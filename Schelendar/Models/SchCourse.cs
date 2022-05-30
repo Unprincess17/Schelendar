@@ -64,7 +64,7 @@ namespace Schelendar.Models
 		/// <summary>
 		/// Class的构造函数
 		/// </summary>
-		/// <param name="schCourseId"></param>
+		/// <param name="schCourseId">-1 by default, means dangling course</param>
 		/// <param name="schCourseName"></param>
 		/// <param name="district">校区</param>
 		/// <param name="building"></param>
@@ -76,7 +76,7 @@ namespace Schelendar.Models
 		/// <param name="semaster"></param>
 		/// <param name="startTime">上课时间，格式为"HH:MM"</param>
 		/// <param name="endTime">下课时间，格式为"HH:MM"</param>
-		public SchCourse(int schCourseId, string schCourseName, string district, string building, string classroom, string teacherName, int startWeek, int endWeek, int dayofWeek, int semaster, string startTime, string endTime):base(schCourseId, schCourseName, district+building+classroom, DateTime.Now, DateTime.Now, 1)
+		public SchCourse(string schCourseName, string district, string building, string classroom, string teacherName, int startWeek, int endWeek, int dayofWeek, int semaster, string startTime, string endTime, int schCourseId=-1) :base(schCourseId, schCourseName, district+building+classroom, DateTime.Now, DateTime.Now, 1)
         {
             SchCourseID = schCourseId;
             SchCourseName = schCourseName;
@@ -106,6 +106,8 @@ namespace Schelendar.Models
                    SchCourseID == other.SchCourseID;
         }
 
+        public override string ToString() => SchCourseID + SchCourseName;
+
         public override int GetHashCode()
         {
             int hashCode = -1737701667;
@@ -123,11 +125,29 @@ namespace Schelendar.Models
         {
             return !(left == right);
         }
+
+		/// <summary>
+		/// copy constructor
+		/// </summary>
+		/// <param name="previous"></param>
+		public SchCourse(SchCourse previous)
+        {
+			SchCourseID = previous.SchCourseID;
+			SchCourseName = previous.SchCourseName;
+			ClassLocation = previous.ClassLocation;
+			TeacherName = previous.TeacherName;
+			StartWeek = previous.StartWeek;
+			EndWeek = previous.EndWeek;
+			DayofWeek = previous.DayofWeek;
+			Semaster = previous.Semaster;
+			StartTime = previous.StartTime;
+			EndTime = previous.EndTime;
+		}
     }
 	public struct ClassLocation {
-		string District;
-		string Building;
-		string Classroom;
+		public string District;
+		public string Building;
+		public string Classroom;
 		public override string ToString()
         {
 			if(District.Equals(null)|| Building.Equals(null) || Classroom.Equals(null))

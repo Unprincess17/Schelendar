@@ -14,19 +14,27 @@ namespace Schelendar.Models
     public static class SchUserManager
     {
         public static SchUser User { get; set; }
+        public static string UserDBFile { get; set; }
+        public static string CourseDBFile { get; set; }
+        public static string TaskDBFile { get; set; }
         /// <summary>
         /// 学生集合
         /// </summary>
-        //public ConcurrentBag<SchUser> SchUsers { get; set; }
 
+        static SchUserManager()
+        {
+            User = new SchUser();
 
-        //public SchUserManager()
-        //{
-        //    SchUsers = new ConcurrentBag<SchUser>();
-        //}
+            UserDBFile = "SchInfos.db";
+            CourseDBFile = "SchInfos.db";
+            TaskDBFile = "SchInfos.db";
+
+        }
 
 
         #region 非数据库连接
+        //public ConcurrentBag<SchUser> SchUsers { get; set; }
+
         ///// <summary>
         ///// 尝试删除用户，若查询不到则抛出ArgumentException
         ///// </summary>
@@ -42,37 +50,6 @@ namespace Schelendar.Models
         //    SchUsers.TryTake(out u);
         //}
 
-        ///// <summary>
-        ///// 更新指定用户信息
-        ///// 若指定用户不存在则抛出ArgumentException
-        ///// 若更新用户名格式不正确则抛出ArgumentException
-        ///// </summary>
-        ///// <param name="oldUserName">指定用户的用户名</param>
-        ///// <param name="newUser">更新的用户信息</param>
-        ///// <returns></returns>
-        ///// <exception cref="ArgumentException"></exception>
-        //public bool UpdateUserByName(string oldUserName, SchUser newUser)
-        //{
-        //    if(newUser == null)
-        //    {
-        //        return false;
-        //    }
-        //    if (!Regex.IsMatch(newUser.UserName, @"^[\u4E00-\u9FA5A-Za-z\s]+(·[\u4E00-\u9FA5A-Za-z]+)*$"))
-        //    {
-        //        throw new ArgumentException("更改的用户名格式不正确，用户名只能包括汉字和英文。请重新输入");
-        //    }
-        //    try
-        //    {
-        //        SchUser u = SchUsers.FirstOrDefault(o => o.UserName.Equals(oldUserName));
-        //        SchUsers.TryTake(out u);
-        //        SchUsers.Add(newUser);
-        //        return true;
-        //    }
-        //    catch(ArgumentException e)
-        //    {
-        //        throw new ArgumentException($"未找到名称为{oldUserName}的用户，请重新检查输入");
-        //    }
-        //}
 
         ///// <summary>
         ///// 查询指定用户名的用户
@@ -388,11 +365,10 @@ namespace Schelendar.Models
                 throw new ArgumentNullException($"注册失败：用户{user.UserName}状态异常");
             }
 
-            var DBFileName = "SchUsers.db";
             object result;
             try
             {
-                using (SQLiteConnection cn = new SQLiteConnection("data source=" + DBFileName))
+                using (SQLiteConnection cn = new SQLiteConnection("data source=" + UserDBFile))
                 {
                     cn.Open();
                     SQLiteCommand cmd = cn.CreateCommand();
@@ -412,15 +388,15 @@ namespace Schelendar.Models
                 throw new ArgumentException($"注册失败：已存在用户名{user.UserName}");
             }
             //不重复，则添加用户至数据库
-            using (SQLiteConnection cn = new SQLiteConnection("data source=" + DBFileName))
+            using (SQLiteConnection cn = new SQLiteConnection("data source=" + UserDBFile))
             {
                 SQLiteCommand cmd = cn.CreateCommand();
                 cmd.CommandText = $"SELECT COUNT(*)";
                 cn.Open();
                 result = cmd.ExecuteScalar();
                 cn.Close();
-                user.SchUserID = Convert.ToInt32(result) +1;//userID start from 1
-                cmd.CommandText = $"INSERT INTO SchUsers VALUES(NULL,'{user.UserName}', '{user.Password}', '{user.UserExperience}','{user.IsRmbMe}','{user.IsRmbPasswd}','{user.IsAutoLogin}');";
+                user.SchUserID = Convert.ToInt32(result);//userID start from 1
+                cmd.CommandText = $"INSERT INTO SchUsers VALUES('{result}','{user.UserName}', '{user.Password}', '{user.UserExperience}','{user.IsRmbMe}','{user.IsRmbPasswd}','{user.IsAutoLogin}');";
                 cn.Open();
                 //cmd.ExecuteNonQueryAsync();
                 cmd.ExecuteNonQuery();
@@ -428,15 +404,14 @@ namespace Schelendar.Models
                 cn.Close();
             }
         }
-        public static void ReadUser(string UserName, string Password)
+        public static void ReadUser(string userName, string password)
         {
-            var DBFileName = "SchUsers.db";
             object result;
-            using (SQLiteConnection cn = new SQLiteConnection("data source=" + DBFileName))
+            using (SQLiteConnection cn = new SQLiteConnection("data source=" + UserDBFile))
             {
                 cn.Open();
                 SQLiteCommand cmd = cn.CreateCommand();
-                cmd.CommandText = $"SELECT Password FROM user where UserName='{UserName}'";
+                cmd.CommandText = $"SELECT Password FROM SchUsers where UserName='{userName}'";
                 result = cmd.ExecuteScalar();
                 cn.Close();
             }
@@ -446,32 +421,179 @@ namespace Schelendar.Models
             //    throw new ArgumentNullException($"未查询到名称为{UserName}的用户，请检查输入");
             //}
 
-            if (!Password.Equals(result))
+            if (!password.Equals(result))
             {
                 throw new ArgumentException($"用户名或密码错误");
             }
             else
             {//登陆成功
-                User.UserName = UserName;
-                using(SQLiteConnection cn = new SQLiteConnection("data source=" + DBFileName))
+                User.UserName = userName;
+                using(SQLiteConnection cn = new SQLiteConnection("data source=" + UserDBFile))
                 {
                     cn.Open();
                     SQLiteCommand cmd = cn.CreateCommand();
-                    cmd.CommandText = $"SELECT SchUserID FROM SchUsers WHERE UserName='{UserName}'";
-                    User.SchUserID = (int)cmd.ExecuteScalar();
+                    cmd.CommandText = $"SELECT SchUserID FROM SchUsers WHERE UserName='{userName}'";
+                    User.SchUserID = Convert.ToInt32(cmd.ExecuteScalar());
                     //cmd.CommandText = $"SELECT UserExperience FROM SchUsers WHERE UserName='{UserName}'";
-                    cmd.CommandText = $"SELECT Password FROM SchUsers WHERE UserName='{UserName}'";
+                    cmd.CommandText = $"SELECT Password FROM SchUsers WHERE UserName='{userName}'";
                     User.Password = (string)cmd.ExecuteScalar();
-                    cmd.CommandText = $"SELECT IsRmbMe FROM SchUsers WHERE UserName='{UserName}'";
+                    cmd.CommandText = $"SELECT IsRmbMe FROM SchUsers WHERE UserName='{userName}'";
                     User.IsRmbMe = (int)cmd.ExecuteScalar();
-                    cmd.CommandText = $"SELECT IsRmbPasswd FROM SchUsers WHERE UserName='{UserName}'";
+                    cmd.CommandText = $"SELECT IsRmbPasswd FROM SchUsers WHERE UserName='{userName}'";
                     User.IsRmbPasswd = (int)cmd.ExecuteScalar();
-                    cmd.CommandText = $"SELECT IsAutoLogin FROM SchUsers WHERE UserName='{UserName}'";
+                    cmd.CommandText = $"SELECT IsAutoLogin FROM SchUsers WHERE UserName='{userName}'";
                     User.IsAutoLogin = (int)cmd.ExecuteScalar();
                     cn.Close();
                 }
             }
             
+        }
+
+        /// <summary>
+        /// 更新指定用户信息
+        /// 若指定用户不存在则抛出ArgumentException
+        /// 若更新用户名格式不正确则抛出ArgumentException
+        /// </summary>
+        /// <c>不更新用户ID</c>
+        /// <param name="oldUserName">指定用户的用户名</param>
+        /// <param name="newUser">更新的用户信息</param>
+        /// <exception cref="ArgumentException"></exception>
+        public static bool UpdateUser(SchUser newUser)
+        {
+            if (newUser == null)
+            {
+                return false;
+            }
+            if (!Regex.IsMatch(newUser.UserName, @"^[\u4E00-\u9FA5A-Za-z\s]+(·[\u4E00-\u9FA5A-Za-z]+)*$"))
+            {
+                throw new ArgumentException("更改的用户名格式不正确，用户名只能包括汉字和英文。请重新输入");
+            }//用户名检测
+            //TODO:密码检测
+            try
+            {
+                using (SQLiteConnection cn = new SQLiteConnection("data source=" + UserDBFile))
+                {
+                    object result;
+                    SQLiteCommand cmd = cn.CreateCommand();
+                    cn.Close();
+                    cmd.CommandText = $"UPDATE SchUsers SET UserName='{newUser.UserName}', Password='{newUser.Password}', UserExperience='{newUser.UserExperience}',IsRmbMe='{newUser.IsRmbMe}',IsRmbPasswd='{newUser.IsRmbPasswd}',IsAutoLogin=='{newUser.IsAutoLogin}' WHERE SchUserID='{User.SchUserID}';";
+                    cn.Open();
+                    cmd.ExecuteNonQuery();
+                    cn.Close();
+                    return true;
+                }
+            }
+            catch (ArgumentException e)
+            {
+                throw new ArgumentException($"未找到名称为{User.UserName}的用户或更新用户格式有误");
+            }
+        }
+
+        /// <summary>
+        /// 登录用户添加指定课程
+        /// </summary>
+        /// <param name="schCourse"></param>
+        public static void AddCourse(SchCourse course)
+        {
+            if (course == null)
+            {
+                throw new ArgumentNullException($"添加失败：课程{course.SchCourseName}状态异常");
+            }
+
+            object result;
+            try
+            {
+                using (SQLiteConnection cn = new SQLiteConnection("data source=" + CourseDBFile))
+                {
+                    cn.Open();
+                    SQLiteCommand cmd = cn.CreateCommand();
+                    cmd.CommandText = $"SELECT * FROM SchCourses WHERE SchUserID='{User.SchUserID}' AND SchCourseName='{course.SchCourseName}'";
+                    result = cmd.ExecuteScalar();
+                    cn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                e.Source += "课程添加失败";
+                throw e;
+            }
+            ///是否重复
+            if (result != null)
+            {
+                throw new ArgumentException($"添加失败：已存在用课程{course.SchCourseName}");
+            }
+            //不重复，则添加课程至数据库
+            using (SQLiteConnection cn = new SQLiteConnection("data source=" + CourseDBFile))
+            {
+                SQLiteCommand cmd = cn.CreateCommand();
+                cmd.CommandText = $"SELECT COUNT(*)";
+                cn.Open();
+                result = cmd.ExecuteScalar();
+                cn.Close();
+                course.SchCourseID = Convert.ToInt32(result);//courseID start from 1
+                cmd.CommandText = $"INSERT INTO SchCourses VALUES(NULL, '{course.SchCourseName}', '{course.ClassLocation.District}', '{course.ClassLocation.Building}', '{course.ClassLocation.Classroom}', '{course.TeacherName}', '{course.StartWeek}','{course.EndWeek}','{course.DayofWeek}','{course.Semaster}','{course.StartTime}','{course.EndTime}','{User.SchUserID}');";
+                cn.Open();
+                //cmd.ExecuteNonQueryAsync();
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
+        }
+
+        /// <summary>
+        /// 返回登录用户的课程列表
+        /// </summary>
+        /// <returns></returns>
+        public static List<SchCourse> GetCourses()
+        {
+            List<SchCourse> CourseList = new List<SchCourse>();
+            using (SQLiteConnection cn = new SQLiteConnection("data source=" + CourseDBFile))
+            {
+                SQLiteCommand cmd = cn.CreateCommand();
+
+                cmd.CommandText = $"SELECT * FROM SchCourses WHERE SchUserID='{User.SchUserID}';";
+                cn.Open();
+                using(SQLiteDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        CourseList.Add(new SchCourse(reader["SchCourseName"].ToString(), reader["District"].ToString(), reader["Building"].ToString(), reader["Classroom"].ToString(), reader["TeacherName"].ToString(), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["EndWeek"]), Convert.ToInt32(reader["Semaster"]), Convert.ToInt32(reader["StartWeek"]), reader["StartTime"].ToString(), reader["EndTime"].ToString(),Convert.ToInt32(reader["SchCourseID"])));
+                    }
+                }
+
+                cn.Close();
+            }
+            return CourseList;
+        }
+
+        /// <return>
+        /// 返回登录用户指定学期的课程列表
+        /// </return>
+        public static List<SchCourse> GetCourses(int semaster)
+        {
+            object result;
+            List<SchCourse> CourseList = new List<SchCourse>();
+            using (SQLiteConnection cn = new SQLiteConnection("data source=" + CourseDBFile))
+            {
+                SQLiteCommand cmd = cn.CreateCommand();
+
+                cmd.CommandText = $"SELECT * FROM SchCourses WHERE SchUserID='{User.SchUserID}' AND Semaster='{semaster}';";
+                cn.Open();
+                using (SQLiteDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        CourseList.Add(new SchCourse(reader["SchCourseName"].ToString(), reader["District"].ToString(), reader["Building"].ToString(), reader["Classroom"].ToString(), reader["TeacherName"].ToString(), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["EndWeek"]), Convert.ToInt32(reader["Semaster"]), Convert.ToInt32(reader["StartWeek"]), reader["StartTime"].ToString(), reader["EndTime"].ToString(), Convert.ToInt32(reader["SchCourseID"])));
+                    }
+                }
+
+                cn.Close();
+            }
+            return CourseList;
+        }
+
+        public static void DeleteCourse(SchCourse schCourse)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion 
