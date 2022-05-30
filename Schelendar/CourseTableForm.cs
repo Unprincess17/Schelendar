@@ -196,6 +196,11 @@ namespace Schelendar
             {
                 uiLabel.BackColor = oldColor;
             }
+            else if (courseAddForm.DialogResult == DialogResult.Abort)
+            {
+                courseUILableMap.Remove(uiLabel);
+                HideCourse(uiLabel, course);
+            }
         }
 
 

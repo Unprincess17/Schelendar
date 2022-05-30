@@ -11,45 +11,52 @@ namespace Schelendar
         /// <summary>
         /// 要修改的课程
         /// </summary>
-        private int courseId;
+        private readonly int _courseId;
 
         /// <summary>
         /// 当前课表的学期
         /// </summary>
-        private int semester;
-
-        /// <summary>
-        /// 一天中的课程数量
-        /// </summary>
-        private int dayCourseNumber;
+        private readonly int _semester;
 
         /// <summary>
         /// 当前要添加的为星期几的课
         /// </summary>
-        private int dayOfWeek;
-
-        /// <summary>
-        /// 课表最大周数
-        /// </summary>
-        private int weekLength;
+        private readonly int _dayOfWeek;
 
         /// <summary>
         /// 课表界面用来刷新UI
         /// </summary>
         public SchCourse SchCourse;
 
+
+        /// <summary>
+        /// 原位置有课程基础
+        /// </summary>
+        /// <param name="course"></param>
+        /// <param name="dayCourseNumber"></param>
+        /// <param name="dayOfWeek"></param>
+        /// <param name="weekLength"></param>
+        /// <param name="semester"></param>
         public CourseAddForm(SchCourse course, int dayCourseNumber, int dayOfWeek, int weekLength, int semester)
         {
             InitializeComponent();
+            // deleteBtn.Style = UIStyle.Red;
             InitCourseInfo(course);
             InitIudMaxAndMin(weekLength, dayCourseNumber);
-            this.dayCourseNumber = dayCourseNumber;
-            this.dayOfWeek = dayOfWeek;
-            this.weekLength = weekLength;
-            this.semester = semester;
+            this._dayOfWeek = dayOfWeek;
+            this._semester = semester;
+            this._courseId = course.SchCourseID;
         }
-        
-        
+
+
+        /// <summary>
+        /// 原位置无课程基础
+        /// </summary>
+        /// <param name="startTime"></param>
+        /// <param name="dayCourseNumber"></param>
+        /// <param name="dayOfWeek"></param>
+        /// <param name="weekLength"></param>
+        /// <param name="semester"></param>
         public CourseAddForm(int startTime, int dayCourseNumber, int dayOfWeek, int weekLength, int semester)
         {
             InitializeComponent();
@@ -57,13 +64,15 @@ namespace Schelendar
             startTimeIUD.Value = startTime;
             endTimeIUD.Value = startTime;
             InitIudMaxAndMin(weekLength, dayCourseNumber);
-            this.dayCourseNumber = dayCourseNumber;
-            this.dayOfWeek = dayOfWeek;
-            this.weekLength = weekLength;
-            this.semester = semester;
+            this._dayOfWeek = dayOfWeek;
+            this._semester = semester;
+            this._courseId = -1;
         }
 
 
+        /// <summary>
+        /// 初始化IntegerUpDown的最大值和最小值
+        /// </summary>
         private void InitIudMaxAndMin(int weekLength, int dayCourseNumber)
         {
             startTimeIUD.Minimum = 1;
@@ -161,7 +170,7 @@ namespace Schelendar
         }
 
 
-        /// TODO: Manager中调用数据库添加函数，返回为true时新建课程对象来传递，储存新创建或修改的课程信息，返回到成员变量SchCourse来使课表界面刷新
+        /// TODO: Manager添加或修改课程，返回是否成功来判断如何交互
         /// <summary>
         /// 确认点击事件
         /// </summary>
@@ -169,9 +178,31 @@ namespace Schelendar
         /// <param name="e"></param>
         private void ensureBtn_Click(object sender, EventArgs e)
         {
-            SchCourse = new SchCourse(courseNameTB.Text, locationDistrictTB.Text, locationBuildingTB.Text,
-                locationRoomTB.Text, teacherNameTB.Text, startWeekIUD.Value, endWeekIUD.Value, dayOfWeek, semester,
+            SchCourse = new SchCourse(0, courseNameTB.Text, locationDistrictTB.Text, locationBuildingTB.Text,
+                locationRoomTB.Text, teacherNameTB.Text, startWeekIUD.Value, endWeekIUD.Value, _dayOfWeek, _semester,
                 startTimeIUD.Value, endTimeIUD.Value);
+            DialogResult = DialogResult.OK;
+            Close();
+        }
+
+
+        /// TODO: Manager删除对应课程
+        /// <summary>
+        /// 删除确认
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            if (_courseId != -1)
+            {
+                DialogResult = DialogResult.Abort;
+                Close();
+            }
+            else
+            {
+                UIMessageTip.ShowError(text: "课程不存在");
+            }
         }
 
 
@@ -185,7 +216,7 @@ namespace Schelendar
             endTimeIUD.Minimum = ((UIIntegerUpDown) sender).Value;
         }
 
-        
+
         /// <summary>
         /// 动态改变开始时间最大值为结束时间的值，保证逻辑正确
         /// </summary>
@@ -195,7 +226,7 @@ namespace Schelendar
         {
             startTimeIUD.Maximum = ((UIIntegerUpDown) sender).Value;
         }
-        
+
 
         /// <summary>
         /// 动态改变结束周数最小值为开始周数的值，保证逻辑正确
@@ -207,7 +238,7 @@ namespace Schelendar
             endWeekIUD.Minimum = ((UIIntegerUpDown) sender).Value;
         }
 
-        
+
         /// <summary>
         /// 动态改变开始周数最大值为结束周数的值，保证逻辑正确
         /// </summary>

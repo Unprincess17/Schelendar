@@ -62,6 +62,7 @@ namespace Schelendar
             this.uiLabel10 = new Sunny.UI.UILabel();
             this.endWeekIUD = new Sunny.UI.UIIntegerUpDown();
             this.uiPanel1 = new Sunny.UI.UIPanel();
+            this.deleteBtn = new Sunny.UI.UIButton();
             this.ensureBtn = new Sunny.UI.UIButton();
             this.uiTableLayoutPanel6 = new Sunny.UI.UITableLayoutPanel();
             this.uiLabel13 = new Sunny.UI.UILabel();
@@ -562,6 +563,7 @@ namespace Schelendar
             // 
             // uiPanel1
             // 
+            this.uiPanel1.Controls.Add(this.deleteBtn);
             this.uiPanel1.Controls.Add(this.ensureBtn);
             this.uiPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.uiPanel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
@@ -569,22 +571,38 @@ namespace Schelendar
             this.uiPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel1.Name = "uiPanel1";
+            this.uiPanel1.Padding = new System.Windows.Forms.Padding(30, 5, 30, 5);
             this.uiPanel1.Size = new System.Drawing.Size(652, 51);
             this.uiPanel1.TabIndex = 1;
-            this.uiPanel1.Text = "uiPanel1";
+            this.uiPanel1.Text = null;
             this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiPanel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // deleteBtn
+            // 
+            this.deleteBtn.BackColor = System.Drawing.Color.Red;
+            this.deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteBtn.Dock = System.Windows.Forms.DockStyle.Left;
+            this.deleteBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.deleteBtn.Location = new System.Drawing.Point(30, 5);
+            this.deleteBtn.MinimumSize = new System.Drawing.Size(1, 1);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(135, 41);
+            this.deleteBtn.TabIndex = 1;
+            this.deleteBtn.Text = "删除课程";
+            this.deleteBtn.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.deleteBtn.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
             // ensureBtn
             // 
-            this.ensureBtn.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ensureBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ensureBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.ensureBtn.Dock = System.Windows.Forms.DockStyle.Right;
             this.ensureBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
-            this.ensureBtn.Location = new System.Drawing.Point(212, 2);
+            this.ensureBtn.Location = new System.Drawing.Point(487, 5);
             this.ensureBtn.MinimumSize = new System.Drawing.Size(1, 1);
             this.ensureBtn.Name = "ensureBtn";
-            this.ensureBtn.Size = new System.Drawing.Size(232, 47);
+            this.ensureBtn.Size = new System.Drawing.Size(135, 41);
             this.ensureBtn.TabIndex = 0;
             this.ensureBtn.Text = "确定";
             this.ensureBtn.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
@@ -696,6 +714,8 @@ namespace Schelendar
             this.uiTableLayoutPanel7.ResumeLayout(false);
             this.ResumeLayout(false);
         }
+
+        private Sunny.UI.UIButton deleteBtn;
 
         private Sunny.UI.UILabel uiLabel15;
         private Sunny.UI.UITableLayoutPanel uiTableLayoutPanel8;
