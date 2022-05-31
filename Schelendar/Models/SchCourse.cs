@@ -61,6 +61,7 @@ namespace Schelendar.Models
 		/// </summary>
 		public CourseTime EndTime { get; set; }
 
+
 		/// <summary>
 		/// Class的构造函数
 		/// </summary>
@@ -76,7 +77,7 @@ namespace Schelendar.Models
 		/// <param name="semaster"></param>
 		/// <param name="startTime">上课时间，格式为"HH:MM"</param>
 		/// <param name="endTime">下课时间，格式为"HH:MM"</param>
-		public SchCourse(string schCourseName, string district, string building, string classroom, string teacherName, int startWeek, int endWeek, int dayofWeek, int semaster, string startTime, string endTime, int schCourseId=-1) :base(schCourseId, schCourseName, district+building+classroom, DateTime.Now, DateTime.Now, 1)
+		public SchCourse(string schCourseName, string district, string building, string classroom, string teacherName, int startWeek, int endWeek, int dayofWeek, int semaster, string startTime, string endTime, int schCourseId=-1, int userID = 0) :base(schCourseId, schCourseName, district+building+classroom, DateTime.Now, DateTime.Now, 1,0,0,userID)
         {
             SchCourseID = schCourseId;
             SchCourseName = schCourseName;
@@ -164,7 +165,7 @@ namespace Schelendar.Models
             {
 				return 0;
             }
-            if (c1.StartTime > c2.EndTime || c1.EndTime < c2.StartTime)//周数有重叠，时间不同
+            if (c1.StartTime >= c2.EndTime || c1.EndTime <= c2.StartTime)//周数有重叠，时间不同
             {
 				return 0;
             }

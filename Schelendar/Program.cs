@@ -51,27 +51,7 @@ namespace Schelendar
             
             SchUserManager.ReadUser("fs", "123");
 
-            //SchUserManager.DeleteCourse("计算机接口");
-            //SchUserManager.DeleteCourse("计算机系统");
-            //SchUserManager.UpdateCourse(new SchCourse("计算机接口", "3", "1", "416", "zj", 1, 16, 4, 3, "14:05", "16:30"));
-            SchUserManager.AddCourse(new SchCourse("计算机系统", "3", "1", "416", "zj", 1, 16, 4, 2, "14:05", "16:30"));
-            try
-            {
-                SchUserManager.AddCourse(new SchCourse("体育课", "3", "1", "416", "zj", 1, 16, 4, 4, "14:05", "16:30"));
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e);
-            }
-            try
-            {
-                SchUserManager.AddCourse(new SchCourse("英语课", "3", "1", "416", "zj", 1, 16, 4, 3, "14:05", "16:30"));
-                
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e);
-            }
+            SchUserManager.UpdateCourse("计算机系统",new SchCourse("计算机系统", "3", "1", "416", "zj", 1, 16, 4, 3, "10:35", "11:25"));
 
             SchUserManager.GetCourses().ForEach(o =>{Console.WriteLine(o);});
             Console.WriteLine("\n");

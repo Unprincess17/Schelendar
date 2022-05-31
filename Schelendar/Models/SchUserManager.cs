@@ -214,7 +214,14 @@ namespace Schelendar.Models
         ///TODO:update course
         public static void UpdateCourse(string oldCourseName, SchCourse course)
         {
-            throw new NotImplementedException();
+            try
+            {
+                SchCourseManager.UpdateCourse(User.SchUserID, oldCourseName, course);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
         }
 
         /// <summary>

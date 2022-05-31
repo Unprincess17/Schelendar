@@ -65,9 +65,19 @@ namespace Schelendar.Models
         {
             return (l.Hour > r.Hour) || (l.Hour == r.Hour && l.Minute > r.Minute);
         }
+
+        public static bool operator >=(CourseTime l, CourseTime r)
+        {
+            return !(l < r);
+        }
+
         public static bool operator <(CourseTime l, CourseTime r)
         {
             return !((l > r) || l==r); 
+        }
+        public static bool operator <=(CourseTime l, CourseTime r)
+        {
+            return !(l > r);
         }
 
 
