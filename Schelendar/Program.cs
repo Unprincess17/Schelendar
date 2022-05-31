@@ -19,7 +19,6 @@ namespace Schelendar
             //DBTest();
             UserManagerTest();
 
-
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             ////Application.Run(new LoginForm());
@@ -52,16 +51,13 @@ namespace Schelendar
             
             SchUserManager.ReadUser("fs", "123");
 
-            SchUserManager.AddCourse(new SchCourse("计算机接口","3","1","416","zj",1,16,4,3,"14:05","16:30"));
-            SchUserManager.AddCourse(new SchCourse("计算机系统","3","1","416","zj",1,16,4,4,"14:05","16:30"));
-            SchUserManager.AddCourse(new SchCourse("计算机网络","3","1","416","zj",1,16,4,4,"14:05","16:30"));
+            SchUserManager.UpdateCourse("计算机系统",new SchCourse("计算机系统", "3", "1", "416", "zj", 1, 16, 4, 3, "10:35", "11:25"));
 
             SchUserManager.GetCourses().ForEach(o =>{Console.WriteLine(o);});
             Console.WriteLine("\n");
             SchUserManager.GetCourses(4).ForEach(o =>{Console.WriteLine(o);});
             
             
-
         }
     }
 }

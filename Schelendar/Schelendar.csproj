@@ -161,9 +161,11 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\SchCourseManager.cs" />
     <Compile Include="Models\SchTaskGroup.cs" />
     <Compile Include="Models\CourseTime.cs" />
     <Compile Include="Models\SchCourseTable.cs" />
+    <Compile Include="Models\SchTaskManager.cs" />
     <Compile Include="Models\SchUserDBHelper.cs" />
     <Compile Include="Models\SchUserManager.cs" />
     <Compile Include="Program.cs" />
@@ -309,6 +311,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\farm3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\config.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
