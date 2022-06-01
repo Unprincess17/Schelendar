@@ -32,7 +32,7 @@ namespace Schelendar.Models
         }
 
 
-        #region 非数据库连接
+        #region 待完成
         //public ConcurrentBag<SchUser> SchUsers { get; set; }
 
         /////TODO：根据添加的课程联想添加事件（考试、大作业...
@@ -56,7 +56,7 @@ namespace Schelendar.Models
 
         #endregion
 
-        #region 数据库连接
+    #region 用户
 
         /// <summary>
         /// 添加新注册用户。若用户已存在则抛出ArgumentException
@@ -102,7 +102,7 @@ namespace Schelendar.Models
                 result = cmd.ExecuteScalar();
                 cn.Close();
                 user.SchUserID = Convert.ToInt32(result);//userID start from 1
-                cmd.CommandText = $"INSERT INTO SchUsers VALUES('{result}','{user.UserName}', '{user.Password}', '{user.UserExperience}','{user.IsRmbMe}','{user.IsRmbPasswd}','{user.IsAutoLogin}');";
+                cmd.CommandText = $"INSERT INTO SchUsers VALUES(NULL,'{user.UserName}', '{user.Password}', '{user.UserExperience}','{user.IsRmbMe}','{user.IsRmbPasswd}','{user.IsAutoLogin}');";
                 cn.Open();
                 //cmd.ExecuteNonQueryAsync();
                 cmd.ExecuteNonQuery();
@@ -195,6 +195,9 @@ namespace Schelendar.Models
             }
         }
 
+        #endregion
+
+    #region 课程
         /// <summary>
         /// 登录用户添加指定课程
         /// </summary>
@@ -272,11 +275,161 @@ namespace Schelendar.Models
             }
         }
 
-        public static void GetTaskGroup()
-        {
+        #endregion
 
+    #region 任务
+
+        #region 单任务
+        /// <summary>
+        /// 将任务添加至指定组。若未指定，则添加至0组。若选择force，将创建的之前未创建的任务组
+        /// </summary>
+        /// <param name="task"></param>
+        /// <param name="TaskGroupID"></param>
+        /// <param name="force">若任务组未创建，则创建任务组。此项为0时若任务组未创建则抛出异常</param>
+        public static void AddTask(SchTask task, int TaskGroupID=0, int force = 0)
+        {
+            try
+            {
+                SchTaskManager.AddTask(User.SchUserID, task, TaskGroupID, force);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
+
+        /// <summary>
+        /// 删除指定任务
+        /// </summary>
+        /// <param name="taskName"></param>
+        public static void DeleteTask(string taskName)
+        {
+            try
+            {
+                SchTaskManager.DeleteTask(User.SchUserID, taskName);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        
+        public static void DeleteTask(int taskID)
+        {
+            try
+            {
+                SchTaskManager.DeleteTask(User.SchUserID, taskID);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        /// <summary>
+        /// 更新指定任务
+        /// </summary>
+        /// <param name="oldTaskName"></param>
+        /// <param name="newTask"></param>
+        public static void UpdateTask(string oldTaskName, SchTask newTask)
+        {
+            try
+            {
+                SchTaskManager.UpdateTask(User.SchUserID, oldTaskName, newTask);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
+
+        /// <summary>
+        /// 将所选事件更换组，可用于将未分类事件归类
+        /// </summary>
+        /// <param name="taskID"></param>
+        /// <param name="newGroupID"></param>
+        public static void ChangeGroup(int taskID, int newGroupID)
+        {
+            try
+            {
+                SchTaskManager.changeGroup(User.SchUserID, taskID, newGroupID);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static void GetTasks()
+        {
+            try
+            {
+                SchTaskManager.GetTasks(User.SchUserID);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
+
         #endregion 
+
+        #region 任务组
+        /// <summary>
+        /// 获取事件所属事件组
+        /// </summary>
+        /// <param name="taskID"></param>
+        /// <returns></returns>
+        public static List<SchTask> GetGroupofTask(int taskID, int notDone = 0)
+        {
+            try
+            {
+                return SchTaskManager.GetGroup(User.SchUserID, taskID, notDone);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        /// <summary>
+        /// 获取事件所属事件组的事件列表
+        /// </summary>
+        /// <param name="taskName"></param>
+        public static List<SchTask> GetGroupofTask(string taskName, int notDone = 0)
+        {
+            try
+            {
+                return SchTaskManager.GetGroup(User.SchUserID, taskName, notDone);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        /// <summary>
+        /// 返回事件组列表
+        /// </summary>
+        /// <returns></returns>
+        public static List<SchTaskGroup> GetGroups()
+        {
+            try
+            {
+                return SchTaskManager.GetGroups(User.SchUserID);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static void UpdateGroup(int groupID, SchTaskGroup newgroup)
+        {
+            SchTaskManager.UpdateGroup(User.SchUserID, groupID, newgroup);
+        }
+        #endregion
+
+        #endregion
 
         public static new string ToString()
         {

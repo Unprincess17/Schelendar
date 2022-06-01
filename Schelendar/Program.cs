@@ -17,7 +17,8 @@ namespace Schelendar
         {
 
             //DBTest();
-            UserManagerTest();
+            //CourseTest();
+            TaskTest();
 
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
@@ -33,9 +34,10 @@ namespace Schelendar
             dbHelper.CreateUsersDB();
             dbHelper.CreateTasksDB();
             dbHelper.CreateCoursesDB();
+            dbHelper.CreateTaskGroupsDB();
         }
 
-        static void UserManagerTest()
+        static void CourseTest()
         {
             SchUserDBHelper dbHelper = new SchUserDBHelper();
             dbHelper.CreateUsersDB();
@@ -58,6 +60,44 @@ namespace Schelendar
             SchUserManager.GetCourses(4).ForEach(o =>{Console.WriteLine(o);});
             
             
+        }
+
+        static void TaskTest()
+        {
+            SchUserDBHelper dbHelper = new SchUserDBHelper();
+            dbHelper.CreateUsersDB();
+            dbHelper.CreateTasksDB();
+            //try
+            //{
+            //    SchUserManager.AddUser(new SchUser("fs", "123"));
+            //}
+            //catch (Exception e)
+            //{
+
+            //}
+
+            //SchUserManager.ReadUser("fs", "123");
+            //SchUserManager.AddTask(new SchTask("荒野乱斗", null, DateTime.Now, DateTime.Now + TimeSpan.FromHours(1)));
+            //SchUserManager.AddTask(new SchTask("c#组", null, DateTime.Now, DateTime.Now + TimeSpan.FromHours(1)),1);
+            //SchUserManager.DeleteTask(4);
+            //SchUserManager.DeleteTask(5);
+            //SchUserManager.DeleteTask(6);
+            //SchUserManager.DeleteTask(7);
+
+            try
+            {
+                SchUserManager.AddUser(new SchUser("sf", "456"));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            SchUserManager.ReadUser("sf", "456");
+            SchUserManager.AddTask(new SchTask("c#组", null, DateTime.Now, DateTime.Now + TimeSpan.FromHours(1)));
+
+
+
         }
     }
 }

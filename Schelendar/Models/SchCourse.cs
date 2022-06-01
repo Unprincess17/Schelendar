@@ -77,7 +77,7 @@ namespace Schelendar.Models
 		/// <param name="semaster"></param>
 		/// <param name="startTime">上课时间，格式为"HH:MM"</param>
 		/// <param name="endTime">下课时间，格式为"HH:MM"</param>
-		public SchCourse(string schCourseName, string district, string building, string classroom, string teacherName, int startWeek, int endWeek, int dayofWeek, int semaster, string startTime, string endTime, int schCourseId=-1, int userID = 0) :base(schCourseId, schCourseName, district+building+classroom, DateTime.Now, DateTime.Now, 1,0,0,userID)
+		public SchCourse(string schCourseName, string district, string building, string classroom, string teacherName, int startWeek, int endWeek, int dayofWeek, int semaster, string startTime, string endTime, int schCourseId=-1, int userID = 0) :base(schCourseName, district+building+classroom, DateTime.Now, DateTime.Now, 1,0,0, schCourseId, userID)
         {
             SchCourseID = schCourseId;
             SchCourseName = schCourseName;
