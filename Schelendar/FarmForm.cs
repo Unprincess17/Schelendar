@@ -334,6 +334,11 @@ namespace Schelendar
                 MessageBox.Show("金币不足，无法开辟土地");
                 return;
             }
+            if(PlayerManager.gold - openCost[openGround] < 10)
+            {
+                MessageBox.Show("开辟这片土地就没有金币买种子啦，再等等吧～");
+                return;
+            }
             MessageBox.Show("恭喜解锁新土地");
             PlayerManager.gold -= openCost[openGround]; //金币更新
             lblMoney.Text = PlayerManager.gold.ToString();
