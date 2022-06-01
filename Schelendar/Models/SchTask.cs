@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using System.Data.SQLite;
 
 namespace Schelendar.Models
 {
@@ -65,7 +66,7 @@ namespace Schelendar.Models
         /// <param name="isRepeat"></param>
         /// <param name="isDone"></param>
         /// <param name="schTaskGroupID">默认为0，表示非组事件</param>
-        public SchTask(int schTaskId, string schTaskInfo, string schTaskLocation, DateTime startDate, DateTime endDate, int isRepeat = 0, int isDone = 0, int schTaskGroupID = 0, int userID = 0)
+        public SchTask(string schTaskInfo, string schTaskLocation, DateTime startDate, DateTime endDate, int isRepeat = 0, int isDone = 0, int schTaskGroupID = 0, int schTaskId = -1, int userID = 0)
         {
             SchTaskID = schTaskId;
             SchTaskGroupID = schTaskGroupID; 

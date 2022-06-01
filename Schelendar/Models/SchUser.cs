@@ -49,17 +49,18 @@ namespace Schelendar.Models
         /// 自动登录字段
         /// </summary>
         public int IsAutoLogin { get; set; }
+
         /// <summary>
         /// 个人的事件
         /// </summary>
-        [XmlIgnore]
-        public ConcurrentBag<SchTask> SchEvents { set; get; }
+        //[XmlIgnore]
+        //public ConcurrentBag<SchTask> SchEvents { set; get; }
 
-        /// <summary>
-        /// 个人的课程
-        /// </summary>
-        [XmlIgnore]
-        public ConcurrentBag<SchCourse> SchClasses { get; set; }
+        ///// <summary>
+        ///// 个人的课程
+        ///// </summary>
+        //[XmlIgnore]
+        //public ConcurrentBag<SchCourse> SchClasses { get; set; }
 
         public SchUser( string userName, string password, int schUserID = 0, int isRmbMe = 0, int isRmbPasswd = 0, int isAutoLogin = 0)
         {
@@ -77,8 +78,8 @@ namespace Schelendar.Models
                 this.IsRmbMe = isRmbMe;
                 this.IsRmbPasswd = isRmbPasswd;
                 this.IsAutoLogin = isAutoLogin;
-                this.SchEvents = new ConcurrentBag<SchTask>();
-                this.SchClasses = new ConcurrentBag<SchCourse>();
+                //this.SchEvents = new ConcurrentBag<SchTask>();
+                //this.SchClasses = new ConcurrentBag<SchCourse>();
             }
             catch(InsufficientMemoryException e1)
             {
@@ -112,30 +113,30 @@ namespace Schelendar.Models
             IsRmbMe = previousUser.IsRmbMe;
             IsRmbPasswd = previousUser.IsRmbPasswd;
             IsAutoLogin = previousUser.IsAutoLogin;
-            SchEvents = new ConcurrentBag<SchTask>();
-            SchClasses = new ConcurrentBag<SchCourse>();
-            foreach(SchCourse schClass in previousUser.SchClasses)
-            {
-                SchClasses.Add(schClass);
-            }
-            foreach(SchTask schEvent in previousUser.SchEvents)
-            {
-                SchEvents.Add(schEvent);
-            }
+            //SchEvents = new ConcurrentBag<SchTask>();
+            //SchClasses = new ConcurrentBag<SchCourse>();
+            //foreach(SchCourse schClass in previousUser.SchClasses)
+            //{
+            //    SchClasses.Add(schClass);
+            //}
+            //foreach(SchTask schEvent in previousUser.SchEvents)
+            //{
+            //    SchEvents.Add(schEvent);
+            //}
         }
 
         public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendFormat("{0}:{1}", SchUserID, UserName);
-            if(SchEvents != null)
-            {
-                stringBuilder.AppendFormat(" E:{0}", SchEvents.Count);
-            }
-            if(SchClasses != null)
-            {
-                stringBuilder.AppendFormat(" C:{0}",SchClasses.Count);
-            }
+            //if(SchEvents != null)
+            //{
+            //    stringBuilder.AppendFormat(" E:{0}", SchEvents.Count);
+            //}
+            //if(SchClasses != null)
+            //{
+            //    stringBuilder.AppendFormat(" C:{0}",SchClasses.Count);
+            //}
             return stringBuilder.ToString();
         }
     }
