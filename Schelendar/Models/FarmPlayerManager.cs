@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Schelendar.Models;
 
-namespace Schelendar.FarmClass
+namespace Schelendar.Models
 {
     public static class PlayerManager
     {

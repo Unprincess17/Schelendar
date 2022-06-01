@@ -11,12 +11,16 @@ namespace Schelendar.Models
         public static string UserDBFile { get; set; }
         public static string CourseDBFile { get; set; }
         public static string TaskDBFile { get; set; }
+        public static string FarmDBFile { get; set; }
+        public static string TaskGroupDBFile { get; set; }
 
         static config()
         {
             UserDBFile = "SchInfos.db";
             CourseDBFile = "SchInfos.db";
             TaskDBFile = "SchInfos.db";
+            TaskGroupDBFile = "SchInfos.db";
+            FarmDBFile = "FarmUsers.db";
 
         }
 

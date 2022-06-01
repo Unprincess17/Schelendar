@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sunny.UI;
-using Schelendar.FarmClass;
+using Schelendar.Models;
+
 namespace Schelendar
 {
     public partial class FarmForm : UIForm

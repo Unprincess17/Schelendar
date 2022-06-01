@@ -140,9 +140,6 @@
     <Compile Include="EnterFarmForm.Designer.cs">
       <DependentUpon>EnterFarmForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FarmClass\FarmDBHelper.cs" />
-    <Compile Include="FarmClass\PlayerManager.cs" />
-    <Compile Include="FarmClass\Seed.cs" />
     <Compile Include="FarmForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +158,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\FarmPlayerManager.cs" />
     <Compile Include="Models\SchCourseManager.cs" />
     <Compile Include="Models\SchTaskGroup.cs" />
     <Compile Include="Models\CourseTime.cs" />
@@ -168,6 +166,7 @@
     <Compile Include="Models\SchTaskManager.cs" />
     <Compile Include="Models\SchUserDBHelper.cs" />
     <Compile Include="Models\SchUserManager.cs" />
+    <Compile Include="Models\FarmSeed.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
