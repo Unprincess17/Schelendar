@@ -28,19 +28,30 @@ namespace Schelendar.Models
             cmd.Connection = cn;
             cmd.CommandText =
                 "CREATE TABLE IF NOT EXISTS SchUsers(" +
-                "SchUserID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-                "UserName varchar(10)," +
-                "Password varchar(100)," +
-                "UserExperience int," +
-                "IsRmbMe int," +
-                "IsRmbPasswd int," +
-                "IsAutoLogin int" +
+                "[SchUserID] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                "[UserName] varchar(10)," +
+                "[Password] varchar(100)," +
+                "[UserExperience] INTEGER," +
+                "[IsRmbMe] INTEGER," +
+                "[IsRmbPasswd] INTEGER," +
+                "[IsAutoLogin] INTEGER," +
+                "[DefaultGroupID] INTEGER" +
                 ")";
             cn.Open();//连接
             cmd.ExecuteNonQuery();
             cn.Close();//关闭连接
 
+            //Trigger for update defaultGroupID
+            //"CREATE TRIGGER SET_DEFAULT_GROUP " +
+            //"AFTER INSERT ON SchTaskGroups " +
+            //"BEGIN " +
+            //"UPDATE SchUsers SET DefaultGroupID=New.SchTaskGroupID WHERE SchUsers.SchUserID=OLD.SchUserID AND OLD.DefaultGroupID=NULL" +
+            //"END" +
+
         }
+
+        
+                
 
         public void CreateCoursesDB()
         {
@@ -50,7 +61,6 @@ namespace Schelendar.Models
                 SQLiteConnection.CreateFile(fileName);
             }
 
-            //当没有用户表时建立用户表
             using (SQLiteConnection cn = new SQLiteConnection("data source=" + fileName))
             {
                 SQLiteCommand cmd = new SQLiteCommand();
@@ -147,7 +157,6 @@ namespace Schelendar.Models
             }
         }
 
-        
     }
 
     public class FarmDBHelper

@@ -16,12 +16,16 @@ namespace Schelendar.Models
 
         public static void AddTask(int userID, SchTask task, int GroupID = 0, int force = 0)
         {
+            int DefaultGroupID = userID;
+
             if (task == null)
             {
                 throw new ArgumentNullException($"添加失败：事件{task.SchTaskInfo}状态异常");
             }
+
+            //是否存在GroupID的组
             object result;
-            //若GroupID对应组不存在，当组ID为非0值时抛异常，否则创建组0
+            //若GroupID对应组不存在，选择不创建(force == 0)时，当组ID为非default值时抛异常，否则创建组default
             using (SQLiteConnection cn = new SQLiteConnection("data source=" + TaskGroupDBFile))
             {
                 SQLiteCommand cmd = cn.CreateCommand();
@@ -29,17 +33,24 @@ namespace Schelendar.Models
                 cn.Open();
                 result = cmd.ExecuteScalar();
                 cn.Close();
+                if(GroupID < config.MAX_USER_NUM && GroupID != DefaultGroupID && GroupID != 0)//试图创建默认组
+                {
+                    throw new ArgumentException($"添加失败：不应将事件添加至默认分组{GroupID}");
+                }else if(GroupID == 0)//未定义GroupID
+                {
+                    GroupID = DefaultGroupID;
+                }
                 if (Convert.ToInt32(result) == 0)
                 {
-                    if (force == 0 && GroupID != 0)
+                    if (force == 0 && GroupID != DefaultGroupID)
                     {
                         throw new ArgumentException($"所要添加事件组'{GroupID}'不存在");
                     }
-                    else if (GroupID == 0)//GroupID==0且未创建
+                    else if (GroupID == DefaultGroupID)//GroupID==DefaultGroupID且未创建
                     {
                         cmd.CommandText = $"INSERT INTO SchTaskGroups (SchTaskGroupID,SchGroupInfo,SchUserID,TomatoNum) VALUES ('{GroupID}','未分组','{userID}',0);";
                     }
-                    else if(force == 1 && GroupID != 0)
+                    else if(force == 1 && GroupID != DefaultGroupID)
                     {
                         cmd.CommandText = $"INSERT INTO SchTaskGroups (SchTaskGroupID,SchGroupInfo,SchUserID,TomatoNum) VALUES ('{GroupID}','{task.SchTaskInfo}','{userID}',0);";
                     }
