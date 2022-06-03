@@ -25,5 +25,17 @@ namespace Schelendar.Models
         /// 任务组所对应番茄数
         /// </summary>
         public int TomatoNum { get; set; }
+
+        public SchTaskGroup(string groupInfo, int tomatoNum = 0, int groupID = -1, int schUserID = -1){
+            this.GroupID = groupID;
+            this.GroupInfo = groupInfo;
+            this.SchUserID = schUserID;
+            this.TomatoNum = tomatoNum;
+        }
+
+        public SchTaskGroup(){
+            GroupID = -1;
+            SchUserID = -1;
+        }
     }
 }

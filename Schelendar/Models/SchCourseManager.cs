@@ -70,7 +70,7 @@ namespace Schelendar.Models
             using (SQLiteConnection cn = new SQLiteConnection("data source=" + CourseDBFile))
             {
                 SQLiteCommand cmd = cn.CreateCommand();
-                cmd.CommandText = $"SELECT COUNT(*)";
+                cmd.CommandText = $"SELECT COUNT(*) FROM SchCourses";
                 cn.Open();
                 result = cmd.ExecuteScalar();
                 cn.Close();

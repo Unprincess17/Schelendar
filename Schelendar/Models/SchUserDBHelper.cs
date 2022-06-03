@@ -80,6 +80,9 @@ namespace Schelendar.Models
             }
         }
         
+        /// <summary>
+        /// 创建任务表，同时创建任务组表
+        /// </summary>
         public void CreateTasksDB()
         {
             string fileName = config.TaskDBFile;
@@ -101,10 +104,10 @@ namespace Schelendar.Models
                     "[SchTaskLocation] varchar(100)," +
                     "[StartDate] datetime," +
                     "[EndDate] datetime," +
-                    "[isRepeat] int," +
-                    "[isDone] int," +
-                    "[SchTaskGroupID] int NOT NULL," +
-                    "[SchUserID] int NOT NULL," +
+                    "[isRepeat] INTEGER," +
+                    "[isDone] INTEGER," +
+                    "[SchTaskGroupID] INTEGER NOT NULL," +
+                    "[SchUserID] INTEGER NOT NULL," +
                     "FOREIGN KEY(SchTaskGroupID) REFERENCES SchTaskGroups(SchTaskGroupID)" +
                     "FOREIGN KEY(SchUserID) REFERENCES SchUsers(SchUserID)" +
                     ")";
@@ -113,9 +116,10 @@ namespace Schelendar.Models
                 cn.Close();//关闭连接
 
             }
+            this.CreateTaskGroupsDB();
         }
     
-        public void CreateTaskGroupDB()
+        public void CreateTaskGroupsDB()
         {
             string fileName = config.TaskGroupDBFile;
             if (File.Exists(fileName) == false)//不存在任务组文件
@@ -130,17 +134,16 @@ namespace Schelendar.Models
                 cn.Open();
                 cmd.Connection = cn;
                 cmd.CommandText =
-                    "CREATE TABLE IF NOT EXISTS SchTaskGroups(" +
+                    "CREATE TABLE IF NOT EXISTS [SchTaskGroups](" +
                     "[SchTaskGroupID] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
                     "[SchGroupInfo] varchar(100)," +
-                    "[SchUserID] int NOT NULL," +
-                    "[TomatoNum] int," +
+                    "[SchUserID] INTEGER NOT NULL," +
+                    "[TomatoNum] INTEGER," +
                     "FOREIGN KEY(SchUserID) REFERENCES SchUsers(SchUserID)" +
                     ")";
 
                 cmd.ExecuteNonQuery();
                 cn.Close();//关闭连接
-
             }
         }
 
