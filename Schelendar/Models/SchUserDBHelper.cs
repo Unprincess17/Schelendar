@@ -77,9 +77,9 @@ namespace Schelendar.Models
                     "[StartWeek] int," +
                     "[EndWeek] int," +
                     "[DayofWeek] int," +
-                    "[Semaster] int," +
-                    "[StartTime] varchar(100)," +
-                    "[EndTime] varchar(100)," +
+                    "[Semester] int," +
+                    "[StartTime] INTEGER," +
+                    "[EndTime] INTEGER," +
                     /*"FOREIGN KEY (SchCourseID)," +*/
                     "[SchUserID] int NOT NULL," +
                     "FOREIGN KEY(SchUserID) REFERENCES SchUsers(SchUserID)" +

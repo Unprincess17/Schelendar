@@ -261,11 +261,11 @@ namespace Schelendar.Models
         /// 返回登录用户指定学期的课程列表
         /// </summary>
         /// /// <returns></returns>
-        public static List<SchCourse> GetCourses(int semaster)
+        public static List<SchCourse> GetCourses(int semester)
         {
             try
             {
-                return SchCourseManager.GetCourses(User.SchUserID, semaster);
+                return SchCourseManager.GetCourses(User.SchUserID, semester);
             }
             catch(Exception e)//Exception comes from SchCourseManager, possibly with database
             {

@@ -44,7 +44,7 @@ namespace Schelendar.Models
                             {
                                 throw new ArgumentException($"添加失败：已存在课程{course.SchCourseName}");
                             }
-                            tmpCourse = new SchCourse(schCourseName: reader["SchCourseName"].ToString(), district:reader["District"].ToString(), building:reader["Building"].ToString(), classroom:reader["Classroom"].ToString(), teacherName:reader["TeacherName"].ToString(), startWeek:Convert.ToInt32(reader["StartWeek"]), endWeek:Convert.ToInt32(reader["EndWeek"]), dayofWeek:Convert.ToInt32(reader["DayofWeek"]), semaster:Convert.ToInt32(reader["Semaster"]), startTime:reader["StartTime"].ToString(), endTime:reader["EndTime"].ToString(), schCourseId:Convert.ToInt32(reader["SchCourseID"]), userID:Convert.ToInt32(reader["SchUserID"]));
+                            tmpCourse = new SchCourse(schCourseName: reader["SchCourseName"].ToString(), district:reader["District"].ToString(), building:reader["Building"].ToString(), classroom:reader["Classroom"].ToString(), teacherName:reader["TeacherName"].ToString(), startWeek:Convert.ToInt32(reader["StartWeek"]), endWeek:Convert.ToInt32(reader["EndWeek"]), dayofWeek:Convert.ToInt32(reader["DayofWeek"]), semester:Convert.ToInt32(reader["Semester"]), startTime: Convert.ToInt32(reader["StartTime"]), endTime:Convert.ToInt32(reader["EndTime"]), schCourseID:Convert.ToInt32(reader["SchCourseID"]), userID:Convert.ToInt32(reader["SchUserID"]));
                             
                             if (SchCourse.isConflicted(course, tmpCourse) == 1)
                             {
@@ -75,7 +75,7 @@ namespace Schelendar.Models
                 result = cmd.ExecuteScalar();
                 cn.Close();
                 course.SchCourseID = Convert.ToInt32(result);//courseID start from 1
-                cmd.CommandText = $"INSERT INTO SchCourses VALUES(NULL, '{course.SchCourseName}', '{course.ClassLocation.District}', '{course.ClassLocation.Building}', '{course.ClassLocation.Classroom}', '{course.TeacherName}', '{course.StartWeek}','{course.EndWeek}','{course.DayofWeek}','{course.Semaster}','{course.StartTime}','{course.EndTime}','{UserID}');";
+                cmd.CommandText = $"INSERT INTO SchCourses VALUES(NULL, '{course.SchCourseName}', '{course.ClassLocation.District}', '{course.ClassLocation.Building}', '{course.ClassLocation.Classroom}', '{course.TeacherName}', '{course.StartWeek}','{course.EndWeek}','{course.DayofWeek}','{course.Semester}','{course.StartTime}','{course.EndTime}','{UserID}');";
                 cn.Open();
                 //cmd.ExecuteNonQueryAsync();
                 cmd.ExecuteNonQuery();
@@ -96,7 +96,7 @@ namespace Schelendar.Models
                 {
                     while (reader.Read())
                     {
-                        CourseList.Add(new SchCourse(reader["SchCourseName"].ToString(), reader["District"].ToString(), reader["Building"].ToString(), reader["Classroom"].ToString(), reader["TeacherName"].ToString(), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["EndWeek"]), Convert.ToInt32(reader["Semaster"]), Convert.ToInt32(reader["StartWeek"]), reader["StartTime"].ToString(), reader["EndTime"].ToString(), Convert.ToInt32(reader["SchCourseID"])));
+                        CourseList.Add(new SchCourse(reader["SchCourseName"].ToString(), reader["District"].ToString(), reader["Building"].ToString(), reader["Classroom"].ToString(), reader["TeacherName"].ToString(), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["EndWeek"]), Convert.ToInt32(reader["Semester"]), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["StartTime"]), Convert.ToInt32(reader["EndTime"]), Convert.ToInt32(reader["SchCourseID"])));
                     }
                 }
 
@@ -105,7 +105,7 @@ namespace Schelendar.Models
             return CourseList;
         }
 
-        public static List<SchCourse> GetCourses(int UserID, int semaster)
+        public static List<SchCourse> GetCourses(int UserID, int semester)
         {
             try
             {
@@ -114,13 +114,13 @@ namespace Schelendar.Models
                 {
                     SQLiteCommand cmd = cn.CreateCommand();
 
-                    cmd.CommandText = $"SELECT * FROM SchCourses WHERE SchUserID='{UserID}' AND Semaster='{semaster}';";
+                    cmd.CommandText = $"SELECT * FROM SchCourses WHERE SchUserID='{UserID}' AND Semester='{semester}';";
                     cn.Open();
                     using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            CourseList.Add(new SchCourse(reader["SchCourseName"].ToString(), reader["District"].ToString(), reader["Building"].ToString(), reader["Classroom"].ToString(), reader["TeacherName"].ToString(), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["EndWeek"]), Convert.ToInt32(reader["Semaster"]), Convert.ToInt32(reader["StartWeek"]), reader["StartTime"].ToString(), reader["EndTime"].ToString(), Convert.ToInt32(reader["SchCourseID"])));
+                            CourseList.Add(new SchCourse(reader["SchCourseName"].ToString(), reader["District"].ToString(), reader["Building"].ToString(), reader["Classroom"].ToString(), reader["TeacherName"].ToString(), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["EndWeek"]), Convert.ToInt32(reader["Semester"]), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["StartTime"]), Convert.ToInt32(reader["EndTime"]), Convert.ToInt32(reader["SchCourseID"])));
                         }
                     }
 
@@ -181,7 +181,7 @@ namespace Schelendar.Models
                         {
                             if (reader["SchCourseName"].ToString().Equals(oldCourseName))
                             {
-                                oldCourse = new SchCourse(reader["SchCourseName"].ToString(), reader["District"].ToString(), reader["Building"].ToString(), reader["Classroom"].ToString(), reader["TeacherName"].ToString(), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["EndWeek"]), Convert.ToInt32(reader["DayofWeek"]), Convert.ToInt32(reader["Semaster"]), reader["StartTime"].ToString(), reader["EndTime"].ToString(), Convert.ToInt32(reader["SchCourseID"]), Convert.ToInt32(reader["SchUserID"]));
+                                oldCourse = new SchCourse(reader["SchCourseName"].ToString(), reader["District"].ToString(), reader["Building"].ToString(), reader["Classroom"].ToString(), reader["TeacherName"].ToString(), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["EndWeek"]), Convert.ToInt32(reader["DayofWeek"]), Convert.ToInt32(reader["Semester"]), Convert.ToInt32(reader["StartTime"]), Convert.ToInt32(reader["EndTime"]), Convert.ToInt32(reader["SchCourseID"]), Convert.ToInt32(reader["SchUserID"]));
                             }
                         }
                         if(oldCourse==null || oldCourse.SchCourseID.Equals(0))
@@ -197,7 +197,7 @@ namespace Schelendar.Models
                         {
                             //只根据课程名判断是否有课程重复
                             //TODO: 重写course类的Equals，并在这里使用。Equals判断名字、时间等更多信息
-                            tmpCourse = new SchCourse(reader["SchCourseName"].ToString(), reader["District"].ToString(), reader["Building"].ToString(), reader["Classroom"].ToString(), reader["TeacherName"].ToString(), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["EndWeek"]), Convert.ToInt32(reader["DayofWeek"]), Convert.ToInt32(reader["Semaster"]), reader["StartTime"].ToString(), reader["EndTime"].ToString(), Convert.ToInt32(reader["SchCourseID"]), Convert.ToInt32(reader["SchUserID"]));
+                            tmpCourse = new SchCourse(reader["SchCourseName"].ToString(), reader["District"].ToString(), reader["Building"].ToString(), reader["Classroom"].ToString(), reader["TeacherName"].ToString(), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["EndWeek"]), Convert.ToInt32(reader["DayofWeek"]), Convert.ToInt32(reader["Semester"]), Convert.ToInt32(reader["StartTime"]), Convert.ToInt32(reader["EndTime"]), Convert.ToInt32(reader["SchCourseID"]), Convert.ToInt32(reader["SchUserID"]));
                             if (!oldCourseName.Equals(tmpCourse.SchCourseName))
                             {
                                 if (SchCourse.isConflicted(course, tmpCourse) == 1)
@@ -229,7 +229,7 @@ namespace Schelendar.Models
                 result = cmd.ExecuteScalar();
                 cn.Close();
                 course.SchCourseID = Convert.ToInt32(result);//courseID start from 1
-                cmd.CommandText = $"UPDATE SchCourses SET SchCourseName='{course.SchCourseName}', District='{course.ClassLocation.District}', Building='{course.ClassLocation.Building}', Classroom='{course.ClassLocation.Classroom}', TeacherName='{course.TeacherName}', StartWeek='{course.StartWeek}',EndWeek='{course.EndWeek}',DayofWeek='{course.DayofWeek}',Semaster='{course.Semaster}',StartTime='{course.StartTime}',EndTime='{course.EndTime}' WHERE SchUserID='{UserID}' AND SchCourseID='{oldCourse.SchCourseID}';";
+                cmd.CommandText = $"UPDATE SchCourses SET SchCourseName='{course.SchCourseName}', District='{course.ClassLocation.District}', Building='{course.ClassLocation.Building}', Classroom='{course.ClassLocation.Classroom}', TeacherName='{course.TeacherName}', StartWeek='{course.StartWeek}',EndWeek='{course.EndWeek}',DayofWeek='{course.DayofWeek}',Semester='{course.Semester}',StartTime='{course.StartTime}',EndTime='{course.EndTime}' WHERE SchUserID='{UserID}' AND SchCourseID='{oldCourse.SchCourseID}';";
                 cn.Open();
                 //cmd.ExecuteNonQueryAsync();
                 cmd.ExecuteNonQuery();

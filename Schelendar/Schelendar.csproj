@@ -122,6 +122,12 @@
     <Compile Include="CourseAddForm.Designer.cs">
       <DependentUpon>CourseAddForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CourseForms\CourseTemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CourseForms\CourseTemplateForm.Designer.cs">
+      <DependentUpon>CourseTemplateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CourseTableAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CourseAddForm.resx">
       <DependentUpon>CourseAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CourseForms\CourseTemplateForm.resx">
+      <DependentUpon>CourseTemplateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CourseTableAddForm.resx">
       <DependentUpon>CourseTableAddForm.cs</DependentUpon>
@@ -341,6 +350,7 @@
   <ItemGroup>
     <Compile Include="Models\config.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

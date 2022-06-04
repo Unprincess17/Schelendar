@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Schelendar.Models;
+using Schelendar.CourseForms;
 
 namespace Schelendar
 {
@@ -20,11 +21,7 @@ namespace Schelendar
             //CourseTest();
             //TaskTest();
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new LoginForm());
-            //Application.Run(new FarmForm());
-            Application.Run(new MainForm());
+
 
         }
 
@@ -53,7 +50,7 @@ namespace Schelendar
             
             SchUserManager.ReadUser("fs", "123");
 
-            SchUserManager.UpdateCourse("计算机系统",new SchCourse("计算机系统", "3", "1", "416", "zj", 1, 16, 4, 3, "10:35", "11:25"));
+            SchUserManager.UpdateCourse("计算机系统",new SchCourse("计算机系统", "3", "1", "416", "zj", 1, 16, 4, 3, 1, 2));
 
             SchUserManager.GetCourses().ForEach(o =>{Console.WriteLine(o);});
             Console.WriteLine("\n");
@@ -112,6 +109,13 @@ namespace Schelendar
             //Application.Run(new FarmForm());
             //Application.Run(new MainForm());
             Application.Run(new CourseTableAddTimeSettingForm());
+        }
+
+        static void CourseTemplateTest()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new MainForm());
         }
     }
 }

@@ -64,36 +64,6 @@ namespace Schelendar.Models
         /// </summary>
         public int EndTime { get; set; }
 
-
-		/// <summary>
-		/// Class的构造函数
-		/// </summary>
-		/// <param name="schCourseId">-1 by default, means dangling course</param>
-		/// <param name="schCourseName"></param>
-		/// <param name="district">校区</param>
-		/// <param name="building"></param>
-		/// <param name="classroom"></param>
-		/// <param name="teacherName"></param>
-		/// <param name="startWeek"></param>
-		/// <param name="endWeek"></param>
-		/// <param name="dayofWeek"></param>
-		/// <param name="semaster"></param>
-		/// <param name="startTime">上课时间，格式为"HH:MM"</param>
-		/// <param name="endTime">下课时间，格式为"HH:MM"</param>
-		public SchCourse(string schCourseName, string district, string building, string classroom, string teacherName, int startWeek, int endWeek, int dayofWeek, int semaster, string startTime, string endTime, int schCourseId=-1, int userID = 0) :base(schCourseName, district+building+classroom, DateTime.Now, DateTime.Now, 1,0,0, schCourseId, userID)
-        {
-            SchCourseID = schCourseId;
-            SchCourseName = schCourseName;
-            ClassLocation = new ClassLocation(district, building, classroom);
-            TeacherName = teacherName;
-            StartWeek = startWeek;
-            EndWeek = endWeek;
-            DayofWeek = dayofWeek;
-            Semester = semester;
-            StartTime = startTime;
-            EndTime = endTime;
-        }
-
         public SchCourse()
         {
         }
@@ -114,8 +84,9 @@ namespace Schelendar.Models
         /// <param name="startTime"></param>
         /// <param name="endTime"></param>
         public SchCourse(string schCourseName, string district, string building, string classroom, string teacherName,
-            int startWeek, int endWeek, int dayofWeek, int semester, int startTime, int endTime)
+            int startWeek, int endWeek, int dayofWeek, int semester, int startTime, int endTime, int schCourseID = -1, int userID = 0):base(schCourseName, district+building+classroom, DateTime.Now, DateTime.Now, 1,0,0, schCourseID, userID)
         {
+            this.SchCourseID = schCourseID;
             this.SchCourseName = schCourseName;
             this.ClassLocation = new ClassLocation(district, building, classroom);
             this.TeacherName = teacherName;
@@ -184,7 +155,7 @@ namespace Schelendar.Models
 			StartWeek = previous.StartWeek;
 			EndWeek = previous.EndWeek;
 			DayofWeek = previous.DayofWeek;
-			Semaster = previous.Semaster;
+			Semester = previous.Semester;
 			StartTime = previous.StartTime;
 			EndTime = previous.EndTime;
 		}
@@ -201,7 +172,7 @@ namespace Schelendar.Models
             {
 				throw new ArgumentNullException($"使用未初始化变量{c1}和{c2}");
             }
-            if (!c1.Semaster.Equals(c2.Semaster))//学期不同
+            if (!c1.Semester.Equals(c2.Semester))//学期不同
             {
 				return 0;
             }
