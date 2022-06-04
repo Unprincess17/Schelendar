@@ -65,8 +65,8 @@ namespace Schelendar
         static void TaskTest()
         {
             SchUserDBHelper dbHelper = new SchUserDBHelper();
-            dbHelper.CreateUsersDB();
-            dbHelper.CreateTasksDB();
+            //dbHelper.CreateUsersDB();
+            //dbHelper.CreateTasksDB();
             //try
             //{
             //    SchUserManager.AddUser(new SchUser("fs", "123"));
@@ -87,6 +87,14 @@ namespace Schelendar
             try
             {
                 SchUserManager.AddUser(new SchUser("sf", "456"));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            try
+            {
+                SchUserManager.AddUser(new SchUser("fs", "123"));
             }
             catch (Exception e)
             {

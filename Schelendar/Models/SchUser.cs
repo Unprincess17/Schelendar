@@ -50,6 +50,8 @@ namespace Schelendar.Models
         /// </summary>
         public int IsAutoLogin { get; set; }
 
+        public int DefaultGroupID { get; set; }
+
         /// <summary>
         /// 个人的事件
         /// </summary>
@@ -62,7 +64,7 @@ namespace Schelendar.Models
         //[XmlIgnore]
         //public ConcurrentBag<SchCourse> SchClasses { get; set; }
 
-        public SchUser( string userName, string password, int schUserID = 0, int isRmbMe = 0, int isRmbPasswd = 0, int isAutoLogin = 0)
+        public SchUser( string userName, string password, int schUserID = 0, int isRmbMe = 0, int isRmbPasswd = 0, int isAutoLogin = 0, int defaultGroupID = 0)
         {
             try
             {
@@ -78,6 +80,7 @@ namespace Schelendar.Models
                 this.IsRmbMe = isRmbMe;
                 this.IsRmbPasswd = isRmbPasswd;
                 this.IsAutoLogin = isAutoLogin;
+                this.DefaultGroupID = defaultGroupID;
                 //this.SchEvents = new ConcurrentBag<SchTask>();
                 //this.SchClasses = new ConcurrentBag<SchCourse>();
             }

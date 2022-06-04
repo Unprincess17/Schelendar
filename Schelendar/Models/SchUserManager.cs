@@ -72,6 +72,20 @@ namespace Schelendar.Models
             }
 
             object result;
+            //检查是否超过最大用户数量
+            using (SQLiteConnection cn = new SQLiteConnection("data source=" + UserDBFile))
+            {
+                cn.Open();
+                SQLiteCommand cmd = cn.CreateCommand();
+                cmd.CommandText = $"SELECT COUNT(*) FROM SchUsers";
+                result = cmd.ExecuteScalar();
+                cn.Close();
+                if (Convert.ToInt32(result) > config.MAX_USER_NUM)
+                {
+                    throw new ArgumentOutOfRangeException($"注册失败：已达到最大用户数量'{config.MAX_USER_NUM}',请删除不需要用户后重试，或修改配置文件");
+                }
+            }
+            //检查重复
             try
             {
                 using (SQLiteConnection cn = new SQLiteConnection("data source=" + UserDBFile))
@@ -102,7 +116,7 @@ namespace Schelendar.Models
                 result = cmd.ExecuteScalar();
                 cn.Close();
                 user.SchUserID = Convert.ToInt32(result);//userID start from 1
-                cmd.CommandText = $"INSERT INTO SchUsers VALUES(NULL,'{user.UserName}', '{user.Password}', '{user.UserExperience}','{user.IsRmbMe}','{user.IsRmbPasswd}','{user.IsAutoLogin}');";
+                cmd.CommandText = $"INSERT INTO SchUsers VALUES(NULL,'{user.UserName}', '{user.Password}', '{user.UserExperience}','{user.IsRmbMe}','{user.IsRmbPasswd}','{user.IsAutoLogin}','{user.SchUserID/*DefaultGroupID = user.SchUserID*/}');";
                 cn.Open();
                 //cmd.ExecuteNonQueryAsync();
                 cmd.ExecuteNonQuery();
@@ -144,11 +158,11 @@ namespace Schelendar.Models
                     cmd.CommandText = $"SELECT Password FROM SchUsers WHERE UserName='{userName}'";
                     User.Password = (string)cmd.ExecuteScalar();
                     cmd.CommandText = $"SELECT IsRmbMe FROM SchUsers WHERE UserName='{userName}'";
-                    User.IsRmbMe = (int)cmd.ExecuteScalar();
+                    User.IsRmbMe = Convert.ToInt32(cmd.ExecuteScalar());
                     cmd.CommandText = $"SELECT IsRmbPasswd FROM SchUsers WHERE UserName='{userName}'";
-                    User.IsRmbPasswd = (int)cmd.ExecuteScalar();
+                    User.IsRmbPasswd = Convert.ToInt32(cmd.ExecuteScalar());
                     cmd.CommandText = $"SELECT IsAutoLogin FROM SchUsers WHERE UserName='{userName}'";
-                    User.IsAutoLogin = (int)cmd.ExecuteScalar();
+                    User.IsAutoLogin = Convert.ToInt32(cmd.ExecuteScalar());
                     cn.Close();
                 }
             }
@@ -182,7 +196,7 @@ namespace Schelendar.Models
                     object result;
                     SQLiteCommand cmd = cn.CreateCommand();
                     cn.Close();
-                    cmd.CommandText = $"UPDATE SchUsers SET UserName='{newUser.UserName}', Password='{newUser.Password}', UserExperience='{newUser.UserExperience}',IsRmbMe='{newUser.IsRmbMe}',IsRmbPasswd='{newUser.IsRmbPasswd}',IsAutoLogin=='{newUser.IsAutoLogin}' WHERE SchUserID='{User.SchUserID}';";
+                    cmd.CommandText = $"UPDATE SchUsers SET UserName='{newUser.UserName}', Password='{newUser.Password}', UserExperience='{newUser.UserExperience}',IsRmbMe='{newUser.IsRmbMe}',IsRmbPasswd='{newUser.IsRmbPasswd}',IsAutoLogin=='{newUser.IsAutoLogin}' ,DefaultGroupID='{newUser.DefaultGroupID}' WHERE SchUserID='{User.SchUserID}';";
                     cn.Open();
                     cmd.ExecuteNonQuery();
                     cn.Close();
