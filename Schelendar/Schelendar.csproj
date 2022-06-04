@@ -116,6 +116,24 @@
     <Compile Include="CalendarForm.Designer.cs">
       <DependentUpon>CalendarForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CourseAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CourseAddForm.Designer.cs">
+      <DependentUpon>CourseAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CourseTableAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CourseTableAddForm.Designer.cs">
+      <DependentUpon>CourseTableAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CourseTableAddTimeSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CourseTableAddTimeSettingForm.Designer.cs">
+      <DependentUpon>CourseTableAddTimeSettingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CourseTableForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +209,15 @@
     </Compile>
     <EmbeddedResource Include="CalendarForm.resx">
       <DependentUpon>CalendarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CourseAddForm.resx">
+      <DependentUpon>CourseAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CourseTableAddForm.resx">
+      <DependentUpon>CourseTableAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CourseTableAddTimeSettingForm.resx">
+      <DependentUpon>CourseTableAddTimeSettingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CourseTableForm.resx">
       <DependentUpon>CourseTableForm.cs</DependentUpon>
