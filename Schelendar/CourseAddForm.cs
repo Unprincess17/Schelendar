@@ -178,9 +178,9 @@ namespace Schelendar
         /// <param name="e"></param>
         private void ensureBtn_Click(object sender, EventArgs e)
         {
-            SchCourse = new SchCourse(0, courseNameTB.Text, locationDistrictTB.Text, locationBuildingTB.Text,
+            SchCourse = new SchCourse(courseNameTB.Text, locationDistrictTB.Text, locationBuildingTB.Text,
                 locationRoomTB.Text, teacherNameTB.Text, startWeekIUD.Value, endWeekIUD.Value, _dayOfWeek, _semester,
-                startTimeIUD.Value, endTimeIUD.Value);
+                startTimeIUD.Value, endTimeIUD.Value, 0);
             DialogResult = DialogResult.OK;
             Close();
         }

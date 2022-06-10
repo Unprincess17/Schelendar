@@ -62,6 +62,8 @@ namespace Schelendar
             this.ResumeLayout(false);
         }
 
+        private Sunny.UI.UITableLayoutPanel uiTablePanel;
+
         private Sunny.UI.UIPanel uiPanel;
 
         #endregion

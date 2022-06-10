@@ -13,10 +13,12 @@ namespace Schelendar
 {
     public partial class CourseTableAddTimeSettingForm : UIForm
     {
-        public CourseTableAddTimeSettingForm()
+        private int courseNumber = 11;
+        public CourseTableAddTimeSettingForm(int courseNumber)
         {
+            this.courseNumber = courseNumber;
             InitializeComponent();
-            InitTableRows(11);
+            InitTableRows(courseNumber);
         }
 
         /// <summary>
@@ -44,6 +46,32 @@ namespace Schelendar
                     uiTimeSettingTableLayoutPanel.Controls.Add(uITimePicker, j == 0 ? 1 : 3 , uiTimeSettingTableLayoutPanel.RowCount - 1);
                 }
             }
+        }
+
+        
+        ///TODO: 如何窗口之间交互切换
+        /// <summary>
+        /// 返回上一个设置界面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        
+        ///TODO: 调用逻辑部分来在数据库添加课表
+        /// <summary>
+        /// 确定添加课程
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        private void ensureBtn_Click(object sender, EventArgs e)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
