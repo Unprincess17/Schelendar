@@ -1,24 +1,48 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sunny.UI;
+
 
 namespace Schelendar
 {
     public partial class CourseTableAddTimeSettingForm : UIForm
     {
-        private int courseNumber = 11;
-        public CourseTableAddTimeSettingForm(int courseNumber)
+        /// <summary>
+        /// 课程数量
+        /// </summary>
+        private readonly int _dayCourseNumber;
+
+        /// <summary>
+        /// 课表名（学期）
+        /// </summary>
+        private readonly String _courseTableName;
+
+        /// <summary>
+        /// 课表开始时间
+        /// </summary>
+        private readonly DateTime _startDateTime;
+
+        /// <summary>
+        /// 课表持续周数
+        /// </summary>
+        private readonly int _weekLength;
+
+        /// <summary>
+        /// 初始化课表每节课的时间
+        /// </summary>
+        private readonly DateTime _initTime = DateTime.Parse("00:00:00");
+
+
+        public CourseTableAddTimeSettingForm(String courseTableName, DateTime startDateTime, int weekLength,
+            int dayCourseNumber)
         {
-            this.courseNumber = courseNumber;
+            _dayCourseNumber = dayCourseNumber;
+            _courseTableName = courseTableName;
+            _startDateTime = startDateTime;
+            _weekLength = weekLength;
             InitializeComponent();
-            InitTableRows(courseNumber);
+            InitTableRows(dayCourseNumber);
         }
 
         /// <summary>
@@ -39,17 +63,87 @@ namespace Schelendar
                 uiTimeSettingTableLayoutPanel.Controls.Add(uiLabel, 0, uiTimeSettingTableLayoutPanel.RowCount - 1);
                 for (int j = 0; j < 2; j++)
                 {
-                    UITimePicker uITimePicker = new UITimePicker();
-                    uITimePicker.Name = j == 0 ? "start" : "end" + " TP" + i;
-                    uITimePicker.TimeFormat = "HH:mm";
-                    uITimePicker.Dock = DockStyle.Fill;                   
-                    uiTimeSettingTableLayoutPanel.Controls.Add(uITimePicker, j == 0 ? 1 : 3 , uiTimeSettingTableLayoutPanel.RowCount - 1);
+                    UITimePicker uiTimePicker = new UITimePicker();
+                    uiTimePicker.Value = _initTime;
+                    uiTimePicker.Name = j == 0 ? "start" : "end" + " TP" + i;
+                    uiTimePicker.TimeFormat = "HH:mm";
+                    uiTimePicker.Dock = DockStyle.Fill;
+                    uiTimePicker.ValueChanged += uiTimePicker_ValueChanged;
+                    uiTimeSettingTableLayoutPanel.Controls.Add(uiTimePicker, j == 0 ? 1 : 3,
+                        uiTimeSettingTableLayoutPanel.RowCount - 1);
                 }
             }
         }
 
+
+        /// <summary>
+        /// 保证每次设置的时间大小合乎事实，绑定到时间控件的ValueChanged事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="value"></param>
+        private void uiTimePicker_ValueChanged(object sender, DateTime value)
+        {
+            UITimePicker uiTimePicker = (UITimePicker) sender;
+            TableLayoutPanelCellPosition position = uiTimeSettingTableLayoutPanel.GetCellPosition(uiTimePicker);
+
+            if (position.Row == 1 && position.Column == 1)
+            {
+                UITimePicker next =
+                    (UITimePicker) uiTimeSettingTableLayoutPanel.GetControlFromPosition(3, position.Row);
+                if (IsTimeAfter(value, next.Value))
+                {
+                    UIMessageDialog.ShowErrorDialog(this, "时间设置错误");
+                    uiTimePicker.Value = next.Value;
+                }
+            }
+            else if (position.Row == uiTimeSettingTableLayoutPanel.RowCount - 1 && position.Column == 3)
+            {
+                UITimePicker pre = (UITimePicker) uiTimeSettingTableLayoutPanel.GetControlFromPosition(1, position.Row);
+                if (IsTimeBefore(value, pre.Value))
+                {
+                    UIMessageDialog.ShowErrorDialog(this, "时间设置错误");
+                    uiTimePicker.Value = pre.Value;
+                }
+            }
+            else
+            {
+                UITimePicker pre = (UITimePicker) uiTimeSettingTableLayoutPanel
+                    .GetControlFromPosition((position.Column + 2) % 4, position.Row - (position.Column == 3 ? 0 : 1));
+                UITimePicker next = (UITimePicker) uiTimeSettingTableLayoutPanel
+                    .GetControlFromPosition((position.Column + 2) % 4, position.Row + (position.Column == 1 ? 0 : 1));
+                if (IsTimeBefore(value, pre.Value) || IsTimeAfter(value, next.Value))
+                {
+                    uiTimePicker.Value = pre.Value;
+                    UIMessageDialog.ShowErrorDialog(this, "时间设置错误");
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 比较当前时间是否早于前面的时间
+        /// </summary>
+        /// <param name="cur"></param>
+        /// <param name="pre"></param>
+        /// <returns></returns>
+        private bool IsTimeBefore(DateTime cur, DateTime pre)
+        {
+            return cur.TimeOfDay < pre.TimeOfDay && pre.TimeOfDay != _initTime.TimeOfDay;
+        }
+
+
+        /// <summary>
+        /// 比较当前时间是否晚于后面的时间
+        /// </summary>
+        /// <param name="cur"></param>
+        /// <param name="next"></param>
+        /// <returns></returns>
+        private bool IsTimeAfter(DateTime cur, DateTime next)
+        {
+            return cur.TimeOfDay > next.TimeOfDay && next.TimeOfDay != _initTime.TimeOfDay;
+        }
+
         
-        ///TODO: 如何窗口之间交互切换
         /// <summary>
         /// 返回上一个设置界面
         /// </summary>
@@ -58,11 +152,11 @@ namespace Schelendar
         /// <exception cref="NotImplementedException"></exception>
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            Close();
         }
 
-        
-        ///TODO: 调用逻辑部分来在数据库添加课表
+
+        ///TODO: 调用逻辑部分来在数据库添加课表，注意TimeSpan转为CourseTime类
         /// <summary>
         /// 确定添加课程
         /// </summary>

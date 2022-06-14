@@ -17,5 +17,10 @@ namespace Schelendar.CourseForms
         {
             InitializeComponent();
         }
+
+        private void uiTimePicker1_ValueChanged(object sender, DateTime value)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
