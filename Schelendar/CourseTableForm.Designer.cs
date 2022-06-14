@@ -34,11 +34,11 @@ namespace Schelendar
             this.dataGridTextBoxColumn1 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dataGridBoolColumn1 = new System.Windows.Forms.DataGridBoolColumn();
             this.titlePanel = new Sunny.UI.UIPanel();
+            this.stateLabel = new Sunny.UI.UILedLabel();
             this.weekLable = new Sunny.UI.UILedLabel();
             this.btnNext = new Sunny.UI.UIButton();
             this.btnPre = new Sunny.UI.UIButton();
             this.uiTimeTableLayoutPanel = new Sunny.UI.UITableLayoutPanel();
-            this.uiClassTableLayoutPanel = new Sunny.UI.UITableLayoutPanel();
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.uiLabel3 = new Sunny.UI.UILabel();
@@ -46,6 +46,7 @@ namespace Schelendar
             this.uiLabel5 = new Sunny.UI.UILabel();
             this.uiLabel6 = new Sunny.UI.UILabel();
             this.uiLabel7 = new Sunny.UI.UILabel();
+            this.uiClassTableLayoutPanel = new Sunny.UI.UITableLayoutPanel();
             this.titlePanel.SuspendLayout();
             this.uiTimeTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +63,7 @@ namespace Schelendar
             // 
             // titlePanel
             // 
+            this.titlePanel.Controls.Add(this.stateLabel);
             this.titlePanel.Controls.Add(this.weekLable);
             this.titlePanel.Controls.Add(this.btnNext);
             this.titlePanel.Controls.Add(this.btnPre);
@@ -78,14 +80,26 @@ namespace Schelendar
             this.titlePanel.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.titlePanel.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // stateLabel
+            // 
+            this.stateLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.stateLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.stateLabel.Location = new System.Drawing.Point(110, 5);
+            this.stateLabel.MinimumSize = new System.Drawing.Size(1, 1);
+            this.stateLabel.Name = "stateLabel";
+            this.stateLabel.Size = new System.Drawing.Size(174, 37);
+            this.stateLabel.TabIndex = 3;
+            this.stateLabel.Text = "ON";
+            this.stateLabel.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
             // weekLable
             // 
-            this.weekLable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.weekLable.Dock = System.Windows.Forms.DockStyle.Right;
             this.weekLable.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
-            this.weekLable.Location = new System.Drawing.Point(110, 5);
+            this.weekLable.Location = new System.Drawing.Point(284, 5);
             this.weekLable.MinimumSize = new System.Drawing.Size(1, 1);
             this.weekLable.Name = "weekLable";
-            this.weekLable.Size = new System.Drawing.Size(580, 37);
+            this.weekLable.Size = new System.Drawing.Size(406, 37);
             this.weekLable.TabIndex = 2;
             this.weekLable.Text = "WEEK 1";
             this.weekLable.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
@@ -147,28 +161,6 @@ namespace Schelendar
             this.uiTimeTableLayoutPanel.Size = new System.Drawing.Size(800, 48);
             this.uiTimeTableLayoutPanel.TabIndex = 3;
             this.uiTimeTableLayoutPanel.TagString = null;
-            // 
-            // uiClassTableLayoutPanel
-            // 
-            this.uiClassTableLayoutPanel.AutoScroll = true;
-            this.uiClassTableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.uiClassTableLayoutPanel.ColumnCount = 8;
-            this.uiClassTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.001947F));
-            this.uiClassTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.14258F));
-            this.uiClassTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.14258F));
-            this.uiClassTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.14258F));
-            this.uiClassTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.14258F));
-            this.uiClassTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.14258F));
-            this.uiClassTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.14258F));
-            this.uiClassTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.14258F));
-            this.uiClassTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiClassTableLayoutPanel.Location = new System.Drawing.Point(0, 95);
-            this.uiClassTableLayoutPanel.Name = "uiClassTableLayoutPanel";
-            this.uiClassTableLayoutPanel.RowCount = 1;
-            this.uiClassTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.uiClassTableLayoutPanel.Size = new System.Drawing.Size(800, 355);
-            this.uiClassTableLayoutPanel.TabIndex = 4;
-            this.uiClassTableLayoutPanel.TagString = null;
             // 
             // uiLabel1
             // 
@@ -254,6 +246,28 @@ namespace Schelendar
             this.uiLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiLabel7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // uiClassTableLayoutPanel
+            // 
+            this.uiClassTableLayoutPanel.AutoScroll = true;
+            this.uiClassTableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.uiClassTableLayoutPanel.ColumnCount = 8;
+            this.uiClassTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.001947F));
+            this.uiClassTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.14258F));
+            this.uiClassTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.14258F));
+            this.uiClassTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.14258F));
+            this.uiClassTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.14258F));
+            this.uiClassTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.14258F));
+            this.uiClassTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.14258F));
+            this.uiClassTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.14258F));
+            this.uiClassTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiClassTableLayoutPanel.Location = new System.Drawing.Point(0, 95);
+            this.uiClassTableLayoutPanel.Name = "uiClassTableLayoutPanel";
+            this.uiClassTableLayoutPanel.RowCount = 1;
+            this.uiClassTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.uiClassTableLayoutPanel.Size = new System.Drawing.Size(800, 355);
+            this.uiClassTableLayoutPanel.TabIndex = 4;
+            this.uiClassTableLayoutPanel.TagString = null;
+            // 
             // ClassTableForm
             // 
             this.AllowShowTitle = false;
@@ -272,6 +286,8 @@ namespace Schelendar
             this.uiTimeTableLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
         }
+
+        private Sunny.UI.UILedLabel stateLabel;
 
         private Sunny.UI.UILabel uiLabel1;
         private Sunny.UI.UILabel uiLabel2;

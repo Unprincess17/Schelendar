@@ -63,7 +63,6 @@ namespace Schelendar
             InitTableRows(_schCourseTable.DayCourseNumber);
             // TODO: 初始化时间
             // SetCurWeekNumber();
-            // MarkToday();
             for (int i = 0; i < _schCourseTable.DayCourseNumber; i++)
             {
                 UILabel uiTimeLable = new UILabel();
@@ -261,11 +260,31 @@ namespace Schelendar
         {
             //_schCourseTable.StartDateTime = new DateTime(2022, 5, 16);
             DateTime now = DateTime.Now;
-            TimeSpan timeSpan = now - _schCourseTable.StartDateTime;
-            curWeekNumber = timeSpan.Days / 7 + 1;
-            curWeekDay = timeSpan.Days % 7 + 1;
-            displayedWeekNumber = curWeekNumber;
-            UpdateWeekNumber();
+            if (!now.IsBefore(_schCourseTable.StartDateTime))
+            {
+                TimeSpan timeSpan = now - _schCourseTable.StartDateTime;
+                curWeekNumber = timeSpan.Days / 7 + 1;
+                curWeekDay = timeSpan.Days % 7 + 1;
+                if (curWeekDay <= _schCourseTable.WeekLength)
+                { 
+                    displayedWeekNumber = curWeekNumber;
+                    stateLabel.Text = "ON";
+                    MarkToday();
+                }
+                else
+                {
+                    stateLabel.Text = "OVER";
+                    displayedWeekNumber = _schCourseTable.WeekLength;
+                }
+                UpdateWeekNumber();
+                                    
+                
+            }
+            else
+            {
+                stateLabel.Text = "NOT START";
+                displayedWeekNumber = 1;
+            }
         }
 
 
