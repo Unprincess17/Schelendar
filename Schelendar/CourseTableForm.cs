@@ -408,5 +408,53 @@ namespace Schelendar
                            Environment.NewLine + course.TeacherName;
             uiLabel.BackColor = CourseTableColor.DodgerBlue;
         }
+
+
+        /// TODO: 如何全局调整当前课表，并且要刷新显示
+        /// <summary>
+        /// 右键选项事件，设为当前课表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void 设为当前课表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        
+        ///TODO: 创建新课表
+        /// <summary>
+        /// 创建新的课表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void 创建课表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+
+        ///TODO: 实现删除课表，并且刷新MainForm
+        /// <summary>
+        /// 删除当前课表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void 删除课表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        
+        ///TODO: 修改当前课表的设置
+        /// <summary>
+        /// 修改当前课表设置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void 修改课表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

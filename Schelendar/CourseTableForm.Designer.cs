@@ -35,6 +35,11 @@ namespace Schelendar
             this.dataGridBoolColumn1 = new System.Windows.Forms.DataGridBoolColumn();
             this.titlePanel = new Sunny.UI.UIPanel();
             this.stateLabel = new Sunny.UI.UILedLabel();
+            this.uiSettingContextMenuStrip = new Sunny.UI.UIContextMenuStrip();
+            this.设为当前课表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.创建课表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除课表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.修改课表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.weekLable = new Sunny.UI.UILedLabel();
             this.btnNext = new Sunny.UI.UIButton();
             this.btnPre = new Sunny.UI.UIButton();
@@ -48,6 +53,7 @@ namespace Schelendar
             this.uiLabel7 = new Sunny.UI.UILabel();
             this.uiClassTableLayoutPanel = new Sunny.UI.UITableLayoutPanel();
             this.titlePanel.SuspendLayout();
+            this.uiSettingContextMenuStrip.SuspendLayout();
             this.uiTimeTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,6 +88,7 @@ namespace Schelendar
             // 
             // stateLabel
             // 
+            this.stateLabel.ContextMenuStrip = this.uiSettingContextMenuStrip;
             this.stateLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.stateLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.stateLabel.Location = new System.Drawing.Point(110, 5);
@@ -91,6 +98,39 @@ namespace Schelendar
             this.stateLabel.TabIndex = 3;
             this.stateLabel.Text = "ON";
             this.stateLabel.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiSettingContextMenuStrip
+            // 
+            this.uiSettingContextMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (243)))), ((int) (((byte) (249)))), ((int) (((byte) (255)))));
+            this.uiSettingContextMenuStrip.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.uiSettingContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.设为当前课表ToolStripMenuItem, this.创建课表ToolStripMenuItem, this.删除课表ToolStripMenuItem, this.修改课表ToolStripMenuItem});
+            this.uiSettingContextMenuStrip.Name = "uiSettingContextMenuStrip";
+            this.uiSettingContextMenuStrip.Size = new System.Drawing.Size(205, 132);
+            this.uiSettingContextMenuStrip.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // 设为当前课表ToolStripMenuItem
+            // 
+            this.设为当前课表ToolStripMenuItem.Name = "设为当前课表ToolStripMenuItem";
+            this.设为当前课表ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.设为当前课表ToolStripMenuItem.Text = "设为当前课表";
+            // 
+            // 创建课表ToolStripMenuItem
+            // 
+            this.创建课表ToolStripMenuItem.Name = "创建课表ToolStripMenuItem";
+            this.创建课表ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.创建课表ToolStripMenuItem.Text = "创建新课表";
+            // 
+            // 删除课表ToolStripMenuItem
+            // 
+            this.删除课表ToolStripMenuItem.Name = "删除课表ToolStripMenuItem";
+            this.删除课表ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.删除课表ToolStripMenuItem.Text = "删除课表";
+            // 
+            // 修改课表ToolStripMenuItem
+            // 
+            this.修改课表ToolStripMenuItem.Name = "修改课表ToolStripMenuItem";
+            this.修改课表ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.修改课表ToolStripMenuItem.Text = "修改课表";
             // 
             // weekLable
             // 
@@ -283,9 +323,17 @@ namespace Schelendar
             this.Text = "ClassTableForm";
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
             this.titlePanel.ResumeLayout(false);
+            this.uiSettingContextMenuStrip.ResumeLayout(false);
             this.uiTimeTableLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.ToolStripMenuItem 设为当前课表ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 创建课表ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 删除课表ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 修改课表ToolStripMenuItem;
+
+        private Sunny.UI.UIContextMenuStrip uiSettingContextMenuStrip;
 
         private Sunny.UI.UILedLabel stateLabel;
 
