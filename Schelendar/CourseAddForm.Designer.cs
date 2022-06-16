@@ -61,8 +61,9 @@ namespace Schelendar
             this.uiLabel9 = new Sunny.UI.UILabel();
             this.uiLabel10 = new Sunny.UI.UILabel();
             this.endWeekIUD = new Sunny.UI.UIIntegerUpDown();
-            this.uiPanel1 = new Sunny.UI.UIPanel();
+            this.uiBtnTablePanel = new Sunny.UI.UITableLayoutPanel();
             this.deleteBtn = new Sunny.UI.UIButton();
+            this.nextBtn = new Sunny.UI.UIButton();
             this.ensureBtn = new Sunny.UI.UIButton();
             this.uiTableLayoutPanel6 = new Sunny.UI.UITableLayoutPanel();
             this.uiLabel13 = new Sunny.UI.UILabel();
@@ -76,7 +77,7 @@ namespace Schelendar
             this.uiTableLayoutPanel8.SuspendLayout();
             this.uiTableLayoutPanel5.SuspendLayout();
             this.uiTableLayoutPanel4.SuspendLayout();
-            this.uiPanel1.SuspendLayout();
+            this.uiBtnTablePanel.SuspendLayout();
             this.uiTableLayoutPanel6.SuspendLayout();
             this.uiTableLayoutPanel7.SuspendLayout();
             this.SuspendLayout();
@@ -100,6 +101,7 @@ namespace Schelendar
             this.uiTableLayoutPanel1.Controls.Add(this.uiTableLayoutPanel3, 1, 6);
             this.uiTableLayoutPanel1.Controls.Add(this.uiTableLayoutPanel2, 1, 5);
             this.uiTableLayoutPanel1.Controls.Add(this.uiTableLayoutPanel4, 1, 7);
+            this.uiTableLayoutPanel1.Controls.Add(this.uiBtnTablePanel, 0, 8);
             this.uiTableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiTableLayoutPanel1.Location = new System.Drawing.Point(0, 35);
             this.uiTableLayoutPanel1.Name = "uiTableLayoutPanel1";
@@ -561,26 +563,27 @@ namespace Schelendar
             this.endWeekIUD.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.endWeekIUD.ValueChanged += new Sunny.UI.UIIntegerUpDown.OnValueChanged(this.endWeekIUD_ValueChanged);
             // 
-            // uiPanel1
+            // uiBtnTablePanel
             // 
-            this.uiPanel1.Controls.Add(this.deleteBtn);
-            this.uiPanel1.Controls.Add(this.ensureBtn);
-            this.uiPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.uiPanel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
-            this.uiPanel1.Location = new System.Drawing.Point(0, 394);
-            this.uiPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiPanel1.Name = "uiPanel1";
-            this.uiPanel1.Padding = new System.Windows.Forms.Padding(30, 5, 30, 5);
-            this.uiPanel1.Size = new System.Drawing.Size(652, 51);
-            this.uiPanel1.TabIndex = 1;
-            this.uiPanel1.Text = null;
-            this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiPanel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.uiBtnTablePanel.ColumnCount = 3;
+            this.uiTableLayoutPanel1.SetColumnSpan(this.uiBtnTablePanel, 2);
+            this.uiBtnTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.uiBtnTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.uiBtnTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.uiBtnTablePanel.Controls.Add(this.deleteBtn, 0, 0);
+            this.uiBtnTablePanel.Controls.Add(this.nextBtn, 1, 0);
+            this.uiBtnTablePanel.Controls.Add(this.ensureBtn, 2, 0);
+            this.uiBtnTablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiBtnTablePanel.Location = new System.Drawing.Point(13, 357);
+            this.uiBtnTablePanel.Name = "uiBtnTablePanel";
+            this.uiBtnTablePanel.RowCount = 1;
+            this.uiBtnTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.uiBtnTablePanel.Size = new System.Drawing.Size(626, 40);
+            this.uiBtnTablePanel.TabIndex = 15;
+            this.uiBtnTablePanel.TagString = null;
             // 
             // deleteBtn
             // 
-            this.deleteBtn.BackColor = System.Drawing.Color.Red;
             this.deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.deleteBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.deleteBtn.FillColor = System.Drawing.Color.FromArgb(((int) (((byte) (230)))), ((int) (((byte) (80)))), ((int) (((byte) (80)))));
@@ -589,33 +592,48 @@ namespace Schelendar
             this.deleteBtn.FillPressColor = System.Drawing.Color.FromArgb(((int) (((byte) (184)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.deleteBtn.FillSelectedColor = System.Drawing.Color.FromArgb(((int) (((byte) (184)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.deleteBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
-            this.deleteBtn.Location = new System.Drawing.Point(30, 5);
+            this.deleteBtn.Location = new System.Drawing.Point(3, 3);
             this.deleteBtn.MinimumSize = new System.Drawing.Size(1, 1);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.RectColor = System.Drawing.Color.FromArgb(((int) (((byte) (230)))), ((int) (((byte) (80)))), ((int) (((byte) (80)))));
             this.deleteBtn.RectHoverColor = System.Drawing.Color.FromArgb(((int) (((byte) (235)))), ((int) (((byte) (115)))), ((int) (((byte) (115)))));
             this.deleteBtn.RectPressColor = System.Drawing.Color.FromArgb(((int) (((byte) (184)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.deleteBtn.RectSelectedColor = System.Drawing.Color.FromArgb(((int) (((byte) (184)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
-            this.deleteBtn.Size = new System.Drawing.Size(135, 41);
+            this.deleteBtn.Size = new System.Drawing.Size(125, 34);
             this.deleteBtn.Style = Sunny.UI.UIStyle.Red;
             this.deleteBtn.StyleCustomMode = true;
-            this.deleteBtn.TabIndex = 1;
-            this.deleteBtn.Text = "删除课程";
+            this.deleteBtn.TabIndex = 0;
+            this.deleteBtn.Text = "删除";
             this.deleteBtn.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.deleteBtn.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
+            // nextBtn
+            // 
+            this.nextBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.nextBtn.Dock = System.Windows.Forms.DockStyle.Right;
+            this.nextBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.nextBtn.Location = new System.Drawing.Point(341, 3);
+            this.nextBtn.MinimumSize = new System.Drawing.Size(1, 1);
+            this.nextBtn.Name = "nextBtn";
+            this.nextBtn.Size = new System.Drawing.Size(125, 34);
+            this.nextBtn.TabIndex = 1;
+            this.nextBtn.Text = "下一步";
+            this.nextBtn.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.nextBtn.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
             // 
             // ensureBtn
             // 
             this.ensureBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ensureBtn.Dock = System.Windows.Forms.DockStyle.Right;
             this.ensureBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
-            this.ensureBtn.Location = new System.Drawing.Point(487, 5);
+            this.ensureBtn.Location = new System.Drawing.Point(498, 3);
             this.ensureBtn.MinimumSize = new System.Drawing.Size(1, 1);
             this.ensureBtn.Name = "ensureBtn";
-            this.ensureBtn.Size = new System.Drawing.Size(135, 41);
-            this.ensureBtn.TabIndex = 0;
-            this.ensureBtn.Text = "确定";
+            this.ensureBtn.Size = new System.Drawing.Size(125, 34);
+            this.ensureBtn.TabIndex = 2;
+            this.ensureBtn.Text = "完成";
             this.ensureBtn.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.ensureBtn.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.ensureBtn.Click += new System.EventHandler(this.ensureBtn_Click);
@@ -707,7 +725,6 @@ namespace Schelendar
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(652, 445);
-            this.Controls.Add(this.uiPanel1);
             this.Controls.Add(this.uiTableLayoutPanel1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -720,13 +737,19 @@ namespace Schelendar
             this.uiTableLayoutPanel8.ResumeLayout(false);
             this.uiTableLayoutPanel5.ResumeLayout(false);
             this.uiTableLayoutPanel4.ResumeLayout(false);
-            this.uiPanel1.ResumeLayout(false);
+            this.uiBtnTablePanel.ResumeLayout(false);
             this.uiTableLayoutPanel6.ResumeLayout(false);
             this.uiTableLayoutPanel7.ResumeLayout(false);
             this.ResumeLayout(false);
         }
 
+        private Sunny.UI.UIButton nextBtn;
+
+        private Sunny.UI.UIButton ensureBtn;
+
         private Sunny.UI.UIButton deleteBtn;
+
+        private Sunny.UI.UITableLayoutPanel uiBtnTablePanel;
 
         private Sunny.UI.UILabel uiLabel15;
         private Sunny.UI.UITableLayoutPanel uiTableLayoutPanel8;
@@ -765,10 +788,6 @@ namespace Schelendar
         private Sunny.UI.UILabel uiLabel7;
 
         private Sunny.UI.UITableLayoutPanel uiTableLayoutPanel2;
-
-        private Sunny.UI.UIButton ensureBtn;
-
-        private Sunny.UI.UIPanel uiPanel1;
 
         private Sunny.UI.UILabel uiLabel5;
 

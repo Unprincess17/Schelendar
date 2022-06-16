@@ -248,5 +248,18 @@ namespace Schelendar
         {
             startWeekIUD.Maximum = ((UIIntegerUpDown) sender).Value;
         }
+
+
+        ///TODO: 弹出窗口
+        /// <summary>
+        /// 下一步按钮，弹出事件窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        private void nextBtn_Click(object sender, EventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

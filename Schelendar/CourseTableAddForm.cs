@@ -18,8 +18,7 @@ namespace Schelendar
             InitializeComponent();
         }
 
-
-        ///TODO: 如何进行窗体间的交互
+        
         /// <summary>
         /// 下一步按钮，切换时间设置界面
         /// </summary>
@@ -35,8 +34,7 @@ namespace Schelendar
             {
                 Visible = false;
                 CourseTableAddTimeSettingForm courseTableAddTimeSettingForm =
-                    new CourseTableAddTimeSettingForm(courseTableNameTB.Text, startTimeDP.Value, totalWeekIUD.Value,
-                        totalCourseNumIUD.Value);
+                    new CourseTableAddTimeSettingForm(totalCourseNumIUD.Value);
                 courseTableAddTimeSettingForm.ShowDialog();
                 if (!courseTableAddTimeSettingForm.Visible)
                 {
@@ -44,6 +42,7 @@ namespace Schelendar
                 }
                 if (courseTableAddTimeSettingForm.DialogResult == DialogResult.Yes)
                 {
+                    //TODO: 数据库添加课表，利用CourseTableAddTimeSettingForm的EveryCourseTime
                     DialogResult = DialogResult.Yes;
                 }
             }
@@ -55,7 +54,7 @@ namespace Schelendar
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void deleteBtn_Click(object sender, EventArgs e)
+        private void cancelBtn_Click(object sender, EventArgs e)
         {
             Dispose();
         }

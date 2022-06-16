@@ -2,6 +2,8 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Sunny.UI;
+using Schelendar.Models;
+using System.Collections.Generic;
 
 
 namespace Schelendar
@@ -9,38 +11,18 @@ namespace Schelendar
     public partial class CourseTableAddTimeSettingForm : UIForm
     {
         /// <summary>
-        /// 课程数量
-        /// </summary>
-        private readonly int _dayCourseNumber;
-
-        /// <summary>
-        /// 课表名（学期）
-        /// </summary>
-        private readonly String _courseTableName;
-
-        /// <summary>
-        /// 课表开始时间
-        /// </summary>
-        private readonly DateTime _startDateTime;
-
-        /// <summary>
-        /// 课表持续周数
-        /// </summary>
-        private readonly int _weekLength;
-
-        /// <summary>
         /// 初始化课表每节课的时间
         /// </summary>
         private readonly DateTime _initTime = DateTime.Parse("00:00:00");
+        
+        /// <summary>
+        /// 设置的时间
+        /// </summary>
+        public List<Dictionary<String, CourseTime>> EveryCourseTime = new List<Dictionary<string, CourseTime>>();
 
 
-        public CourseTableAddTimeSettingForm(String courseTableName, DateTime startDateTime, int weekLength,
-            int dayCourseNumber)
+        public CourseTableAddTimeSettingForm(int dayCourseNumber)
         {
-            _dayCourseNumber = dayCourseNumber;
-            _courseTableName = courseTableName;
-            _startDateTime = startDateTime;
-            _weekLength = weekLength;
             InitializeComponent();
             InitTableRows(dayCourseNumber);
         }
@@ -164,16 +146,23 @@ namespace Schelendar
         /// <exception cref="NotImplementedException"></exception>
         private void ensureBtn_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //TODO: 调用逻辑部分来在数据库添加课表，注意TimeSpan转为CourseTime类
-                DialogResult = DialogResult.Yes;
-            }
-            catch (Exception err)
-            {
-                UIMessageDialog.ShowErrorDialog(this, err.Message);
-            }
             
+            for (int i = 1; i < uiTimeSettingTableLayoutPanel.RowCount; i++)
+            {
+                DateTimePicker start = (DateTimePicker) uiTimeSettingTableLayoutPanel.GetControlFromPosition(1, i);
+                DateTimePicker end = (DateTimePicker) uiTimeSettingTableLayoutPanel.GetControlFromPosition(3, i);
+                if (start.Value.TimeOfDay.Equals(_initTime.TimeOfDay) ||
+                    end.Value.TimeOfDay.Equals(_initTime.TimeOfDay))
+                {
+                    UIMessageDialog.ShowErrorDialog(this, "时间设置存在错误");
+                    return;
+                }
+                EveryCourseTime.Add(new Dictionary<string, CourseTime>()
+                    {{"StartTime", new CourseTime(start.Value.TimeOfDay.Hours, start.Value.TimeOfDay.Minutes)},
+                        {"EndTime", new CourseTime(end.Value.TimeOfDay.Hours, end.Value.TimeOfDay.Minutes)}});
+            }
+            DialogResult = DialogResult.Yes;
+            Close();
         }
     }
 }

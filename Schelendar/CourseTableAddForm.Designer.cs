@@ -30,7 +30,7 @@
         {
             this.uiTableLayoutPanel1 = new Sunny.UI.UITableLayoutPanel();
             this.uiPanel1 = new Sunny.UI.UIPanel();
-            this.deleteBtn = new Sunny.UI.UIButton();
+            this.cancelBtn = new Sunny.UI.UIButton();
             this.ensureBtn = new Sunny.UI.UIButton();
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.uiLabel1 = new Sunny.UI.UILabel();
@@ -91,7 +91,7 @@
             // uiPanel1
             // 
             this.uiTableLayoutPanel1.SetColumnSpan(this.uiPanel1, 2);
-            this.uiPanel1.Controls.Add(this.deleteBtn);
+            this.uiPanel1.Controls.Add(this.cancelBtn);
             this.uiPanel1.Controls.Add(this.ensureBtn);
             this.uiPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiPanel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
@@ -107,33 +107,33 @@
             this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiPanel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // deleteBtn
+            // cancelBtn
             // 
-            this.deleteBtn.BackColor = System.Drawing.Color.Red;
-            this.deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.deleteBtn.Dock = System.Windows.Forms.DockStyle.Left;
-            this.deleteBtn.FillColor = System.Drawing.Color.FromArgb(((int) (((byte) (230)))), ((int) (((byte) (80)))), ((int) (((byte) (80)))));
-            this.deleteBtn.FillColor2 = System.Drawing.Color.FromArgb(((int) (((byte) (230)))), ((int) (((byte) (80)))), ((int) (((byte) (80)))));
-            this.deleteBtn.FillHoverColor = System.Drawing.Color.FromArgb(((int) (((byte) (235)))), ((int) (((byte) (115)))), ((int) (((byte) (115)))));
-            this.deleteBtn.FillPressColor = System.Drawing.Color.FromArgb(((int) (((byte) (184)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
-            this.deleteBtn.FillSelectedColor = System.Drawing.Color.FromArgb(((int) (((byte) (184)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
-            this.deleteBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
-            this.deleteBtn.Location = new System.Drawing.Point(30, 5);
-            this.deleteBtn.MinimumSize = new System.Drawing.Size(1, 1);
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Radius = 1;
-            this.deleteBtn.RectColor = System.Drawing.Color.FromArgb(((int) (((byte) (230)))), ((int) (((byte) (80)))), ((int) (((byte) (80)))));
-            this.deleteBtn.RectHoverColor = System.Drawing.Color.FromArgb(((int) (((byte) (235)))), ((int) (((byte) (115)))), ((int) (((byte) (115)))));
-            this.deleteBtn.RectPressColor = System.Drawing.Color.FromArgb(((int) (((byte) (184)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
-            this.deleteBtn.RectSelectedColor = System.Drawing.Color.FromArgb(((int) (((byte) (184)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
-            this.deleteBtn.Size = new System.Drawing.Size(135, 41);
-            this.deleteBtn.Style = Sunny.UI.UIStyle.Red;
-            this.deleteBtn.StyleCustomMode = true;
-            this.deleteBtn.TabIndex = 1;
-            this.deleteBtn.Text = "取消";
-            this.deleteBtn.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
-            this.deleteBtn.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            this.cancelBtn.BackColor = System.Drawing.Color.Red;
+            this.cancelBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cancelBtn.Dock = System.Windows.Forms.DockStyle.Left;
+            this.cancelBtn.FillColor = System.Drawing.Color.FromArgb(((int) (((byte) (230)))), ((int) (((byte) (80)))), ((int) (((byte) (80)))));
+            this.cancelBtn.FillColor2 = System.Drawing.Color.FromArgb(((int) (((byte) (230)))), ((int) (((byte) (80)))), ((int) (((byte) (80)))));
+            this.cancelBtn.FillHoverColor = System.Drawing.Color.FromArgb(((int) (((byte) (235)))), ((int) (((byte) (115)))), ((int) (((byte) (115)))));
+            this.cancelBtn.FillPressColor = System.Drawing.Color.FromArgb(((int) (((byte) (184)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
+            this.cancelBtn.FillSelectedColor = System.Drawing.Color.FromArgb(((int) (((byte) (184)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
+            this.cancelBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.cancelBtn.Location = new System.Drawing.Point(30, 5);
+            this.cancelBtn.MinimumSize = new System.Drawing.Size(1, 1);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Radius = 1;
+            this.cancelBtn.RectColor = System.Drawing.Color.FromArgb(((int) (((byte) (230)))), ((int) (((byte) (80)))), ((int) (((byte) (80)))));
+            this.cancelBtn.RectHoverColor = System.Drawing.Color.FromArgb(((int) (((byte) (235)))), ((int) (((byte) (115)))), ((int) (((byte) (115)))));
+            this.cancelBtn.RectPressColor = System.Drawing.Color.FromArgb(((int) (((byte) (184)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
+            this.cancelBtn.RectSelectedColor = System.Drawing.Color.FromArgb(((int) (((byte) (184)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
+            this.cancelBtn.Size = new System.Drawing.Size(135, 41);
+            this.cancelBtn.Style = Sunny.UI.UIStyle.Red;
+            this.cancelBtn.StyleCustomMode = true;
+            this.cancelBtn.TabIndex = 1;
+            this.cancelBtn.Text = "取消";
+            this.cancelBtn.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.cancelBtn.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.cancelBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // ensureBtn
             // 
@@ -441,7 +441,7 @@
         private Sunny.UI.UIIntegerUpDown totalCourseNumIUD;
         private Sunny.UI.UIDatePicker startTimeDP;
         private Sunny.UI.UIPanel uiPanel1;
-        private Sunny.UI.UIButton deleteBtn;
+        private Sunny.UI.UIButton cancelBtn;
         private Sunny.UI.UIButton ensureBtn;
         private Sunny.UI.UIPanel uiPanel2;
         private Sunny.UI.UILabel uiLabel3;
