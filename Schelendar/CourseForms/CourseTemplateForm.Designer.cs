@@ -242,7 +242,7 @@
             this.uiLabel4.Name = "uiLabel4";
             this.uiLabel4.Size = new System.Drawing.Size(193, 40);
             this.uiLabel4.TabIndex = 3;
-            this.uiLabel4.Text = "作业：";
+            this.uiLabel4.Text = "作业";
             this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.uiLabel4.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -288,7 +288,7 @@
             this.uiLabel5.Name = "uiLabel5";
             this.uiLabel5.Size = new System.Drawing.Size(193, 40);
             this.uiLabel5.TabIndex = 6;
-            this.uiLabel5.Text = "大作业：";
+            this.uiLabel5.Text = "大作业";
             this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.uiLabel5.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -402,7 +402,7 @@
             this.uiLabel6.Name = "uiLabel6";
             this.uiLabel6.Size = new System.Drawing.Size(193, 40);
             this.uiLabel6.TabIndex = 15;
-            this.uiLabel6.Text = "期中考试：";
+            this.uiLabel6.Text = "期中考试";
             this.uiLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.uiLabel6.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -414,7 +414,7 @@
             this.uiLabel7.Name = "uiLabel7";
             this.uiLabel7.Size = new System.Drawing.Size(193, 40);
             this.uiLabel7.TabIndex = 16;
-            this.uiLabel7.Text = "期末考试：";
+            this.uiLabel7.Text = "期末考试";
             this.uiLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.uiLabel7.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 

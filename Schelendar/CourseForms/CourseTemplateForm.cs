@@ -18,8 +18,13 @@ namespace Schelendar.CourseForms
         /// </summary>
         public List<TemplateAdd> TemplateAdds = new List<TemplateAdd>();
         
-        public CourseTemplateForm()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="courseId">如果是修改原有，则courseId应该可以查到，否则为-1</param>
+        public CourseTemplateForm(int courseId)
         {
+            
             InitializeComponent();
         }
         
@@ -40,6 +45,17 @@ namespace Schelendar.CourseForms
                 Name = name;
                 Time = time;
             }
+        }
+
+
+        /// TODO：查询返回课程的事件列表并初始化（先不考虑修改）
+        /// <summary>
+        /// 如果是已存在的课程
+        /// </summary>
+        /// <param name="courseId"></param>
+        private void InitTemplate(int courseId)
+        {
+            
         }
         
         
