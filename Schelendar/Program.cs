@@ -21,7 +21,8 @@ namespace Schelendar
             //CourseTest();
             //TaskTest();
             //CourseTableAddTest();
-            MainTest();
+            //MainTest();
+            CourseTemplateTest();
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new LoginForm());
@@ -121,7 +122,7 @@ namespace Schelendar
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new CourseTemplateForm());
         }
 
         static void CourseTableAddTest()

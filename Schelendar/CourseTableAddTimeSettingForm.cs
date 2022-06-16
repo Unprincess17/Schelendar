@@ -134,6 +134,7 @@ namespace Schelendar
         /// <exception cref="NotImplementedException"></exception>
         private void deleteBtn_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.Retry;
             Close();
         }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Schelendar.CourseForms;
 using Schelendar.Models;
 using Sunny.UI;
 
@@ -40,7 +41,6 @@ namespace Schelendar
         public CourseAddForm(SchCourse course, int dayCourseNumber, int dayOfWeek, int weekLength, int semester)
         {
             InitializeComponent();
-            // deleteBtn.Style = UIStyle.Red;
             InitCourseInfo(course);
             InitIudMaxAndMin(weekLength, dayCourseNumber);
             this._dayOfWeek = dayOfWeek;
@@ -180,7 +180,7 @@ namespace Schelendar
         {
             SchCourse = new SchCourse(courseNameTB.Text, locationDistrictTB.Text, locationBuildingTB.Text,
                 locationRoomTB.Text, teacherNameTB.Text, startWeekIUD.Value, endWeekIUD.Value, _dayOfWeek, _semester,
-                startTimeIUD.Value, endTimeIUD.Value, 0);
+                startTimeIUD.Value, endTimeIUD.Value, 0); //TODO: ID需要传入数据库中的
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -201,7 +201,7 @@ namespace Schelendar
             }
             else
             {
-                UIMessageTip.ShowError(text: "课程不存在");
+                UIMessageDialog.ShowErrorDialog(this, "课程不存在");
             }
         }
 
@@ -249,8 +249,7 @@ namespace Schelendar
             startWeekIUD.Maximum = ((UIIntegerUpDown) sender).Value;
         }
 
-
-        ///TODO: 弹出窗口
+        
         /// <summary>
         /// 下一步按钮，弹出事件窗口
         /// </summary>
@@ -259,7 +258,17 @@ namespace Schelendar
         /// <exception cref="NotImplementedException"></exception>
         private void nextBtn_Click(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            CourseTemplateForm courseTemplateForm = new CourseTemplateForm();
+            courseTemplateForm.ShowDialog();
+            if (courseTemplateForm.DialogResult == DialogResult.Yes)
+            {
+                //TODO: 数据库添加课程以及事件，利用CourseTemplateForm的TemplateAdds
+                SchCourse = new SchCourse(courseNameTB.Text, locationDistrictTB.Text, locationBuildingTB.Text,
+                    locationRoomTB.Text, teacherNameTB.Text, startWeekIUD.Value, endWeekIUD.Value, _dayOfWeek, _semester,
+                    startTimeIUD.Value, endTimeIUD.Value, 0); //TODO: ID需要传入数据库中的
+                DialogResult = DialogResult.OK;
+                Close();
+            }
         }
     }
 }

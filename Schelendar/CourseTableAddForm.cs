@@ -36,7 +36,7 @@ namespace Schelendar
                 CourseTableAddTimeSettingForm courseTableAddTimeSettingForm =
                     new CourseTableAddTimeSettingForm(totalCourseNumIUD.Value);
                 courseTableAddTimeSettingForm.ShowDialog();
-                if (!courseTableAddTimeSettingForm.Visible)
+                if (courseTableAddTimeSettingForm.DialogResult == DialogResult.Retry)
                 {
                     Show();
                 }
@@ -44,6 +44,7 @@ namespace Schelendar
                 {
                     //TODO: 数据库添加课表，利用CourseTableAddTimeSettingForm的EveryCourseTime
                     DialogResult = DialogResult.Yes;
+                    Close();
                 }
             }
         }
