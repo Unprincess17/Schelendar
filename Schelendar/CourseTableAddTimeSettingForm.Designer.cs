@@ -43,7 +43,7 @@
             this.uiPanel1.Controls.Add(this.deleteBtn);
             this.uiPanel1.Controls.Add(this.ensureBtn);
             this.uiPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.uiPanel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiPanel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.uiPanel1.Location = new System.Drawing.Point(0, 356);
             this.uiPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
@@ -60,7 +60,7 @@
             this.deleteBtn.BackColor = System.Drawing.Color.Red;
             this.deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.deleteBtn.Dock = System.Windows.Forms.DockStyle.Left;
-            this.deleteBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.deleteBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.deleteBtn.Location = new System.Drawing.Point(30, 5);
             this.deleteBtn.MinimumSize = new System.Drawing.Size(1, 1);
             this.deleteBtn.Name = "deleteBtn";
@@ -68,14 +68,15 @@
             this.deleteBtn.Size = new System.Drawing.Size(135, 44);
             this.deleteBtn.TabIndex = 1;
             this.deleteBtn.Text = "返回上一步";
-            this.deleteBtn.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.deleteBtn.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.deleteBtn.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // ensureBtn
             // 
             this.ensureBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ensureBtn.Dock = System.Windows.Forms.DockStyle.Right;
-            this.ensureBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ensureBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.ensureBtn.Location = new System.Drawing.Point(487, 5);
             this.ensureBtn.MinimumSize = new System.Drawing.Size(1, 1);
             this.ensureBtn.Name = "ensureBtn";
@@ -83,8 +84,9 @@
             this.ensureBtn.Size = new System.Drawing.Size(135, 44);
             this.ensureBtn.TabIndex = 0;
             this.ensureBtn.Text = "确定";
-            this.ensureBtn.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ensureBtn.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.ensureBtn.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.ensureBtn.Click += new System.EventHandler(this.ensureBtn_Click);
             // 
             // uiTimeSettingTableLayoutPanel
             // 
@@ -111,7 +113,7 @@
             // uiLabel1
             // 
             this.uiLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.uiLabel1.Location = new System.Drawing.Point(133, 1);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(250, 50);
@@ -123,7 +125,7 @@
             // uiLabel2
             // 
             this.uiLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.uiLabel2.Location = new System.Drawing.Point(396, 1);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(252, 50);
@@ -146,7 +148,6 @@
             this.uiPanel1.ResumeLayout(false);
             this.uiTimeSettingTableLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
 
         #endregion
