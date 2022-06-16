@@ -13,22 +13,22 @@ namespace Schelendar
         /// <summary>
         /// 当前实际的周数
         /// </summary>
-        private int curWeekNumber = 1;
+        private int _curWeekNumber = 1;
 
         /// <summary>
         /// 当前星期数
         /// </summary>
-        private int curWeekDay = 1;
+        private int _curWeekDay = 1;
 
         /// <summary>
         /// 当前页面所展示的课表的周数
         /// </summary>
-        private int displayedWeekNumber = 1;
+        private int _displayedWeekNumber = 1;
 
         /// <summary>
         /// 当前课表的Id
         /// </summary>
-        private int classTableId;
+        private int _classTableId;
 
         /// <summary>
         /// 课表对象
@@ -61,6 +61,7 @@ namespace Schelendar
             Visible = false;
             InitializeComponent();
             InitTableRows(_schCourseTable.DayCourseNumber);
+            InitToolStripMenuItem();
             // TODO: 初始化时间
             // SetCurWeekNumber();
             for (int i = 0; i < _schCourseTable.DayCourseNumber; i++)
@@ -73,7 +74,7 @@ namespace Schelendar
                 uiClassTableLayoutPanel.Controls.Add(uiTimeLable, 0, i);
             }
 
-            // TODO: 初始化课表,在这里查询得到列表
+            // TODO: 初始化课表,添加查询，在这里查询得到列表
             // InitMap();
             // UpdateCourseShow();
             Visible = true;
@@ -101,7 +102,7 @@ namespace Schelendar
         /// <param name="number">当前为第几周</param>
         private void UpdateWeekNumber()
         {
-            weekLable.Text = "WEEK " + displayedWeekNumber;
+            weekLable.Text = "WEEK " + _displayedWeekNumber;
         }
 
 
@@ -122,6 +123,7 @@ namespace Schelendar
                     uiClassLabel.DoubleClick += uiClassLabel_DoubleClick;
                     uiClassLabel.MouseHover += uiClassLabel_MouseHover;
                     uiClassLabel.MouseLeave += uiClassLabel_MouseLeave;
+                    uiClassLabel.ContextMenuStrip = uiSettingContextMenuStrip;
                     uiClassTableLayoutPanel.Controls.Add(uiClassLabel, i + 1, uiClassTableLayoutPanel.RowCount - 1);
                 }
             }
@@ -208,7 +210,7 @@ namespace Schelendar
         /// </summary>
         private bool IsFirstWeek()
         {
-            return displayedWeekNumber <= 1;
+            return _displayedWeekNumber <= 1;
         }
 
 
@@ -217,7 +219,7 @@ namespace Schelendar
         /// </summary>
         private bool IsLastWeek()
         {
-            return displayedWeekNumber >= _schCourseTable.WeekLength;
+            return _displayedWeekNumber >= _schCourseTable.WeekLength;
         }
 
 
@@ -229,7 +231,7 @@ namespace Schelendar
             if (!IsFirstWeek())
             {
                 uiClassTableLayoutPanel.Visible = false;
-                displayedWeekNumber--;
+                _displayedWeekNumber--;
                 UpdateWeekNumber();
                 UpdateCourseShow();
                 uiClassTableLayoutPanel.Visible = true;
@@ -245,7 +247,7 @@ namespace Schelendar
             if (!IsLastWeek())
             {
                 uiClassTableLayoutPanel.Visible = false;
-                displayedWeekNumber++;
+                _displayedWeekNumber++;
                 UpdateWeekNumber();
                 UpdateCourseShow();
                 uiClassTableLayoutPanel.Visible = true;
@@ -263,18 +265,18 @@ namespace Schelendar
             if (!now.IsBefore(_schCourseTable.StartDateTime))
             {
                 TimeSpan timeSpan = now - _schCourseTable.StartDateTime;
-                curWeekNumber = timeSpan.Days / 7 + 1;
-                curWeekDay = timeSpan.Days % 7 + 1;
-                if (curWeekDay <= _schCourseTable.WeekLength)
+                _curWeekNumber = timeSpan.Days / 7 + 1;
+                _curWeekDay = timeSpan.Days % 7 + 1;
+                if (_curWeekDay <= _schCourseTable.WeekLength)
                 { 
-                    displayedWeekNumber = curWeekNumber;
+                    _displayedWeekNumber = _curWeekNumber;
                     stateLabel.Text = "ON";
                     MarkToday();
                 }
                 else
                 {
                     stateLabel.Text = "OVER";
-                    displayedWeekNumber = _schCourseTable.WeekLength;
+                    _displayedWeekNumber = _schCourseTable.WeekLength;
                 }
                 UpdateWeekNumber();
                                     
@@ -283,7 +285,7 @@ namespace Schelendar
             else
             {
                 stateLabel.Text = "NOT START";
-                displayedWeekNumber = 1;
+                _displayedWeekNumber = 1;
             }
         }
 
@@ -293,7 +295,7 @@ namespace Schelendar
         /// </summary>
         private void MarkToday()
         {
-            Control control = uiTimeTableLayoutPanel.GetControlFromPosition(curWeekDay, 0);
+            Control control = uiTimeTableLayoutPanel.GetControlFromPosition(_curWeekDay, 0);
             control.BackColor = Color.Aqua;
         }
 
@@ -392,11 +394,11 @@ namespace Schelendar
         /// </summary>
         private bool IsCourseShow(SchCourse schClass)
         {
-            return (schClass.StartWeek <= displayedWeekNumber) && (schClass.EndWeek >= displayedWeekNumber);
+            return (schClass.StartWeek <= _displayedWeekNumber) && (schClass.EndWeek >= _displayedWeekNumber);
         }
 
 
-        /// TODO: 是否还要添加颜色选择功能（待定）
+        /// TODO: 是否还要添加颜色选择功能（选做）
         /// <summary>
         /// 填写课程信息的单元格
         /// </summary>
@@ -407,6 +409,18 @@ namespace Schelendar
             uiLabel.Text = course.SchCourseName + Environment.NewLine + course.ClassLocation +
                            Environment.NewLine + course.TeacherName;
             uiLabel.BackColor = CourseTableColor.DodgerBlue;
+        }
+
+
+        /// <summary>
+        /// 绑定ToolStripMenuItem的Click事件
+        /// </summary>
+        private void InitToolStripMenuItem()
+        {
+            this.设为当前课表ToolStripMenuItem.Click += 设为当前课表ToolStripMenuItem_Click;
+            this.创建课表ToolStripMenuItem.Click += 创建课表ToolStripMenuItem_Click;
+            this.删除课表ToolStripMenuItem.Click += 删除课表ToolStripMenuItem_Click;
+            this.修改课表ToolStripMenuItem.Click += 修改课表ToolStripMenuItem_Click;
         }
 
 
@@ -422,7 +436,6 @@ namespace Schelendar
         }
 
         
-        ///TODO: 创建新课表
         /// <summary>
         /// 创建新的课表
         /// </summary>
@@ -430,6 +443,12 @@ namespace Schelendar
         /// <param name="e"></param>
         private void 创建课表ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CourseTableAddForm courseTableAddForm = new CourseTableAddForm();
+            if (courseTableAddForm.ShowDialog() == DialogResult.Yes)
+            {
+                //TODO: 刷新MainForm
+                
+            }
             
         }
 

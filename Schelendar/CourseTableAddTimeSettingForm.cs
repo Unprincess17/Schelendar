@@ -155,8 +155,7 @@ namespace Schelendar
             Close();
         }
 
-
-        ///TODO: 调用逻辑部分来在数据库添加课表，注意TimeSpan转为CourseTime类
+        
         /// <summary>
         /// 确定添加课程
         /// </summary>
@@ -165,7 +164,16 @@ namespace Schelendar
         /// <exception cref="NotImplementedException"></exception>
         private void ensureBtn_Click(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                //TODO: 调用逻辑部分来在数据库添加课表，注意TimeSpan转为CourseTime类
+                DialogResult = DialogResult.Yes;
+            }
+            catch (Exception err)
+            {
+                UIMessageDialog.ShowErrorDialog(this, err.Message);
+            }
+            
         }
     }
 }

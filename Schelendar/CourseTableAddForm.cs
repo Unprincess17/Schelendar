@@ -42,6 +42,10 @@ namespace Schelendar
                 {
                     Show();
                 }
+                if (courseTableAddTimeSettingForm.DialogResult == DialogResult.Yes)
+                {
+                    DialogResult = DialogResult.Yes;
+                }
             }
         }
 
