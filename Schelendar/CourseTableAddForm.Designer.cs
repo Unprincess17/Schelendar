@@ -133,7 +133,7 @@
             this.cancelBtn.Text = "取消";
             this.cancelBtn.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.cancelBtn.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.cancelBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // ensureBtn
             // 

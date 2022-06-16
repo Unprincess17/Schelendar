@@ -149,8 +149,8 @@ namespace Schelendar
             
             for (int i = 1; i < uiTimeSettingTableLayoutPanel.RowCount; i++)
             {
-                DateTimePicker start = (DateTimePicker) uiTimeSettingTableLayoutPanel.GetControlFromPosition(1, i);
-                DateTimePicker end = (DateTimePicker) uiTimeSettingTableLayoutPanel.GetControlFromPosition(3, i);
+                UITimePicker start = (UITimePicker) uiTimeSettingTableLayoutPanel.GetControlFromPosition(1, i);
+                UITimePicker end = (UITimePicker) uiTimeSettingTableLayoutPanel.GetControlFromPosition(3, i);
                 if (start.Value.TimeOfDay.Equals(_initTime.TimeOfDay) ||
                     end.Value.TimeOfDay.Equals(_initTime.TimeOfDay))
                 {
