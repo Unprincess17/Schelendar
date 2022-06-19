@@ -200,11 +200,9 @@ namespace Schelendar
             this.locationDistrictTB.ShowText = false;
             this.locationDistrictTB.Size = new System.Drawing.Size(510, 33);
             this.locationDistrictTB.TabIndex = 4;
-            this.locationDistrictTB.Text = "学区";
             this.locationDistrictTB.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.locationDistrictTB.Watermark = "学区";
             this.locationDistrictTB.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.locationDistrictTB.Click += new System.EventHandler(this.locationTB_MouseClick);
-            this.locationDistrictTB.Leave += new System.EventHandler(this.locationDistrictTB_Leave);
             // 
             // locationBuildingTB
             // 
@@ -218,11 +216,9 @@ namespace Schelendar
             this.locationBuildingTB.ShowText = false;
             this.locationBuildingTB.Size = new System.Drawing.Size(510, 33);
             this.locationBuildingTB.TabIndex = 6;
-            this.locationBuildingTB.Text = "教学楼";
             this.locationBuildingTB.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.locationBuildingTB.Watermark = "教学楼";
             this.locationBuildingTB.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.locationBuildingTB.Click += new System.EventHandler(this.locationTB_MouseClick);
-            this.locationBuildingTB.Leave += new System.EventHandler(this.locationBuildingTB_Leave);
             // 
             // locationRoomTB
             // 
@@ -236,11 +232,9 @@ namespace Schelendar
             this.locationRoomTB.ShowText = false;
             this.locationRoomTB.Size = new System.Drawing.Size(510, 33);
             this.locationRoomTB.TabIndex = 7;
-            this.locationRoomTB.Text = "教室";
             this.locationRoomTB.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.locationRoomTB.Watermark = "教室";
             this.locationRoomTB.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.locationRoomTB.Click += new System.EventHandler(this.locationTB_MouseClick);
-            this.locationRoomTB.Leave += new System.EventHandler(this.locationRoomTB_Leave);
             // 
             // uiLabel4
             // 

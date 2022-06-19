@@ -32,7 +32,6 @@
             this.btnTablePanel = new Sunny.UI.UITableLayoutPanel();
             this.addBtn = new Sunny.UI.UIButton();
             this.preBtn = new Sunny.UI.UIButton();
-            this.nextBtn = new Sunny.UI.UIButton();
             this.ensureBtn = new Sunny.UI.UIButton();
             this.templateTablePanel = new Sunny.UI.UITableLayoutPanel();
             this.uiLabel1 = new Sunny.UI.UILabel();
@@ -73,14 +72,13 @@
             // 
             // btnTablePanel
             // 
-            this.btnTablePanel.ColumnCount = 3;
-            this.btnTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.btnTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.btnTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.btnTablePanel.ColumnCount = 2;
+            this.btnTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.btnTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.btnTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.btnTablePanel.Controls.Add(this.addBtn, 0, 0);
             this.btnTablePanel.Controls.Add(this.preBtn, 0, 1);
-            this.btnTablePanel.Controls.Add(this.nextBtn, 1, 1);
-            this.btnTablePanel.Controls.Add(this.ensureBtn, 2, 1);
+            this.btnTablePanel.Controls.Add(this.ensureBtn, 1, 1);
             this.btnTablePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnTablePanel.Location = new System.Drawing.Point(0, 326);
             this.btnTablePanel.Name = "btnTablePanel";
@@ -122,22 +120,6 @@
             this.preBtn.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.preBtn.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.preBtn.Click += new System.EventHandler(this.preBtn_Click);
-            // 
-            // nextBtn
-            // 
-            this.nextBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.nextBtn.Dock = System.Windows.Forms.DockStyle.Right;
-            this.nextBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
-            this.nextBtn.Location = new System.Drawing.Point(495, 44);
-            this.nextBtn.MinimumSize = new System.Drawing.Size(1, 1);
-            this.nextBtn.Name = "nextBtn";
-            this.nextBtn.Radius = 1;
-            this.nextBtn.Size = new System.Drawing.Size(140, 36);
-            this.nextBtn.TabIndex = 2;
-            this.nextBtn.Text = "下一步";
-            this.nextBtn.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
-            this.nextBtn.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
             // 
             // ensureBtn
             // 
@@ -440,7 +422,6 @@
 
         private Sunny.UI.UIButton addBtn;
         private Sunny.UI.UIButton preBtn;
-        private Sunny.UI.UIButton nextBtn;
 
         private Sunny.UI.UIDatetimePicker uiDatetimePicker3;
         private Sunny.UI.UIDatetimePicker uiDatetimePicker4;

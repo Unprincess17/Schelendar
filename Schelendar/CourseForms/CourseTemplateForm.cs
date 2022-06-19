@@ -96,19 +96,6 @@ namespace Schelendar.CourseForms
         }
 
 
-        ///TODO: 不清楚作用    似乎这个按钮是没有用的
-        /// <summary>
-        /// 下一步
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// <exception cref="NotImplementedException"></exception>
-        private void nextBtn_Click(object sender, EventArgs e)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        
         ///TODO: 1.
         /// <summary>
         /// 完成按钮
