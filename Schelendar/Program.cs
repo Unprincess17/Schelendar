@@ -20,7 +20,14 @@ namespace Schelendar
             //DBTest();
             //CourseTest();
             //TaskTest();
-
+            //CourseTableAddTest();
+            MainTest();
+            //CourseTemplateTest();
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new LoginForm());
+            //Application.Run(new FarmForm());
+            //Application.Run(new MainForm());
 
 
         }
@@ -108,10 +115,24 @@ namespace Schelendar
             //Application.Run(new LoginForm());
             //Application.Run(new FarmForm());
             //Application.Run(new MainForm());
-            Application.Run(new CourseTableAddTimeSettingForm());
+            //Application.Run(new CourseTableAddTimeSettingForm(11));
         }
 
         static void CourseTemplateTest()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new CourseTemplateForm(-1));
+        }
+
+        static void CourseTableAddTest()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new CourseTableAddForm());
+        }
+
+        static void MainTest()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
