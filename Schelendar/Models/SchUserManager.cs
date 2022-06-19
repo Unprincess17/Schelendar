@@ -13,7 +13,7 @@ namespace Schelendar.Models
 {
     public static class SchUserManager
     {
-        public static SchUser User { get; set; }
+        public static SchUser CurrentUser { get; set; }
         public static string UserDBFile { get; set; }
         public static string CourseDBFile { get; set; }
         public static string TaskDBFile { get; set; }
@@ -23,7 +23,7 @@ namespace Schelendar.Models
 
         static SchUserManager()
         {
-            User = new SchUser();
+            CurrentUser = new SchUser();
 
             UserDBFile = config.UserDBFile;
             CourseDBFile = config.CourseDBFile;
@@ -136,37 +136,29 @@ namespace Schelendar.Models
                 cn.Close();
             }
 
-            //if(result == null)
-            //{
-            //    throw new ArgumentNullException($"未查询到名称为{UserName}的用户，请检查输入");
-            //}
-
             if (!password.Equals(result))
             {
                 throw new ArgumentException($"用户名或密码错误");
             }
-            else
-            {//登陆成功
-                User.UserName = userName;
-                using(SQLiteConnection cn = new SQLiteConnection("data source=" + UserDBFile))
-                {
-                    cn.Open();
-                    SQLiteCommand cmd = cn.CreateCommand();
-                    cmd.CommandText = $"SELECT SchUserID FROM SchUsers WHERE UserName='{userName}'";
-                    User.SchUserID = Convert.ToInt32(cmd.ExecuteScalar());
-                    //cmd.CommandText = $"SELECT UserExperience FROM SchUsers WHERE UserName='{UserName}'";
-                    cmd.CommandText = $"SELECT Password FROM SchUsers WHERE UserName='{userName}'";
-                    User.Password = (string)cmd.ExecuteScalar();
-                    cmd.CommandText = $"SELECT IsRmbMe FROM SchUsers WHERE UserName='{userName}'";
-                    User.IsRmbMe = Convert.ToInt32(cmd.ExecuteScalar());
-                    cmd.CommandText = $"SELECT IsRmbPasswd FROM SchUsers WHERE UserName='{userName}'";
-                    User.IsRmbPasswd = Convert.ToInt32(cmd.ExecuteScalar());
-                    cmd.CommandText = $"SELECT IsAutoLogin FROM SchUsers WHERE UserName='{userName}'";
-                    User.IsAutoLogin = Convert.ToInt32(cmd.ExecuteScalar());
-                    cn.Close();
-                }
+            //登陆成功
+            CurrentUser.UserName = userName;
+            using (SQLiteConnection cn = new SQLiteConnection("data source=" + UserDBFile))
+            {
+                cn.Open();
+                SQLiteCommand cmd = cn.CreateCommand();
+                cmd.CommandText = $"SELECT SchUserID FROM SchUsers WHERE UserName='{userName}'";
+                CurrentUser.SchUserID = Convert.ToInt32(cmd.ExecuteScalar());
+                //cmd.CommandText = $"SELECT UserExperience FROM SchUsers WHERE UserName='{UserName}'";
+                cmd.CommandText = $"SELECT Password FROM SchUsers WHERE UserName='{userName}'";
+                CurrentUser.Password = (string)cmd.ExecuteScalar();
+                cmd.CommandText = $"SELECT IsRmbMe FROM SchUsers WHERE UserName='{userName}'";
+                CurrentUser.IsRmbMe = Convert.ToInt32(cmd.ExecuteScalar());
+                cmd.CommandText = $"SELECT IsRmbPasswd FROM SchUsers WHERE UserName='{userName}'";
+                CurrentUser.IsRmbPasswd = Convert.ToInt32(cmd.ExecuteScalar());
+                cmd.CommandText = $"SELECT IsAutoLogin FROM SchUsers WHERE UserName='{userName}'";
+                CurrentUser.IsAutoLogin = Convert.ToInt32(cmd.ExecuteScalar());
+                cn.Close();
             }
-            
         }
 
         /// <summary>
@@ -196,7 +188,7 @@ namespace Schelendar.Models
                     object result;
                     SQLiteCommand cmd = cn.CreateCommand();
                     cn.Close();
-                    cmd.CommandText = $"UPDATE SchUsers SET UserName='{newUser.UserName}', Password='{newUser.Password}', UserExperience='{newUser.UserExperience}',IsRmbMe='{newUser.IsRmbMe}',IsRmbPasswd='{newUser.IsRmbPasswd}',IsAutoLogin=='{newUser.IsAutoLogin}' ,DefaultGroupID='{newUser.DefaultGroupID}' WHERE SchUserID='{User.SchUserID}';";
+                    cmd.CommandText = $"UPDATE SchUsers SET UserName='{newUser.UserName}', Password='{newUser.Password}', UserExperience='{newUser.UserExperience}',IsRmbMe='{newUser.IsRmbMe}',IsRmbPasswd='{newUser.IsRmbPasswd}',IsAutoLogin=='{newUser.IsAutoLogin}' ,DefaultGroupID='{newUser.DefaultGroupID}' WHERE SchUserID='{CurrentUser.SchUserID}';";
                     cn.Open();
                     cmd.ExecuteNonQuery();
                     cn.Close();
@@ -205,7 +197,7 @@ namespace Schelendar.Models
             }
             catch (ArgumentException e)
             {
-                throw new ArgumentException($"未找到名称为{User.UserName}的用户或更新用户格式有误");
+                throw new ArgumentException($"未找到名称为{CurrentUser.UserName}的用户或更新用户格式有误");
             }
         }
 
@@ -218,27 +210,13 @@ namespace Schelendar.Models
         /// <param name="schCourse"></param>
         public static void AddCourse(SchCourse course)
         {
-            try
-            {
-                SchCourseManager.AddCourse(User.SchUserID, course);
-            }
-            catch(Exception e)
-            {
-                throw e;
-            }
+            SchCourseManager.AddCourse(CurrentUser.SchUserID, course);
         }
 
         ///TODO:update course
         public static void UpdateCourse(string oldCourseName, SchCourse course)
         {
-            try
-            {
-                SchCourseManager.UpdateCourse(User.SchUserID, oldCourseName, course);
-            }
-            catch(Exception e)
-            {
-                throw e;
-            }
+            SchCourseManager.UpdateCourse(CurrentUser.SchUserID, oldCourseName, course);
         }
 
         /// <summary>
@@ -247,14 +225,7 @@ namespace Schelendar.Models
         /// <returns></returns>
         public static List<SchCourse> GetCourses()
         {
-            try
-            {
-                return SchCourseManager.GetCourses(User.SchUserID);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            return SchCourseManager.GetCourses(CurrentUser.SchUserID);
         }
 
         /// <summary>
@@ -263,14 +234,7 @@ namespace Schelendar.Models
         /// /// <returns></returns>
         public static List<SchCourse> GetCourses(int semester)
         {
-            try
-            {
-                return SchCourseManager.GetCourses(User.SchUserID, semester);
-            }
-            catch(Exception e)//Exception comes from SchCourseManager, possibly with database
-            {
-                throw e;
-            }
+            return SchCourseManager.GetCourses(CurrentUser.SchUserID, semester);           
         }
 
         /// <summary>
@@ -279,14 +243,7 @@ namespace Schelendar.Models
         /// <param name="courseName"></param>
         public static void DeleteCourse(string courseName)
         {
-            try
-            {
-                SchCourseManager.DeleteCourse(User.SchUserID, courseName);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            SchCourseManager.DeleteCourse(CurrentUser.SchUserID, courseName);
         }
 
         #endregion
@@ -302,14 +259,7 @@ namespace Schelendar.Models
         /// <param name="force">若任务组未创建，则创建任务组。此项为0时若任务组未创建则抛出异常</param>
         public static void AddTask(SchTask task, int TaskGroupID=0, int force = 0)
         {
-            try
-            {
-                SchTaskManager.AddTask(User.SchUserID, task, TaskGroupID, force);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            SchTaskManager.AddTask(CurrentUser.SchUserID, task, TaskGroupID, force);
         }
 
         /// <summary>
@@ -318,26 +268,12 @@ namespace Schelendar.Models
         /// <param name="taskName"></param>
         public static void DeleteTask(string taskName)
         {
-            try
-            {
-                SchTaskManager.DeleteTask(User.SchUserID, taskName);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            SchTaskManager.DeleteTask(CurrentUser.SchUserID, taskName);
         }
         
         public static void DeleteTask(int taskID)
         {
-            try
-            {
-                SchTaskManager.DeleteTask(User.SchUserID, taskID);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            SchTaskManager.DeleteTask(CurrentUser.SchUserID, taskID);
         }
 
         /// <summary>
@@ -347,14 +283,7 @@ namespace Schelendar.Models
         /// <param name="newTask"></param>
         public static void UpdateTask(string oldTaskName, SchTask newTask)
         {
-            try
-            {
-                SchTaskManager.UpdateTask(User.SchUserID, oldTaskName, newTask);
-            }
-            catch(Exception e)
-            {
-                throw e;
-            }
+            SchTaskManager.UpdateTask(CurrentUser.SchUserID, oldTaskName, newTask);
         }
 
         /// <summary>
@@ -364,26 +293,12 @@ namespace Schelendar.Models
         /// <param name="newGroupID"></param>
         public static void ChangeGroup(int taskID, int newGroupID)
         {
-            try
-            {
-                SchTaskManager.changeGroup(User.SchUserID, taskID, newGroupID);
-            }
-            catch(Exception e)
-            {
-                throw e;
-            }
+            SchTaskManager.changeGroup(CurrentUser.SchUserID, taskID, newGroupID);           
         }
 
         public static void GetTasks()
-        {
-            try
-            {
-                SchTaskManager.GetTasks(User.SchUserID);
-            }
-            catch(Exception e)
-            {
-                throw e;
-            }
+        {   
+            SchTaskManager.GetTasks(CurrentUser.SchUserID);
         }
 
         #endregion 
@@ -396,14 +311,7 @@ namespace Schelendar.Models
         /// <returns></returns>
         public static List<SchTask> GetGroupofTask(int taskID, int notDone = 0)
         {
-            try
-            {
-                return SchTaskManager.GetGroup(User.SchUserID, taskID, notDone);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            return SchTaskManager.GetGroup(CurrentUser.SchUserID, taskID, notDone);
         }
         /// <summary>
         /// 获取事件所属事件组的事件列表
@@ -411,14 +319,7 @@ namespace Schelendar.Models
         /// <param name="taskName"></param>
         public static List<SchTask> GetGroupofTask(string taskName, int notDone = 0)
         {
-            try
-            {
-                return SchTaskManager.GetGroup(User.SchUserID, taskName, notDone);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            return SchTaskManager.GetGroup(CurrentUser.SchUserID, taskName, notDone);
         }
 
         /// <summary>
@@ -426,20 +327,13 @@ namespace Schelendar.Models
         /// </summary>
         /// <returns></returns>
         public static List<SchTaskGroup> GetGroups()
-        {
-            try
-            {
-                return SchTaskManager.GetGroups(User.SchUserID);
-            }
-            catch(Exception e)
-            {
-                throw e;
-            }
+        {   
+           return SchTaskManager.GetGroups(CurrentUser.SchUserID);
         }
 
         public static void UpdateGroup(int groupID, SchTaskGroup newgroup)
         {
-            SchTaskManager.UpdateGroup(User.SchUserID, groupID, newgroup);
+            SchTaskManager.UpdateGroup(CurrentUser.SchUserID, groupID, newgroup);
         }
         #endregion
 
@@ -447,7 +341,7 @@ namespace Schelendar.Models
 
         public static new string ToString()
         {
-            return User.ToString();
+            return CurrentUser.ToString();
         }
     }
 }
