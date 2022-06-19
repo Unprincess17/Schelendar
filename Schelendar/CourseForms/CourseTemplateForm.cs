@@ -95,8 +95,8 @@ namespace Schelendar.CourseForms
             Close();
         }
 
-        
-        ///TODO: 不清楚作用
+
+        ///TODO: 不清楚作用    似乎这个按钮是没有用的
         /// <summary>
         /// 下一步
         /// </summary>
@@ -109,6 +109,7 @@ namespace Schelendar.CourseForms
         }
 
         
+        ///TODO: 1.
         /// <summary>
         /// 完成按钮
         /// </summary>

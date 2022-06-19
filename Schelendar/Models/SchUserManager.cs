@@ -213,7 +213,6 @@ namespace Schelendar.Models
             SchCourseManager.AddCourse(CurrentUser.SchUserID, course);
         }
 
-        ///TODO:update course
         public static void UpdateCourse(string oldCourseName, SchCourse course)
         {
             SchCourseManager.UpdateCourse(CurrentUser.SchUserID, oldCourseName, course);
