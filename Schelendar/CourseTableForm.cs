@@ -425,8 +425,7 @@ namespace Schelendar
             this.修改课表ToolStripMenuItem.Click += 修改课表ToolStripMenuItem_Click;
         }
 
-
-        /// TODO: 数据库设置为当前课表，如何全局调整当前课表，并且要刷新显示
+        
         /// <summary>
         /// 右键选项事件，设为当前课表
         /// </summary>
@@ -434,7 +433,10 @@ namespace Schelendar
         /// <param name="e"></param>
         private void 设为当前课表ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //TODO: 数据库设置为当前课表
             
+            MainForm mainForm = (MainForm) ParentForm;
+            mainForm.InitNavMenu();
         }
 
         
@@ -448,14 +450,13 @@ namespace Schelendar
             CourseTableAddForm courseTableAddForm = new CourseTableAddForm();
             if (courseTableAddForm.ShowDialog() == DialogResult.Yes)
             {
-                //TODO: 刷新MainForm
-                
+                MainForm mainForm = (MainForm) ParentForm;
+                mainForm.InitNavMenu();
             }
             
         }
 
-
-        ///TODO: 数据库实现删除课表，并且刷新MainForm
+        
         /// <summary>
         /// 删除当前课表
         /// </summary>
@@ -463,7 +464,12 @@ namespace Schelendar
         /// <param name="e"></param>
         private void 删除课表ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //TODO: 数据库实现删除课表,如果删除的是当前课表，还需要将Panel清空
             
+            MainForm mainForm = (MainForm) ParentForm;
+            UIPanel uiPanel =(UIPanel) mainForm.GetControl("uiPanel");
+            uiPanel.Controls.Clear();
+            mainForm.InitNavMenu();
         }
 
         

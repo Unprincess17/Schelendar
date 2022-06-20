@@ -146,12 +146,6 @@
     <Compile Include="CourseTableForm.Designer.cs">
       <DependentUpon>CourseTableForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CourseTableSettingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CourseTableSettingForm.Designer.cs">
-      <DependentUpon>CourseTableSettingForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="DeadlineForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,9 +224,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CourseTableForm.resx">
       <DependentUpon>CourseTableForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CourseTableSettingForm.resx">
-      <DependentUpon>CourseTableSettingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DeadlineForm.resx">
       <DependentUpon>DeadlineForm.cs</DependentUpon>
