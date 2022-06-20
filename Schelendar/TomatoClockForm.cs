@@ -31,6 +31,8 @@ namespace Schelendar
         private DateTime startTime;     //保存开始番茄钟的当地时间
         private bool isSave = false;    //是否保存数据
         private bool isRun = false;     //番茄钟是否正在运行
+        public static string directoryPath = SettingForm.path;    //定义一个路径变量
+
 
         /// <summary>
         /// 窗体构造函数
@@ -137,14 +139,13 @@ namespace Schelendar
             lblTomatoNums.Text = i.ToString();
             if(isSave)
             {
-                string directoryPath = @"C:\TomatoDate";    //定义一个路径变量
                 string filePath = "TomatoDate.txt";         //定义一个文件路径变量
                 if (!Directory.Exists(directoryPath))       //如果路径不存在
                 {
                     Directory.CreateDirectory(directoryPath);//创建一个路径的文件夹
                 }
                 StreamWriter sw = new StreamWriter(Path.Combine(directoryPath, filePath), true);//打开文件，并设定为追加数据
-                sw.WriteLine("开始时间" + startTime.ToString() + "——结束时间" + DateTime.Now.ToLocalTime().ToString() + "专注时间" + iudWorkTime.Value.ToString());
+                sw.WriteLine("开始时间" + startTime.ToString() + "——结束时间" + DateTime.Now.ToLocalTime().ToString() + "专注时间" + iudWorkTime.Value.ToString() + "分钟");
                 sw.WriteLine("——————————————————————————————————————————————————————————————");
                 sw.Flush();
                 sw.Close();
