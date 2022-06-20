@@ -14,7 +14,7 @@ namespace Schelendar.Models
         public static string TaskGroupDBFile = config.TaskGroupDBFile;
 
 
-        public static void AddTask(int userID, SchTask task, int GroupID = 0, int force = 0)
+        public static void AddTask(int userID, SchTask task, int GroupID = 0, int force = 0, int iscourse=0)
         {
             int DefaultGroupID = userID;
 
@@ -33,33 +33,42 @@ namespace Schelendar.Models
                 cn.Open();
                 result = cmd.ExecuteScalar();
                 cn.Close();
-                if(GroupID < config.MAX_USER_NUM && GroupID != DefaultGroupID && GroupID != 0)//试图创建默认组
+                if (iscourse.Equals(0))
                 {
-                    throw new ArgumentException($"添加失败：不应将事件添加至默认分组{GroupID}");
-                }else if(GroupID == 0)//未定义GroupID
-                {
-                    GroupID = DefaultGroupID;
+                    if (GroupID < config.MAX_USER_NUM && GroupID != DefaultGroupID && GroupID != 0)//试图创建默认组
+                    {
+                        throw new ArgumentException($"添加失败：不应将事件添加至默认分组{GroupID}");
+                    }
+                    else if (GroupID == 0)//未定义GroupID
+                    {
+                        GroupID = DefaultGroupID;
+                    }
+                    if (Convert.ToInt32(result) == 0)
+                    {
+                        if (force == 0 && GroupID != DefaultGroupID)
+                        {
+                            throw new ArgumentException($"所要添加事件组'{GroupID}'不存在");
+                        }
+                        else if (GroupID == DefaultGroupID)//GroupID==DefaultGroupID且未创建
+                        {
+                            cmd.CommandText = $"INSERT INTO SchTaskGroups (SchTaskGroupID,SchGroupInfo,SchUserID,TomatoNum) VALUES ('{GroupID}','未分组','{userID}',0);";
+                        }
+                        else if (force == 1 && GroupID != DefaultGroupID)
+                        {
+                            cmd.CommandText = $"INSERT INTO SchTaskGroups (SchTaskGroupID,SchGroupInfo,SchUserID,TomatoNum) VALUES ('{GroupID}','{task.SchTaskInfo}','{userID}',0);";
+                        }
+                    }
                 }
-                if (Convert.ToInt32(result) == 0)
+                else//iscourse, 在最后一组后添加课程组
                 {
-                    if (force == 0 && GroupID != DefaultGroupID)
-                    {
-                        throw new ArgumentException($"所要添加事件组'{GroupID}'不存在");
-                    }
-                    else if (GroupID == DefaultGroupID)//GroupID==DefaultGroupID且未创建
-                    {
-                        cmd.CommandText = $"INSERT INTO SchTaskGroups (SchTaskGroupID,SchGroupInfo,SchUserID,TomatoNum) VALUES ('{GroupID}','未分组','{userID}',0);";
-                    }
-                    else if(force == 1 && GroupID != DefaultGroupID)
-                    {
-                        cmd.CommandText = $"INSERT INTO SchTaskGroups (SchTaskGroupID,SchGroupInfo,SchUserID,TomatoNum) VALUES ('{GroupID}','{task.SchTaskInfo}','{userID}',0);";
-                    }
-                    cn.Open();
-                    //cmd.ExecuteNonQueryAsync();
-                    cmd.ExecuteNonQuery();
-                    cn.Close();
+                    cmd.CommandText = $"INSERT INTO SchTaskGroups (SchTaskGroupID,SchGroupInfo,SchUserID,TomatoNum) VALUES (NULL,'{task.SchTaskInfo}','{userID}',0);";
                 }
+                cn.Open();
+                //cmd.ExecuteNonQueryAsync();
+                cmd.ExecuteNonQuery();
+                cn.Close();
             }
+            
             using (SQLiteConnection cn = new SQLiteConnection("data source=" + TaskDBFile))
             {
                 SQLiteCommand cmd = cn.CreateCommand();

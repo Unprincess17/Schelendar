@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Data.SQLite;
+using Schelendar.CourseForms;
 
 namespace Schelendar.Models
 {
@@ -56,7 +57,7 @@ namespace Schelendar.Models
 
         #endregion
 
-    #region 用户
+        #region 用户
 
         /// <summary>
         /// 添加新注册用户。若用户已存在则抛出ArgumentException
@@ -304,7 +305,7 @@ namespace Schelendar.Models
 
         #region 任务组
         /// <summary>
-        /// 获取事件所属事件组
+        /// 获取事件所属事件列表
         /// </summary>
         /// <param name="taskID"></param>
         /// <returns></returns>
@@ -322,6 +323,20 @@ namespace Schelendar.Models
         }
 
         /// <summary>
+        /// 返回courseID课程对应的事件列表
+        /// </summary>
+        /// <param name="courseId"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public static List<SchTask> GetTaskGroupofCourse(int courseId)
+        {
+            int c_taskID = SchCourseManager.GetCourse(CurrentUser.SchUserID, courseId).SchTaskID;
+            List<SchTask> rl = GetGroupofTask(c_taskID);
+            //no need to remove course from tasks
+            return rl;
+        }
+
+        /// <summary>
         /// 返回事件组列表
         /// </summary>
         /// <returns></returns>
@@ -329,6 +344,7 @@ namespace Schelendar.Models
         {   
            return SchTaskManager.GetGroups(CurrentUser.SchUserID);
         }
+
 
         public static void UpdateGroup(int groupID, SchTaskGroup newgroup)
         {

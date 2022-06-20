@@ -18,10 +18,10 @@ namespace Schelendar
         {
 
             //DBTest();
-            //CourseTest();
+            CourseTest();
             //TaskTest();
             //CourseTableAddTest();
-            MainTest();
+            //MainTest();
             //CourseTemplateTest();
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
@@ -57,7 +57,7 @@ namespace Schelendar
             
             SchUserManager.ReadUser("fs", "123");
 
-            SchUserManager.UpdateCourse("计算机系统",new SchCourse("计算机系统", "3", "1", "416", "zj", 1, 16, 4, 3, 1, 2));
+            SchUserManager.AddCourse(new SchCourse("计算机系统", "3", "1", "416", "zj", 1, 16, 4, 3, 1, 2));
 
             SchUserManager.GetCourses().ForEach(o =>{Console.WriteLine(o);});
             Console.WriteLine("\n");

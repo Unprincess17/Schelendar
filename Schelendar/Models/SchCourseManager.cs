@@ -65,12 +65,13 @@ namespace Schelendar.Models
                 e.Source += "添加失败";
                 throw e;
             }
-
+            
             //不重复，则添加课程至数据库
+            //添加至course表
             using (SQLiteConnection cn = new SQLiteConnection("data source=" + CourseDBFile))
             {
                 SQLiteCommand cmd = cn.CreateCommand();
-                cmd.CommandText = $"SELECT COUNT(*) FROM SchCourses";
+                cmd.CommandText = $"SELECT SchCourseID FROM SchCourses ORDER BY SchCourseID DESC LIMIT 1;";
                 cn.Open();
                 result = cmd.ExecuteScalar();
                 cn.Close();
@@ -81,6 +82,30 @@ namespace Schelendar.Models
                 cmd.ExecuteNonQuery();
                 cn.Close();
             }
+            //添加至task表
+            SchTaskManager.AddTask(UserID, course, iscourse:1);
+        }
+
+        public static SchCourse GetCourse(int UserID, int courseID)
+        {
+            SchCourse rcourse = null;
+            using (SQLiteConnection cn = new SQLiteConnection("data source=" + CourseDBFile))
+            {
+                SQLiteCommand cmd = cn.CreateCommand();
+
+                cmd.CommandText = $"SELECT * FROM SchCourses WHERE SchUserID='{UserID}' AND SchCourseID='{courseID}';";
+                cn.Open();
+                using (SQLiteDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        rcourse = new SchCourse(reader["SchCourseName"].ToString(), reader["District"].ToString(), reader["Building"].ToString(), reader["Classroom"].ToString(), reader["TeacherName"].ToString(), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["EndWeek"]), Convert.ToInt32(reader["Semester"]), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["StartTime"]), Convert.ToInt32(reader["EndTime"]), Convert.ToInt32(reader["SchCourseID"]));
+                    }
+                }
+
+                cn.Close();
+            }
+            return rcourse;
         }
 
         public static List<SchCourse> GetCourses(int UserID)

@@ -288,7 +288,6 @@ namespace Schelendar
             if (courseTemplateForm.DialogResult == DialogResult.Yes)
             {
                 //TODO: 数据库添加课程以及事件，利用CourseTemplateForm的TemplateAdds
-                ///HACK: 这里点击下一步不应该直接操作数据库，因为在下一步的操作中可能会回到上一步修改数据。（也可以添加update，或者将这里add操作修改为UpdateOrAdd，这样不论是之后修改或者是第一次创建都可以使用）
                 SchCourse = new SchCourse(courseNameTB.Text, locationDistrictTB.Text, locationBuildingTB.Text,
                     locationRoomTB.Text, teacherNameTB.Text, startWeekIUD.Value, endWeekIUD.Value, _dayOfWeek,
                     _semester,
