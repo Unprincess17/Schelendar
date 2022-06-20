@@ -2,7 +2,7 @@
 
 namespace Schelendar
 {
-    partial class ClassTableForm
+    partial class CourseTableForm
     {
         /// <summary>
         /// Required designer variable.
@@ -317,7 +317,7 @@ namespace Schelendar
             this.Controls.Add(this.uiClassTableLayoutPanel);
             this.Controls.Add(this.uiTimeTableLayoutPanel);
             this.Controls.Add(this.titlePanel);
-            this.Name = "ClassTableForm";
+            this.Name = "CourseTableForm";
             this.Padding = new System.Windows.Forms.Padding(0);
             this.ShowTitle = false;
             this.Text = "ClassTableForm";

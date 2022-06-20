@@ -8,7 +8,7 @@ using Schelendar.Models;
 
 namespace Schelendar
 {
-    public partial class ClassTableForm : UIForm
+    public partial class CourseTableForm : UIForm
     {
         /// <summary>
         /// 当前实际的周数
@@ -28,12 +28,12 @@ namespace Schelendar
         /// <summary>
         /// 当前课表的Id
         /// </summary>
-        private int _classTableId;
+        private int _courseTableId;
 
         /// <summary>
         /// 课表对象
         /// </summary>
-        private SchCourseTable _schCourseTable = new SchCourseTable(12, "KK");
+        private SchCourseTable _schCourseTable;
 
         /// <summary>
         /// 课程与显示位置的映射表
@@ -56,9 +56,13 @@ namespace Schelendar
         /// <summary>
         /// 
         /// </summary>
-        public ClassTableForm()
+        public CourseTableForm(int curTableId)
         {
             Visible = false;
+            _courseTableId = curTableId;
+            // TODO: 根据id查询课表，返回课表对象
+            _schCourseTable = null;
+            
             InitializeComponent();
             InitTableRows(_schCourseTable.DayCourseNumber);
             InitToolStripMenuItem();
@@ -74,8 +78,8 @@ namespace Schelendar
                 uiClassTableLayoutPanel.Controls.Add(uiTimeLable, 0, i);
             }
 
-            // TODO: 初始化课表,添加查询，在这里查询得到列表
-            // InitMap();
+            // TODO: 初始化课表,添加查询，在这里查询得到课程列表
+            InitMap(null);
             // UpdateCourseShow();
             Visible = true;
         }

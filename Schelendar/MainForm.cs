@@ -13,11 +13,18 @@ namespace Schelendar
 {
     public partial class MainForm : UIForm
     {
-        public MainForm()
+        /// <summary>
+        /// 当前用户的ID
+        /// </summary>
+        private int _curUserId;
+        
+        
+        public MainForm(int curUserId)
         {
             InitializeComponent();
-            // 每次进入最先显示当前课表
-            InitPanel();
+            _curUserId = curUserId;
+            //TODO: 查询当前用户的当前课表id，如果没有则返回-1
+            InitPanel(-1);
         }
 
 
@@ -30,12 +37,12 @@ namespace Schelendar
                 switch (node.Name)
                 {
                     case "menu_class_cur":
-                        ClassTableForm classTableFormCur = new ClassTableForm();
-                        InitForm(classTableFormCur);
+                        CourseTableForm courseTableFormCur = new CourseTableForm(-1);
+                        InitForm(courseTableFormCur);
                         break;
                     case "menu_class_last":
-                        ClassTableForm classTableFormLast = new ClassTableForm();
-                        InitForm(classTableFormLast);
+                        CourseTableForm courseTableFormLast = new CourseTableForm(-1);
+                        InitForm(courseTableFormLast);
                         break;
                     case "menu_class_add":
                         ClassTableSettingForm classTableSettingForm = new ClassTableSettingForm();
@@ -66,7 +73,10 @@ namespace Schelendar
         }
 
 
-        // 各个界面嵌入panel
+        /// <summary>
+        /// 界面嵌入panel要做的处理
+        /// </summary>
+        /// <param name="uiForm"></param>
         private void InitForm(UIForm uiForm)
         {
             uiForm.FormBorderStyle = FormBorderStyle.None; // 取消边框
@@ -76,12 +86,32 @@ namespace Schelendar
             uiForm.Show();
         }
 
-
-        // 初始化时显示界面为当前课表
-        private void InitPanel()
+        
+        /// <summary>
+        /// 初始化时显示界面为当前课表
+        /// </summary>
+        private void InitPanel(int curTableId)
         {
-            ClassTableForm classTableFormCur = new ClassTableForm();
-            InitForm(classTableFormCur);
+            if (curTableId == -1)
+            {
+                uiPanel.Text = "当前为空课表，点击创建";
+                uiPanel.Click += (sender, args) =>
+                {
+                    CourseTableAddForm courseTableAddForm = new CourseTableAddForm();
+                    if (courseTableAddForm.ShowDialog() == DialogResult.Yes)
+                    {
+                        CourseTableForm courseTableFormCur = new CourseTableForm(courseTableAddForm.CourseTableAddId);
+                        InitForm(courseTableFormCur);
+                    }
+                };
+                return;
+            }
+            else
+            {
+                CourseTableForm courseTableFormCur = new CourseTableForm(curTableId);
+                InitForm(courseTableFormCur);
+            }
+            
         }
     }
 }
