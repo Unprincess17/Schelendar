@@ -51,8 +51,7 @@ namespace Schelendar
             public static readonly Color WaitForEdit = Color.LightGray;
         }
 
-
-        /// TODO: 构造函数需要传入课表ID并初始化课表对象和课程
+        
         /// <summary>
         /// 
         /// </summary>
@@ -160,8 +159,7 @@ namespace Schelendar
             }
         }
 
-
-        /// TODO: 如何根据点击的Label来获取课程的Id来创建add页面
+        
         /// <summary>
         /// 双击添加课程
         /// </summary>
@@ -428,7 +426,7 @@ namespace Schelendar
         }
 
 
-        /// TODO: 如何全局调整当前课表，并且要刷新显示
+        /// TODO: 数据库设置为当前课表，如何全局调整当前课表，并且要刷新显示
         /// <summary>
         /// 右键选项事件，设为当前课表
         /// </summary>
@@ -457,7 +455,7 @@ namespace Schelendar
         }
 
 
-        ///TODO: 实现删除课表，并且刷新MainForm
+        ///TODO: 数据库实现删除课表，并且刷新MainForm
         /// <summary>
         /// 删除当前课表
         /// </summary>
@@ -469,7 +467,7 @@ namespace Schelendar
         }
 
         
-        ///TODO: 修改当前课表的设置
+        ///TODO: 修改当前课表的设置（选做）
         /// <summary>
         /// 修改当前课表设置
         /// </summary>

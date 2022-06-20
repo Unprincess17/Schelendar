@@ -28,6 +28,16 @@ namespace Schelendar
         }
 
 
+        /// TODO: 将查询的全部课表Id与节点建立映射
+        /// <summary>
+        /// 初始化左侧导航栏项目
+        /// </summary>
+        private void InitNavMenu()
+        {
+            
+        }
+
+
         // 导航栏的选择事件
         private void uiNavMenu_MenuItemClick(TreeNode node, NavMenuItem item, int pageIndex)
         {
