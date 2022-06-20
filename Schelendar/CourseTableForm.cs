@@ -8,7 +8,7 @@ using Schelendar.Models;
 
 namespace Schelendar
 {
-    public partial class ClassTableForm : UIForm
+    public partial class CourseTableForm : UIForm
     {
         /// <summary>
         /// 当前实际的周数
@@ -28,12 +28,12 @@ namespace Schelendar
         /// <summary>
         /// 当前课表的Id
         /// </summary>
-        private int _classTableId;
+        private int _courseTableId;
 
         /// <summary>
         /// 课表对象
         /// </summary>
-        private SchCourseTable _schCourseTable = new SchCourseTable(12, "KK");
+        private SchCourseTable _schCourseTable;
 
         /// <summary>
         /// 课程与显示位置的映射表
@@ -51,14 +51,17 @@ namespace Schelendar
             public static readonly Color WaitForEdit = Color.LightGray;
         }
 
-
-        /// TODO: 构造函数需要传入课表ID并初始化课表对象和课程
+        
         /// <summary>
         /// 
         /// </summary>
-        public ClassTableForm()
+        public CourseTableForm(int curTableId)
         {
             Visible = false;
+            _courseTableId = curTableId;
+            // TODO: 根据id查询课表，返回课表对象
+            _schCourseTable = null;
+            
             InitializeComponent();
             InitTableRows(_schCourseTable.DayCourseNumber);
             InitToolStripMenuItem();
@@ -74,8 +77,8 @@ namespace Schelendar
                 uiClassTableLayoutPanel.Controls.Add(uiTimeLable, 0, i);
             }
 
-            // TODO: 初始化课表,添加查询，在这里查询得到列表
-            // InitMap();
+            // TODO: 初始化课表,添加查询，在这里查询得到课程列表
+            InitMap(null);
             // UpdateCourseShow();
             Visible = true;
         }
@@ -156,8 +159,7 @@ namespace Schelendar
             }
         }
 
-
-        /// TODO: 如何根据点击的Label来获取课程的Id来创建add页面
+        
         /// <summary>
         /// 双击添加课程
         /// </summary>
@@ -423,8 +425,7 @@ namespace Schelendar
             this.修改课表ToolStripMenuItem.Click += 修改课表ToolStripMenuItem_Click;
         }
 
-
-        /// TODO: 如何全局调整当前课表，并且要刷新显示
+        
         /// <summary>
         /// 右键选项事件，设为当前课表
         /// </summary>
@@ -432,7 +433,10 @@ namespace Schelendar
         /// <param name="e"></param>
         private void 设为当前课表ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //TODO: 数据库设置为当前课表
             
+            MainForm mainForm = (MainForm) ParentForm;
+            mainForm.InitNavMenu();
         }
 
         
@@ -446,14 +450,13 @@ namespace Schelendar
             CourseTableAddForm courseTableAddForm = new CourseTableAddForm();
             if (courseTableAddForm.ShowDialog() == DialogResult.Yes)
             {
-                //TODO: 刷新MainForm
-                
+                MainForm mainForm = (MainForm) ParentForm;
+                mainForm.InitNavMenu();
             }
             
         }
 
-
-        ///TODO: 实现删除课表，并且刷新MainForm
+        
         /// <summary>
         /// 删除当前课表
         /// </summary>
@@ -461,11 +464,16 @@ namespace Schelendar
         /// <param name="e"></param>
         private void 删除课表ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //TODO: 数据库实现删除课表,如果删除的是当前课表，还需要将Panel清空
             
+            MainForm mainForm = (MainForm) ParentForm;
+            UIPanel uiPanel =(UIPanel) mainForm.GetControl("uiPanel");
+            uiPanel.Controls.Clear();
+            mainForm.InitNavMenu();
         }
 
         
-        ///TODO: 修改当前课表的设置
+        ///TODO: 修改当前课表的设置（选做）
         /// <summary>
         /// 修改当前课表设置
         /// </summary>

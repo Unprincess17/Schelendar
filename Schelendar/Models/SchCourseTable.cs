@@ -35,22 +35,18 @@ namespace Schelendar.Models
         /// </summary>
         public List<Dictionary<String, CourseTime>> EveryCourseTime;
 
-        /// <summary>
-        /// 本学期课表要包含的课程Id
-        /// </summary>
-        public List<int> CourseId;
-
 
         /// <summary>
-        /// 默认情况下的特别设置
+        /// 
         /// </summary>
-        public SchCourseTable(int courseTableId, String courseTableName)
+        public SchCourseTable(int courseTableId, String courseTableName, int dayCourseNumber, int weekLength, List<Dictionary<string, CourseTime>> everyCourseTime)
         {
-            DayCourseNumber = 11;
+            DayCourseNumber = dayCourseNumber;
             CourseTableId = courseTableId;
             CourseTableName = courseTableName;
-            WeekLength = 20;
-
+            WeekLength = weekLength;
+            EveryCourseTime = everyCourseTime;
+            /*
             EveryCourseTime = new List<Dictionary<string, CourseTime>>()
             {
                 new Dictionary<string, CourseTime>()
@@ -75,7 +71,8 @@ namespace Schelendar.Models
                     {{"StartTime", new CourseTime(19, 20)}, {"EndTime", new CourseTime(20, 05)}},
                 new Dictionary<string, CourseTime>()
                     {{"StartTime", new CourseTime(20, 10)}, {"EndTime", new CourseTime(20, 55)}},
-            };
+                
+            };*/
         }
     }
 }

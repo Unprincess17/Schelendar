@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 using Schelendar.CourseForms;
 using Schelendar.Models;
@@ -60,7 +59,6 @@ namespace Schelendar
         public CourseAddForm(int startTime, int dayCourseNumber, int dayOfWeek, int weekLength, int semester)
         {
             InitializeComponent();
-            InitTextBox();
             startTimeIUD.Value = startTime;
             endTimeIUD.Value = startTime;
             InitIudMaxAndMin(weekLength, dayCourseNumber);
@@ -85,8 +83,7 @@ namespace Schelendar
             endWeekIUD.Maximum = weekLength;
         }
 
-
-        /// TODO: 根据传入课程ID来在查找课程信息以及显示到界面
+        
         /// <summary>
         /// 假如原位置已有课程，则需要先将原课程信息显示，然后修改
         /// </summary>
@@ -101,72 +98,6 @@ namespace Schelendar
             endTimeIUD.Value = schCourse.EndTime;
             startWeekIUD.Value = schCourse.StartWeek;
             endWeekIUD.Value = schCourse.EndWeek;
-        }
-
-
-        /// <summary>
-        /// 因为SunnyUI原因只能在代码中动态改变颜色
-        /// </summary>
-        private void InitTextBox()
-        {
-            locationDistrictTB.ForeColor = Color.Gray;
-            locationBuildingTB.ForeColor = Color.Gray;
-            locationRoomTB.ForeColor = Color.Gray;
-        }
-
-        /// <summary>
-        /// 实现输入框的提示功能
-        /// </summary>
-        private void locationTB_MouseClick(object sender, EventArgs e)
-        {
-            UITextBox uiTextBox = (UITextBox) sender;
-            if (uiTextBox.Text.Equals("学区") || uiTextBox.Text.Equals("教学楼") || uiTextBox.Text.Equals("教室"))
-            {
-                uiTextBox.Text = String.Empty;
-                uiTextBox.ForeColor = Color.Black;
-            }
-        }
-
-
-        /// <summary>
-        /// 学区输入框焦点离开后事件
-        /// </summary>
-        private void locationDistrictTB_Leave(object sender, EventArgs e)
-        {
-            UITextBox uiTextBox = (UITextBox) sender;
-            if (uiTextBox.Text.Equals(String.Empty))
-            {
-                uiTextBox.Text = "学区";
-                uiTextBox.ForeColor = Color.Gray;
-            }
-        }
-
-
-        /// <summary>
-        /// 教学楼输入框焦点离开后事件
-        /// </summary>
-        private void locationBuildingTB_Leave(object sender, EventArgs e)
-        {
-            UITextBox uiTextBox = (UITextBox) sender;
-            if (uiTextBox.Text.Equals(String.Empty))
-            {
-                uiTextBox.Text = "教学楼";
-                uiTextBox.ForeColor = Color.Gray;
-            }
-        }
-
-
-        /// <summary>
-        /// 教室输入框焦点离开后事件
-        /// </summary>
-        private void locationRoomTB_Leave(object sender, EventArgs e)
-        {
-            UITextBox uiTextBox = (UITextBox) sender;
-            if (uiTextBox.Text.Equals(String.Empty))
-            {
-                uiTextBox.Text = "教室";
-                uiTextBox.ForeColor = Color.Gray;
-            }
         }
 
 

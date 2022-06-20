@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Schelendar.Models;
 using Sunny.UI;
 
 namespace Schelendar
 {
     public partial class CourseTableAddForm : UIForm
     {
+        public int CourseTableAddId;
+        
         public CourseTableAddForm()
         {
             InitializeComponent();
@@ -43,6 +46,9 @@ namespace Schelendar
                 if (courseTableAddTimeSettingForm.DialogResult == DialogResult.Yes)
                 {
                     //TODO: 数据库添加课表，利用CourseTableAddTimeSettingForm的EveryCourseTime
+                    //TODO: CourseTableAddId要设为数据库添加了的Id
+                    CourseTableAddId = -1;
+                    
                     DialogResult = DialogResult.Yes;
                     Close();
                 }
