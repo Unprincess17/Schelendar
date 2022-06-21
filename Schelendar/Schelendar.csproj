@@ -350,7 +350,12 @@
   <ItemGroup>
     <Compile Include="Models\config.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Properties\settingSave.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\settingUser.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
