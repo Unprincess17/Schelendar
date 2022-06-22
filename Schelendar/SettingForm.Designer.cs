@@ -48,8 +48,8 @@ namespace Schelendar
             this.lblDate = new Sunny.UI.UILabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.uiLabel6 = new Sunny.UI.UILabel();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.uiLine1 = new Sunny.UI.UILine();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.uiMainPanel.SuspendLayout();
             this.uiTableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -111,7 +111,7 @@ namespace Schelendar
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackgroundImage = global::Schelendar.Properties.Resources.settingSave;
+            this.pictureBox3.BackgroundImage = global::Schelendar.Properties.Resources.日历15;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox3.Location = new System.Drawing.Point(153, 255);
             this.pictureBox3.Name = "pictureBox3";
@@ -157,6 +157,7 @@ namespace Schelendar
             this.lblPath.Size = new System.Drawing.Size(489, 55);
             this.lblPath.TabIndex = 25;
             this.lblPath.Text = "C:\\TomatoDate";
+            this.lblPath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblPath.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // btnChangePath
@@ -282,6 +283,7 @@ namespace Schelendar
             this.lblUsername.Size = new System.Drawing.Size(634, 61);
             this.lblUsername.TabIndex = 19;
             this.lblUsername.Text = "2020302111001";
+            this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblUsername.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // lblDate
@@ -293,6 +295,7 @@ namespace Schelendar
             this.lblDate.Size = new System.Drawing.Size(634, 61);
             this.lblDate.TabIndex = 20;
             this.lblDate.Text = "2022-6-1";
+            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblDate.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // pictureBox1

@@ -60,7 +60,7 @@ namespace Schelendar
                         InitForm(enterFarmForm);
                         break;
                     case "menu_setting":
-                        SettingForm settingForm = new SettingForm();
+                        SettingForm2 settingForm = new SettingForm2();
                         InitForm(settingForm);
                         break;
                 }

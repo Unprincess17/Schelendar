@@ -207,6 +207,12 @@
     <Compile Include="SettingForm.Designer.cs">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SettingForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingForm2.Designer.cs">
+      <DependentUpon>SettingForm2.cs</DependentUpon>
+    </Compile>
     <Compile Include="TomatoClockForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -256,6 +262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingForm2.resx">
+      <DependentUpon>SettingForm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TomatoClockForm.resx">
       <DependentUpon>TomatoClockForm.cs</DependentUpon>
@@ -355,6 +364,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\settingUser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\乘号.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\番茄 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\课程表.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\农场.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\日历15.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
