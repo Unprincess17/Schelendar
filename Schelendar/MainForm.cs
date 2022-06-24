@@ -92,6 +92,9 @@ namespace Schelendar
             FarmDBHelper farmDBHelper = new FarmDBHelper();
             farmDBHelper.create();
             //PlayerManager.initnewplayer("FarmUser1");
-            PlayerManager.readdata("FarmUser1");        }
+            PlayerManager.readdata("FarmUser1");
         }
+        
     }
+    
+}
