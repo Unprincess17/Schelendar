@@ -187,7 +187,7 @@ namespace Schelendar.Models
                 expnow -= expmax;
                 expmax = lv * 100;
                 gold += lv * 100;
-                MessageBox.Show($"恭喜你升到{lv}级，获得金币{lv * 100}！");
+                MessageBox.Show($"恭喜你升到{lv}级，获得金币{lv * 10}！");
             }
         }
         public static void getexp(int i)//得到经验
