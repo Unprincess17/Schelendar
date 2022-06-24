@@ -32,11 +32,16 @@ namespace Schelendar
         private DateTime startTime;     //保存开始番茄钟的当地时间
         private bool isSave = false;    //是否保存数据
         private bool isRun = false;     //番茄钟是否正在运行
+
+        private string directoryPath = null;    //定义一个路径变量
+
+
         private const int tomatoExp = 350;  //一个番茄可获得的经验
         /// <summary>
         /// 窗体构造函数
         /// </summary>
         public TomatoClockForm()
+
         {
             InitializeComponent();
             lblTomatoNums.Text = 1.ToString();          //获得番茄数初始为0
@@ -45,7 +50,8 @@ namespace Schelendar
             pcbWorkTime.Maximum = 25;
             pcbRestTime.Maximum = 5;
             iudWorkTime.Value = pcbWorkTime.Value = 25; //工作时间
-            iudRestTime.Value = pcbRestTime.Value = 5;  //休息时间         
+            iudRestTime.Value = pcbRestTime.Value = 5;  //休息时间
+
         }
         /// <summary>
         /// 开始按钮的点击事件
@@ -133,19 +139,22 @@ namespace Schelendar
         /// </summary>
         private void saveData()
         {
+            using (StreamReader sr = new StreamReader("TomatoPath.txt"))
+            {
+                directoryPath = sr.ReadLine();
+            }
             int i = Convert.ToInt32(lblTomatoNums.Text);
             i += 1;
             lblTomatoNums.Text = i.ToString();
             if(isSave)
             {
-                string directoryPath = @"C:\TomatoDate";    //定义一个路径变量
                 string filePath = "TomatoDate.txt";         //定义一个文件路径变量
                 if (!Directory.Exists(directoryPath))       //如果路径不存在
                 {
                     Directory.CreateDirectory(directoryPath);//创建一个路径的文件夹
                 }
                 StreamWriter sw = new StreamWriter(Path.Combine(directoryPath, filePath), true);//打开文件，并设定为追加数据
-                sw.WriteLine("开始时间" + startTime.ToString() + "——结束时间" + DateTime.Now.ToLocalTime().ToString() + "专注时间" + iudWorkTime.Value.ToString());
+                sw.WriteLine("开始时间" + startTime.ToString() + "——结束时间" + DateTime.Now.ToLocalTime().ToString() + "专注时间 " + iudWorkTime.Value.ToString() + "分钟");
                 sw.WriteLine("——————————————————————————————————————————————————————————————");
                 sw.Flush();
                 sw.Close();

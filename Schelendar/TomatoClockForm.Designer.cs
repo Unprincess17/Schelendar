@@ -158,7 +158,7 @@
             this.iudRestTime.HasMinimum = true;
             this.iudRestTime.Location = new System.Drawing.Point(144, 114);
             this.iudRestTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.iudRestTime.Minimum = 1;
+            this.iudRestTime.Minimum = 0;
             this.iudRestTime.MinimumEnabled = true;
             this.iudRestTime.MinimumSize = new System.Drawing.Size(100, 0);
             this.iudRestTime.Name = "iudRestTime";
@@ -345,8 +345,11 @@
             this.btnGetExp.Radius = 10;
             this.btnGetExp.Size = new System.Drawing.Size(99, 36);
             this.btnGetExp.TabIndex = 2;
-            this.btnGetExp.Text = "获取经验";
-            this.btnGetExp.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+          
+            this.btnGetExp.Text = "收获番茄";
+            this.btnGetExp.TipsFont = new System.Drawing.Font("微软雅黑", 12F);
+
+
             this.btnGetExp.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.btnGetExp.Click += new System.EventHandler(this.btnGetExp_Click);
             // 

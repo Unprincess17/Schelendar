@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,11 @@ namespace Schelendar
             InitializeComponent();
             // 每次进入最先显示当前课表
             InitPanel();
+
+            createTomatoPath();
+
             InitFarmPlayer();
+
         }
 
 
@@ -61,7 +66,7 @@ namespace Schelendar
                         InitForm(enterFarmForm);
                         break;
                     case "menu_setting":
-                        SettingForm settingForm = new SettingForm();
+                        SettingForm2 settingForm = new SettingForm2();
                         InitForm(settingForm);
                         break;
                 }
@@ -85,6 +90,34 @@ namespace Schelendar
         {
             ClassTableForm classTableFormCur = new ClassTableForm();
             InitForm(classTableFormCur);
+        }
+
+
+        private void createTomatoPath()
+        {
+            string pathFile = "TomatoPath.txt";
+            if (File.Exists(pathFile) == false)//不存在存储番茄路径文件
+            {
+                //File.Create(pathFile);
+                FileStream fs = new FileStream(pathFile, FileMode.Append);
+                StreamWriter wr = null;
+                wr = new StreamWriter(fs);
+                wr.WriteLine(@"C:\TomatoDate");
+                wr.Close();
+            }
+            //FileInfo fi = new FileInfo(pathFile);   
+            //if (fi.Length != 0)
+            //{
+            //return;
+            //}
+            //File.WriteAllText(pathFile, @"C:\TomatoDate");
+            //using (var fs = new FileStream(pathFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite, 0x1000, FileOptions.SequentialScan))
+            //using (var sr = new StreamReader(fs))
+            //{
+            //string line = sr.ReadLine();
+            //if (line == null)
+            //File.WriteAllText(pathFile, @"C:\TomatoDate");
+            //}
         }
 
         private void InitFarmPlayer()

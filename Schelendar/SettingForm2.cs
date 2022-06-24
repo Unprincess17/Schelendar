@@ -6,13 +6,12 @@ using Sunny.UI;
 
 namespace Schelendar
 {
-    public partial class SettingForm : UIForm
+    public partial class SettingForm2 : UIForm
     {
         private static string path = null;
-        public SettingForm()
+        public SettingForm2()
         {
             InitializeComponent();
-            lblDate.Text = DateTime.Now.ToShortDateString().ToString();
             using (StreamReader sr = new StreamReader("TomatoPath.txt"))
             {
                 path = sr.ReadLine();
@@ -31,10 +30,6 @@ namespace Schelendar
             }
         }
 
-        private void btnSignOut_Click(object sender, System.EventArgs e)
-        {
-
-        }
 
     }
 }
