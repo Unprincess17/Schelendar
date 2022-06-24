@@ -207,12 +207,6 @@
     <Compile Include="SettingForm.Designer.cs">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SettingForm2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SettingForm2.Designer.cs">
-      <DependentUpon>SettingForm2.cs</DependentUpon>
-    </Compile>
     <Compile Include="TomatoClockForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,9 +256,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettingForm2.resx">
-      <DependentUpon>SettingForm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TomatoClockForm.resx">
       <DependentUpon>TomatoClockForm.cs</DependentUpon>
