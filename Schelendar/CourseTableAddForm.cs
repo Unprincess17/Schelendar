@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Schelendar.Models;
 using Sunny.UI;
 
 namespace Schelendar
 {
     public partial class CourseTableAddForm : UIForm
     {
+        public int CourseTableAddId;
+        
         public CourseTableAddForm()
         {
             InitializeComponent();
@@ -42,7 +45,12 @@ namespace Schelendar
                 }
                 if (courseTableAddTimeSettingForm.DialogResult == DialogResult.Yes)
                 {
-                    //TODO: 数据库添加课表，利用CourseTableAddTimeSettingForm的EveryCourseTime
+                    CourseTableAddId = CourseTableManager.AddCourseTable(new SchCourseTable(0, courseTableNameTB.Text,  totalCourseNumIUD.Value, totalWeekIUD.Value, courseTableAddTimeSettingForm.EveryCourseTime));
+                    if(SchUserManager.CurrentUser.DefaultSemester == -1)
+                    {
+                        SchUserManager.CurrentUser.DefaultSemester = CourseTableAddId;
+                        SchUserManager.UpdateUser(SchUserManager.CurrentUser);
+                    }
                     DialogResult = DialogResult.Yes;
                     Close();
                 }

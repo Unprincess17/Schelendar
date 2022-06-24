@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Data.SQLite;
+using Schelendar.CourseForms;
 
 namespace Schelendar.Models
 {
@@ -56,7 +57,7 @@ namespace Schelendar.Models
 
         #endregion
 
-    #region 用户
+        #region 用户
 
         /// <summary>
         /// 添加新注册用户。若用户已存在则抛出ArgumentException
@@ -116,7 +117,7 @@ namespace Schelendar.Models
                 result = cmd.ExecuteScalar();
                 cn.Close();
                 user.SchUserID = Convert.ToInt32(result);//userID start from 1
-                cmd.CommandText = $"INSERT INTO SchUsers VALUES(NULL,'{user.UserName}', '{user.Password}', '{user.UserExperience}','{user.IsRmbMe}','{user.IsRmbPasswd}','{user.IsAutoLogin}','{user.SchUserID/*DefaultGroupID = user.SchUserID*/}');";
+                cmd.CommandText = $"INSERT INTO SchUsers VALUES(NULL,'{user.UserName}', '{user.Password}', '{user.UserExperience}','{user.IsRmbMe}','{user.IsRmbPasswd}','{user.IsAutoLogin}','{user.SchUserID/*DefaultGroupID = user.SchUserID*/}','{user.DefaultSemester}');";
                 cn.Open();
                 //cmd.ExecuteNonQueryAsync();
                 cmd.ExecuteNonQuery();
@@ -155,8 +156,10 @@ namespace Schelendar.Models
                 CurrentUser.IsRmbMe = Convert.ToInt32(cmd.ExecuteScalar());
                 cmd.CommandText = $"SELECT IsRmbPasswd FROM SchUsers WHERE UserName='{userName}'";
                 CurrentUser.IsRmbPasswd = Convert.ToInt32(cmd.ExecuteScalar());
-                cmd.CommandText = $"SELECT IsAutoLogin FROM SchUsers WHERE UserName='{userName}'";
-                CurrentUser.IsAutoLogin = Convert.ToInt32(cmd.ExecuteScalar());
+                cmd.CommandText = $"SELECT DefaultGroupID FROM SchUsers WHERE UserName='{userName}'";
+                CurrentUser.DefaultGroupID = Convert.ToInt32(cmd.ExecuteScalar());
+                cmd.CommandText = $"SELECT DefaultSemester FROM SchUsers WHERE UserName='{userName}'";
+                CurrentUser.DefaultSemester = Convert.ToInt32(cmd.ExecuteScalar());
                 cn.Close();
             }
         }
@@ -188,7 +191,7 @@ namespace Schelendar.Models
                     object result;
                     SQLiteCommand cmd = cn.CreateCommand();
                     cn.Close();
-                    cmd.CommandText = $"UPDATE SchUsers SET UserName='{newUser.UserName}', Password='{newUser.Password}', UserExperience='{newUser.UserExperience}',IsRmbMe='{newUser.IsRmbMe}',IsRmbPasswd='{newUser.IsRmbPasswd}',IsAutoLogin=='{newUser.IsAutoLogin}' ,DefaultGroupID='{newUser.DefaultGroupID}' WHERE SchUserID='{CurrentUser.SchUserID}';";
+                    cmd.CommandText = $"UPDATE SchUsers SET UserName='{newUser.UserName}', Password='{newUser.Password}', UserExperience='{newUser.UserExperience}',IsRmbMe='{newUser.IsRmbMe}',IsRmbPasswd='{newUser.IsRmbPasswd}',IsAutoLogin=='{newUser.IsAutoLogin}' ,DefaultGroupID='{newUser.DefaultGroupID}', DefaultSemester='{CurrentUser.DefaultSemester}' WHERE SchUserID='{CurrentUser.SchUserID}';";
                     cn.Open();
                     cmd.ExecuteNonQuery();
                     cn.Close();
@@ -205,7 +208,7 @@ namespace Schelendar.Models
 
     #region 课程
         /// <summary>
-        /// 登录用户添加指定课程
+        /// 登录用户添加指定课程。副作用：修改course中ID属性为数据库中CourseID的值
         /// </summary>
         /// <param name="schCourse"></param>
         public static void AddCourse(SchCourse course)
@@ -244,10 +247,14 @@ namespace Schelendar.Models
         {
             SchCourseManager.DeleteCourse(CurrentUser.SchUserID, courseName);
         }
+        public static void DeleteCourse(int courseID)
+        {
+            SchCourseManager.DeleteCourse(CurrentUser.SchUserID, courseID);
+        }
 
         #endregion
 
-    #region 任务
+        #region 任务
 
         #region 单任务
         /// <summary>
@@ -304,7 +311,7 @@ namespace Schelendar.Models
 
         #region 任务组
         /// <summary>
-        /// 获取事件所属事件组
+        /// 获取事件所属事件列表
         /// </summary>
         /// <param name="taskID"></param>
         /// <returns></returns>
@@ -322,6 +329,20 @@ namespace Schelendar.Models
         }
 
         /// <summary>
+        /// 返回courseID课程对应的事件列表
+        /// </summary>
+        /// <param name="courseId"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public static List<SchTask> GetTaskGroupofCourse(int courseId)
+        {
+            int c_taskID = SchCourseManager.GetCourse(CurrentUser.SchUserID, courseId).SchTaskID;
+            List<SchTask> rl = GetGroupofTask(c_taskID);
+            //no need to remove course from tasks
+            return rl;
+        }
+
+        /// <summary>
         /// 返回事件组列表
         /// </summary>
         /// <returns></returns>
@@ -329,6 +350,7 @@ namespace Schelendar.Models
         {   
            return SchTaskManager.GetGroups(CurrentUser.SchUserID);
         }
+
 
         public static void UpdateGroup(int groupID, SchTaskGroup newgroup)
         {

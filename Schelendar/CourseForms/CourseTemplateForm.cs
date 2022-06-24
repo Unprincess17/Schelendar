@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sunny.UI;
+using Schelendar.Models;
 
 namespace Schelendar.CourseForms
 {
@@ -55,7 +56,7 @@ namespace Schelendar.CourseForms
         /// <param name="courseId"></param>
         private void InitTemplate(int courseId)
         {
-            
+            throw new NotImplementedException();
         }
         
         
@@ -95,8 +96,7 @@ namespace Schelendar.CourseForms
             Close();
         }
 
-
-        ///TODO: 1.
+        
         /// <summary>
         /// 完成按钮
         /// </summary>
