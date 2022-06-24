@@ -345,9 +345,13 @@
             this.btnGetExp.Radius = 10;
             this.btnGetExp.Size = new System.Drawing.Size(99, 36);
             this.btnGetExp.TabIndex = 2;
+          
             this.btnGetExp.Text = "收获番茄";
             this.btnGetExp.TipsFont = new System.Drawing.Font("微软雅黑", 12F);
+
+
             this.btnGetExp.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.btnGetExp.Click += new System.EventHandler(this.btnGetExp_Click);
             // 
             // lblTomatoNums
             // 
@@ -357,7 +361,7 @@
             this.lblTomatoNums.Name = "lblTomatoNums";
             this.lblTomatoNums.Size = new System.Drawing.Size(19, 21);
             this.lblTomatoNums.TabIndex = 1;
-            this.lblTomatoNums.Text = "0";
+            this.lblTomatoNums.Text = "1";
             this.lblTomatoNums.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblTomatoNums.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 

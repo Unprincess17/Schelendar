@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sunny.UI;
+using Schelendar.Models;
 
 namespace Schelendar
 {
@@ -19,8 +20,13 @@ namespace Schelendar
             InitializeComponent();
             // 每次进入最先显示当前课表
             InitPanel();
+
             createTomatoPath();
+
+            InitFarmPlayer();
+
         }
+
 
 
         // 导航栏的选择事件
@@ -113,5 +119,15 @@ namespace Schelendar
             //File.WriteAllText(pathFile, @"C:\TomatoDate");
             //}
         }
+
+        private void InitFarmPlayer()
+        {
+            FarmDBHelper farmDBHelper = new FarmDBHelper();
+            farmDBHelper.create();
+            //PlayerManager.initnewplayer("FarmUser1");
+            PlayerManager.readdata("FarmUser1");
+        }
+        
     }
+    
 }

@@ -26,10 +26,10 @@ namespace Schelendar
         private bool plant = false;     //种植模式
         public FarmForm()
         {
-            FarmDBHelper farmDBHelper = new FarmDBHelper();
-            farmDBHelper.create();
-            //PlayerManager.initnewplayer("test");
-            PlayerManager.readdata("test");
+            //FarmDBHelper farmDBHelper = new FarmDBHelper();
+            //farmDBHelper.create();
+            //PlayerManager.initnewplayer("FarmUser1");
+            //PlayerManager.readdata("FarmUser1");
             InitializeComponent();      //初始化组件
             initSeedPicList();          //初始化种子图片表
             initGroundList();           //初始化土地图片表
@@ -622,5 +622,16 @@ namespace Schelendar
             }
         }
 
+        private void uiButton1_Click(object sender, EventArgs e)
+        {
+            lblUsername.Text = PlayerManager.username;
+            lblLevel.Text = PlayerManager.lv.ToString();
+            lblExpMax.Text = PlayerManager.expmax.ToString();
+            lblExpNow.Text = PlayerManager.expnow.ToString();
+            pcbExp.Maximum = PlayerManager.expmax;
+            pcbExp.Value = PlayerManager.expnow;
+            lblMoney.Text = PlayerManager.gold.ToString();
+            MessageBox.Show("刷新成功");
+        }
     }
 }
