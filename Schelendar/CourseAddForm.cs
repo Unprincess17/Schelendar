@@ -225,7 +225,7 @@ namespace Schelendar
                 SchUserManager.AddCourse(SchCourse);
                 courseTemplateForm.TemplateAdds.ForEach(o =>
                 {
-                    SchUserManager.AddTask(new SchTask(o.Name,"",DateTime.Now,o.Time,schTaskGroupID:SchCourse.SchTaskGroupID),TaskGroupID: SchCourse.SchTaskGroupID,force:1);
+                    SchUserManager.AddTask(new SchTask(SchCourse.SchCourseName + o.Name,"",DateTime.Now,o.Time,schTaskGroupID:SchCourse.SchTaskGroupID),TaskGroupID: SchCourse.SchTaskGroupID,force:1);
                 });
                 DialogResult = DialogResult.OK;
                 Close();

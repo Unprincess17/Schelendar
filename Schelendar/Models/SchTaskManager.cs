@@ -67,6 +67,16 @@ namespace Schelendar.Models
                 //cmd.ExecuteNonQueryAsync();
                 cmd.ExecuteNonQuery();
                 cn.Close();
+
+                //赋值TaskGroupID
+                if (iscourse.Equals(1))
+                {
+                    cmd.CommandText = $"SELECT COUNT(*) FROM SchTaskGroups WHERE SchUserID='{userID}';";
+                    cn.Open();
+                    result = cmd.ExecuteScalar();
+                    cn.Close();
+                    task.SchTaskGroupID = Convert.ToInt32(result);
+                }
             }
             
             using (SQLiteConnection cn = new SQLiteConnection("data source=" + TaskDBFile))
@@ -78,6 +88,7 @@ namespace Schelendar.Models
                 cn.Close();
                 task.SchTaskID = Convert.ToInt32(result);//courseID start from 1
                 cmd.CommandText = $"INSERT INTO SchTasks VALUES(NULL, '{task.SchTaskInfo}', '{task.SchTaskLocation}', '{task.StartDate}', '{task.EndDate}', '{task.isRepeat}', '{task.isDone}','{(task.SchTaskGroupID == 0 ? GroupID : task.SchTaskGroupID)}','{userID}');";
+                task.SchTaskGroupID = task.SchTaskGroupID == 0 ? GroupID : task.SchTaskGroupID;
                 cn.Open();
                 //cmd.ExecuteNonQueryAsync(); 
                 cmd.ExecuteNonQuery();

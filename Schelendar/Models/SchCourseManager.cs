@@ -151,7 +151,7 @@ namespace Schelendar.Models
                     {
                         while (reader.Read())
                         {
-                            CourseList.Add(new SchCourse(reader["SchCourseName"].ToString(), reader["District"].ToString(), reader["Building"].ToString(), reader["Classroom"].ToString(), reader["TeacherName"].ToString(), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["EndWeek"]), Convert.ToInt32(reader["Semester"]), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["StartTime"]), Convert.ToInt32(reader["EndTime"]), Convert.ToInt32(reader["SchCourseID"])));
+                            CourseList.Add(new SchCourse(reader["SchCourseName"].ToString(), reader["District"].ToString(), reader["Building"].ToString(), reader["Classroom"].ToString(), reader["TeacherName"].ToString(), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["EndWeek"]), Convert.ToInt32(reader["DayofWeek"]), Convert.ToInt32(reader["Semester"]), Convert.ToInt32(reader["StartTime"]), Convert.ToInt32(reader["EndTime"]), Convert.ToInt32(reader["SchCourseID"]),UserID));
                         }
                     }
 
