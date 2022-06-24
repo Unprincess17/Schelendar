@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 using Schelendar.CourseForms;
 using Schelendar.Models;
@@ -84,8 +83,7 @@ namespace Schelendar
             endWeekIUD.Maximum = weekLength;
         }
 
-
-        /// TODO: 根据传入课程ID来在查找课程信息以及显示到界面
+        
         /// <summary>
         /// 假如原位置已有课程，则需要先将原课程信息显示，然后修改
         /// </summary>
@@ -118,7 +116,6 @@ namespace Schelendar
         }
 
 
-        /// TODO: Manager添加或修改课程，返回是否成功来判断如何交互
         /// <summary>
         /// 确认点击事件
         /// </summary>
@@ -130,16 +127,15 @@ namespace Schelendar
             {
                 return;
             }
-
             SchCourse = new SchCourse(courseNameTB.Text, locationDistrictTB.Text, locationBuildingTB.Text,
                 locationRoomTB.Text, teacherNameTB.Text, startWeekIUD.Value, endWeekIUD.Value, _dayOfWeek, _semester,
-                startTimeIUD.Value, endTimeIUD.Value, 0); //TODO: ID需要传入数据库中的
+                startTimeIUD.Value, endTimeIUD.Value); 
+            SchUserManager.AddCourse(SchCourse);//addcourse具有修改ID的副作用
             DialogResult = DialogResult.OK;
             Close();
         }
 
 
-        /// TODO: Manager删除对应课程
         /// <summary>
         /// 删除确认
         /// </summary>
@@ -150,6 +146,7 @@ namespace Schelendar
             if (_courseId != -1)
             {
                 DialogResult = DialogResult.Abort;
+                SchUserManager.DeleteCourse(_courseId);
                 Close();
             }
             else
@@ -221,11 +218,15 @@ namespace Schelendar
             if (courseTemplateForm.DialogResult == DialogResult.Yes)
             {
                 //TODO: 数据库添加课程以及事件，利用CourseTemplateForm的TemplateAdds
-                ///HACK: 这里点击下一步不应该直接操作数据库，因为在下一步的操作中可能会回到上一步修改数据。（也可以添加update，或者将这里add操作修改为UpdateOrAdd，这样不论是之后修改或者是第一次创建都可以使用）
                 SchCourse = new SchCourse(courseNameTB.Text, locationDistrictTB.Text, locationBuildingTB.Text,
                     locationRoomTB.Text, teacherNameTB.Text, startWeekIUD.Value, endWeekIUD.Value, _dayOfWeek,
                     _semester,
-                    startTimeIUD.Value, endTimeIUD.Value, 0); //TODO: ID需要传入数据库中的
+                    startTimeIUD.Value, endTimeIUD.Value, 0); 
+                SchUserManager.AddCourse(SchCourse);
+                courseTemplateForm.TemplateAdds.ForEach(o =>
+                {
+                    SchUserManager.AddTask(new SchTask(SchCourse.SchCourseName + o.Name,"",DateTime.Now,o.Time,schTaskGroupID:SchCourse.SchTaskGroupID),TaskGroupID: SchCourse.SchTaskGroupID,force:1);
+                });
                 DialogResult = DialogResult.OK;
                 Close();
             }

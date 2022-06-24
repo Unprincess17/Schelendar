@@ -21,13 +21,8 @@ namespace Schelendar
             //CourseTest();
             //TaskTest();
             //CourseTableAddTest();
-            //MainTest();
+            MainTest();
             //CourseTemplateTest();
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new LoginForm());
-            //Application.Run(new FarmForm());
-            Application.Run(new MainForm());
 
 
         }
@@ -57,7 +52,7 @@ namespace Schelendar
             
             SchUserManager.ReadUser("fs", "123");
 
-            SchUserManager.UpdateCourse("计算机系统",new SchCourse("计算机系统", "3", "1", "416", "zj", 1, 16, 4, 3, 1, 2));
+            SchUserManager.AddCourse(new SchCourse("计算机系统", "3", "1", "416", "zj", 1, 16, 4, 3, 1, 2));
 
             SchUserManager.GetCourses().ForEach(o =>{Console.WriteLine(o);});
             Console.WriteLine("\n");
@@ -134,9 +129,20 @@ namespace Schelendar
 
         static void MainTest()
         {
+            SchUserDBHelper dbHelper = new SchUserDBHelper();
+            dbHelper.initDB();
+            try
+            {
+                SchUserManager.AddUser(new SchUser("sf", "456"));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            SchUserManager.ReadUser("sf", "456");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new MainForm(SchUserManager.CurrentUser.SchUserID));
         }
     }
 }

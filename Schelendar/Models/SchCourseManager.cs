@@ -17,6 +17,13 @@ namespace Schelendar.Models
         public static string UserDBFile = config.UserDBFile;
         public static string CourseDBFile = config.CourseDBFile;
 
+
+        /// <summary>
+        /// 添加指定课程
+        /// </summary>
+        /// <param name="UserID"></param>
+        /// <param name="course"></param>
+        /// <exception cref="ArgumentNullException"></exception>
         public static void AddCourse(int UserID, SchCourse course)
         {
             if (course == null)
@@ -39,7 +46,6 @@ namespace Schelendar.Models
                         while (reader.Read())
                         {
                             //只根据课程名判断是否有课程重复
-                            //TODO: 重写course类的Equals，并在这里使用。Equals判断名字、时间等更多信息
                             if (reader["SchCourseName"].ToString().Equals(course.SchCourseName))
                             {
                                 throw new ArgumentException($"添加失败：已存在课程{course.SchCourseName}");
@@ -65,22 +71,47 @@ namespace Schelendar.Models
                 e.Source += "添加失败";
                 throw e;
             }
-
+            
             //不重复，则添加课程至数据库
+            //添加至course表
             using (SQLiteConnection cn = new SQLiteConnection("data source=" + CourseDBFile))
             {
                 SQLiteCommand cmd = cn.CreateCommand();
-                cmd.CommandText = $"SELECT COUNT(*) FROM SchCourses";
+                cmd.CommandText = $"SELECT SchCourseID FROM SchCourses ORDER BY SchCourseID DESC LIMIT 1;";
                 cn.Open();
                 result = cmd.ExecuteScalar();
                 cn.Close();
-                course.SchCourseID = Convert.ToInt32(result);//courseID start from 1
+                course.SchCourseID = Convert.ToInt32(result)+1;//courseID start from 1
                 cmd.CommandText = $"INSERT INTO SchCourses VALUES(NULL, '{course.SchCourseName}', '{course.ClassLocation.District}', '{course.ClassLocation.Building}', '{course.ClassLocation.Classroom}', '{course.TeacherName}', '{course.StartWeek}','{course.EndWeek}','{course.DayofWeek}','{course.Semester}','{course.StartTime}','{course.EndTime}','{UserID}');";
                 cn.Open();
                 //cmd.ExecuteNonQueryAsync();
                 cmd.ExecuteNonQuery();
                 cn.Close();
             }
+            //添加至task表
+            SchTaskManager.AddTask(UserID, course, iscourse:1);
+        }
+
+        public static SchCourse GetCourse(int UserID, int courseID)
+        {
+            SchCourse rcourse = null;
+            using (SQLiteConnection cn = new SQLiteConnection("data source=" + CourseDBFile))
+            {
+                SQLiteCommand cmd = cn.CreateCommand();
+
+                cmd.CommandText = $"SELECT * FROM SchCourses WHERE SchUserID='{UserID}' AND SchCourseID='{courseID}';";
+                cn.Open();
+                using (SQLiteDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        rcourse = new SchCourse(reader["SchCourseName"].ToString(), reader["District"].ToString(), reader["Building"].ToString(), reader["Classroom"].ToString(), reader["TeacherName"].ToString(), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["EndWeek"]), Convert.ToInt32(reader["Semester"]), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["StartTime"]), Convert.ToInt32(reader["EndTime"]), Convert.ToInt32(reader["SchCourseID"]));
+                    }
+                }
+
+                cn.Close();
+            }
+            return rcourse;
         }
 
         public static List<SchCourse> GetCourses(int UserID)
@@ -120,7 +151,7 @@ namespace Schelendar.Models
                     {
                         while (reader.Read())
                         {
-                            CourseList.Add(new SchCourse(reader["SchCourseName"].ToString(), reader["District"].ToString(), reader["Building"].ToString(), reader["Classroom"].ToString(), reader["TeacherName"].ToString(), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["EndWeek"]), Convert.ToInt32(reader["Semester"]), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["StartTime"]), Convert.ToInt32(reader["EndTime"]), Convert.ToInt32(reader["SchCourseID"])));
+                            CourseList.Add(new SchCourse(reader["SchCourseName"].ToString(), reader["District"].ToString(), reader["Building"].ToString(), reader["Classroom"].ToString(), reader["TeacherName"].ToString(), Convert.ToInt32(reader["StartWeek"]), Convert.ToInt32(reader["EndWeek"]), Convert.ToInt32(reader["DayofWeek"]), Convert.ToInt32(reader["Semester"]), Convert.ToInt32(reader["StartTime"]), Convert.ToInt32(reader["EndTime"]), Convert.ToInt32(reader["SchCourseID"]),UserID));
                         }
                     }
 
@@ -151,6 +182,27 @@ namespace Schelendar.Models
             catch (Exception e)
             {
                 e.Source += $"课程{courseName}删除失败";
+                throw e;
+            }
+        }
+
+        public static void DeleteCourse(int UserID, int courseID)
+        {
+            object result;
+            try
+            {
+                using (SQLiteConnection cn = new SQLiteConnection("data source=" + CourseDBFile))
+                {
+                    cn.Open();
+                    SQLiteCommand cmd = cn.CreateCommand();
+                    cmd.CommandText = $"DELETE FROM SchCourses WHERE SchUserID='{UserID}' AND SchCourseID='{courseID}'";
+                    result = cmd.ExecuteScalar();
+                    cn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                e.Source += $"课程{courseID}删除失败";
                 throw e;
             }
         }
