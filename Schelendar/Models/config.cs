@@ -14,7 +14,9 @@ namespace Schelendar.Models
         public static string FarmDBFile { get; set; }
         public static string TaskGroupDBFile { get; set; }
 
+        public static String CourseTableFile { get; set; }
         public static int MAX_USER_NUM { get; set; }
+
 
         static config()
         {
@@ -22,6 +24,7 @@ namespace Schelendar.Models
             CourseDBFile = "SchInfos.db";
             TaskDBFile = "SchInfos.db";
             TaskGroupDBFile = "SchInfos.db";
+            CourseTableFile = "SchInfos.db";
             FarmDBFile = "FarmUsers.db";
             MAX_USER_NUM = 10;
 

@@ -45,10 +45,12 @@ namespace Schelendar
                 }
                 if (courseTableAddTimeSettingForm.DialogResult == DialogResult.Yes)
                 {
-                    //TODO: 数据库添加课表，利用CourseTableAddTimeSettingForm的EveryCourseTime
-                    //TODO: CourseTableAddId要设为数据库添加了的Id
-                    CourseTableAddId = -1;
-                    
+                    CourseTableAddId = CourseTableManager.AddCourseTable(new SchCourseTable(0, courseTableNameTB.Text,  totalCourseNumIUD.Value, totalWeekIUD.Value, courseTableAddTimeSettingForm.EveryCourseTime));
+                    if(SchUserManager.CurrentUser.DefaultSemester == -1)
+                    {
+                        SchUserManager.CurrentUser.DefaultSemester = CourseTableAddId;
+                        SchUserManager.UpdateUser(SchUserManager.CurrentUser);
+                    }
                     DialogResult = DialogResult.Yes;
                     Close();
                 }

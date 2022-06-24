@@ -59,14 +59,13 @@ namespace Schelendar
         {
             Visible = false;
             _courseTableId = curTableId;
-            // TODO: 根据id查询课表，返回课表对象
-            _schCourseTable = null;
+            _schCourseTable = CourseTableManager.GetSchCourseTable(_courseTableId);
             
             InitializeComponent();
             InitTableRows(_schCourseTable.DayCourseNumber);
             InitToolStripMenuItem();
             // TODO: 初始化时间
-            // SetCurWeekNumber();
+            SetCurWeekNumber();
             for (int i = 0; i < _schCourseTable.DayCourseNumber; i++)
             {
                 UILabel uiTimeLable = new UILabel();
@@ -77,9 +76,8 @@ namespace Schelendar
                 uiClassTableLayoutPanel.Controls.Add(uiTimeLable, 0, i);
             }
 
-            // TODO: 初始化课表,添加查询，在这里查询得到课程列表
-            InitMap(null);
-            // UpdateCourseShow();
+            InitMap(SchUserManager.GetCourses(_courseTableId));
+            UpdateCourseShow();
             Visible = true;
         }
 
@@ -434,7 +432,7 @@ namespace Schelendar
         private void 设为当前课表ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //TODO: 数据库设置为当前课表
-            
+
             MainForm mainForm = (MainForm) ParentForm;
             mainForm.InitNavMenu();
         }
@@ -464,8 +462,8 @@ namespace Schelendar
         /// <param name="e"></param>
         private void 删除课表ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //TODO: 数据库实现删除课表,如果删除的是当前课表，还需要将Panel清空
-            
+            // TODO: 数据库实现删除课表,如果删除的是当前课表，还需要将Panel清空
+            CourseTableManager.DeleteCourseTable(_courseTableId);
             MainForm mainForm = (MainForm) ParentForm;
             UIPanel uiPanel =(UIPanel) mainForm.GetControl("uiPanel");
             uiPanel.Controls.Clear();

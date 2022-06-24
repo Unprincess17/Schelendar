@@ -52,6 +52,7 @@ namespace Schelendar.Models
 
         public int DefaultGroupID { get; set; }
 
+        public int DefaultSemester { get; set; }
         /// <summary>
         /// 个人的事件
         /// </summary>
@@ -64,7 +65,7 @@ namespace Schelendar.Models
         //[XmlIgnore]
         //public ConcurrentBag<SchCourse> SchClasses { get; set; }
 
-        public SchUser( string userName, string password, int schUserID = 0, int isRmbMe = 0, int isRmbPasswd = 0, int isAutoLogin = 0, int defaultGroupID = 0)
+        public SchUser( string userName, string password, int schUserID = 0, int isRmbMe = 0, int isRmbPasswd = 0, int isAutoLogin = 0, int defaultGroupID = 0, int defaultSemester = -1)
         {
             try
             {
@@ -84,11 +85,11 @@ namespace Schelendar.Models
                 //this.SchEvents = new ConcurrentBag<SchTask>();
                 //this.SchClasses = new ConcurrentBag<SchCourse>();
             }
-            catch(InsufficientMemoryException e1)
+            catch (InsufficientMemoryException e1)
             {
                 throw new Exception($"Memory Insufficient when create {schUserID} 's {e1.Source}.\nPlease retry later");
             }
-            catch(OutOfMemoryException e2)
+            catch (OutOfMemoryException e2)
             {
                 throw new Exception($"Run out of Memory when create {schUserID} 's {e2.Source}.\nPlease retry later");
             }
@@ -96,8 +97,9 @@ namespace Schelendar.Models
             {
                 throw new Exception(e.Message);
             }
+            DefaultSemester = defaultSemester;
         }
-        
+
         public SchUser() {
             SchUserID = -1;
             UserName = "";

@@ -18,16 +18,11 @@ namespace Schelendar
         {
 
             //DBTest();
-            CourseTest();
+            //CourseTest();
             //TaskTest();
             //CourseTableAddTest();
-            //MainTest();
+            MainTest();
             //CourseTemplateTest();
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new LoginForm());
-            //Application.Run(new FarmForm());
-            //Application.Run(new MainForm());
 
 
         }
@@ -134,9 +129,20 @@ namespace Schelendar
 
         static void MainTest()
         {
+            SchUserDBHelper dbHelper = new SchUserDBHelper();
+            dbHelper.initDB();
+            try
+            {
+                SchUserManager.AddUser(new SchUser("sf", "456"));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            SchUserManager.ReadUser("sf", "456");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(-1));
+            Application.Run(new MainForm(SchUserManager.CurrentUser.SchUserID));
         }
     }
 }

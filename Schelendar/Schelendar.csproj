@@ -176,6 +176,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\CourseTableManager.cs" />
     <Compile Include="Models\FarmPlayerManager.cs" />
     <Compile Include="Models\SchCourseManager.cs" />
     <Compile Include="Models\SchTaskGroup.cs" />

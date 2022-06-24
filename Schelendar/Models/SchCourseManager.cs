@@ -17,6 +17,13 @@ namespace Schelendar.Models
         public static string UserDBFile = config.UserDBFile;
         public static string CourseDBFile = config.CourseDBFile;
 
+
+        /// <summary>
+        /// 添加指定课程
+        /// </summary>
+        /// <param name="UserID"></param>
+        /// <param name="course"></param>
+        /// <exception cref="ArgumentNullException"></exception>
         public static void AddCourse(int UserID, SchCourse course)
         {
             if (course == null)
@@ -39,7 +46,6 @@ namespace Schelendar.Models
                         while (reader.Read())
                         {
                             //只根据课程名判断是否有课程重复
-                            //TODO: 重写course类的Equals，并在这里使用。Equals判断名字、时间等更多信息
                             if (reader["SchCourseName"].ToString().Equals(course.SchCourseName))
                             {
                                 throw new ArgumentException($"添加失败：已存在课程{course.SchCourseName}");
@@ -75,7 +81,7 @@ namespace Schelendar.Models
                 cn.Open();
                 result = cmd.ExecuteScalar();
                 cn.Close();
-                course.SchCourseID = Convert.ToInt32(result);//courseID start from 1
+                course.SchCourseID = Convert.ToInt32(result)+1;//courseID start from 1
                 cmd.CommandText = $"INSERT INTO SchCourses VALUES(NULL, '{course.SchCourseName}', '{course.ClassLocation.District}', '{course.ClassLocation.Building}', '{course.ClassLocation.Classroom}', '{course.TeacherName}', '{course.StartWeek}','{course.EndWeek}','{course.DayofWeek}','{course.Semester}','{course.StartTime}','{course.EndTime}','{UserID}');";
                 cn.Open();
                 //cmd.ExecuteNonQueryAsync();
@@ -176,6 +182,27 @@ namespace Schelendar.Models
             catch (Exception e)
             {
                 e.Source += $"课程{courseName}删除失败";
+                throw e;
+            }
+        }
+
+        public static void DeleteCourse(int UserID, int courseID)
+        {
+            object result;
+            try
+            {
+                using (SQLiteConnection cn = new SQLiteConnection("data source=" + CourseDBFile))
+                {
+                    cn.Open();
+                    SQLiteCommand cmd = cn.CreateCommand();
+                    cmd.CommandText = $"DELETE FROM SchCourses WHERE SchUserID='{UserID}' AND SchCourseID='{courseID}'";
+                    result = cmd.ExecuteScalar();
+                    cn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                e.Source += $"课程{courseID}删除失败";
                 throw e;
             }
         }

@@ -116,7 +116,6 @@ namespace Schelendar
         }
 
 
-        /// TODO: Manager添加或修改课程，返回是否成功来判断如何交互
         /// <summary>
         /// 确认点击事件
         /// </summary>
@@ -128,16 +127,15 @@ namespace Schelendar
             {
                 return;
             }
-
             SchCourse = new SchCourse(courseNameTB.Text, locationDistrictTB.Text, locationBuildingTB.Text,
                 locationRoomTB.Text, teacherNameTB.Text, startWeekIUD.Value, endWeekIUD.Value, _dayOfWeek, _semester,
-                startTimeIUD.Value, endTimeIUD.Value, 0); //TODO: ID需要传入数据库中的
+                startTimeIUD.Value, endTimeIUD.Value); 
+            SchUserManager.AddCourse(SchCourse);//addcourse具有修改ID的副作用
             DialogResult = DialogResult.OK;
             Close();
         }
 
 
-        /// TODO: Manager删除对应课程
         /// <summary>
         /// 删除确认
         /// </summary>
@@ -148,6 +146,7 @@ namespace Schelendar
             if (_courseId != -1)
             {
                 DialogResult = DialogResult.Abort;
+                SchUserManager.DeleteCourse(_courseId);
                 Close();
             }
             else
@@ -222,7 +221,12 @@ namespace Schelendar
                 SchCourse = new SchCourse(courseNameTB.Text, locationDistrictTB.Text, locationBuildingTB.Text,
                     locationRoomTB.Text, teacherNameTB.Text, startWeekIUD.Value, endWeekIUD.Value, _dayOfWeek,
                     _semester,
-                    startTimeIUD.Value, endTimeIUD.Value, 0); //TODO: ID需要传入数据库中的
+                    startTimeIUD.Value, endTimeIUD.Value, 0); 
+                SchUserManager.AddCourse(SchCourse);
+                courseTemplateForm.TemplateAdds.ForEach(o =>
+                {
+                    SchUserManager.AddTask(new SchTask(o.Name,"",DateTime.Now,o.Time,schTaskGroupID:SchCourse.SchTaskGroupID),TaskGroupID: SchCourse.SchTaskGroupID,force:1);
+                });
                 DialogResult = DialogResult.OK;
                 Close();
             }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sunny.UI;
+using Schelendar.Models;
 
 namespace Schelendar
 {
@@ -23,8 +24,8 @@ namespace Schelendar
         {
             InitializeComponent();
             CurUserId = curUserId;
-            //TODO: 查询当前用户的当前课表id，如果没有则返回-1
-            InitPanel(-1);
+            //InitPanel(CourseTableManager.GetSchCourseTable(curUserId).CourseTableId);
+                InitPanel(SchUserManager.CurrentUser.DefaultSemester);
         }
 
         /// <summary>
@@ -78,7 +79,7 @@ namespace Schelendar
                 {
                     case "menu_class_cur":
                         //TODO: 查询当前课表的Id并返回,如果为空返回-1
-                        int curTableId = -1;
+                        int curTableId =  -1;
                         InitPanel(curTableId);
                         break;
                     case "menu_class_last":
