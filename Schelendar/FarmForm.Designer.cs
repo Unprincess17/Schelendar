@@ -99,6 +99,7 @@
             this.uiAvatar1 = new Sunny.UI.UIAvatar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.uiToolTip1 = new Sunny.UI.UIToolTip(this.components);
+            this.btnRefresh = new Sunny.UI.UIButton();
             this.uiPanelRight.SuspendLayout();
             this.tlpSeed.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -416,7 +417,7 @@
             this.lblRipenExp.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblRipenExp.Location = new System.Drawing.Point(125, 102);
             this.lblRipenExp.Name = "lblRipenExp";
-            this.lblRipenExp.Size = new System.Drawing.Size(24, 27);
+            this.lblRipenExp.Size = new System.Drawing.Size(19, 21);
             this.lblRipenExp.TabIndex = 13;
             this.lblRipenExp.Text = "0";
             this.lblRipenExp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -428,7 +429,7 @@
             this.uiLabel16.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel16.Location = new System.Drawing.Point(7, 102);
             this.uiLabel16.Name = "uiLabel16";
-            this.uiLabel16.Size = new System.Drawing.Size(112, 27);
+            this.uiLabel16.Size = new System.Drawing.Size(90, 21);
             this.uiLabel16.TabIndex = 12;
             this.uiLabel16.Text = "可获得经验";
             this.uiLabel16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -440,7 +441,7 @@
             this.lblRipenGold.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblRipenGold.Location = new System.Drawing.Point(125, 69);
             this.lblRipenGold.Name = "lblRipenGold";
-            this.lblRipenGold.Size = new System.Drawing.Size(24, 27);
+            this.lblRipenGold.Size = new System.Drawing.Size(19, 21);
             this.lblRipenGold.TabIndex = 11;
             this.lblRipenGold.Text = "0";
             this.lblRipenGold.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -452,7 +453,7 @@
             this.uiLabel10.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel10.Location = new System.Drawing.Point(7, 69);
             this.uiLabel10.Name = "uiLabel10";
-            this.uiLabel10.Size = new System.Drawing.Size(112, 27);
+            this.uiLabel10.Size = new System.Drawing.Size(90, 21);
             this.uiLabel10.TabIndex = 10;
             this.uiLabel10.Text = "可获得金币";
             this.uiLabel10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -464,7 +465,7 @@
             this.lblRipenTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblRipenTime.Location = new System.Drawing.Point(273, 36);
             this.lblRipenTime.Name = "lblRipenTime";
-            this.lblRipenTime.Size = new System.Drawing.Size(108, 27);
+            this.lblRipenTime.Size = new System.Drawing.Size(85, 21);
             this.lblRipenTime.TabIndex = 9;
             this.lblRipenTime.Text = "0时0分0秒";
             this.lblRipenTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -476,7 +477,7 @@
             this.uiLabel6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel6.Location = new System.Drawing.Point(177, 36);
             this.uiLabel6.Name = "uiLabel6";
-            this.uiLabel6.Size = new System.Drawing.Size(92, 27);
+            this.uiLabel6.Size = new System.Drawing.Size(74, 21);
             this.uiLabel6.TabIndex = 8;
             this.uiLabel6.Text = "成熟时间";
             this.uiLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -488,7 +489,7 @@
             this.lblPrice.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblPrice.Location = new System.Drawing.Point(105, 36);
             this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(24, 27);
+            this.lblPrice.Size = new System.Drawing.Size(19, 21);
             this.lblPrice.TabIndex = 7;
             this.lblPrice.Text = "0";
             this.lblPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -500,7 +501,7 @@
             this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel2.Location = new System.Drawing.Point(7, 36);
             this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(92, 27);
+            this.uiLabel2.Size = new System.Drawing.Size(74, 21);
             this.uiLabel2.TabIndex = 6;
             this.uiLabel2.Text = "购买价格";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -512,7 +513,7 @@
             this.lblSeedNum.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblSeedNum.Location = new System.Drawing.Point(273, 3);
             this.lblSeedNum.Name = "lblSeedNum";
-            this.lblSeedNum.Size = new System.Drawing.Size(24, 27);
+            this.lblSeedNum.Size = new System.Drawing.Size(19, 21);
             this.lblSeedNum.TabIndex = 5;
             this.lblSeedNum.Text = "0";
             this.lblSeedNum.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -524,7 +525,7 @@
             this.uiLabel3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel3.Location = new System.Drawing.Point(177, 3);
             this.uiLabel3.Name = "uiLabel3";
-            this.uiLabel3.Size = new System.Drawing.Size(92, 27);
+            this.uiLabel3.Size = new System.Drawing.Size(74, 21);
             this.uiLabel3.TabIndex = 3;
             this.uiLabel3.Text = "拥有数量";
             this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -536,7 +537,7 @@
             this.lblSeedName.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblSeedName.Location = new System.Drawing.Point(105, 3);
             this.lblSeedName.Name = "lblSeedName";
-            this.lblSeedName.Size = new System.Drawing.Size(32, 27);
+            this.lblSeedName.Size = new System.Drawing.Size(26, 21);
             this.lblSeedName.TabIndex = 2;
             this.lblSeedName.Text = "无";
             this.lblSeedName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -548,7 +549,7 @@
             this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel1.Location = new System.Drawing.Point(7, 3);
             this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(92, 27);
+            this.uiLabel1.Size = new System.Drawing.Size(74, 21);
             this.uiLabel1.TabIndex = 1;
             this.uiLabel1.Text = "选中种子";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -896,9 +897,9 @@
             this.lblLeftRipenTime.AutoSize = true;
             this.lblLeftRipenTime.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblLeftRipenTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblLeftRipenTime.Location = new System.Drawing.Point(137, 30);
+            this.lblLeftRipenTime.Location = new System.Drawing.Point(111, 30);
             this.lblLeftRipenTime.Name = "lblLeftRipenTime";
-            this.lblLeftRipenTime.Size = new System.Drawing.Size(108, 27);
+            this.lblLeftRipenTime.Size = new System.Drawing.Size(85, 21);
             this.lblLeftRipenTime.TabIndex = 2;
             this.lblLeftRipenTime.Text = "0时0分0秒";
             this.lblLeftRipenTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -911,7 +912,7 @@
             this.uiLabel11.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel11.Location = new System.Drawing.Point(5, 30);
             this.uiLabel11.Name = "uiLabel11";
-            this.uiLabel11.Size = new System.Drawing.Size(132, 27);
+            this.uiLabel11.Size = new System.Drawing.Size(106, 21);
             this.uiLabel11.TabIndex = 0;
             this.uiLabel11.Text = "距离成熟还有";
             this.uiLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -919,6 +920,7 @@
             // 
             // uiPanel5
             // 
+            this.uiPanel5.Controls.Add(this.btnRefresh);
             this.uiPanel5.Controls.Add(this.lblExpMax);
             this.uiPanel5.Controls.Add(this.uiLabel14);
             this.uiPanel5.Controls.Add(this.lblExpNow);
@@ -949,7 +951,7 @@
             this.lblExpMax.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblExpMax.Location = new System.Drawing.Point(483, 64);
             this.lblExpMax.Name = "lblExpMax";
-            this.lblExpMax.Size = new System.Drawing.Size(72, 27);
+            this.lblExpMax.Size = new System.Drawing.Size(55, 21);
             this.lblExpMax.TabIndex = 11;
             this.lblExpMax.Text = "10000";
             this.lblExpMax.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -961,7 +963,7 @@
             this.uiLabel14.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel14.Location = new System.Drawing.Point(456, 64);
             this.uiLabel14.Name = "uiLabel14";
-            this.uiLabel14.Size = new System.Drawing.Size(21, 27);
+            this.uiLabel14.Size = new System.Drawing.Size(17, 21);
             this.uiLabel14.TabIndex = 10;
             this.uiLabel14.Text = "/";
             this.uiLabel14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -973,7 +975,7 @@
             this.lblExpNow.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblExpNow.Location = new System.Drawing.Point(402, 64);
             this.lblExpNow.Name = "lblExpNow";
-            this.lblExpNow.Size = new System.Drawing.Size(48, 27);
+            this.lblExpNow.Size = new System.Drawing.Size(37, 21);
             this.lblExpNow.TabIndex = 9;
             this.lblExpNow.Text = "100";
             this.lblExpNow.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1021,7 +1023,7 @@
             this.lblMoney.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblMoney.Location = new System.Drawing.Point(136, 100);
             this.lblMoney.Name = "lblMoney";
-            this.lblMoney.Size = new System.Drawing.Size(48, 27);
+            this.lblMoney.Size = new System.Drawing.Size(37, 21);
             this.lblMoney.TabIndex = 7;
             this.lblMoney.Text = "100";
             this.lblMoney.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1033,7 +1035,7 @@
             this.uiLabel9.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel9.Location = new System.Drawing.Point(78, 100);
             this.uiLabel9.Name = "uiLabel9";
-            this.uiLabel9.Size = new System.Drawing.Size(52, 27);
+            this.uiLabel9.Size = new System.Drawing.Size(42, 21);
             this.uiLabel9.TabIndex = 6;
             this.uiLabel9.Text = "金币";
             this.uiLabel9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1045,7 +1047,7 @@
             this.lblLevel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblLevel.Location = new System.Drawing.Point(136, 66);
             this.lblLevel.Name = "lblLevel";
-            this.lblLevel.Size = new System.Drawing.Size(24, 27);
+            this.lblLevel.Size = new System.Drawing.Size(19, 21);
             this.lblLevel.TabIndex = 4;
             this.lblLevel.Text = "1";
             this.lblLevel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1057,7 +1059,7 @@
             this.uiLabel7.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel7.Location = new System.Drawing.Point(78, 64);
             this.uiLabel7.Name = "uiLabel7";
-            this.uiLabel7.Size = new System.Drawing.Size(52, 27);
+            this.uiLabel7.Size = new System.Drawing.Size(42, 21);
             this.uiLabel7.TabIndex = 3;
             this.uiLabel7.Text = "等级";
             this.uiLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1069,9 +1071,9 @@
             this.lblUsername.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblUsername.Location = new System.Drawing.Point(136, 26);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(132, 27);
+            this.lblUsername.Size = new System.Drawing.Size(95, 21);
             this.lblUsername.TabIndex = 2;
-            this.lblUsername.Text = "2020320001";
+            this.lblUsername.Text = "FarmPlayer";
             this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblUsername.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -1081,7 +1083,7 @@
             this.uiLabel5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel5.Location = new System.Drawing.Point(78, 26);
             this.uiLabel5.Name = "uiLabel5";
-            this.uiLabel5.Size = new System.Drawing.Size(52, 27);
+            this.uiLabel5.Size = new System.Drawing.Size(42, 21);
             this.uiLabel5.TabIndex = 1;
             this.uiLabel5.Text = "用户";
             this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1109,6 +1111,20 @@
             this.uiToolTip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
             this.uiToolTip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
             this.uiToolTip1.OwnerDraw = true;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRefresh.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnRefresh.Location = new System.Drawing.Point(456, 12);
+            this.btnRefresh.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(97, 35);
+            this.btnRefresh.TabIndex = 12;
+            this.btnRefresh.Text = "刷新";
+            this.btnRefresh.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnRefresh.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.btnRefresh.Click += new System.EventHandler(this.uiButton1_Click);
             // 
             // FarmForm
             // 
@@ -1234,5 +1250,6 @@
         private Sunny.UI.UILabel uiLabel14;
         private Sunny.UI.UILabel lblExpNow;
         private Sunny.UI.UIToolTip uiToolTip1;
+        private Sunny.UI.UIButton btnRefresh;
     }
 }

@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Schelendar.Models;
 
 namespace Schelendar
 {
@@ -31,14 +32,14 @@ namespace Schelendar
         private DateTime startTime;     //保存开始番茄钟的当地时间
         private bool isSave = false;    //是否保存数据
         private bool isRun = false;     //番茄钟是否正在运行
-
+        private const int tomatoExp = 350;  //一个番茄可获得的经验
         /// <summary>
         /// 窗体构造函数
         /// </summary>
         public TomatoClockForm()
         {
             InitializeComponent();
-            lblTomatoNums.Text = 0.ToString();          //获得番茄数初始为0
+            lblTomatoNums.Text = 1.ToString();          //获得番茄数初始为0
             btnPause.Hide();
             chkSave.Checked = false;                    //不保存文件
             pcbWorkTime.Maximum = 25;
@@ -203,6 +204,14 @@ namespace Schelendar
                 btnSetting.Text = "隐藏设置";
                 uiPanel1.Show();
             }
+        }
+
+        private void btnGetExp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("收获番茄成功，获得" + tomatoExp * lblTomatoNums.Text.ToInt() + "点经验");
+            PlayerManager.getexp(tomatoExp * lblTomatoNums.Text.ToInt());
+            PlayerManager.savedata();
+            lblTomatoNums.Text = "1";      
         }
     }
 }
