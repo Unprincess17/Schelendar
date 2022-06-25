@@ -47,7 +47,7 @@ namespace Schelendar.Models
                         {
                             tmpCourse = new SchCourse(schCourseName: reader["SchCourseName"].ToString(), district: reader["District"].ToString(), building: reader["Building"].ToString(), classroom: reader["Classroom"].ToString(), teacherName: reader["TeacherName"].ToString(), startWeek: Convert.ToInt32(reader["StartWeek"]), endWeek: Convert.ToInt32(reader["EndWeek"]), dayofWeek: Convert.ToInt32(reader["DayofWeek"]), semester: Convert.ToInt32(reader["Semester"]), startTime: Convert.ToInt32(reader["StartTime"]), endTime: Convert.ToInt32(reader["EndTime"]), schCourseID: Convert.ToInt32(reader["SchCourseID"]), userID: Convert.ToInt32(reader["SchUserID"]),schTaskGroupID: Convert.ToInt32(reader["SchTaskGroupID"]));
                             //根据课程名、开始时间和上课日期判断是否为重复课程
-                            if (reader["SchCourseName"].ToString().Equals(course.SchCourseName) && tmpCourse.DayofWeek.Equals(course.DayofWeek) && tmpCourse.StartTime.Equals(course.StartTime)) ;
+                            if (reader["SchCourseName"].ToString().Equals(course.SchCourseName) && tmpCourse.DayofWeek.Equals(course.DayofWeek) && tmpCourse.StartTime.Equals(course.StartTime))
                             {
                                 course = tmpCourse;
                                 throw new RepeatCourseException($"添加失败：已存在课程{course.SchCourseName}");

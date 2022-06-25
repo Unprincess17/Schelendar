@@ -288,6 +288,11 @@ namespace Schelendar.Models
             return SchTaskManager.GetTasks(CurrentUser.SchUserID);
         }
 
+        public static List<SchTask> GetTasksWithoutCourses()
+        {
+            return SchTaskManager.GetTasksWithoutCourses(CurrentUser.SchUserID);
+        }
+
         #endregion 
 
         #region 任务组

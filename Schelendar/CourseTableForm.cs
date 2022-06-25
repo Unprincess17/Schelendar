@@ -432,7 +432,8 @@ namespace Schelendar
         private void 设为当前课表ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //TODO: 数据库设置为当前课表
-
+            SchUserManager.CurrentUser.DefaultSemester = _courseTableId;
+            SchUserManager.UpdateUser(SchUserManager.CurrentUser);
             MainForm mainForm = (MainForm) ParentForm;
             mainForm.InitNavMenu();
         }

@@ -247,6 +247,37 @@ namespace Schelendar.Models
             return TaskList;
         }
 
+        public static List<SchTask> GetTasksWithoutCourses(int userID)
+        {
+            List<SchTask> TaskList = new List<SchTask>();
+            using (SQLiteConnection cn = new SQLiteConnection("data source=" + TaskDBFile))
+            {
+                SQLiteCommand cmd = cn.CreateCommand();
+                cmd.CommandText = $"SELECT * FROM SchTasks WHERE SchUserID='{userID}' AND SchTaskID NOT IN (SELECT SchTaskID FROM SchTasks INNER JOIN SchCourses ON SchCourses.SchUserID=SchTasks.SchUserID AND SchCourses.SchCourseName=SchTasks.SchTaskInfo WHERE SchCourses.SchUserID='{userID}');";
+
+                cn.Open();
+                using (SQLiteDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        TaskList.Add(new SchTask(
+                            schTaskId: Convert.ToInt32(reader["SchTaskID"]),
+                            schTaskInfo: reader["SchTaskInfo"].ToString(),
+                            schTaskLocation: reader["SchTaskLocation"].ToString(),
+                            startDate: Convert.ToDateTime(reader.GetString(3)),
+                            endDate: Convert.ToDateTime(reader.GetString(4)),
+                            isRepeat: Convert.ToInt32(reader["isRepeat"]),
+                            isDone: Convert.ToInt32(reader["isDone"]),
+                            schTaskGroupID: Convert.ToInt32(reader["SchTaskGroupID"]),
+                            userID: Convert.ToInt32(reader["SchUserID"])));
+                    }
+                }
+
+                cn.Close();
+            }
+            return TaskList;
+        }
+
         public static List<SchTask> GetGroup(int userID, int taskID, int notDone = 0) {
             List<SchTask> TaskList = new List<SchTask>();
             using (SQLiteConnection cn = new SQLiteConnection("data source=" + TaskDBFile))

@@ -19,7 +19,7 @@ namespace Schelendar
         public CalendarForm()
         {
             InitializeComponent();
-            List<SchTask> courseTemplates = SchUserManager.GetTasks();
+            List<SchTask> courseTemplates = SchUserManager.GetTasksWithoutCourses();
             
             foreach (var courseTemplate in courseTemplates)
             {
