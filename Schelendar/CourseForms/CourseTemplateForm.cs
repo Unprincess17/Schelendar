@@ -56,6 +56,7 @@ namespace Schelendar.CourseForms
         /// <param name="courseId"></param>
         private void InitTemplate(int courseId)
         {
+            SchUserManager.GetTaskGroupofCourse(courseId);
             throw new NotImplementedException();
         }
         

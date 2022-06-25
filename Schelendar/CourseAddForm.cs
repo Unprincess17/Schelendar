@@ -217,7 +217,6 @@ namespace Schelendar
             courseTemplateForm.ShowDialog();
             if (courseTemplateForm.DialogResult == DialogResult.Yes)
             {
-                //TODO: 数据库添加课程以及事件，利用CourseTemplateForm的TemplateAdds
                 SchCourse = new SchCourse(courseNameTB.Text, locationDistrictTB.Text, locationBuildingTB.Text,
                     locationRoomTB.Text, teacherNameTB.Text, startWeekIUD.Value, endWeekIUD.Value, _dayOfWeek,
                     _semester,

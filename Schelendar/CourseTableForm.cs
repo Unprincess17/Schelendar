@@ -462,7 +462,6 @@ namespace Schelendar
         /// <param name="e"></param>
         private void 删除课表ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // TODO: 数据库实现删除课表,如果删除的是当前课表，还需要将Panel清空
             CourseTableManager.DeleteCourseTable(_courseTableId);
             MainForm mainForm = (MainForm) ParentForm;
             UIPanel uiPanel =(UIPanel) mainForm.GetControl("uiPanel");

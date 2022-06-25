@@ -43,54 +43,7 @@ namespace Schelendar.Models
             return Convert.ToInt32(result);
         }
 
-        //public static void UpdateCourseTable(int schUserID, string oldCourseTableName, SchCourseTable newCourseTable)
-        //{
-        //    if (newCourseTable == null)
-        //    {
-        //        throw new ArgumentNullException($"更新失败：任务{newCourseTable.SchCourseTableInfo}状态异常");
-        //    }
-
-        //    object result;
-        //    try
-        //    {
-
-        //        //判断是否存在任务
-        //        using (SQLiteConnection cn = new SQLiteConnection("data source=" + CourseTableDBFile))
-        //        {
-        //            SQLiteCommand cmd = cn.CreateCommand();
-        //            cn.Open();
-        //            cmd.CommandText = $"SELECT SchCourseTableID FROM SchCourseTables WHERE SchUserID='{schUserID}' AND SchCourseTableInfo='{oldCourseTableName}'";
-        //            result = cmd.ExecuteScalar();
-        //            cn.Close();
-        //        }
-        //        if (result == null || Convert.ToInt32(result) == 0)
-        //        {
-        //            throw new ArgumentException($"更新失败：未查询到任务{newCourseTable.SchCourseTableInfo}");
-        //        }
-        //    }
-        //    catch (ArgumentException e)
-        //    {
-        //        throw e;
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        e.Source += "更新失败";
-        //        throw e;
-        //    }
-
-        //    //更新任务至数据库
-        //    using (SQLiteConnection cn = new SQLiteConnection("data source=" + CourseTableDBFile))
-        //    {
-        //        SQLiteCommand cmd = cn.CreateCommand();
-        //        cmd.CommandText = $"UPDATE SchCourseTables SET SchCourseTableInfo='{newCourseTable.SchCourseTableInfo}', SchCourseTableLocation='{newCourseTable.SchCourseTableLocation}', StartDate='{newCourseTable.StartDate}', EndDate='{newCourseTable.EndDate}', isRepeat='{newCourseTable.isRepeat}', isDone='{newCourseTable.isDone}',SchCourseTableGroupID='{newCourseTable.SchCourseTableGroupID}' WHERE SchUserID='{schUserID}' AND SchCourseTableID='{result}';";
-        //        cn.Open();
-        //        //cmd.ExecuteNonQueryAsync();
-        //        cmd.ExecuteNonQuery();
-        //        cn.Close();
-        //    }
-        //}
-
-
+        
         public static void DeleteCourseTable(/*int userID, */int CourseTableID)
         {
             using (SQLiteConnection cn = new SQLiteConnection("data source=" + CourseTableDBFile))
@@ -123,8 +76,6 @@ namespace Schelendar.Models
                     List<Dictionary<String, CourseTime>> EveryCourseTime = new List<Dictionary<string, CourseTime>>();
                     for (int i = 0; i < Convert.ToInt32(reader["DayCourseNumber"]); i++)
                     {
-                        //CourseTime start = new CourseTime(Convert.ToDateTime(reader[$"c{i + 1}_StartTime"]).Hour, Convert.ToDateTime(reader[$"c{i + 1}_StartTime"]).Minute);
-                        //CourseTime end = new CourseTime(Convert.ToDateTime(reader[$"c{i + 1}_EndTime"]).Hour, Convert.ToDateTime(reader[$"c{i + 1}_EndTime"]).Minute);
                         EveryCourseTime.Add(new Dictionary<string, CourseTime>(){{"StartTime", new CourseTime(Convert.ToDateTime(reader[$"c{i + 1}_StartTime"]).Hour, Convert.ToDateTime(reader[$"c{i + 1}_StartTime"]).Minute) }, {"EndTime", new CourseTime(Convert.ToDateTime(reader[$"c{i + 1}_EndTime"]).Hour, Convert.ToDateTime(reader[$"c{i + 1}_EndTime"]).Minute) } });
                     }
 
@@ -135,11 +86,47 @@ namespace Schelendar.Models
                         weekLength: Convert.ToInt32(reader["WeekLength"]),
                         everyCourseTime:EveryCourseTime);
                 }
-                
-
                 cn.Close();
             }
             return rctbl;
+        }
+
+        public static List<SchCourseTable> GetSchCourseTables(int except)
+        {
+            List<SchCourseTable> rctbls = new List<SchCourseTable>();
+            using (SQLiteConnection cn = new SQLiteConnection("data source=" + CourseTableDBFile))
+            {
+                SQLiteCommand cmd = cn.CreateCommand();
+                cmd.CommandText = $"SELECT * FROM SchCourseTables";
+                cn.Open();
+                using (SQLiteDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (Convert.ToInt32(reader["CourseTableID"]).Equals(except)){
+                            continue;
+                        }
+                        List<Dictionary<String, CourseTime>> EveryCourseTime = new List<Dictionary<string, CourseTime>>();
+                        for (int i = 0; i < Convert.ToInt32(reader["DayCourseNumber"]); i++)
+                        {
+                            EveryCourseTime.Add(new Dictionary<string, CourseTime>() { { "StartTime", new CourseTime(Convert.ToDateTime(reader[$"c{i + 1}_StartTime"]).Hour, Convert.ToDateTime(reader[$"c{i + 1}_StartTime"]).Minute) }, { "EndTime", new CourseTime(Convert.ToDateTime(reader[$"c{i + 1}_EndTime"]).Hour, Convert.ToDateTime(reader[$"c{i + 1}_EndTime"]).Minute) } });
+                        }
+                        rctbls.Add(new SchCourseTable(
+                            courseTableId: Convert.ToInt32(reader["CourseTableID"]),
+                            courseTableName: reader["CourseTableName"].ToString(),
+                            dayCourseNumber: Convert.ToInt32(reader["DayCourseNumber"]),
+                            weekLength: Convert.ToInt32(reader["WeekLength"]),
+                            everyCourseTime: EveryCourseTime));
+                    }
+                }
+
+
+                cn.Close();
+            }
+
+
+            return rctbls;
+
         }
     }
 }

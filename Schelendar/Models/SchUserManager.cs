@@ -35,26 +35,6 @@ namespace Schelendar.Models
 
 
         #region 待完成
-        //public ConcurrentBag<SchUser> SchUsers { get; set; }
-
-        /////TODO：根据添加的课程联想添加事件（考试、大作业...
-
-        /////TODO：根据删除的时间联想删除事件
-
-        /////TODO：事件组 事件的一种组织方式 里面的时间全部完成后才算整体完成
-
-        /////TODO: Txt2Event
-        ///// 文本处理？可以先写个处理格式化文本的
-        /////"5月20号5点跑步"->SchEvent(...)
-        //public void Txt2Event(string msg)
-        //{
-        //    List<string> fmts = new List<string>();
-        //    fmts.Add("明天");
-
-        //}
-
-
-        /////TODO:每次操作的信息，持久化起来。->C# log
 
         #endregion
 
@@ -184,7 +164,7 @@ namespace Schelendar.Models
             {
                 throw new ArgumentException("更改的用户名格式不正确，用户名只能包括汉字和英文。请重新输入");
             }//用户名检测
-            //TODO:密码检测
+
             try
             {
                 using (SQLiteConnection cn = new SQLiteConnection("data source=" + UserDBFile))

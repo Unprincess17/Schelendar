@@ -62,8 +62,12 @@ namespace Schelendar
         /// </summary>
         public void InitNavMenu()
         {
-            //TODO: 使用CurUserId查询不是当前课表的所有课表，返回Id与Name组成的列表,为空时返回null
-            List<NodeInfo> courseTableNodes = null;
+            List<NodeInfo> courseTableNodes = new List<NodeInfo>();
+            List<SchCourseTable> ltbls = CourseTableManager.GetSchCourseTables(SchUserManager.CurrentUser.DefaultSemester);
+            ltbls.ForEach(o =>
+            {
+                courseTableNodes.Add(new NodeInfo(o.CourseTableId, o.CourseTableName));
+            });
 
             TreeNode otherTableNode = uiNavMenu.Nodes.Find("menu_class_last", true).First();
             otherTableNode.Nodes.Clear();
@@ -90,7 +94,6 @@ namespace Schelendar
                 switch (node.Name)
                 {
                     case "menu_class_cur":
-                        //TODO: 查询当前课表的Id并返回,如果为空返回-1
                         int curTableId =  SchUserManager.CurrentUser.DefaultSemester;
                         InitPanel(curTableId);
                         break;
