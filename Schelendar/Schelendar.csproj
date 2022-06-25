@@ -196,6 +196,7 @@
     <Compile Include="Models\SchCourse.cs" />
     <Compile Include="Models\SchTask.cs" />
     <Compile Include="Models\SchUser.cs" />
+    <Compile Include="SchExceptions.cs" />
     <Compile Include="SettingForm.cs">
       <SubType>Form</SubType>
     </Compile>

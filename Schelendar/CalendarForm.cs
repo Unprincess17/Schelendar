@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Sunny.UI;
+using Schelendar.Models;
 
 namespace Schelendar
 {
@@ -18,17 +19,16 @@ namespace Schelendar
         public CalendarForm()
         {
             InitializeComponent();
-            // TODO: 添加事件的查询，返回列表类型？
-            List<Task> courseTemplates = null;
+            List<SchTask> courseTemplates = SchUserManager.GetTasks();
             
             foreach (var courseTemplate in courseTemplates)
             {
                 UILabel uiLabel = new UILabel();
                 UIDatetimePicker datetimePicker = new UIDatetimePicker();
-                uiLabel.Text = courseTemplate.Name;
+                uiLabel.Text = courseTemplate.SchTaskInfo;
                 uiLabel.Dock = DockStyle.Fill;
                 uiLabel.TextAlign = ContentAlignment.MiddleRight;
-                datetimePicker.Value = courseTemplate.Time;
+                datetimePicker.Value = courseTemplate.StartDate;
                 datetimePicker.Dock = DockStyle.Fill;
                 datetimePicker.ReadOnly = true;
                 templateTable.Controls.Add(uiLabel, 0, templateTable.RowCount-1);

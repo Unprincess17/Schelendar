@@ -27,20 +27,9 @@ namespace Schelendar
 
         }
 
-        static void DBTest()
-        {
-            SchUserDBHelper dbHelper = new SchUserDBHelper();
-            dbHelper.CreateUsersDB();
-            dbHelper.CreateTasksDB();
-            dbHelper.CreateCoursesDB();
-            dbHelper.CreateTaskGroupsDB();
-        }
-
         static void CourseTest()
         {
-            SchUserDBHelper dbHelper = new SchUserDBHelper();
-            dbHelper.CreateUsersDB();
-            dbHelper.CreateCoursesDB();
+            SchUserDBHelper.initDB();
             try
             {
                 SchUserManager.AddUser(new SchUser("fs", "123"));
@@ -52,7 +41,7 @@ namespace Schelendar
             
             SchUserManager.ReadUser("fs", "123");
 
-            SchUserManager.AddCourse(new SchCourse("计算机系统", "3", "1", "416", "zj", 1, 16, 4, 3, 1, 2));
+            //SchUserManager.AddCourse(new SchCourse("计算机系统", "3", "1", "416", "zj", 1, 16, 4, 3, 1, 2));
 
             SchUserManager.GetCourses().ForEach(o =>{Console.WriteLine(o);});
             Console.WriteLine("\n");
@@ -63,25 +52,7 @@ namespace Schelendar
 
         static void TaskTest()
         {
-            SchUserDBHelper dbHelper = new SchUserDBHelper();
-            //dbHelper.CreateUsersDB();
-            //dbHelper.CreateTasksDB();
-            //try
-            //{
-            //    SchUserManager.AddUser(new SchUser("fs", "123"));
-            //}
-            //catch (Exception e)
-            //{
-
-            //}
-
-            //SchUserManager.ReadUser("fs", "123");
-            //SchUserManager.AddTask(new SchTask("荒野乱斗", null, DateTime.Now, DateTime.Now + TimeSpan.FromHours(1)));
-            //SchUserManager.AddTask(new SchTask("c#组", null, DateTime.Now, DateTime.Now + TimeSpan.FromHours(1)),1);
-            //SchUserManager.DeleteTask(4);
-            //SchUserManager.DeleteTask(5);
-            //SchUserManager.DeleteTask(6);
-            //SchUserManager.DeleteTask(7);
+            SchUserDBHelper.initDB();
 
             try
             {
@@ -89,28 +60,11 @@ namespace Schelendar
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-            }
-            try
-            {
-                SchUserManager.AddUser(new SchUser("fs", "123"));
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
+
             }
 
             SchUserManager.ReadUser("sf", "456");
-            SchUserManager.AddTask(new SchTask("c#组", null, DateTime.Now, DateTime.Now + TimeSpan.FromHours(1)));
-
-
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new LoginForm());
-            //Application.Run(new FarmForm());
-            //Application.Run(new MainForm());
-            //Application.Run(new CourseTableAddTimeSettingForm(11));
+            Console.WriteLine(SchUserManager.GetTasks());
         }
 
         static void CourseTemplateTest()
@@ -129,8 +83,7 @@ namespace Schelendar
 
         static void MainTest()
         {
-            SchUserDBHelper dbHelper = new SchUserDBHelper();
-            dbHelper.initDB();
+            SchUserDBHelper.initDB();
             try
             {
                 SchUserManager.AddUser(new SchUser("sf", "456"));

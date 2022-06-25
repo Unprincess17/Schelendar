@@ -9,6 +9,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Data.SQLite;
 using Schelendar.CourseForms;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Schelendar.Models
 {
@@ -211,9 +212,9 @@ namespace Schelendar.Models
         /// 登录用户添加指定课程。副作用：修改course中ID属性为数据库中CourseID的值
         /// </summary>
         /// <param name="schCourse"></param>
-        public static void AddCourse(SchCourse course)
+        public static void AddCourse(ref SchCourse course)
         {
-            SchCourseManager.AddCourse(CurrentUser.SchUserID, course);
+            SchCourseManager.AddCourse(CurrentUser.SchUserID, ref course);
         }
 
         public static void UpdateCourse(string oldCourseName, SchCourse course)
@@ -302,9 +303,9 @@ namespace Schelendar.Models
             SchTaskManager.changeGroup(CurrentUser.SchUserID, taskID, newGroupID);           
         }
 
-        public static void GetTasks()
+        public static List<SchTask> GetTasks()
         {   
-            SchTaskManager.GetTasks(CurrentUser.SchUserID);
+            return SchTaskManager.GetTasks(CurrentUser.SchUserID);
         }
 
         #endregion 
@@ -364,5 +365,6 @@ namespace Schelendar.Models
         {
             return CurrentUser.ToString();
         }
+
     }
 }

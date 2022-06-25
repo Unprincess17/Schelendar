@@ -130,7 +130,7 @@ namespace Schelendar
             SchCourse = new SchCourse(courseNameTB.Text, locationDistrictTB.Text, locationBuildingTB.Text,
                 locationRoomTB.Text, teacherNameTB.Text, startWeekIUD.Value, endWeekIUD.Value, _dayOfWeek, _semester,
                 startTimeIUD.Value, endTimeIUD.Value); 
-            SchUserManager.AddCourse(SchCourse);//addcourse具有修改ID的副作用
+            SchUserManager.AddCourse(ref SchCourse);//addcourse具有修改ID的副作用
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -222,7 +222,14 @@ namespace Schelendar
                     locationRoomTB.Text, teacherNameTB.Text, startWeekIUD.Value, endWeekIUD.Value, _dayOfWeek,
                     _semester,
                     startTimeIUD.Value, endTimeIUD.Value, 0); 
-                SchUserManager.AddCourse(SchCourse);
+                try
+                {
+                    SchUserManager.AddCourse(ref SchCourse);
+                }
+                catch (RepeatCourseException)//课程修改时抛出重复添加异常
+                {
+                    ;
+                }
                 courseTemplateForm.TemplateAdds.ForEach(o =>
                 {
                     SchUserManager.AddTask(new SchTask(SchCourse.SchCourseName + o.Name,"",DateTime.Now,o.Time,schTaskGroupID:SchCourse.SchTaskGroupID),TaskGroupID: SchCourse.SchTaskGroupID,force:1);

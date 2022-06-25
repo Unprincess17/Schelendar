@@ -9,12 +9,12 @@ using System.Data.SQLite;
 
 namespace Schelendar.Models
 {
-    public class SchUserDBHelper
+    public static class SchUserDBHelper
     {
         /// <summary>
         /// 创建用户表
         /// </summary>
-        public void CreateUsersDB()
+        public static void CreateUsersDB()
         {
             string fileName = config.UserDBFile;
             if (File.Exists(fileName) == false)//不存在用户文件
@@ -52,7 +52,7 @@ namespace Schelendar.Models
         }
 
 
-        public void CreateCoursesDB()
+        public static void CreateCoursesDB()
         {
             string fileName = config.CourseDBFile;
             if (File.Exists(fileName) == false)//不存在课程文件
@@ -92,7 +92,7 @@ namespace Schelendar.Models
         /// <summary>
         /// 创建任务表，同时创建任务组表
         /// </summary>
-        public void CreateTasksDB()
+        public static void CreateTasksDB()
         {
             string fileName = config.TaskDBFile;
             if (File.Exists(fileName) == false)//不存在任务文件
@@ -125,10 +125,10 @@ namespace Schelendar.Models
                 cn.Close();//关闭连接
 
             }
-            this.CreateTaskGroupsDB();
+            CreateTaskGroupsDB();
         }
 
-        public void CreateTaskGroupsDB()
+        public static void CreateTaskGroupsDB()
         {
             string fileName = config.TaskGroupDBFile;
             if (File.Exists(fileName) == false)//不存在任务组文件
@@ -157,7 +157,7 @@ namespace Schelendar.Models
         }
 
 
-        public void CreateCourseTableDB()
+        public static void CreateCourseTableDB()
         {
             string fileName = config.CourseTableFile;
             if (File.Exists(fileName) == false)//不存在任务组文件
@@ -225,12 +225,12 @@ namespace Schelendar.Models
             }
         }
 
-        public void initDB()
+        public static void initDB()
         {
-            this.CreateUsersDB();
-            this.CreateTasksDB();
-            this.CreateCoursesDB();
-            this.CreateCourseTableDB();
+            CreateUsersDB();
+            CreateTasksDB();
+            CreateCoursesDB();
+            CreateCourseTableDB();
         }
     }
     public class FarmDBHelper

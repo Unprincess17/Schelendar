@@ -84,7 +84,7 @@ namespace Schelendar.Models
         /// <param name="startTime"></param>
         /// <param name="endTime"></param>
         public SchCourse(string schCourseName, string district, string building, string classroom, string teacherName,
-            int startWeek, int endWeek, int dayofWeek, int semester, int startTime, int endTime, int schCourseID = -1, int userID = 0):base(schCourseName, district+building+classroom, DateTime.Now, DateTime.Now, 1,0,0, schCourseID, userID)
+            int startWeek, int endWeek, int dayofWeek, int semester, int startTime, int endTime, int schCourseID = -1, int userID = 0, int schTaskGroupID=0):base(schCourseName, district+building+classroom, DateTime.Now, DateTime.Now, 1,0, schTaskGroupID, schCourseID, userID)
         {
             this.SchCourseID = schCourseID;
             this.SchCourseName = schCourseName;
@@ -158,6 +158,7 @@ namespace Schelendar.Models
 			Semester = previous.Semester;
 			StartTime = previous.StartTime;
 			EndTime = previous.EndTime;
+            SchTaskGroupID = previous.SchTaskGroupID;
 		}
 
 		/// <summary>
@@ -189,6 +190,8 @@ namespace Schelendar.Models
 				return 1;
             }
         }
+
+
     }
 	public struct ClassLocation {
 		public string District;

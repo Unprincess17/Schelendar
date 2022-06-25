@@ -24,7 +24,7 @@ namespace Schelendar.Models
         /// <param name="UserID"></param>
         /// <param name="course"></param>
         /// <exception cref="ArgumentNullException"></exception>
-        public static void AddCourse(int UserID, SchCourse course)
+        public static void AddCourse(int UserID,  ref SchCourse course)
         {
             if (course == null)
             {
@@ -40,18 +40,19 @@ namespace Schelendar.Models
                 {
                     SQLiteCommand cmd = cn.CreateCommand();
                     cn.Open();
-                    cmd.CommandText = $"SELECT * FROM SchCourses WHERE SchUserID='{UserID}'";
+                    cmd.CommandText = $"SELECT * FROM SchCourses INNER JOIN SchTasks ON SchCourses.SchUserID=SchTasks.SchUserID AND SchCourses.SchCourseName=SchTasks.SchTaskInfo WHERE SchCourses.SchUserID='{UserID}'";
                     using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            //只根据课程名判断是否有课程重复
-                            if (reader["SchCourseName"].ToString().Equals(course.SchCourseName))
+                            tmpCourse = new SchCourse(schCourseName: reader["SchCourseName"].ToString(), district: reader["District"].ToString(), building: reader["Building"].ToString(), classroom: reader["Classroom"].ToString(), teacherName: reader["TeacherName"].ToString(), startWeek: Convert.ToInt32(reader["StartWeek"]), endWeek: Convert.ToInt32(reader["EndWeek"]), dayofWeek: Convert.ToInt32(reader["DayofWeek"]), semester: Convert.ToInt32(reader["Semester"]), startTime: Convert.ToInt32(reader["StartTime"]), endTime: Convert.ToInt32(reader["EndTime"]), schCourseID: Convert.ToInt32(reader["SchCourseID"]), userID: Convert.ToInt32(reader["SchUserID"]),schTaskGroupID: Convert.ToInt32(reader["SchTaskGroupID"]));
+                            //根据课程名、开始时间和上课日期判断是否为重复课程
+                            if (reader["SchCourseName"].ToString().Equals(course.SchCourseName) && tmpCourse.DayofWeek.Equals(course.DayofWeek) && tmpCourse.StartTime.Equals(course.StartTime)) ;
                             {
-                                throw new ArgumentException($"添加失败：已存在课程{course.SchCourseName}");
+                                course = tmpCourse;
+                                throw new RepeatCourseException($"添加失败：已存在课程{course.SchCourseName}");
                             }
-                            tmpCourse = new SchCourse(schCourseName: reader["SchCourseName"].ToString(), district:reader["District"].ToString(), building:reader["Building"].ToString(), classroom:reader["Classroom"].ToString(), teacherName:reader["TeacherName"].ToString(), startWeek:Convert.ToInt32(reader["StartWeek"]), endWeek:Convert.ToInt32(reader["EndWeek"]), dayofWeek:Convert.ToInt32(reader["DayofWeek"]), semester:Convert.ToInt32(reader["Semester"]), startTime: Convert.ToInt32(reader["StartTime"]), endTime:Convert.ToInt32(reader["EndTime"]), schCourseID:Convert.ToInt32(reader["SchCourseID"]), userID:Convert.ToInt32(reader["SchUserID"]));
-                            
+
                             if (SchCourse.isConflicted(course, tmpCourse) == 1)
                             {
                                 throw new ArgumentException(message: $"添加失败：课程{course.SchCourseName}与{tmpCourse.SchCourseName}时间重复", paramName: $"{course.SchCourseName}");
@@ -62,13 +63,8 @@ namespace Schelendar.Models
                     cn.Close();
                 }
             }
-            catch (ArgumentException e)
-            {
-                throw e;
-            }
             catch (Exception e)
             {
-                e.Source += "添加失败";
                 throw e;
             }
             

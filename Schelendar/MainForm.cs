@@ -91,13 +91,17 @@ namespace Schelendar
                 {
                     case "menu_class_cur":
                         //TODO: 查询当前课表的Id并返回,如果为空返回-1
-                        int curTableId =  -1;
+                        int curTableId =  SchUserManager.CurrentUser.DefaultSemester;
                         InitPanel(curTableId);
                         break;
                     case "menu_class_last":
                         Visible = false;
                         InitNavMenu();
                         Visible = true;
+                        break;
+                    case "menu_class_add":
+                        curTableId = -1;
+                        InitPanel(curTableId);
                         break;
                     case "menu_calendar":
                         CalendarForm calendarForm = new CalendarForm();
