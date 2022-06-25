@@ -85,6 +85,7 @@
             this.lblLeftRipenTime = new Sunny.UI.UILabel();
             this.uiLabel11 = new Sunny.UI.UILabel();
             this.uiPanel5 = new Sunny.UI.UIPanel();
+            this.btnRefresh = new Sunny.UI.UIButton();
             this.lblExpMax = new Sunny.UI.UILabel();
             this.uiLabel14 = new Sunny.UI.UILabel();
             this.lblExpNow = new Sunny.UI.UILabel();
@@ -99,7 +100,6 @@
             this.uiAvatar1 = new Sunny.UI.UIAvatar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.uiToolTip1 = new Sunny.UI.UIToolTip(this.components);
-            this.btnRefresh = new Sunny.UI.UIButton();
             this.uiPanelRight.SuspendLayout();
             this.tlpSeed.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -945,6 +945,20 @@
             this.uiPanel5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiPanel5.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRefresh.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnRefresh.Location = new System.Drawing.Point(456, 12);
+            this.btnRefresh.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(97, 35);
+            this.btnRefresh.TabIndex = 12;
+            this.btnRefresh.Text = "刷新";
+            this.btnRefresh.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnRefresh.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.btnRefresh.Click += new System.EventHandler(this.uiButton1_Click);
+            // 
             // lblExpMax
             // 
             this.lblExpMax.AutoSize = true;
@@ -1111,20 +1125,6 @@
             this.uiToolTip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
             this.uiToolTip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
             this.uiToolTip1.OwnerDraw = true;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRefresh.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnRefresh.Location = new System.Drawing.Point(456, 12);
-            this.btnRefresh.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(97, 35);
-            this.btnRefresh.TabIndex = 12;
-            this.btnRefresh.Text = "刷新";
-            this.btnRefresh.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnRefresh.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.btnRefresh.Click += new System.EventHandler(this.uiButton1_Click);
             // 
             // FarmForm
             // 

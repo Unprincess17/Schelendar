@@ -93,7 +93,7 @@
             this.btnSetting.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
             this.btnSetting.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
             this.btnSetting.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSetting.Location = new System.Drawing.Point(490, 50);
+            this.btnSetting.Location = new System.Drawing.Point(536, 63);
             this.btnSetting.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
@@ -113,11 +113,11 @@
             // 
             this.lblRestTime.AutoSize = true;
             this.lblRestTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblRestTime.Location = new System.Drawing.Point(212, 136);
+            this.lblRestTime.Location = new System.Drawing.Point(258, 149);
             this.lblRestTime.Name = "lblRestTime";
             this.lblRestTime.Size = new System.Drawing.Size(45, 21);
             this.lblRestTime.TabIndex = 19;
-            this.lblRestTime.Text = "0:0:0";
+            this.lblRestTime.Text = "0:5:0";
             this.lblRestTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblRestTime.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -125,11 +125,11 @@
             // 
             this.lblWorkTime.AutoSize = true;
             this.lblWorkTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblWorkTime.Location = new System.Drawing.Point(212, 99);
+            this.lblWorkTime.Location = new System.Drawing.Point(258, 112);
             this.lblWorkTime.Name = "lblWorkTime";
-            this.lblWorkTime.Size = new System.Drawing.Size(45, 21);
+            this.lblWorkTime.Size = new System.Drawing.Size(54, 21);
             this.lblWorkTime.TabIndex = 18;
-            this.lblWorkTime.Text = "0:0:0";
+            this.lblWorkTime.Text = "0:25:0";
             this.lblWorkTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblWorkTime.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -142,7 +142,7 @@
             this.uiPanel1.Controls.Add(this.uiLabel4);
             this.uiPanel1.Controls.Add(this.chkSave);
             this.uiPanel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiPanel1.Location = new System.Drawing.Point(319, 184);
+            this.uiPanel1.Location = new System.Drawing.Point(365, 197);
             this.uiPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel1.Name = "uiPanel1";
@@ -241,7 +241,7 @@
             // 
             this.btnAbort.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAbort.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnAbort.Location = new System.Drawing.Point(168, 343);
+            this.btnAbort.Location = new System.Drawing.Point(214, 356);
             this.btnAbort.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnAbort.Name = "btnAbort";
             this.btnAbort.Radius = 10;
@@ -256,7 +256,7 @@
             // 
             this.btnPause.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPause.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnPause.Location = new System.Drawing.Point(168, 257);
+            this.btnPause.Location = new System.Drawing.Point(214, 270);
             this.btnPause.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnPause.Name = "btnPause";
             this.btnPause.Radius = 10;
@@ -271,7 +271,7 @@
             // 
             this.btnStart.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnStart.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnStart.Location = new System.Drawing.Point(168, 184);
+            this.btnStart.Location = new System.Drawing.Point(214, 197);
             this.btnStart.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnStart.Name = "btnStart";
             this.btnStart.Radius = 10;
@@ -285,7 +285,7 @@
             // pcbRestTime
             // 
             this.pcbRestTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.pcbRestTime.Location = new System.Drawing.Point(290, 136);
+            this.pcbRestTime.Location = new System.Drawing.Point(336, 149);
             this.pcbRestTime.MinimumSize = new System.Drawing.Size(70, 3);
             this.pcbRestTime.Name = "pcbRestTime";
             this.pcbRestTime.ShowPercent = false;
@@ -299,7 +299,7 @@
             // pcbWorkTime
             // 
             this.pcbWorkTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.pcbWorkTime.Location = new System.Drawing.Point(290, 99);
+            this.pcbWorkTime.Location = new System.Drawing.Point(336, 112);
             this.pcbWorkTime.Maximum = 25;
             this.pcbWorkTime.MinimumSize = new System.Drawing.Size(70, 3);
             this.pcbWorkTime.Name = "pcbWorkTime";
@@ -315,7 +315,7 @@
             // 
             this.uiLabel3.AutoSize = true;
             this.uiLabel3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel3.Location = new System.Drawing.Point(100, 136);
+            this.uiLabel3.Location = new System.Drawing.Point(146, 149);
             this.uiLabel3.Name = "uiLabel3";
             this.uiLabel3.Size = new System.Drawing.Size(74, 21);
             this.uiLabel3.TabIndex = 4;
@@ -327,7 +327,7 @@
             // 
             this.uiLabel2.AutoSize = true;
             this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel2.Location = new System.Drawing.Point(100, 99);
+            this.uiLabel2.Location = new System.Drawing.Point(146, 112);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(74, 21);
             this.uiLabel2.TabIndex = 3;
@@ -338,18 +338,15 @@
             // btnGetExp
             // 
             this.btnGetExp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGetExp.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnGetExp.Location = new System.Drawing.Point(382, 50);
+            this.btnGetExp.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.btnGetExp.Location = new System.Drawing.Point(428, 63);
             this.btnGetExp.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnGetExp.Name = "btnGetExp";
             this.btnGetExp.Radius = 10;
             this.btnGetExp.Size = new System.Drawing.Size(99, 36);
             this.btnGetExp.TabIndex = 2;
-          
             this.btnGetExp.Text = "收获番茄";
             this.btnGetExp.TipsFont = new System.Drawing.Font("微软雅黑", 12F);
-
-
             this.btnGetExp.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.btnGetExp.Click += new System.EventHandler(this.btnGetExp_Click);
             // 
@@ -357,11 +354,11 @@
             // 
             this.lblTomatoNums.AutoSize = true;
             this.lblTomatoNums.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblTomatoNums.Location = new System.Drawing.Point(336, 50);
+            this.lblTomatoNums.Location = new System.Drawing.Point(382, 63);
             this.lblTomatoNums.Name = "lblTomatoNums";
             this.lblTomatoNums.Size = new System.Drawing.Size(19, 21);
             this.lblTomatoNums.TabIndex = 1;
-            this.lblTomatoNums.Text = "1";
+            this.lblTomatoNums.Text = "0";
             this.lblTomatoNums.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblTomatoNums.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -369,7 +366,7 @@
             // 
             this.uiLabel1.AutoSize = true;
             this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel1.Location = new System.Drawing.Point(100, 50);
+            this.uiLabel1.Location = new System.Drawing.Point(146, 63);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(170, 21);
             this.uiLabel1.TabIndex = 0;

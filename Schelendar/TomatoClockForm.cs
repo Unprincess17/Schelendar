@@ -44,7 +44,7 @@ namespace Schelendar
 
         {
             InitializeComponent();
-            lblTomatoNums.Text = 1.ToString();          //获得番茄数初始为0
+            lblTomatoNums.Text = 0.ToString();          //获得番茄数初始为0
             btnPause.Hide();
             chkSave.Checked = false;                    //不保存文件
             pcbWorkTime.Maximum = 25;
@@ -65,7 +65,8 @@ namespace Schelendar
             
             workTime = Convert.ToInt32(iudWorkTime.Value) * 60;  //工作时间
             restTime = Convert.ToInt32(iudRestTime.Value) * 60;  //休息时间
-            
+            lblWorkTime.Text = timeToString(workTime);
+            lblRestTime.Text = timeToString(restTime);
             tmrWorkTime.Enabled = true;                          //开始计时   
             pcbWorkTime.Value = pcbWorkTime.Maximum = workTime;
             if(restTime > 0)
@@ -154,7 +155,7 @@ namespace Schelendar
                     Directory.CreateDirectory(directoryPath);//创建一个路径的文件夹
                 }
                 StreamWriter sw = new StreamWriter(Path.Combine(directoryPath, filePath), true);//打开文件，并设定为追加数据
-                sw.WriteLine("开始时间" + startTime.ToString() + "——结束时间" + DateTime.Now.ToLocalTime().ToString() + "专注时间 " + iudWorkTime.Value.ToString() + "分钟");
+                sw.WriteLine("开始时间：" + startTime.ToString() + "——结束时间：" + DateTime.Now.ToLocalTime().ToString() + "     专注时间 " + iudWorkTime.Value.ToString() + "分钟");
                 sw.WriteLine("——————————————————————————————————————————————————————————————");
                 sw.Flush();
                 sw.Close();
@@ -217,10 +218,12 @@ namespace Schelendar
 
         private void btnGetExp_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("收获番茄成功，获得" + tomatoExp * lblTomatoNums.Text.ToInt() + "点经验");
+            UIMessageDialog.ShowInfoDialog(this, "收获番茄成功，获得" + tomatoExp * lblTomatoNums.Text.ToInt() + "点经验");
+            //UIMessageBox.ShowSuccess("收获番茄成功，获得" + tomatoExp * lblTomatoNums.Text.ToInt() + "点经验",true, true);
+            //MessageBox.Show("收获番茄成功，获得" + tomatoExp * lblTomatoNums.Text.ToInt() + "点经验");
             PlayerManager.getexp(tomatoExp * lblTomatoNums.Text.ToInt());
             PlayerManager.savedata();
-            lblTomatoNums.Text = "1";      
+            lblTomatoNums.Text = "0";      
         }
     }
 }

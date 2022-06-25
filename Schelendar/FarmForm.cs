@@ -251,7 +251,7 @@ namespace Schelendar
                 }
                 else
                 {
-                    MessageBox.Show("种子不够啦，换别的种子试试吧！");
+                    UIMessageBox.ShowInfo("种子不够啦，换别的种子试试吧！");
                     cancelSelectSeed();
                     return;
                 }
@@ -288,7 +288,8 @@ namespace Schelendar
         {
             if(selectedSeed == 0)
             {
-                MessageBox.Show("请先选择种子噢～");
+                UIMessageBox.ShowInfo("请先选择种子噢～");
+                //MessageBox.Show("请先选择种子噢～");
                 return;
             }
             int id = selectedSeed;
@@ -302,7 +303,7 @@ namespace Schelendar
             }
             else
             {
-                MessageBox.Show("金币不足，试试其他种子噢～");
+                UIMessageBox.ShowInfo("金币不足，试试其他种子噢～");
             }
         }
 
@@ -325,21 +326,21 @@ namespace Schelendar
         {
             if(openGround >= 12)
             {
-                MessageBox.Show("你已经解锁了所有土地！");
+                UIMessageBox.ShowInfo("你已经解锁了所有土地！");
                 return;
             }
-            MessageBox.Show($"解锁第{openGround + 1}块土地要{openCost[openGround]}元噢");
+            UIMessageBox.ShowInfo($"解锁第{openGround + 1}块土地要{openCost[openGround]}元噢");
             if(PlayerManager.gold < openCost[openGround])
             {
-                MessageBox.Show("金币不足，无法开辟土地");
+                UIMessageBox.ShowInfo("金币不足，无法开辟土地");
                 return;
             }
             if(PlayerManager.gold - openCost[openGround] < 10)
             {
-                MessageBox.Show("开辟这片土地就没有金币买种子啦，再等等吧～");
+                UIMessageBox.ShowInfo("开辟这片土地就没有金币买种子啦，再等等吧～");
                 return;
             }
-            MessageBox.Show("恭喜解锁新土地");
+            UIMessageBox.ShowInfo("恭喜解锁新土地");
             PlayerManager.gold -= openCost[openGround]; //金币更新
             lblMoney.Text = PlayerManager.gold.ToString();
             PlayerManager.unlocked[openGround + 1] = 1;//解锁土地增加
@@ -631,7 +632,7 @@ namespace Schelendar
             pcbExp.Maximum = PlayerManager.expmax;
             pcbExp.Value = PlayerManager.expnow;
             lblMoney.Text = PlayerManager.gold.ToString();
-            MessageBox.Show("刷新成功");
+            UIMessageBox.ShowInfo("刷新成功");
         }
     }
 }

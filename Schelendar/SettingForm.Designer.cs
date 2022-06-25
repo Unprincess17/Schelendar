@@ -230,7 +230,7 @@
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(300, 20);
             this.lblUsername.TabIndex = 12;
-            this.lblUsername.Text = "2020302001";
+            this.lblUsername.Text = "Schelendar_test_User";
             this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblUsername.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 

@@ -213,10 +213,16 @@ namespace Schelendar
 
         private void InitFarmPlayer()
         {
+            string newUser = "FarmUser3";
             FarmDBHelper farmDBHelper = new FarmDBHelper();
             farmDBHelper.create();
             //PlayerManager.initnewplayer("FarmUser1");
-            PlayerManager.readdata("FarmUser1");
+            if (PlayerManager.readdata(newUser) == 2)
+            {
+                PlayerManager.initnewplayer(newUser);
+                return;
+            }
+            return;
         }
         
     }
