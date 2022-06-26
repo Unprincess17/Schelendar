@@ -213,7 +213,7 @@ namespace Schelendar
 
         private void InitFarmPlayer()
         {
-            string newUser = "FarmUser3";
+            string newUser = SchUserManager.CurrentUser.UserName;
             FarmDBHelper farmDBHelper = new FarmDBHelper();
             farmDBHelper.create();
             //PlayerManager.initnewplayer("FarmUser1");

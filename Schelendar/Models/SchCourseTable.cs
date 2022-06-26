@@ -39,13 +39,14 @@ namespace Schelendar.Models
         /// <summary>
         /// 
         /// </summary>
-        public SchCourseTable(int courseTableId, String courseTableName, int dayCourseNumber, int weekLength, List<Dictionary<string, CourseTime>> everyCourseTime)
+        public SchCourseTable(int courseTableId, String courseTableName, int dayCourseNumber, int weekLength, List<Dictionary<string, CourseTime>> everyCourseTime, DateTime startDateTime)
         {
             DayCourseNumber = dayCourseNumber;
             CourseTableId = courseTableId;
             CourseTableName = courseTableName;
             WeekLength = weekLength;
             EveryCourseTime = everyCourseTime;
+            StartDateTime = startDateTime;
             /*
             EveryCourseTime = new List<Dictionary<string, CourseTime>>()
             {

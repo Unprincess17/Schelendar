@@ -175,8 +175,8 @@ namespace Schelendar.Models
                     "CREATE TABLE IF NOT EXISTS [SchCourseTables](" +
                     "[CourseTableID] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
                     "[CourseTableName] varchar(100)," +
+                    "[StartDateTime] DATETIME," +
                     "[DayCourseNumber] INTEGER," +
-                    //"[StartDateTime] DATETIME," +
                     "[WeekLength] INTEGER," +
                     "[c1_StartTime] varchar(100)," + 
                     "[c1_EndTime] varchar(100)," + 
@@ -217,7 +217,7 @@ namespace Schelendar.Models
                     "[c19_StartTime] varchar(100)," + 
                     "[c19_EndTime] varchar(100)," + 
                     "[c20_StartTime] varchar(100)," + 
-                    "[c20_EndTime] varchar(100)" + 
+                    "[c20_EndTime] varchar(100)" +
                     ")";
 
                 cmd.ExecuteNonQuery();

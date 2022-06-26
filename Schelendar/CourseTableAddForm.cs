@@ -45,7 +45,7 @@ namespace Schelendar
                 }
                 if (courseTableAddTimeSettingForm.DialogResult == DialogResult.Yes)
                 {
-                    CourseTableAddId = CourseTableManager.AddCourseTable(new SchCourseTable(0, courseTableNameTB.Text,  totalCourseNumIUD.Value, totalWeekIUD.Value, courseTableAddTimeSettingForm.EveryCourseTime));
+                    CourseTableAddId = CourseTableManager.AddCourseTable(new SchCourseTable(0, courseTableNameTB.Text,  totalCourseNumIUD.Value, totalWeekIUD.Value, courseTableAddTimeSettingForm.EveryCourseTime, this.startTimeDP.Value));
                     if(SchUserManager.CurrentUser.DefaultSemester == -1)
                     {
                         SchUserManager.CurrentUser.DefaultSemester = CourseTableAddId;

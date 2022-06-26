@@ -53,10 +53,10 @@ namespace Schelendar.Models
                                 throw new RepeatCourseException($"添加失败：已存在课程{course.SchCourseName}");
                             }
 
-                            if (SchCourse.isConflicted(course, tmpCourse) == 1)
-                            {
-                                throw new ArgumentException(message: $"添加失败：课程{course.SchCourseName}与{tmpCourse.SchCourseName}时间重复", paramName: $"{course.SchCourseName}");
-                            }
+                            //if (SchCourse.isConflicted(course, tmpCourse) == 1)
+                            //{
+                            //    throw new ArgumentException(message: $"添加失败：课程{course.SchCourseName}与{tmpCourse.SchCourseName}时间重复", paramName: $"{course.SchCourseName}");
+                            //}
                         }
                     }
 

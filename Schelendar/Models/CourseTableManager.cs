@@ -18,8 +18,8 @@ namespace Schelendar.Models
         public static int AddCourseTable(/*int userID,*/ SchCourseTable table)
         {
             //生成插入字符串
-            StringBuilder sbitems = new StringBuilder($"INSERT INTO SchCourseTables (CourseTableID, CourseTableName, DayCourseNumber, WeekLength"), 
-                sbvalues = new StringBuilder($"VALUES(NULL, '{table.CourseTableName}', '{table.DayCourseNumber}',  '{table.WeekLength}' ");//没有用户名称字段
+            StringBuilder sbitems = new StringBuilder($"INSERT INTO SchCourseTables (CourseTableID, CourseTableName, StartDateTime,DayCourseNumber, WeekLength"), 
+                sbvalues = new StringBuilder($"VALUES(NULL, '{table.CourseTableName}', '{table.StartDateTime}','{table.DayCourseNumber}',  '{table.WeekLength}' ");//没有用户名称字段
             for (int i = 0; i < table.EveryCourseTime.Count(); i++)
             {
                 sbitems.Append($", c{i+1}_StartTime, c{i+1}_EndTime");
@@ -82,9 +82,10 @@ namespace Schelendar.Models
                     rctbl = new SchCourseTable(
                         courseTableId: Convert.ToInt32(reader["CourseTableID"]),
                         courseTableName: reader["CourseTableName"].ToString(),
+                        startDateTime: Convert.ToDateTime(reader.GetString(2)),
                         dayCourseNumber: Convert.ToInt32(reader["DayCourseNumber"]),
                         weekLength: Convert.ToInt32(reader["WeekLength"]),
-                        everyCourseTime:EveryCourseTime);
+                        everyCourseTime: EveryCourseTime); ;
                 }
                 cn.Close();
             }
@@ -114,6 +115,7 @@ namespace Schelendar.Models
                         rctbls.Add(new SchCourseTable(
                             courseTableId: Convert.ToInt32(reader["CourseTableID"]),
                             courseTableName: reader["CourseTableName"].ToString(),
+                            startDateTime: Convert.ToDateTime(reader.GetString(2)),
                             dayCourseNumber: Convert.ToInt32(reader["DayCourseNumber"]),
                             weekLength: Convert.ToInt32(reader["WeekLength"]),
                             everyCourseTime: EveryCourseTime));

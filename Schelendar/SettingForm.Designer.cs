@@ -67,10 +67,10 @@
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 35);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(300, 495);
+            this.panel1.Size = new System.Drawing.Size(300, 530);
             this.panel1.TabIndex = 1;
             // 
             // pictureBox6
@@ -131,10 +131,10 @@
             this.panel2.Controls.Add(this.pnlpwd1);
             this.panel2.Controls.Add(this.pnlUser);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(300, 35);
+            this.panel2.Location = new System.Drawing.Point(300, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(450, 495);
+            this.panel2.Size = new System.Drawing.Size(450, 530);
             this.panel2.TabIndex = 2;
             // 
             // uiLabel4
@@ -143,7 +143,7 @@
             this.uiLabel4.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel4.Location = new System.Drawing.Point(38, 135);
             this.uiLabel4.Name = "uiLabel4";
-            this.uiLabel4.Size = new System.Drawing.Size(54, 28);
+            this.uiLabel4.Size = new System.Drawing.Size(69, 35);
             this.uiLabel4.TabIndex = 11;
             this.uiLabel4.Text = "设置";
             this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -193,7 +193,7 @@
             this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel2.Location = new System.Drawing.Point(44, 12);
             this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(74, 21);
+            this.uiLabel2.Size = new System.Drawing.Size(92, 27);
             this.uiLabel2.TabIndex = 8;
             this.uiLabel2.Text = "存储位置";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -230,7 +230,7 @@
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(300, 20);
             this.lblUsername.TabIndex = 12;
-            this.lblUsername.Text = "Schelendar_test_User";
+            this.lblUsername.Text = "书帆";
             this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblUsername.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -240,7 +240,7 @@
             this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel1.Location = new System.Drawing.Point(44, 12);
             this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(58, 21);
+            this.uiLabel1.Size = new System.Drawing.Size(72, 27);
             this.uiLabel1.TabIndex = 7;
             this.uiLabel1.Text = "用户名";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -259,6 +259,7 @@
             // 
             // SettingForm2
             // 
+            this.AllowShowTitle = false;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(750, 530);
             this.ControlBox = false;
@@ -267,6 +268,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SettingForm2";
+            this.Padding = new System.Windows.Forms.Padding(0);
+            this.ShowTitle = false;
             this.Text = "RegisterForm";
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 750, 530);
             this.panel1.ResumeLayout(false);
